@@ -1,0 +1,41 @@
+Upgrades:
+	When there is an order, notify all writers who specialize in the subject, the writers have a choice to accept or decline. The first writer to accept, works with the order.
+	Customers also have the right to choose a specific writer.
+
+	When there are more than 20 subjects, say 30, 40, 50 or more, uncomment the Read More Paragraph and use this code block to make the subject list display bit by bit on mobile devices, instead of showing 50 items (25 / 50 rows) at the same time. 
+//projects lists readmore
+var readmore = document.getElementById('readmore');
+var listsections = document.getElementsByClassName('listsection');
+var device = window.matchMedia("(max-width: 600px)");
+if(device.matches) {
+	for(let i=0; i<listsections.length; i++) {
+		ullist = listsections[i].getElementsByClassName('list');
+		for(let j=0; j<ullist.length; j++) {
+			if(j>0) {
+				ullist[j].classList.add('none');
+			}
+		}
+	}
+	var ullist, curlist;
+	var next = 0;
+	var hiddenul = document.querySelectorAll('.listsection ul.none').length;
+	if(hiddenul) {
+		readmore.style.display = 'block';
+	}
+	readmore.addEventListener('click', function(e) {
+		next++;
+		for(let i=0; i<listsections.length; i++) {
+			curlist = listsections[i].querySelector('ul.list'+next);
+			if(curlist) {
+				curlist.classList.remove('none');
+			}
+			if(next >= Math.ceil(hiddenul/2)) {
+				this.style.display = 'none';
+			} else {
+				console.log('next is: '+next+' and hiddenul count is: '+hiddenul);
+			}
+		}
+	});
+} else {
+	readmore.style.display = 'none';
+}
