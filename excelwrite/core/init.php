@@ -2,7 +2,8 @@
 if($_SERVER['SERVER_NAME'] == 'localhost') {
     require $_SERVER['DOCUMENT_ROOT']."/app/excelwrite/core/config.php";
 } else {
-    require ROOT."/app/excelwrite/core/config.php";
+    $getenv = parse_ini_file('file.env');
+    require $getenv['ROOT']."/app/excelwrite/core/config.php";
 }
 require ROOT."/app/functions.php"; //general functions
 require ROOT."/app/excelwrite/core/functions.php"; //app specific functions
