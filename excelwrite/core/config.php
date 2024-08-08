@@ -8,7 +8,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost') {
 	define('DB_HOST', 'localhost');
 	define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 	define('UPLOAD_ROOT', ROOT.'/app/excelwrite/uploads');
-	define('HOME', 'http://localhost/excelwrite');
+	define('HOME', 'http://localhost/excelwrite.com');
 	define('DEBUG', true);
 } else {
     define('ENV', parse_ini_file('file.env'));
