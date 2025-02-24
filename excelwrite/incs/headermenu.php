@@ -32,7 +32,10 @@
                     </ul>
                 </div>
                 <div class='headerlist' style='width:30%'>
-                    <a href="#"  onclick="loadModal('ordermodal')">
+                    <!--<a href="#"  onclick="loadModal('ordermodal')">
+                        <button class=rollIn>Submit Assignment</button>
+                    </a>-->
+                    <a href="<?=WHATSAPP_LINK?>">
                         <button class=rollIn>Submit Assignment</button>
                     </a>
                 </div>
@@ -68,7 +71,10 @@
                         }?>
                     
                     </ul>
-                    <a href="#"  onclick="loadModal('ordermodal')">
+                    <!--<a href="#"  onclick="loadModal('ordermodal')">
+                        <button class=rollIn>Submit Assignment</button>
+                    </a>-->
+                    <a href="<?=WHATSAPP_LINK?>">
                         <button class=rollIn>Submit Assignment</button>
                     </a>
                 </div>
