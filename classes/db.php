@@ -3,6 +3,7 @@ trait Db {
     private static $query;
     private static $extra;
     private static $query_type;
+    private static $insert_arr;
     private static $update_arr;
     private static $conn;
     private static $instance;
@@ -35,7 +36,7 @@ trait Db {
         $this->conn();
         self::$query_type = 'select';
         $as = $alias ? "as $alias" : '';
-        self::$query = "select $columns from ".self::$table." $as ";
+        self::$query = "select $columns from ".static::$table." $as ";
         // self::$extra = $extra;
         return self::$instance;
     }
@@ -46,15 +47,15 @@ trait Db {
         return self::$instance;
     }
 
-    public function all($extra='') {
+    public function all($extra='', $params=[]) {
         self::$query .= " $extra";
-        return $this->run();
+        return $this->run($params);
     }
 
-    public function insert(array $colsandvals, $returnrow=false) {
+    public function insert(array $colsandvals, $self=false) {
         $this->conn();
         self::$query_type = 'insert';
-        self::$query = 'insert into '.self::$table.' (';
+        self::$query = 'insert into '.static::$table.' (';
         foreach($colsandvals as $col=>$val) {
             self::$query .= "$col, ";
         }
@@ -63,33 +64,59 @@ trait Db {
             self::$query .= ":$col, ";
         }
         self::$query = rtrim(self::$query, ', ').')';
-        if($returnrow) {
-            return $this->returnrow($colsandvals, $returnrow);
+        if($self===true) {
+            //$returnrow, $updateduplicate=false
+            self::$insert_arr = $colsandvals;
+            return self::$instance;
         }
+        // if($returnrow) {
+        //     return $this->returnrow($colsandvals, $returnrow);
+        // }
+        // if($updateduplicate===true) {
+        //     self::$insert_arr = 
+        //     return self::$instance;
+        // }
         return $this->run($colsandvals, $colsandvals);
     }
 
-    public function insert_multi(array $rows, $returnrow=false) {
-        $this->conn();
-        $rowcount = count($rows[0]);
-        $rowarr = array_fill(0, $rowcount, '?');
-        $rowstr = '('.implode(', ', $rowarr).')';
-        $allrowcount = count($rows);
-        $allrowarr = array_fill(0, $allrowcount, $rowstr);
-        $allrowstr = implode(', ', $allrowarr);
-        if($returnrow) {
-            return $this->returnrow($rows, $returnrow);
-        }
-        return $this->run($rows);
+//     "INSERT INTO diamond (email, currency, amount)
+// VALUES ('ashleyberry1979@gmail.com', 'GBP', 20)
+// ON DUPLICATE KEY UPDATE
+//     currency='GBP', amount=amount+20"
+
+    public function on_duplicate_key($query, array $params=[]) {
+        self::$query .= " ON DUPLICATE KEY $query ";
+        // show(self::$insert_arr);
+        self::$insert_arr = array_merge(self::$insert_arr, $params);
+        return self::$instance;
     }
 
-    public function returnrow($insrows, $returnrow) {
+    public function go() {
+        return $this->run(self::$insert_arr);
+    }
+
+    public function insert_multi(array $rows, $self=false) {
+        $this->conn();
+        self::$query_type = 'insert';
+        $params = str_repeat('?, ', count($rows[0]) - 1) . '?';
+        self::$query = "INSERT INTO ".static::$table." (".implode(', ', array_keys($rows[0])).") VALUES " . str_repeat("($params), ", count($rows) - 1) . "($params)";
+        foreach($rows as $val) {
+            $data[] = array_values($val);
+        }
+        if($self===true) {
+            self::$insert_arr = array_merge(...$data);
+            return self::$instance;
+        }
+        return $this->run(array_merge(...$data));
+    }
+
+    public function returnrow($returnrow) {
         $rows = $returnrow===true ? '*' : $returnrow;
         /*
         self::$query_type = 'select';
         self::$query .= " RETURNING $rows"; //mysql 10.5
         */
-        if($this->run($insrows) === true) {
+        if($this->run(self::$insert_arr) === true) {
             return $this->select($rows)->where('id=LAST_INSERT_ID()');
             // self::$query_type = 'select';
             // self::$query = "SELECT $rows from ".self::$table." where id=LAST_INSERT_ID()";
@@ -97,15 +124,27 @@ trait Db {
         }
     }
 
-    public function update(array $columns) {
+    public function update(array $columns, $positional=false) {
         $this->conn();
         self::$query_type = 'update';
-        self::$query = 'Update '.self::$table.' set ';
-        foreach($columns as $key=>$val) {
-            self::$query .= "$key = :$key,";
+        self::$query = 'Update '.static::$table.' set ';
+        if($positional) {
+            self::$query .= implode('=?, ', array_keys($columns)).'=? ';
+            $columns = array_values($columns);
+        } else {
+            foreach($columns as $key=>$val) {
+                self::$query .= "$key = :$key,";
+            }
         }
         self::$query = rtrim(self::$query, ',');
         self::$update_arr = $columns;
+        return self::$instance;
+    }
+    
+    public function delete() {
+        $this->conn();
+        self::$query_type = 'delete';
+        self::$query = "Delete from ".static::$table;
         return self::$instance;
     }
 
@@ -115,6 +154,7 @@ trait Db {
         switch(self::$query_type) {
             case 'update':
                 $totalupdatearr = array_merge(self::$update_arr, $wharray);
+                // show($totalupdatearr);
                 return $this->run($totalupdatearr);
             break;
             default:
@@ -123,7 +163,7 @@ trait Db {
     }
 
     public function run(array $params=[]) {
-        // echo self::$query; exit;
+        // echo self::$query.'<br>';
         $stmt = self::$conn->prepare(self::$query);
         $done = $stmt->execute($params);
         if($done) {
@@ -141,7 +181,7 @@ trait Db {
     public function fetchcolumns() {
         $this->conn();
         self::$query_type = 'select';
-        self::$query = 'show columns from '.self::$table;
+        self::$query = 'show columns from '.static::$table;
         $columns = $this->run();
         if(is_array($columns) && count($columns)) {
             return array_column($columns, 'Field');
@@ -155,7 +195,7 @@ trait Db {
         return $this->run($queryvalues);
     }
 
-    public function setvariable($sqlvariables) {
+    public function setvariable(array $sqlvariables, array $params=[]) {
         // $str = $sqlvariables;
         $str = '';
         foreach($sqlvariables as $key=>$val) {
@@ -164,9 +204,9 @@ trait Db {
 
         self::$query = $str;
         self::$query_type = 'setvariable';
-        return $this->run();
+        return $this->run($params);
     }
-
+    
     public function transaction(array $tabqueries, $querytype='select') {
         $this->conn();
         try {
@@ -175,14 +215,21 @@ trait Db {
             foreach($tabqueries as $key=>$val) {
                 self::$table = $key;
                 foreach($val as $subkey=>$subval) {
+                    if(str_starts_with_number($subkey)) {
+                        $osubkey=$subkey;
+                        $subkey = trim_starting_number($subkey);
+                    } else {
+                        $osubkey = null;
+                    }
                     if(method_exists($this, $subkey)) {
                         $output = call_user_func_array([$this, $subkey], $subval);
-                        if(is_array($output)) {
-                            $res[] = $output;
-                        }
+                        // if(is_array($output)) {
+                        //     $res[] = $output;
+                        // }
+                        $res[$key][$osubkey ?? $subkey] = is_object($output) ? 'object' : $output;
                     } else {
                         self::$conn->rollback();
-                        error_log("Transaction error: $key method not found");
+                        error_log("Transaction error: $subkey method not found");
                         return;
                     }
                 }
@@ -190,12 +237,18 @@ trait Db {
             self::$conn->commit();
         } catch (PDOEXCEPTION $e) {
             self::$conn->rollback();
-            echo 'Transaction error: '.$e->getMessage();
+            // echo 'Transaction error: '.$e->getMessage();
+            error_log('Transaction error: '.$e->getMessage());
             return;
         }
         return $res;
     }
 }
+/*
+    [
+        'table1'=>['insert'=>[]]
+    ]
+*/
 // []
 // BEGIN;
 // insert into user (firstname, email, phone, writer) values ('Joey', 'joey@gmail.com', 070, 1);

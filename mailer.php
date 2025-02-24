@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require ROOT.'/vendor/autoload.php';
+require_once ROOT.'/vendor/autoload.php';
 
 function send_mail(array $sender, array $receiver, array $message) {
     //Create an instance; passing `true` enables exceptions
