@@ -21,6 +21,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost') {
 	define('HOME', 'https://excelwrite.com');
 	define('DEBUG', false);
 }
+define('WHATSAPP_LINK', 'https://api.whatsapp.com/send?phone=254793980924');
 define('DB_TYPE','mysql');
 if(DEBUG) {
     ini_set("display_errors",1);

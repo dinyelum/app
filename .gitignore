@@ -3,5 +3,6 @@
 uploads/
 images/
 temp/
+tmp/
 cgi-bin/
 .well-known/
