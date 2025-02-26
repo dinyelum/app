@@ -23,7 +23,6 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers Login page, best ftball prediction website';
             $this->description = 'Betagamers Subscription Payment Page. View the various payment options available.';
             $data['page_title'] = "Support Center";
-            $data['btntxt'] = 'MENU';
             $data['h1'] = 'BetaGamers Support';
             $data['call']['header'] = 'We are Existent';
             $data['call']['prompt'] = 'Call or SMS';
@@ -101,7 +100,6 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, betagamers faqs';
             $this->description = 'Betagamers Frequently Asked Questions: See answers to questions frequently asked by users. Answers to yours might be here';
             $data['page_title'] = "FAQs";
-            $data['btntxt'] = 'MENU';
             $data['h1'] = 'BetaGamers: FAQs';
         }
         $data['sidelist'] = $this->sidelist();
@@ -117,7 +115,6 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, betagamers howto';
             $this->description = 'Betagamers Support Center: Quick guide to how things work at Betagamers.';
             $data['page_title'] = "How it Works";
-            $data['btntxt'] = 'MENU';
             $data['h1'] = 'How it Works';
         }
         $data['sidelist'] = $this->sidelist();
@@ -131,7 +128,6 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, betagamers jobs';
             $this->description = 'Betagamers Job Offer. Check out which opportunities best suits you';
             $data['page_title'] = "Job opportunities";
-            $data['btntxt'] = 'MENU';
             $data['h1'] = 'BetaGamers: Job opportunities';
             include ROOT.'/app/betagamers/incs/countrylist/'.LANG.'.php';
             $data['h2'] = 'Available Opportunities in '.$country_list[USER_COUNTRY]['name'];
@@ -190,6 +186,7 @@ class Support extends Controller {
             $successtxt= " Message Sent. We'll be intouch within 24 hours";
             $placeholders = ['Name', 'Your Email', 'Message'];
             $fieldnames = ['Name', 'E-mail', 'Subject', 'Message', ''];
+            $sendmail = 'Send Mail';
         }
         
         if ($_SERVER["REQUEST_METHOD"] == "POST" && (isset($_POST['submit']) & !empty($_POST))) {
@@ -206,7 +203,7 @@ class Support extends Controller {
             // }
             $message = purify($_POST["message"]);
             if(!$message) {
-                $err['message'] = $genclass->resp_empty($fieldname['message'], LANG);
+                $err['message'] = $genclass->resp_empty('message', LANG);
             } else {
                 $mal = ['viagra', 'drug', 'cialis', 'pharmacy', 'pharmacies','loan','href','tadalafil'];
                 foreach ($mal as $bad) {
@@ -255,7 +252,6 @@ class Support extends Controller {
             $data['h1'] = 'BetaGamers Pricing';
             $data['h2'] = 'Which Plan Best Represents You?';
             $data['p'] = "Select from the following and we'll provide the solutions that are ideal to your specific needs:";
-            $data['btntxt'] = 'MENU';
             $sub_text = 'SUBSCRIBE NOW';
             $sub_text_1 = 'SUBSCRIBE';
             $prompt = ['SUBSCRIBE NOW', 'REGISTER', 'SUBSCRIBE'];
@@ -278,7 +274,6 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, betagamers privacy policy page';
             $this->description = 'Go through the privacy policy statement of the services provided by BetaGamers';
             $data['page_title'] = "Privacy Policy";
-            $data['btntxt'] = 'MENU';
             $data['h1'] = 'BETAGAMERS PRIVACY POLICY';
         }
         $data['sidelist'] = $this->sidelist();
@@ -292,7 +287,6 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, betagamers terms and conditions of use';
             $this->description = 'Go through the terms and conditions of usage of services by BetaGamers';
             $data['page_title'] = "Terms";
-            $data['btntxt'] = 'MENU';
             $data['h1'] = 'BETAGAMERS TERMS';
         }
         $data['sidelist'] = $this->sidelist();

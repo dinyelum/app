@@ -23,7 +23,6 @@
     </div>
 </div>
 <?php include ROOT.'/app/betagamers/incs/footer.php';?>
-<script src="<?=HOME?>/assets/js/gen.js"></script>
 <script>
     var modegroup = document.querySelectorAll("input[name='mode']");
     var reasonid = document.getElementById('purpose');
@@ -31,6 +30,7 @@
     var amtid = document.getElementsByClassName('amount');
     var planid = document.getElementById('plan');
     var xhttp = new XMLHttpRequest;
+    var tawkTo = false;
     
     for(let i=0; i<modegroup.length; i++) {
         modegroup[i].addEventListener('change', changeRadio);
@@ -65,3 +65,4 @@
         }
     }
 </script>
+<script src="<?=HOME?>/assets/js/gen.js"></script>

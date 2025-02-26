@@ -76,15 +76,15 @@ function images(array $img, $screens=false) {
     $imgurl = HOME.'/assets/images/'.$img['name'];
     if($screens === true) {
         return "<picture>
-<source media='(max-width:600px)' srcset='$imgurl\1x.webp' type='image/webp'>
-<source media='(max-width:600px)' srcset='$imgurl\1x.jpg' type='image/jpeg'>
-<source media='(max-width:1680px)' srcset='$imgurl\2x.webp' type='image/webp'>
-<source media='(max-width:1680px)' srcset='$imgurl\2x.jpg' type='image/jpeg'>
-<source media='(max-width:3840px)' srcset='$imgurl\3x.webp' type='image/webp'>
-<source media='(max-width:3840px)' srcset='$imgurl\3x.jpg' type='image/jpeg'>
-<source media='(min-width:3840px)' srcset='$imgurl\4x.webp' type='image/webp'>
-<source media='(min-width:3840px)' srcset='$imgurl\4x.jpg' type='image/jpeg'>
-<img src='$imgurl\2x.jpg' alt='".$img['alt']."' style='width:100%'>
+<source media='(max-width:600px)' srcset='$imgurl"."1x.webp' type='image/webp'>
+<source media='(max-width:600px)' srcset='$imgurl"."1x.jpg' type='image/jpeg'>
+<source media='(max-width:1680px)' srcset='$imgurl"."2x.webp' type='image/webp'>
+<source media='(max-width:1680px)' srcset='$imgurl"."2x.jpg' type='image/jpeg'>
+<source media='(max-width:3840px)' srcset='$imgurl"."3x.webp' type='image/webp'>
+<source media='(max-width:3840px)' srcset='$imgurl"."3x.jpg' type='image/jpeg'>
+<source media='(min-width:3840px)' srcset='$imgurl"."4x.webp' type='image/webp'>
+<source media='(min-width:3840px)' srcset='$imgurl"."4x.jpg' type='image/jpeg'>
+<img src='$imgurl"."2x.jpg' alt='".$img['alt']."' style='width:100%'>
 </picture>";
     } else {
         return "<img src='".HOME.'/assets/images/'.$img['image']."' alt='".$img['imagealt']."' style='width:100%'>";

@@ -33,7 +33,7 @@ define('CF_COUNTRY', $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'GB');
 define('USER_COUNTRY', $_SESSION['users']['country'] ?? CF_COUNTRY);
 define('USER_LOGGED_IN', $_SESSION['users']["logged_in"] ?? null);
 define('LANG', (strlen($lang)==2) ? $lang : 'en');
-define('DISCOUNT', 0.70);
+define('DISCOUNT', null);
 define('EMAIL', 'services@betagamers.net');
 define('HR', 'hr@betagamers.net');
 define('LINKS', 'links@betagamers.net');

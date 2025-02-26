@@ -213,5 +213,31 @@ class Requests {
             echo "<span class=error>".implode('<br>', $validate[1])."</span>";
         }
     }
+    
+    function mailer() {
+        if(isset($_GET['id'])) {
+            $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+            if(is_int($id)) {
+                //$dbclass = new Db;
+                //$usersclass = new Users;
+                //$userdetails = $dbclass->table('users')->select('fullname, email, hash')->where('id=:id and active != 1', ['id'=>$id]);
+                $genclass = new General;
+                $userdetails = $genclass->get_by_id_and_not_active('users', ['fullname', 'email', 'hash'], [$id, 1]);
+                $userdetails = $userdetails[0];
+                if(!count($userdetails)) {
+                    exit(json_encode(['response'=>false]));
+                }
+                $fullname = $userdetails[0]['fullname'];
+                $to['email'] = $email = $userdetails[0]['email'];
+                $hash = $userdetails[0]['hash'];
+                include ROOT."/app/betagamers/incs/mails/reg.php";
+                $response = $genclass->sendmail($to, $message, $from);
+                if($response === true) {
+                    $_SESSION['resendcontrol'] = isset($_SESSION['resendcontrol']) ? ($_SESSION['resendcontrol'] + 1) : 1;
+                }
+            }
+        }
+        echo $response = json_encode(['response'=>$response ?? false]);
+    }
 //end upload games
 }

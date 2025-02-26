@@ -165,5 +165,6 @@
         xhttp.open('POST', '<?=HOME?>/requests/updateodds');
         xhttp.send(form);
     }
+    var tawkTo = false;
 </script>
 <script src="<?=HOME?>/assets/js/gen.js"></script>

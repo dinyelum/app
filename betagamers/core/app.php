@@ -18,7 +18,8 @@ Class App
 			exit;
 		}
 
-		if(str_ends_with(URI, '/') && URI!='/betagamers/public_html/')  {
+		if(str_ends_with(URI, '/') && URI!='/betagamers/public_html/' && URI!=='/')  {
+			// echo 'wrong error: '.URI;
 			// show($_GET['url']);
 			// exit;
 			header('location: '.htmlspecialchars(rtrim(URI, '/')));

@@ -2,7 +2,7 @@
 if($_SERVER['SERVER_NAME'] == 'localhost') {
     require $_SERVER['DOCUMENT_ROOT']."/app/betagamers/core/config.php";
 } else {
-    $getenv = parse_ini_file('file.env');
+    $getenv = parse_ini_file(str_replace('/public_html', '', $_SERVER['DOCUMENT_ROOT']).'/app/betagamers/core/file.env');
     require $getenv['ROOT']."/app/betagamers/core/config.php";
 }
 require ROOT."/app/functions.php"; //general functions

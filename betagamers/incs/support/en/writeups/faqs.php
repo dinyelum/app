@@ -2,7 +2,7 @@
 <p>You can’t place bets on this site, BetaGamers.Net is a <a href="<?=HOME?>" style="color:green">sports prediction site</a> and not a betting site.</p>
 
 <h2>How good are your predictions?</h2>
-<p>Good Enough, nearly perfect as you can see for yourself. You can also view our <a href="<?=tips_link()?>" style="color:green">bet accuracy trackers system</a> to know when we are doing well and when we are not.</p>
+<p>Good Enough, nearly perfect as you can see for yourself. You can also view our <a href="<?=tips_links()?>" style="color:green">bet accuracy trackers system</a> to know when we are doing well and when we are not.</p>
 
 <h3>How do I become a member?</h3>
 <p>You can become a member simply by registering for free. <a style="color: green;" href="<?=account_links('register')?>">Register here.</a></p>

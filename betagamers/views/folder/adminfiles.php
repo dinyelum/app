@@ -43,7 +43,6 @@
     </div>
 </div>
 <?php include ROOT.'/app/betagamers/incs/footer.php';?>
-<script src="<?=HOME?>/assets/js/gen.js"></script>
 <script><?php
     if($this->page=='update_adminfiles') {?>
         var f = document.getElementById('filegroup');
@@ -105,4 +104,6 @@
             notefieldid.style.display = 'none';
         }
     }
+    var tawkTo = false;
 </script>
+<script src="<?=HOME?>/assets/js/gen.js"></script>

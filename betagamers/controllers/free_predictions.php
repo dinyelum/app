@@ -130,12 +130,12 @@ class Free_Predictions extends Controller {
         $league = $this->page;
         $this->style = 'h2, p a {color: green;}';
         $this->urls = free_games_link($this->page, true);
-        $filename = $this->filename ?? ROOT.'/app/betagamers/incs/free_predicts/'.LANG."/$league.php";
+        $filename = $this->filename ?? ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG."/$league.php";
         $data['heroimg']['name'] = $this->page;
         $data['heroimg']['image'] = $this->page.'2x.jpg';
         if(array_key_exists($this->page, $this->teams)) {
             $freegamesclass = new Freegames;
-            $getmtime = $freegamesclass->select('regdate')->where("league='$league' order by regdate desc limit 1");
+            $getmtime = $freegamesclass->select('regdate')->where("league='epl' order by regdate desc limit 1");
             // show($getmtime);
             // $data['leaguearr'] = glob(INCS."/free_predicts/".LANG."/*$league.php");
             $data['tabs'] = free_tab_names(['yes', '']);
@@ -483,9 +483,8 @@ class Free_Predictions extends Controller {
     }
 
     function howtopredict() {
-        $this->page = $this->activepage = 'predict';
+        $this->page = $this->activepage = 'howtopredict';
         $this->writeuponly = true;
-        $this->urls = free_games_link('howtopredict', true);
         if(LANG=='en') {
             $data['page_title'] = $data['h1'] = "How to Predict Football Matches Correctly";
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, sports tips, accurate sports prediction website, accurate sports prediction site, best football prediction website, how to predict football matches correctly, how to predict football matches';
@@ -497,7 +496,7 @@ class Free_Predictions extends Controller {
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $this->og['title'] = $data['page_title'];
-        $data['writeup'] = file_get_contents(ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/predict.php');
+        $data['writeup'] = file_get_contents(ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/howtopredict.php');
         $data['relatedposts']['h3'] = $h3;
         $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'teams', 'guide'];
         return $this->league($data);
@@ -506,10 +505,6 @@ class Free_Predictions extends Controller {
     function guide() {
         $this->page = $this->activepage = 'guide';
         $this->writeuponly = true;
-        $this->urls = [
-            'en'=>'https://betagamers.net/free_predictions/guide.php',
-            'fr'=>'https://fr.betagamers.net/pronostics_gratuits/guider.php'
-        ];
         if(LANG=='en') {
             $data['page_title'] = $data['h1'] = "Betting Guide for Beginners";
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, sports tips, best complete betting guide';

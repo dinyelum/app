@@ -89,7 +89,6 @@ class Tips extends Controller {
                 'imagetype'=>'image/jpg'
             ];
             $data['page_title'] = "Best Vip Tips";
-            $btntext = 'MENU';
             $prompts= ['Register', 'Pricing', 'Subscribe'];
             $bigoddsh = 'BIG ODDS';
             $bigoddst = 'Big Odds Prediction';
@@ -102,9 +101,8 @@ class Tips extends Controller {
         $this->og['url'] = $this->urls[LANG];
         $this->og['image'] = $this->urls[LANG].'/images/bgslide1x.jpg';
         $data['sidelist'] = $this->sidelist();
-        $data['btntxt'] = $btntext;
         $data['games'] = $marksclass->set_games();
-        $data['marks'] = $marks;
+        $data['marks'] = $marks ?? [];
         $data['prompts'] = array_combine(['reg', 'price', 'sub'], $prompts);
         $data['bigodds'] = ['header'=>$bigoddsh, 'text'=>$bigoddst, 'odds'=>$bigodds, 'prompt'=>$bigoddsp];
         $data['screenshots'] = $screenshots;

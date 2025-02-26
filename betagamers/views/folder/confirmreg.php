@@ -24,4 +24,7 @@
     </div>
 </div>
 <?php include ROOT.'/app/betagamers/incs/footer.php';?>
+<script>
+    var tawkTo = false;
+</script>
 <script src="<?=HOME?>/assets/js/gen.js"></script>

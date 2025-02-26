@@ -1,32 +1,32 @@
 <?php
 $sidelistarr = side_list_top();
 $pay_list = $en_pay_list = [
-    'Bank/Mobile/ATM Transfers'=>['link'=>'./', 'id'=>'bank', 'country'=>'all'],
-    'Mobile Money (CFA)'=>['link'=>'rave?id=xof', 'id'=>'ravecfa', 'country'=>['bf', 'bj', 'cg', 'ci', 'ml', 'ne', 'sn']],
-    'Mobile Money (Ghana)'=>['link'=>'rave?id=ghs', 'id'=>'ravegh', 'country'=>'gh'],
-    'MPESA (Kenya)'=>['link'=>'rave?id=kes', 'id'=>'raveke', 'country'=>'ke'],
-    'Flutterwave'=>['link'=>'rave?id=ngn', 'id'=>'raveng', 'country'=>'ng'],
-    'PayStack'=>['link'=>'paystack', 'id'=>'paystack', 'country'=>'ng'],
-    'Mobile Money (Uganda)'=>['link'=>'rave?id=ugx', 'id'=>'raveug', 'country'=>'ug'],
-    'Mobile Money (Rwanda)'=>['link'=>'rave?id=rwf', 'id'=>'raverw', 'country'=>'rw'],
-    'Mobile Money (Malawi)'=>['link'=>'rave?id=mwk', 'id'=>'ravemw', 'country'=>'mw'],
-    'Mobile Money (Tanzania)'=>['link'=>'rave?id=tzs', 'id'=>'ravetz', 'country'=>'tz'],
-    'Mobile Money (Zambia)'=>['link'=>'rave?id=zmw', 'id'=>'ravezm', 'country'=>'zm'],
-    'Mobile Money (DR Congo)'=>['link'=>'view_prices?id=cdf', 'id'=>'viewcdf', 'country'=>'cd'],
-    'Mukuru (MWK)'=>['link'=>'mukuru?id=mwk', 'id'=>'viewmwk_muk', 'country'=>'mw'],
-    //'Mukuru (ZAR)'=>['link'=>'mukuru?id=zar', 'id'=>'viewzar_muk', 'country'=>['ls', 'za']], put mukuru as ins on pages instead
-    'Mukuru (ZMW)'=>['link'=>'mukuru?id=zmw', 'id'=>'viewzmw_muk', 'country'=>'zm'],
-    'Mukuru'=>['link'=>'mukuru?id=usd', 'id'=>'viewusd_muk', 'country'=>['zw']],
-    'Chipper Cash'=>['link'=>'chipper', 'id'=>'chippercash', 'country'=>['bf', 'bw', 'cd', 'cg', 'ci', 'et', 'gh', 'gw', 'lr', 'ml', 'mw', 'ne', 'rw', 'sn', 'sl', 'tz', 'ug', 'zm', 'zw']],
-    'ZAR'=>['link'=>'rave?id=zar', 'id'=>'ravezar', 'country'=>['ls', 'za']],
-    'USD'=>['link'=>'rave?id=usd', 'id'=>'raveusd', 'country'=>'all_ng'],
-    'EUR'=>['link'=>'rave?id=eur', 'id'=>'raveeur', 'country'=>'all_ng'],
-    'GBP'=>['link'=>'rave?id=gbp', 'id'=>'ravegbp', 'country'=>'all_ng'],
-    'PayPal'=>['link'=>'paypal', 'id'=>'paypal', 'country'=>'all'],
-    'Skrill / Neteller'=>['link'=>'skrill', 'id'=>'skrill', 'country'=>'all'],
-    'SticPay'=>['link'=>'sticpay', 'id'=>'sticpay', 'country'=>'all'],
-    'AstroPay'=>['link'=>'astropay', 'id'=>'astropay', 'country'=>'all_ng'],
-    'Crypto'=>['link'=>'coinbase', 'id'=>'coinbase', 'country'=>'all']
+    'Bank/Mobile/ATM Transfers'=>['link'=>pay_links(), 'id'=>'bank', 'country'=>'all'],
+    'Mobile Money (CFA)'=>['link'=>pay_links('rave?id=xof'), 'id'=>'ravexof', 'country'=>['bf', 'bj', 'cg', 'ci', 'ml', 'ne', 'sn']],//'id'=>'ravecfa'
+    'Mobile Money (Ghana)'=>['link'=>pay_links('rave?id=ghs'), 'id'=>'raveghs', 'country'=>'gh'],
+    'MPESA (Kenya)'=>['link'=>pay_links('rave?id=kes'), 'id'=>'ravekes', 'country'=>'ke'],
+    'Flutterwave'=>['link'=>pay_links('rave?id=ngn'), 'id'=>'ravengn', 'country'=>'ng'],
+    'PayStack'=>['link'=>pay_links('paystack'), 'id'=>'paystack', 'country'=>'ng'],
+    'Mobile Money (Uganda)'=>['link'=>pay_links('rave?id=ugx'), 'id'=>'raveugx', 'country'=>'ug'],
+    'Mobile Money (Rwanda)'=>['link'=>pay_links('rave?id=rwf'), 'id'=>'raverwf', 'country'=>'rw'],
+    'Mobile Money (Malawi)'=>['link'=>pay_links('rave?id=mwk'), 'id'=>'ravemwk', 'country'=>'mw'],
+    'Mobile Money (Tanzania)'=>['link'=>pay_links('rave?id=tzs'), 'id'=>'ravetzs', 'country'=>'tz'],
+    'Mobile Money (Zambia)'=>['link'=>pay_links('rave?id=zmw'), 'id'=>'ravezmw', 'country'=>'zm'],
+    'Mobile Money (DR Congo)'=>['link'=>pay_links('view_prices?id=cdf'), 'id'=>'viewcdf', 'country'=>'cdf'],
+    'Mukuru (MWK)'=>['link'=>pay_links('mukuru?id=mwk'), 'id'=>'viewmwk_muk', 'country'=>'mw'],
+    //'Mukuru (ZAR)'=>['link'=>pay_links('mukuru?id=zar'), 'id'=>'viewzar_muk', 'country'=>['ls', 'za']], put mukuru as ins on pages instead
+    'Mukuru (ZMW)'=>['link'=>pay_links('mukuru?id=zmw'), 'id'=>'viewzmw_muk', 'country'=>'zm'],
+    'Mukuru'=>['link'=>pay_links('mukuru?id=usd'), 'id'=>'viewusd_muk', 'country'=>['zw']],
+    'Chipper Cash'=>['link'=>pay_links('chipper'), 'id'=>'chippercash', 'country'=>['bf', 'bw', 'cd', 'cg', 'ci', 'et', 'gh', 'gw', 'lr', 'ml', 'mw', 'ne', 'rw', 'sn', 'sl', 'tz', 'ug', 'zm', 'zw']],
+    'ZAR'=>['link'=>pay_links('rave?id=zar'), 'id'=>'ravezar', 'country'=>['ls', 'za']],
+    'USD'=>['link'=>pay_links('rave?id=usd'), 'id'=>'raveusd', 'country'=>'all_ng'],
+    'EUR'=>['link'=>pay_links('rave?id=eur'), 'id'=>'raveeur', 'country'=>'all_ng'],
+    'GBP'=>['link'=>pay_links('rave?id=gbp'), 'id'=>'ravegbp', 'country'=>'all_ng'],
+    'PayPal'=>['link'=>pay_links('paypal'), 'id'=>'paypal', 'country'=>'all_ng'],
+    'Skrill / Neteller'=>['link'=>pay_links('skrill'), 'id'=>'skrill', 'country'=>'all'],
+    'SticPay'=>['link'=>pay_links('sticpay'), 'id'=>'sticpay', 'country'=>'all'],
+    'AstroPay'=>['link'=>pay_links('astropay'), 'id'=>'astropay', 'country'=>'all_ng'],
+    'Crypto'=>['link'=>pay_links('coinbase'), 'id'=>'coinbase', 'country'=>'all']
     ];
 
 if(LANG != 'en') {

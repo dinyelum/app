@@ -1,4 +1,4 @@
-<button class="dropbtn accobtn"><?=$data['btntxt']?></button>
+<button class="dropbtn accobtn"><?=btntext()?></button>
 <div class="w3-hide accocontent">
     <div class="sidenavmob">
         <?=implode('', $data['sidelist'])?>

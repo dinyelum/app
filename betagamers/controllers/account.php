@@ -169,6 +169,7 @@ Class Account extends Controller
                 if(isset($_POST['email']) && trim($_POST['email']) != '') {
                     $fullname = purify($_POST['fullname']);
                     $email = $to['email'] = purify($_POST['email']);
+                    $hash = $_POST['hash'];
                     include ROOT."/app/betagamers/incs/mails/reg.php";
 				    $genclass->sendmail($to, $message, $from);
 				}
@@ -213,23 +214,24 @@ Class Account extends Controller
         $this->style = "b {color: green;}";
         if(LANG=='en') {
             $data['page_title'] = "Access Denied";
-            $data['email']['message'] = "We have sent a link to your email, *".$_SESSION['users']['email']."*. Please click the link in your email to activate your account. Check both the Inbox and the Spam folders.";
+            $data['email']['message'] = "We have sent a link to your email, *".($_SESSION['users']['email'] ?? '')."*. Please click the link in your email to activate your account. Check both the Inbox and the Spam folders.";
             $data['email']['prompt1'] = ["Didin't receive an email", "Resend"];
             $data['email']['prompt2'] = "#Click here# to report to us if you did not receive any email / if the email address you provided was wrong / if you dont have email at all. Thanks.";
-            $data['phone']['message'] = "A 6 digit code was sent to ".$_SESSION['users']["phone"].". Please enter the code to verify your account. OTP expires after 10 minutes.";
+            $data['phone']['message'] = "A 6 digit code was sent to ".($_SESSION['users']["phone"] ?? '').". Please enter the code to verify your account. OTP expires after 10 minutes.";
             $data['phone']['prompt'] = "Use another verification method";
             $data['phone']['verifybtn'] = "Verify OTP";
             $data['phone']['resendbtn'] = "Didn't recieve otp? Resend";
-            $data['phone']['confirmreg'] = "Please send *CONFIRM REG ".$_SESSION['users']['phone']."* to +2348157437268 through sms, Whatsapp or Telegram so that we can activate your account.<br><br>Please make sure to send the message from the same number you registered here. Thanks.";
+            $data['phone']['confirmreg'] = "Please send *CONFIRM REG ".($_SESSION['users']['phone'] ?? '')."* to +2348157437268 through sms, Whatsapp or Telegram so that we can activate your account.<br><br>Please make sure to send the message from the same number you registered here. Thanks.";
             $data['autherr'] = "Auth mode wasn't set, please contact admin about this.";
             $data['script']['resend'] = "Resend";
             $data['script']['emailsent'] = "Email sent! Check your email, check your spam folder. Resend available in";
+            $unknownerror = 'unknown error';
         }
         $data['email']['message'] = tag_format($data['email']['message']);
         $data['email']['prompt2'] = tag_format($data['email']['prompt2'], [['href'=>support_links('mailus'), 'style'=>'font-weight:bold; color:green']]);
         $data['phone']['confirmreg'] = tag_format($data['phone']['confirmreg']);
 
-        if(isset($_SESSION['users']["active"]) && $_SESSION['users']["active"] == 0) { 
+        if(isset($_SESSION['users']["active"]) && $_SESSION['users']["active"] == 0) {
             if(isset($_SESSION['users']["email"]) && $_SESSION['users']["email"] == "") {
                 $this->authmode = 'phone';
             } elseif (isset($_SESSION['users']["email"]) && $_SESSION['users']["email"] != "") {
@@ -316,6 +318,7 @@ Class Account extends Controller
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !empty($_POST)) {
             check_signature('forgot', $hash);
             unset($_POST['submit']);
+            unset($_POST['signature']);
             $get_by = 'get_by_'.implode('', array_keys($_POST));
             $genclass = new General;
             $userdata = $genclass->$get_by('users', ['fullname', 'email', 'hash'], array_values($_POST));

@@ -45,7 +45,7 @@ class Folder extends Controller {
         'bookies'=>'Bookies'
     ];
 
-    protected function set_plan_pricing($cur=null, $return='desci') {
+    protected function set_plan_pricing($cur=null, $return='desc') {
         $arg = match($return) {
             'desc'=>['description'],
             'price'=>[DISCOUNT ? 'plaindiscount' : 'plainprice'],
@@ -145,7 +145,7 @@ class Folder extends Controller {
         $this->page = $this->activepage = 'activate';
         $this->style = "h1{color:green; text-align:center}";
         $data['sidelist'] = $this->sidelist();
-        $plans = $plans ?? $this->set_plan_pricing($_POST['currency'] ?? null);
+        $plans = $plans ?? $this->set_plan_pricing(strtolower($_POST['currency'] ?? null), 'both');
         // show(array_filter($plans, 'array_keys'));
         // show(array_walk($plans, 'array_keys'));
         // show($plans);
@@ -179,12 +179,17 @@ class Folder extends Controller {
             // var_dump($validplan);
             if($validplan===false) $cust_err['plan'] = 'Invalid plan';
             if(isset($_POST['mode']) && $_POST['mode']=='deactivate') {
-                $purposekey = array_search($_POST['purpose'], $dpurpose);
+                if(array_key_exists($_POST['purpose'], $dpurpose)) {
+                    $formdatadpurpose = $purposekey = $_POST['purpose'];
+                } else {
+                    $cust_err['purpose'] = 'Selected reason is invalid';
+                }
+                /*$purposekey = array_search($_POST['purpose'], $dpurpose);
                 if($purposekey===false) {
                     $cust_err['purpose'] = 'Selected reason is invalid';
                 } else {
                     $formdatadpurpose = $dpurpose[$purposekey];
-                }
+                }*/
             }
             
             if((!is_array($formdata[1]) || !implode($formdata[1])) && !isset($cust_err)) {
@@ -218,7 +223,7 @@ class Folder extends Controller {
             ['tag'=>'select', 'name'=>"currency", 'options'=>['default_opt_'.($formdata[0]['currency'] ?? '')=>$formdata[0]['currency'] ?? null, ...array_combine(rate(), array_map('strtoupper', rate()))], 'id'=>'currency', 'error'=>$cust_err['currency'] ?? $formdata[1]['currency'] ?? '', 'required'],
             ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Amount", 'class'=>'amount', 'name'=>"amt", 'value'=>$formdata[0]['amount'] ?? '', 'disabled', 'error'=>''],
             ['tag'=>'input', 'type'=>'hidden', 'class'=>'amount', 'name'=>"amount", 'value'=>$formdata[0]['amount'] ?? '', 'error'=>$cust_err['amount'] ?? $formdata[1]['amount'] ?? ''],
-            ['tag'=>'select', 'name'=>"plan", 'options'=>['default_opt_'.($formdata[0]['plan'] ?? '')=>$formdata[0]['plan'] ?? null, ...$formdataplans], 'id'=>'plan', 'error'=>$cust_err['plans'] ?? $formdata[1]['plan'] ?? '', 'required'],
+            ['tag'=>'select', 'name'=>"plan", 'options_single'=>['default_opt_'.($formdata[0]['plan'] ?? '')=>$formdata[0]['plan'] ?? null, ...$formdataplans], 'id'=>'plan', 'error'=>$cust_err['plans'] ?? $formdata[1]['plan'] ?? '', 'required'],
             ['tag'=>'select', 'name'=>"purpose", 'options'=>['default_opt_'.($formdatadpurpose ?? '')=>$dpurpose[$formdatadpurpose ?? 'def'] ?? null, ...$dpurpose], 'id'=>'purpose', 'class'=>'w3-hide', 'error'=>$cust_err['purpose'] ?? $formdata[1]['purpose'] ?? '', 'required', 'disabled'],
             ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>'Submit', 'error'=>''],
         ];
@@ -292,7 +297,7 @@ class Folder extends Controller {
         } else {}
     }
 
-    private function insertfetchamt() {
+    function insertfetchamt() {
         if(isset($_GET['cur']) && strlen($_GET['cur'])===3 && isset($_GET['plan'])) {
             $planpricing = array_merge([], ...array_values($this->set_plan_pricing($_GET['cur'], 'both')));
             // show($planpricing);
@@ -909,7 +914,7 @@ class Folder extends Controller {
             'select'=>["*, DATE_FORMAT(date, '%d/%m') as date, date as dbdate"],
             'where'=>["date >= DATE_SUB(curdate(), INTERVAL 1 DAY) || recent in ('prev', 'cur') order by date"],
             '1select'=>["*, DATE_FORMAT(date, '%d/%m') as date, date as dbdate"],
-            '1where'=>["date <= curdate() AND recent = 1 order by date desc limit 16"]
+            '1where'=>["date <= curdate() AND recent = 1 order by id desc limit 16"]
         ];
 
         $getgames = $gamesclass->transaction($tabquery);
@@ -980,7 +985,7 @@ class Folder extends Controller {
                         }
                         // if($day=='tom' && $filename=='recent') echo 'yea yea';
                         if(($day=='yes' && $filename=='popular') || in_array($day, ['yes', 'tom']) && $filename=='recent') {$output = []; continue;}
-                        echo $filename.$day.'<br>';
+                        // echo $filename.$day.'<br>';
                         $day = $day=='tod' ? '' : $day;
                         $link = $file->getPath()."/$day$fullfilename";
                         // show($output);
@@ -999,6 +1004,7 @@ class Folder extends Controller {
                 }
             }
         }
+        echo 'copied successfully'; //doesn't exactly mean all files were copied to. Uncomment echo $filename.$day.'<br>'; to tell which files were copied and which ones weren't.
         // $this->convert;
         // show($games);
         // show($files);

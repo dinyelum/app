@@ -212,7 +212,7 @@ include ROOT.'/app/betagamers/incs/footer.php';?>
             }
             xhttp.onload = function() {
                 if (this.status == 200) {
-                    console.log(this.responseText);return;
+                    // console.log(this.responseText);return;
                     const resp = JSON.parse(this.responseText);
                     if(resp.response === true) {
                         counter();
@@ -223,7 +223,7 @@ include ROOT.'/app/betagamers/incs/footer.php';?>
                     reverse();
                 }
             }
-            xhttp.open('GET', '<?=HOME?>/requests/mailer.php?id='+customerid);
+            xhttp.open('GET', '<?=HOME?>/requests/mailer?id='+customerid);
             xhttp.send();
         }<?php
     } else {}

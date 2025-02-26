@@ -61,7 +61,7 @@ Class Home extends Controller
         $this->urls = all_versions();
         $this->og = [
             'url'=> $this->urls[LANG],
-            'image'=>$this->urls[LANG].'/images/bgslide1x.jpg'
+            'image'=>$this->urls[LANG].'/assets/images/bgslide1x.jpg'
         ];
         if(LANG=='en') {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, sports tips, accurate sports prediction website, accurate sports prediction site, accurate football prediction website, sure wins, betting tips, free soccer forecast, best football prdiction website in the world';
@@ -99,7 +99,7 @@ Class Home extends Controller
                     'alt'=>'Europa League Logo',
                     'text'=>'Europa League Predictions and Results'
                 ],
-                'bg' => [
+                'bgslide' => [
                     'alt'=>'Betagamers Logo',
                     'text'=>'Best Football Prediction Site in the World'
                 ],

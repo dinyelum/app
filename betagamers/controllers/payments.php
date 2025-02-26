@@ -1,7 +1,6 @@
 <?php
 class Payments extends Controller {
     public $activepage='payments';
-    public $btntxt = ['en'=>'MENU'];
     public $viewonly;
     public $writeupclass;
     public $color = 'green';
@@ -18,7 +17,6 @@ class Payments extends Controller {
             $data['page_title'] = "Payment Page";
         }
         //$data['banks'] = bank_details(['name'=>ACCTNAME, 'number'=>ACCTNUMBER, 'bank'=>BANK, 'swift'=>SWIFTCODE]);
-        $data['btntxt'] = $this->btntxt[LANG];
         include ROOT."/app/betagamers/incs/menupay.php";
         $data['sidelist'] = $sidelist;
         $this->view("payments/index",$data);
@@ -122,7 +120,6 @@ class Payments extends Controller {
     private function paymentpage($platform, $pre, $currency=null) {
         $_SESSION['payurl'] = URI;
         $data['tabs'] = sports();
-        $data['btntxt'] = $this->btntxt[LANG];
         include ROOT."/app/betagamers/incs/menupay.php";
         $data['sidelist'] = $sidelist;
         $pdetails = currencies($currency ?? $_GET['id'] ?? USER_COUNTRY);
@@ -163,12 +160,12 @@ class Payments extends Controller {
 
     function paypal() {
         $this->page = 'paypal';
-        $this->paymentpage('PayPal', 'pal');
+        $this->paymentpage('PayPal', 'pal', 'usd');
     }
 
     function coinbase() {
         $this->page = 'coinbase';
-        $this->paymentpage('Coinbase', 'ccb');
+        $this->paymentpage('Coinbase', 'ccb', 'usd');
     }
 
     function view_prices() {
@@ -254,7 +251,12 @@ class Payments extends Controller {
         }
         if(isset($_GET['planid']) && !empty($_GET['planid'])) {
             list($method, $currency, $planlink) = explode('_', $_GET['planid'], 3);
+            // https://betagamers.net/payments/system?planid=flw_ugx_diamond_1_week
+            // https://betagamers.net/payments/system?planid=flw_ugx_combo_pro
             list($plansec, $duration) = explode('_', $planlink, 2);
+            if(str_starts_with($planlink, 'combo')) {
+                $duration = ucwords(str_replace('_', ' ', $planlink));
+            }
             $plan = single_price($plansec, ucwords(str_replace('_', ' ', $duration)), $currency);
             // $amount = (float) (LANG=='en' ? str_replace(',', '', $plan['price']) : str_replace('.', '', $plandetails['price']));
             $amount = DISCOUNT ? $plan['plaindiscount'] : $plan['plainprice'];
@@ -297,7 +299,7 @@ class Payments extends Controller {
             default=>'No transaction reference found',
         };
         if (isset($_GET['status']) && $_GET['status']=='cancelled'){
-            $profile = profile_links();
+            $profile = account_links('profile');
             $redirect = $_SESSION['payurl'] ?? $profile;
             header('location:'.$redirect);
     	    exit;
@@ -390,7 +392,7 @@ class Payments extends Controller {
     }
 
     function statuscb () {
-        $profile = profile_links();
+        $profile = account_links('profile');
         switch(LANG) {
             case 'en':
                 $err_curl = 'Curl returned error: ';
@@ -623,13 +625,12 @@ class Payments extends Controller {
             default:
                 $data['page_title'] = $this->description = $message = '';
         }
-        $links = [['href'=>profile_links(),  'style'=>"color:green"], ['href'=>support_links(),  'style'=>"color:green"]];
+        $links = [['href'=>account_links('profile'),  'style'=>"color:green"], ['href'=>support_links(),  'style'=>"color:green"]];
         $data['message'] = "<p>".tag_format($message, $links)."</p>";
         $this->view("payments/status",$data);
     }
 
     private function send_manually(array $data) {
-        $data['btntxt'] = $this->btntxt[LANG];
         include ROOT."/app/betagamers/incs/menupay.php";
         $data['sidelist'] = $sidelist;
         if(LANG=='en') {

@@ -6,3 +6,5 @@ temp/
 tmp/
 cgi-bin/
 .well-known/
+table/
+free_predicts/

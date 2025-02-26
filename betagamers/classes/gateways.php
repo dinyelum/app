@@ -19,9 +19,9 @@ class Gateways {
         } else {}
 
         $redirect_url = pay_links('statusrave');
-        $name = $_SESSION["fullname"];
-        $email = $_SESSION["email"];
-        $phone = $_SESSION["phone"];
+        $name = $_SESSION['users']["fullname"];
+        $email = $_SESSION['users']["email"];
+        $phone = $_SESSION['users']["phone"];
         $txref = 'rave'.bin2hex(random_bytes(2)).str_replace(' ', '', $metaval).mt_rand();
         $authorisation = "Authorization: Bearer ".ENV['FLW_SECRET_KEY'];
 
@@ -76,7 +76,7 @@ class Gateways {
         $txref = 'pstk'.bin2hex(random_bytes(2)).str_replace(' ', '', $metaval).mt_rand();
         $url = "https://api.paystack.co/transaction/initialize";
         $fields = [
-        'email' => $_SESSION["email"],
+        'email' => $_SESSION['users']["email"],
         'amount' => $amount*100,
         'callback_url' => "https://betagamers.net/payments/statuspstk",
         'metadata' => [

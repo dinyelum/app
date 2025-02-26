@@ -4,7 +4,7 @@
 <div class="mySlides fade">
 <div class="numbertext"><?=($number=$number ?? 1).' / '.$data['slide_images_count']?></div>
 <?=images(['name'=>$key, 'alt'=>$val['alt']], true)?>
-<div class="text"><a href="<?=($key == 'bgslide') ? './' : free_games_link($key)?>" style="text-decoration:none; color: white;"><?=$val['text']?></a></div>
+<div class="text"><a href="<?=($key == 'bgslide') ? HOME : free_games_link($key)?>" style="text-decoration:none; color: white;"><?=$val['text']?></a></div>
 </div><?php
         $number++;
     }?>
@@ -81,7 +81,7 @@ if(DISCOUNT) {?>
 <p style="font-size: 20px;" class='w3-padding-24'><?=$data['alphasec']['oddstxt']?>: </p><p class="w3-xlarge"><i class="fa fa w3-spin" style="background: green; color: white; padding: 10px"><b>
     <?=$data['alphasec']['totalodds']?></b></i></p>
 <p class='w3-padding'><i>(<?=$data['alphasec']['oddsdesc']?>)</i></p>
-<p><a href="<?=tips_link('ap')?>" class="w3-btn w3-green w3-round-xlarge"><?=$data['alphasec']['get']?> <i class="fa fa-eye" style="color:white; margin-left: 5px;"></i></a></p><br><br>
+<p><a href="<?=tips_links('ap')?>" class="w3-btn w3-green w3-round-xlarge"><?=$data['alphasec']['get']?> <i class="fa fa-eye" style="color:white; margin-left: 5px;"></i></a></p><br><br>
 </div>
 </div>
 
@@ -91,7 +91,7 @@ if(DISCOUNT) {?>
 <div class=' w3-row'>
 <p class="w3-text-green" style="font-family:arial; font-size:20px"><?=$data['alphasec']['accuracytxt']?></p>
 </div>
-<a href="<?=tips_link()?>" class='w3-button w3-round-xlarge w3-green w3-margin'><?=$data['alphasec']['moreresults']?></a>
+<a href="<?=tips_links()?>" class='w3-button w3-round-xlarge w3-green w3-margin'><?=$data['alphasec']['moreresults']?></a>
 </div></div>
 </div>
 
@@ -154,7 +154,7 @@ foreach($data['pricingsec']['plans'] as $key=>$val) {
     <div class="w3-card-4">
       <b><?=strtoupper($val)?></b><br><br>
       <?=$data['pricingsec']['cursign'].(DISCOUNT ? '<s>'.$price['price'].'</s> '.$price['discount'] : $price['price']).' / '.$data['pricingsec']['duration'] ?><br><br>
-      <a href="<?=$pricing?>" style="color:green; text-decoration: none;"><?=$data['pricingsec']['view']?><i class="fas fa-eye" style="color:green; margin-left: 5px;"></i></a><br><br>
+      <a href="<?=support_links('prices')?>" style="color:green; text-decoration: none;"><?=$data['pricingsec']['view']?><i class="fas fa-eye" style="color:green; margin-left: 5px;"></i></a><br><br>
     </div>
   </div><?php            
       }?>

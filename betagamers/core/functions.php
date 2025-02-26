@@ -44,6 +44,13 @@ function check_admin() {
     exit;
 }
 
+function btntext() {
+    return match(LANG) {
+        'fr'=>'',
+        default=>'MENU'
+    };
+}
+
 function side_list_top() {
     switch (LANG) {
         case 'fr':
@@ -350,7 +357,7 @@ function plan_pricing($plan, $currency=null, $lang=null) {
 
     $pricelist = array_column($pricing[$plan], 'price', $lang ?? LANG);
     $descriptions = array_column($pricing[$plan], 'description', $lang ?? LANG);
-    $currency = $currency ?? currencies(USER_COUNTRY, 'currency');
+    $currency = $currency ?? currencies(USER_COUNTRY)['currency'];
     $curcheck = $currency=='eur' || $currency=='usd' || $currency=='gbp';
     $rate = rate($currency);
     foreach($pricelist as $key=>$val) {
@@ -363,12 +370,14 @@ function plan_pricing($plan, $currency=null, $lang=null) {
             $pricelist[$key]=['price'=>$price, 'discount'=>$discount, 'plaindiscount'=>$plaindiscount, 'description'=>$descriptions[$key]];
         }
     }
-    return $pricelist; // returns ['1 week'=>['price'=>1500, 'description'=>'Diamond 1 Week']] or ['1 week'=>['price'=>1500, 'discount'=>1000]];
+    return $pricelist; 
+    /*
+    returns ['1 week'=>['price'=>1,500, 'plainprice'=>1500, 'description'=>'Diamond 1 Week']] or ['1 week'=>['price'=>1,500, 'plainprice'=>1500, 'discount'=>1000]];
+    ['Como Silver'=>['price'=>5,000, 'plainprice'=>5000, 'description'=>'Como Silver']];
+    */
     //return array_column($pricing[$plan]['price'], $pricing[$plan], $lang ?? LANG);
     //return array_column('price', $pricing[$plan], $lang ?? LANG);
 }
-
-// function plan_odds() {} //homepage
 
 function rate($cur='all') {
     $rate = [
@@ -625,6 +634,7 @@ function controller_translations($controller) { //folders
 		'bookmakers'=>['en'=>'bookmakers', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
         'free_predictions'=>['en'=>'free_predictions', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
         'payments'=>['en'=>'payments', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+        //requests, because of mailer and otp
 		'support'=>['en'=>'support', 'fr'=>'soutien', 'es'=>'apoyo', 'pt'=>'', 'de'=>''],
 		'tips'=>['en'=>'tips', 'fr'=>'prono', 'es'=>'vip', 'pt'=>'', 'de'=>''],
 	];
@@ -775,8 +785,8 @@ function bookies_link($page='', $arrayformat=false) {
 
 function error_page() {
     http_response_code(404);
-    include ROOT.'/betagamers/'.(LANG=='en' ? 'public_html' : LANG.'.betagamers.net').'/404.php';
-    exit;
+    include ROOT.'/'.(LANG=='en' ? 'public_html' : LANG.'.betagamers.net').'/404.php';
+    exit();
 }
 
 function payment_table_headers($length=3) {

@@ -16,7 +16,7 @@
 </ul>
 <p class='w3-xlarge w3-margin-top'>Once your account has been activated, Just</p>
 <ul>
-<li>Click on <a href='<?=tips_link()?>'>VIP TIPs</a></li>
+<li>Click on <a href='<?=tips_links()?>'>VIP TIPs</a></li>
 <li>When the page opens, Go to MENU</li>
 <li>Click on the Plan you paid for the plan you paid for</li>
 </ul>

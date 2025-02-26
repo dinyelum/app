@@ -23,7 +23,6 @@
     </div>
 </div>
 <?php include INCS.'/footer.php';?>
-<script src="<?=HOME?>/assets/js/gen.js"></script>
 <script>
     var phoneid = document.getElementById('fullphone');
     var sectionid = document.getElementById('section');
@@ -88,4 +87,6 @@
             newvalueid.type = 'text';
         }
     }
+    var tawkTo = false;
 </script>
+<script src="<?=HOME?>/assets/js/gen.js"></script>

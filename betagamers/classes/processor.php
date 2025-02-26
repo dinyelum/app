@@ -4,7 +4,7 @@ class Processor {
         return match($plan) {
             'Platinum'=>['platinum','diamond'],
             'Combo'=>['alpha','platinum','diamond'],
-            default=>[$plan],
+            default=>[strtolower($plan)],
         };
     }
 
@@ -74,6 +74,7 @@ class Processor {
         foreach($tables as $ind=>$val) {
             $insertdata['expdate'] = $comboexpdate[$ind] ?? $comboexpdate[1] ?? $expdate;
             $sqlduration = $days[$ind] ?? $days[1] ?? $sqlduration;
+            $lasttable = $val;
             $tabquery[$val] = [
                 'insert'=>[
                     'colsandvals'=>$insertdata,
@@ -88,7 +89,8 @@ class Processor {
         }
         // show($tabquery);
         $insert_user = $diamondclass->transaction($tabquery, 'insert');
-        if(is_array($insert_user) && !count($insert_user)) {
+        // show($insert_user);
+        if(is_array($insert_user) && $insert_user[$lasttable]['go']===true) {
             return true;
         } else {
             error_log("$platform page Error: Error with db operations. Metaplan is $metaplan", 0);
@@ -135,7 +137,8 @@ class Processor {
             if($val=='vip_records') {
                 $newemail = $purpose=='pause_' ? "$email" : "$purpose$email";
                 $newexpdatesql = "@regdate";
-            }    
+            }
+            $lasttable = $val != 'vip_records' ? $val : $lasttable;
             $tabquery[$val] = [
                 'setvariable'=>[
                     'sqlvariables'=>['regdate'=>"(select max(reg_date) from $val where email = :email)"],
@@ -149,7 +152,7 @@ class Processor {
             ];
         }
         $update_user = $diamondclass->transaction($tabquery, 'update');
-        if(is_array($update_user) && !count($update_user)) {
+        if(is_array($update_user) && $update_user[$lasttable]['custom_query']===true) {
             return true;
         } else {
             error_log("$platform page Error: Error with db operations. Metaplan is $metaplan", 0);

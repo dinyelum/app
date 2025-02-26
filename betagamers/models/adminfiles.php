@@ -47,9 +47,9 @@ class Adminfiles {
             if(isset($fields['fileToUpload']['name']) && $countfiles=count($fields['fileToUpload']['name'])) {
                 if(isset($data['filegroup'])) {
                     if($data['filegroup']=='screenshots') {
-                        $dir = ROOT.'/betagamers/'.($data['lang']=='en' ? 'public_html' : $data['lang']).'/recs/'.$data['date'].'/';
+                        $dir = ROOT.($_SERVER['SERVER_NAME']=='localhost' ? '/betagamers/' : '/').($data['lang']=='en' ? 'public_html' : $data['lang'].'.betagamers.net').'/recs/'.$data['date'].'/';
                     } elseif($data['filegroup']=='topteams') {
-                        $dir = ROOT.'/app/betagamers/incs/free_games/'.LANG.'/teams/';
+                        $dir = ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/teams/';
                         if($countfiles>1) $this->err['genErr'] = 'You can only upload 1 file at a time in this section';
                         $this->mix_file_formats(['html', 'compressed']);
                     } elseif($data['filegroup']=='adminfiles') {
