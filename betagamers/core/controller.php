@@ -50,6 +50,14 @@ Class Controller
 			$sports = 'Sports';
 			$football = 'Football';
 			$tennis = 'Tennis';
+		} elseif(LANG=='fr') {
+			$home = 'Accueil';
+			$vip = 'Pronos VIP';
+			$login = 'Connecter';
+			$logout = 'Déconnexion';
+			$sports = 'Sports';
+			$football = 'Football';
+			$tennis = 'Tennis';
 		}
 		$langarr = LANGUAGES;
 		if ($offset = array_search(LANG, array_keys(LANGUAGES))) {
@@ -118,6 +126,47 @@ Class Controller
 				],
 				'bggroup'=>'The BetaGamers Group',
 				'rights'=>'All rights reserved'
+			];
+		} elseif(LANG=='fr') {
+			$accountlinks = USER_LOGGED_IN===true ? ['profile'=>'Mon Profil', 'logout'=>'Déconnexion'] : ['register'=>"S'Inscrire", 'login'=>'Se Connecter'];
+			$general = [
+				'Général',
+				...$accountlinks,
+				'bookmakers'=>'Bookmakers',
+				'blog'=>"Blog d'actualité sportive (Anglais)",
+				'freetips'=>'Conseils de Paris sur le Football',
+				'tennis'=>'Tennis'
+			];
+
+			$freebets = [
+				'Paris Gratuits',
+				'ligue1'=>'Pronos Ligue 1',
+				'seriea'=>'Pronos Serie A',
+				'laliga'=>'Pronos Liga',
+				'bundesliga'=>'Pronos Bundesliga',
+				'epl'=>'Pronos Premier League',
+				'ucl'=>'Pronos Ligue des Champions',
+				'europa'=>'Pronos Ligue Europa'
+			];
+
+			$support = [
+				'Soutien',
+				'contactus'=>'Nous Contacter',
+				'prices'=>'Plans Tarifaires',
+				'terms'=>'Termes',
+				'faqs'=>'FAQ',
+				'aboutus'=>'À propos de Nous',
+				'jobs'=>'Emploi'
+			];
+
+			$socialmedia = ['Médias Sociaux'];
+
+			$footerbottom = [
+				'account'=>[
+					'https://frcasinospot.com/jeu-responsable/'=>'Conseils pour un Jeu Responsable'
+				],
+				'bggroup'=>'Le Groupe BetaGamers',
+				'rights'=>'Tous Droits Réservés'
 			];
 		}
 		$footer['sec1'] = [

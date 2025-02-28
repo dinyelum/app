@@ -12,9 +12,13 @@ class Payments extends Controller {
     function index() { 
         $this->page = 'payments';
         if(LANG=='en') {
-            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers Login page, best ftball prediction website';
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net';
             $this->description = 'Betagamers Subscription Payment Page. View the various payment options available.';
             $data['page_title'] = "Payment Page";
+        } elseif(LANG=='fr') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site Web du betagamers, www.betagamers.net';
+            $this->description = 'Page de paiement de l\'abonnement Betagamers. Voir les différentes options de paiement disponibles.';
+            $data['page_title'] = "Page de paiement";
         }
         //$data['banks'] = bank_details(['name'=>ACCTNAME, 'number'=>ACCTNUMBER, 'bank'=>BANK, 'swift'=>SWIFTCODE]);
         include ROOT."/app/betagamers/incs/menupay.php";
@@ -25,12 +29,11 @@ class Payments extends Controller {
     private function instructions($platform) {
         if($platform=='Coinbase') {
             $tip = match(LANG) {
-                'en'=>'We currently accept:',
-                'fr'=>'',
-                'es'=>'',
-                'pt'=>'',
-                'de'=>'',
-                default=>''
+                'fr'=>'Nous acceptons actuellement:',
+                'es'=>'Actualmente aceptamos:',
+                'pt'=>'Atualmente aceitamos:',
+                'de'=>'Wir akzeptieren derzeit:',
+                default=>'We currently accept',
             };
             $coins = [
                 "Bitcoin (BTC)",
@@ -55,24 +58,48 @@ class Payments extends Controller {
                         'Example: Samuel Justin. samjoe@example.com. '.$this->plat3mths.'. 3monthsPlatinum.<br><br>',
                         'to '.PHONE.' (on whatsapp / telegram) OR send us an email through #here#. Activation may take up to 5-10 minutes.'
                     ];
+                break;
+                case 'fr':
+                    $p = [
+                        "Vous pouvez cliquer sur l'un des plans pour payer en ligne. L'activation est automatique.",
+                        'Pour payer manuellement:'
+                    ];
+                    $li = [
+                        'Vous pouvez payer à '.LINKS,
+                        "Envoyez votre (1) Nom complet (2) adresse email (3) Le montant payé (4) Plan d'abonnement",
+                        'Par example: Charles Louis. louislucas@exemple.com. '.$this->plat3mths.'. 3 mois Platine.<br><br>',
+                        "à '.PHONE.' (sur whatsapp / telegram) OU envoyez-nous un e-mail via #ici#. L'activation peut prendre de 5 à 10 minutes."
+                    ];
+                break;
             }
             $links = [['href'=>support_links('mailus'),  'style'=>"color:green"]];
             return $ins = '<p>'.implode('</p><p>', $p)."</p><ul><li>".tag_format(implode('</li><li>', $li), $links)."</li></ul>";
         } else {
-            $tip = match(LANG) {
-                'en'=>'You can also pay to:',
-                'fr'=>'Vous pouvez également payer à:',
-                'es'=>'También puede pagar a:',
-                'pt'=>'Você também pode pagar para:',
-                'de'=>'Sie können auch an bezahlen:',
-                default=>''
-            };
-            $nb = [
-                'After payment, send your (1) Your Full Name (2) Your Email Address (3) Amount Paid (4) Subscription Plan',
-                'Example: Samuel Justin. samjoe@example.com. '.$this->plat3mths.'. 3monthsPlatinum.',
-                'to '.PHONE.' (on whatsapp / telegram) OR send us an email through #here#',
-                '*PLEASE NOTE*: The MPESA / Mobile Money number is for payments only, not calls. For all questions, ask '.PHONE.' on Whatsapp or Telegram.'
-            ];
+            if(LANG=='en') {
+                $tip = 'You can also pay to:',
+                $nb = [
+                    'After payment, send your (1) Your Full Name (2) Your Email Address (3) Amount Paid (4) Subscription Plan',
+                    'Example: Samuel Justin. samjoe@example.com. '.$this->plat3mths.'. 3monthsPlatinum.',
+                    'to '.PHONE.' (on whatsapp / telegram) OR send us an email through #here#',
+                    '*PLEASE NOTE*: The MPESA / Mobile Money number is for payments only, not calls. For all questions, ask '.PHONE.' on Whatsapp or Telegram.'
+                ];
+            } elseif(LANG=='fr') {
+                $tip = 'Vous pouvez également payer à:',
+                $nb = [
+                    "Après paiement, envoyez votre (1) Nom complet (2) adresse email (3) Le montant payé (4) Plan d'abonnement",
+                    'Par example: Charles Louis. louislucas@exemple.com. '.$this->plat3mths.'. 3 mois Platine.',
+                    'à '.PHONE.' (sur whatsapp / telegram) OU envoyez-nous un e-mail via #ici#',
+                    '*VEUILLEZ NOTER*: Le numéro MPESA / Mobile Money / Mukuru est réservé aux paiements, pas aux appels. Pour toutes questions, demandez le '.PHONE.' sur Whatsapp ou Telegram.'
+                ];
+            }
+            // $tip = match(LANG) {
+            //     'en'=>'You can also pay to:',
+            //     'fr'=>'Vous pouvez également payer à:',
+            //     'es'=>'También puede pagar a:',
+            //     'pt'=>'Você também pode pagar para:',
+            //     'de'=>'Sie können auch an bezahlen:',
+            //     default=>''
+            // };
             $links = [['href'=>support_links('mailus'),  'style'=>"color:green"]];
             $nb = tag_format('<p>'.implode('</p><p>', $nb).'</p>', $links);
             
@@ -136,6 +163,13 @@ class Payments extends Controller {
             $h2 = "Payment Page";
             $data['table']['headers'] = $this->viewonly ? payment_table_headers(2) : payment_table_headers();
             $data['table']['action'] = 'Pay ';
+        } elseif(LANG=='fr') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site Web du betagamers, www.betagamers.net';
+            $this->description = 'Effectuez des paiements en ligne en '.$data['plan']['cur_upper']." avec $platform";
+            $data['page_title'] = "Payer par $platform";
+            $h2 = "Page de paiement";
+            $data['table']['headers'] = $this->viewonly ? payment_table_headers(2) : payment_table_headers();
+            $data['table']['action'] = 'Payer ';
         }
         $data['h2'] = $platform=='Flutterwave' ? $h2 : $platform;
         $data['instructions'] = $this->instructions($platform);
@@ -187,6 +221,14 @@ class Payments extends Controller {
             $data['input']['name']['placeholder'] = 'Name';
             $data['input']['email']['placeholder'] = 'E-mail';
             $data['input']['amount']['placeholder'] = 'Amount';
+        } elseif(LANG=='fr') {
+            $data['page_title'] = 'Recharger';
+            $data['h1'] = 'Page de recharge';
+            $method_err = 'Méthode non précisée';
+            $cur_err = 'Devise non précisée';
+            $data['input']['name']['placeholder'] = 'Nom';
+            $data['input']['email']['placeholder'] = 'E-mail';
+            $data['input']['amount']['placeholder'] = 'Montant';
         }
         $this->style = 'h2 {text-align: center;}';
         $genclass = new General;
@@ -248,6 +290,10 @@ class Payments extends Controller {
             $method_err = 'Something went wrong. Please contact us immediately.';
             $plan_err = 'Unable to get subscription details. Please contact us immediately.';
             $url_err = 'Invalid URL.';
+        } elseif(LANG=='fr') {
+            $method_err = "Quelque chose s'est mal passé. Veuillez nous contacter immédiatement.";
+            $plan_err = "Impossible d'obtenir les détails de l'abonnement. Veuillez nous contacter immédiatement.";
+            $url_err = "URL invalide.";
         }
         if(isset($_GET['planid']) && !empty($_GET['planid'])) {
             list($method, $currency, $planlink) = explode('_', $_GET['planid'], 3);
@@ -258,7 +304,6 @@ class Payments extends Controller {
                 $duration = ucwords(str_replace('_', ' ', $planlink));
             }
             $plan = single_price($plansec, ucwords(str_replace('_', ' ', $duration)), $currency);
-            // $amount = (float) (LANG=='en' ? str_replace(',', '', $plan['price']) : str_replace('.', '', $plandetails['price']));
             $amount = DISCOUNT ? $plan['plaindiscount'] : $plan['plainprice'];
             $gateways = ['flw', 'pal', 'str', 'ccb', 'psk'];
             if(in_array($method, $gateways)) {
@@ -641,6 +686,14 @@ class Payments extends Controller {
                 'All '.$data['method'].' Payments to us should be made to *'.$data['recipient'].'*',
                 'Send us a proof of payment on whatsapp / telegram via '.PHONE.' OR #Click here# to send us an email.'
             ];
+        } elseif(LANG=='fr') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site Web du betagamers, www.betagamers.net';
+            $this->description = 'Abonnez-vous à nos services en utilisant '. $data['method'];
+            $data['page_title'] = "Payer par ".$data['method'];
+            $data['p'] = $data['p'] ?? [
+                'Tous les paiements par '.$data['method'].' à nous doivent être effectués à *'.$data['recipient'].'*',
+                'Envoyez-nous une preuve de paiement sur WhatsApp / Telegram via '.PHONE.' OR #Cliquez ici# pour nous envoyer un email.'
+            ];
         }
         $this->style = "b {color:".$this->color."}";
         $links = [['href'=>support_links('mailus'),  'style'=>"color:green"]];
@@ -679,8 +732,8 @@ class Payments extends Controller {
             'height'=>244
         ];
         $data['p'] = match(LANG) {
-            'fr'=>'',
-            default=>['#Click here# to send us a mail or message us via '.PHONE.' on Whatsapp or Telegram and we\'ll reply you with thhe recipient email address.']
+            'fr'=>['#Cliquez ici# pour nous envoyer un e-mail ou nous envoyer un message via '.PHONE.' sur Whatsapp ou Telegram et nous vous répondrons avec l\'adresse e-mail du destinataire.'],
+            default=>['#Click here# to send us a mail or message us via '.PHONE.' on Whatsapp or Telegram and we\'ll reply you with the recipient email address.']
         };
         $this->page = 'sticpay';
         $this->color = '#f15922';
@@ -697,7 +750,7 @@ class Payments extends Controller {
             'height'=>400
         ];
         $data['p'] = match(LANG) {
-            'fr'=>'',
+            'fr'=>['#Cliquez ici# pour nous envoyer un e-mail ou nous envoyer un message via '.PHONE.' sur Whatsapp ou Telegram et nous vous répondrons avec les détails du paiement.'],
             default=>['#Click here# to send us a mail or message us via '.PHONE.' on Whatsapp or Telegram and we\'ll reply you with the payment details.']
         };
         $this->page = 'astropay';
@@ -714,7 +767,10 @@ class Payments extends Controller {
             'width'=>512,
             'height'=>250
         ];
-        $data['extra'] = ["No Chipper Cash account yet? You can #click here to register#."];
+        $data['extra'] = match(LANG) {
+            'fr'=>['#Cliquez ici# pour nous envoyer un e-mail ou nous envoyer un message via '.PHONE.' sur Whatsapp ou Telegram et nous vous répondrons avec les détails du paiement.'],
+            default=>["Pas encore de compte Chipper Cash ? Vous pouvez #cliquer ici pour vous inscrire#."]
+        };
         $this->page = 'chippercash';
         $this->send_manually($data);
     }

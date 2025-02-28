@@ -8,6 +8,10 @@ if(isset($_GET['id']) && in_array(strtolower($_GET['id']), $curbanks)) {
             $forbankdep = 'For Bank Transfers';
             $atmdep = 'For ATM Deposits';
             $tillpoints = 'For Deposits at Till Points(Checkers, Shoprite, etc)';
+        } elseif(LANG=='fr') {
+            $forbankdep = 'Pour les virements bancaires';
+            $atmdep = 'Pour les dépôts aux guichets automatiques';
+            $tillpoints = 'Pour les dépôts aux points de caisse(Checkers, Shoprite, etc)';
         }
         $allbanks = [
             $forbankdep=>[

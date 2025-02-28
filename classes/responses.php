@@ -129,7 +129,10 @@ trait Responses {
     function resp_try_again($lang='en') {
         $lang = LANG ?? $lang;
         return $response = match ($lang) {
-            'fr' => '',
+            'fr' => "Veuillez réessayer plus tard.",
+            'es' => "Por favor, inténtelo de nuevo más tarde.",
+            'pt' => "Por favor, tente novamente mais tarde.",
+            'de' => "Bitte versuchen Sie es später erneut.",
             default => "Please try again later.",
         };
     }
@@ -177,7 +180,10 @@ trait Responses {
     function sth_went_wrong($lang='en') {
         $lang = LANG ?? $lang;
         return $response = match ($lang) {
-            'fr' => '',
+            'fr' => "Quelque chose s'est mal passé.",
+            'es' => "Algo salió mal.",
+            'pt' => "Algo deu errado.",
+            'de' => "Etwas ist schief gelaufen.",
             default => "Something went wrong.",
         };
     }

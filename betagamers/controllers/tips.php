@@ -96,6 +96,22 @@ class Tips extends Controller {
             $wins = ['VIP Won Tickets', 'vip bet won ticket', 'More'];
             $bestmthheader = isset($bestmonth) ? "BEST VIP IN ".strtoupper($bestmonth) : '';
             $tracker = ['Accuracy Tracker (Last 20 Days)', ['TIP', 'ACCURACY'], $percent ?? []];
+        } elseif(LANG=='fr') {
+            $data['page_title'] = "Meilleur site pour les pronostics gratuits et vip de football";
+            $this->description = 'Meilleur site pour les pronostics gratuits et vip de football. Accédez aux prévisions les plus précises et réelles pour aujourd\'hui et chaque week-end';
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, fr.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, victors predict';
+            $this->og = [
+                'title'=>'Meilleurs pronos VIP',
+                'description'=>'Accédez quotidiennement aux meilleures prédictions de conseils vip',
+                'imagetype'=>'image/jpg'
+            ];
+            $prompts= ['S\'inscrire', 'Les Prix', 'Abonnez-vous'];
+            $bigoddsh = 'COTES GRANDES';
+            $bigoddst = 'Pronos du Grandes Cotes';
+            $bigoddsp = 'Voir maintenant';
+            $wins = ['Billets VIP gagnés', 'pari VIP gagné ticket', 'Voir le plus'];
+            $bestmthheader = isset($bestmonth) ? "MEILLEUR VIP EN ".strtoupper($bestmonth) : '';
+            $tracker = ['Traqueur de précision (Les 20 jours précédents)', ['CONSEIL', 'PRÉCISION'], $percent ?? []];
         }
         $this->style = ".content a {color: green;text-decoration: underline;}.content p {text-align: justify;}@font-face {font-family: 'Font Awesome';font-style: normal;src: url('/webfonts/fa-solid-900.woff2') format('woff2');font-display: swap;}@font-face {font-family: 'tawkwidget';font-style: normal;src: url('https://static-v.tawk.to/a-v3-47/fonts/tawk-widget.ttf?yh9epr')format('ttf');font-display: swap;}";
         $this->og['url'] = $this->urls[LANG];
@@ -132,24 +148,34 @@ class Tips extends Controller {
             $this->keywords = 'won bet tickets, won bet slips, winning tickets';
             $this->description = 'View the recently won bet slips on betagamers';
             $title = "Won Bet Tickets";
+            $alt = 'winning bet slips';
+        } elseif(LANG=='fr') {
+            $title = "Tickets Gagnant</titl";
+            $this->description = 'gagné des billets de pari, billets de pari gagnés, les tickets gagnant';
+            $this->keywords = 'Voir les bulletins de paris récemment gagnés sur Betagamers';
+            $alt = 'bulletins de paris gagnants';
         }
         $data['page_title'] = $data['h1'] = $title;
         $data['screenshots'] = $screenshots;
-        $data['alt'] = 'winning bet slips';
+        $data['alt'] = $alt;
         $this->view("tips/wins",$data);
     }
 
     function vip() {
         if(LANG=='en') {
-            // $tabsnorm = ['Yesterday', 'Today', 'Upcoming'];
-            // $tabswknd = ['Last Weekend', 'This Weekend'];
-            $btntext = 'MENU';
             $apeheader = 'ALPHA PICKS EXTRA';
             $totaloddstxt = 'Total: ... Odds';
             $putalltxt = 'DO NOT Put All in One Ticket';
             $subdiam = "Please Subscribe to atleast the #Diamond Plan# to view this content. Thanks.";
             $subplat = "Please Subscribe to the #Platinum Plan# to view this content. Thanks.";
             $subalpha = "Please Subscribe to the #Ultimate Plan (Alpha Picks)# to view this content. Thanks.";
+        } elseif(LANG=='fr') {
+            $apeheader = 'CHOIX ALPHA SUPPLÉMENTAIRE';
+            $totaloddstxt = 'Total: ... Cotes';
+            $putalltxt = 'Ne mettez pas tout dans un seul ticket';
+            $subdiam = "Veuillez vous abonner au moins au #forfait diamant# pour voir ce contenu. Je vous remercie.";
+            $subplat = "Veuillez vous abonner au #forfait platine# pour voir ce contenu. Je vous remercie.";
+            $subalpha = "Veuillez vous abonner au #forfait ultime (Alpha Picks)# pour voir ce contenu. Je vous remercie.";
         }
         $nosub = ['diamond'=>$subdiam, 'platinum'=>$subplat, 'ultimate'=>$subalpha];
         if(isset($_GET['odds'])) {
@@ -204,7 +230,6 @@ class Tips extends Controller {
         $data['page_title'] = $title ?? '';
         $data['h2'] = $h2 ?? '';
         $data['sidelist'] = $this->sidelist();
-        $data['btntxt'] = $btntext;
         $data['tabs'] = $tabs ?? [];
         $data['odds'] = $odds ?? '';
         $data['totalodds'] = $totalodds ?? [];

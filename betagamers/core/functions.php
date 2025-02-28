@@ -1,19 +1,11 @@
 <?php 
 //app specific functions i.e functions for particular project different from general functions
 function check_logged_in() {
-    $login = match(LANG) {
-        'en'=>HOME.'/account/login',
-        'fr'=>HOME.'/compte/connecter',
-        'es'=>HOME.'/cuenta/mainlogin',
-        'pt'=>HOME.'/conta/entrar',
-        'de'=>HOME.'/konto/einloggen',
-        default=>'#',
-    };
     if(isset($_SESSION['users']['logged_in']) && $_SESSION['users']['logged_in'] === true){
         return true;
     } else {
         $_SESSION['redirectURL'] = htmlspecialchars($_SERVER['REQUEST_URI']);
-        header("location: $login");
+        header("location: ".account_links('login'));
         exit;
     }
 }
@@ -46,12 +38,31 @@ function check_admin() {
 
 function btntext() {
     return match(LANG) {
-        'fr'=>'',
+        'fr'=>'MENU',
         default=>'MENU'
     };
 }
 
 function side_list_top() {
+    switch (LANG) {
+        case 'fr':
+            $list = ['DÉCONNEXION', 'MON PROFIL | PAIEMENTS', 'S\'INSCRIRE', 'SE CONNECTER'];
+            break;
+        default:
+            $list = ['LOGOUT', 'MY PROFILE / PAYMENTS', 'REGISTER', 'LOGIN'];
+        break;
+    }
+    return array_combine(
+        $list, [
+            ['link'=>account_links('logout'), 'id'=>'on', 'country'=>null],
+            ['link'=>account_links('profile'), 'id'=>'on', 'country'=>'profile'],
+            ['link'=>account_links('register'), 'id'=>'off', 'country'=>null],
+            ['link'=>account_links('login'), 'id'=>'off', 'country'=>null]
+        ]
+    );
+}
+
+function old_side_list_top() {
     switch (LANG) {
         case 'fr':
             $list = [
@@ -446,12 +457,12 @@ function currencies($coucur) { //$coucur: 2 digit country, 3 digit currency, sin
 
 function bank_details(array $bank) {
     $details = [
-        ['en'=>'ACCOUNT NAME', 'fr'=>'', 'data'=>$bank['name'] ?? null],
-        ['en'=>'ACCOUNT NUMBER', 'fr'=>'', 'data'=>$bank['number'] ?? null],
-        ['en'=>'BANK', 'fr'=>'', 'data'=>$bank['bank'] ?? null],
-        ['en'=>'ACCOUNT TYPE', 'fr'=>'', 'data'=>$bank['type'] ?? null],
-        ['en'=>'BRANCH CODE', 'fr'=>'', 'data'=>$bank['branchcode'] ?? null],
-        ['en'=>'HelloPaisa Unique Reference Number', 'fr'=>'', 'data'=>$bank['hellopaisaunique'] ?? null]
+        ['en'=>'ACCOUNT NAME', 'fr'=>'NOM DU COMPTE', 'es'=>'NOMBRE DE LA CUENTA', 'pt'=>'NOME DA CONTA', 'de'=>'KONTONAME', 'data'=>$bank['name'] ?? null],
+        ['en'=>'ACCOUNT NUMBER', 'fr'=>'NUMÉRO DE COMPTE', 'es'=>'NÚMERO DE CUENTA', 'pt'=>'NÚMERO DA CONTA', 'de'=>'KONTONUMMER', 'data'=>$bank['number'] ?? null],
+        ['en'=>'BANK', 'fr'=>'BANQUE', 'es'=>'BANCO', 'pt'=>'BANCO', 'de'=>'BANK', 'data'=>$bank['bank'] ?? null],
+        ['en'=>'ACCOUNT TYPE', 'fr'=>'TYPE DE COMPTE', 'es'=>'TIPO DE CUENTA', 'pt'=>'TIPO DE CONTA', 'de'=>'KONTO TYP', 'data'=>$bank['type'] ?? null],
+        ['en'=>'BRANCH CODE', 'fr'=>'CODE DE LA SUCCURSALE', 'es'=>'CÓDIGO DE SUCURSAL', 'pt'=>'CÓDIGO DA AGÊNCIA', 'de'=>'BRANCHENCODE', 'data'=>$bank['branchcode'] ?? null],
+        ['en'=>'HelloPaisa Unique Reference Number', 'fr'=>'Numéro de référence unique HelloPaisa', 'es'=>'Número de referencia único de HelloPaisa', 'pt'=>'Número de Referência Exclusivo HelloPaisa', 'de'=>'Eindeutige HelloPaisa-Referenznummer', 'data'=>$bank['hellopaisaunique'] ?? null]
     ];
     $bankdetails = array_filter(array_column($details, 'data', LANG));
     foreach($bankdetails as $key=>$val) {
@@ -524,100 +535,6 @@ function all_payment_methods() {
     ];
 }
 
-function old_currencies ($country, $single=null) {
-    switch ($country) {
-        case 'CD':
-            $currency = 'cdf';
-            $cur_sign = 'FC';
-            $link = 'view_prices?id=cdf';
-        break;
-        case 'GB':
-            $currency = 'gbp';
-            $cur_sign = '&#163;';
-            $link = 'rave?id=gbp';
-        break;
-        case 'GH':
-            $currency = 'ghs';
-            $cur_sign = 'GH&#8373;';
-            $link = 'rave?id=ghs';
-        break;
-        case 'KE':
-            $currency = 'kes';
-            $cur_sign = 'Ksh';
-            $link = 'rave?id=kes';
-        break;
-        case 'LS':
-            $currency = 'zar';
-            $cur_sign = 'R';
-            $link = 'mukuru?id=zar';
-        break;
-        case 'MW':
-            $currency = 'mwk';
-            $cur_sign = 'K';
-            $link = 'rave?id=mwk';
-        break;
-        case 'NG':
-            $currency = 'ngn';
-            $cur_sign = '&#8358;';
-            $link = './';
-            $extralink = 'rave?id=ngn';
-        break;
-        case 'RW':
-            $currency = 'rwf';
-            $cur_sign = 'R&#8355;';
-            $link = 'rave?id=rwf';
-        break;
-        case 'TZ':
-            $currency = 'tzs';
-            $cur_sign = 'Tsh';
-            $link = 'rave?id=tzs';
-        break;
-        case 'UG':
-            $currency = 'ugx';
-            $cur_sign = 'Ush';
-            $link = 'rave?id=ugx';
-        break;
-        case 'AT': case 'BE': case 'CY': case 'EE': case 'FI': case 'FR': case 'DE': case 'GR': case 'IE': case 'IT': case 'LV': case 'LT': case 'LU': case 'MT': case 'NL': case 'PT': case 'SK': case 'SI': case 'ES': case 'AD': case 'MC': case 'SM': case 'VA': {
-            $currency='eur'; 
-            $cur_sign = '&#8364;';
-            $link = 'rave?id=eur';
-            break;
-        }
-        case 'BF': case 'BJ': case 'CG': case 'CI': case 'CM': case 'GA': case 'ML': case 'NE': case 'SN': {
-            $currency='xof';
-            $cur_sign = 'CFA';
-            $link = 'rave?id=xof';
-            break;
-        }
-        case 'ZA':
-            $currency = 'zar';
-            $cur_sign = 'R';
-            $link = 'rave?id=zar';
-        break;
-        case 'ZM':
-            $currency = 'zmw';
-            $cur_sign = 'ZK';
-            $link = 'rave?id=zmw';
-        break;
-        case 'ZW':
-            $currency = 'usd';
-            $cur_sign = '&#36;';
-            $link = 'mukuru?id=usd';
-        break;
-        default:
-            $currency = 'usd';
-            $cur_sign = '&#36;';
-            $link = 'rave?id=usd';
-    };
-    $cur_details = [
-        'currency'=>$currency,
-        'cur_sign'=>$cur_sign,
-        'link'=>$link,
-        'extralink'=>$extralink ?? $link
-    ];
-    return $single ? $cur_details[$single] : $cur_details;
-}
-
 function all_versions() {
     return [
         'en'=>'https://betagamers.net',
@@ -631,10 +548,11 @@ function all_versions() {
 function controller_translations($controller) { //folders
     $list = [
 		'account'=>['en'=>'account', 'fr'=>'compte', 'es'=>'', 'pt'=>'', 'de'=>''],
-		'bookmakers'=>['en'=>'bookmakers', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-        'free_predictions'=>['en'=>'free_predictions', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-        'payments'=>['en'=>'payments', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+		'bookmakers'=>['en'=>'bookmakers', 'fr'=>'bookmakers', 'es'=>'', 'pt'=>'', 'de'=>''],
+        'free_predictions'=>['en'=>'free_predictions', 'fr'=>'pronostics_gratuits', 'es'=>'', 'pt'=>'', 'de'=>''],
+        'payments'=>['en'=>'payments', 'fr'=>'paiements', 'es'=>'', 'pt'=>'', 'de'=>''],
         //requests, because of mailer and otp
+        'requests'=>['en'=>'requests', 'fr'=>'demandes', 'es'=>'', 'pt'=>'', 'de'=>''],
 		'support'=>['en'=>'support', 'fr'=>'soutien', 'es'=>'apoyo', 'pt'=>'', 'de'=>''],
 		'tips'=>['en'=>'tips', 'fr'=>'prono', 'es'=>'vip', 'pt'=>'', 'de'=>''],
 	];
@@ -663,9 +581,9 @@ function directory_listing($controller) {
             'europa'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'europa'),
             'euro'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'euro'),
             'afcon'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'afcon'),
-            'teams'=>['en'=>'teams', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'howtopredict'=>['en'=>'howtopredict', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'guide'=>['en'=>'guide', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'teams'=>['en'=>'teams', 'fr'=>'equipes', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'howtopredict'=>['en'=>'howtopredict', 'fr'=>'comment_predire', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'guide'=>['en'=>'guide', 'fr'=>'guider', 'es'=>'', 'pt'=>'', 'de'=>''],
         ],
         'payments'=>[
             'rave'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'rave'),
@@ -688,24 +606,28 @@ function directory_listing($controller) {
             'view_prices'=>['en'=>'view_prices', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
         ],
         'support'=>[
-            'aboutus'=>['en'=>'aboutus', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'faqs'=>['en'=>'faqs', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'howitworks'=>['en'=>'howitworks', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'jobs'=>['en'=>'jobs', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'mailus'=>['en'=>'mailus', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'prices'=>['en'=>'prices', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'privacy'=>['en'=>'privacy', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'terms'=>['en'=>'terms', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'aboutus'=>['en'=>'aboutus', 'fr'=>'proposnous', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'faqs'=>['en'=>'faqs', 'fr'=>'faqs', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'howitworks'=>['en'=>'howitworks', 'fr'=>'fonctionne', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'jobs'=>['en'=>'jobs', 'fr'=>'emploi', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'mailus'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'mailus'),
+            'prices'=>['en'=>'prices', 'fr'=>'prix', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'privacy'=>['en'=>'privacy', 'fr'=>'confidentialite', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'terms'=>['en'=>'terms', 'fr'=>'fonctionne', 'es'=>'', 'pt'=>'', 'de'=>''],
         ],
         'tips'=>[
-            'wins'=>['en'=>'wins', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'vip'=>['en'=>'vip', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'wins'=>['en'=>'wins', 'fr'=>'tickets_gagnant', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'vip'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'vip'),
         ],
     ];
     return $list[$controller];
 }
 
 function pay_links($suffix=''){
+    return HOME.'/'.controller_translations('payments')[LANG].($suffix ? "/$suffix" : '');
+}
+    
+function old_pay_links($suffix=''){
     $link = match(LANG){
     'en'=>'/payments/'.$suffix,
     'fr'=>'/paiements/'.$suffix,
@@ -791,7 +713,10 @@ function error_page() {
 
 function payment_table_headers($length=3) {
     $headers = match (LANG) {
-        'fr' => '',
+        'fr'=>['Durée', 'Prix', 'Option'],
+        'es'=>['Duración', 'Precio', 'Opción'],
+        'pt'=>['Duração', 'Preço', 'Opção'],
+        'de'=>['Dauer', 'Preis', 'Option'],
         default => ['Duration', 'Price', 'Option'],
     };
     return $length<3 ? array_slice($headers, 0, $length) : $headers;
@@ -926,9 +851,9 @@ function related_posts(array $posts) {
             'index'=>'Prédictions et résultats de la Coupe d\'Afrique des Nations'
             ],
         'guide'=>[
-            'filename'=>'',
-            'alt'=>'',
-            'text'=>''
+            'filename'=>'guider',
+            'alt'=>'termes dans les paris sur le football',
+            'text'=>'Guide de paris pour les débutants'
             ],
         'tennisguide'=>[
             'filename'=>'',

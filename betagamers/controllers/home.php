@@ -143,20 +143,11 @@ Class Home extends Controller
                 'theaders'=>set_table_header('upcoming'),
             ];
             $bookiesheader = 'Latest Betting Deals and Offers';
-            $bookieslink = HOME.'/bookies?bookie=';
+            // $bookieslink = HOME.'/bookies?bookie=';
             $bookiesprompt = 'Claim Offer';
             $diamodds = [tips_links('5odds')=>'5 ODDS', tips_links('10odds')=>'10 ODDS', tips_links('straight')=>'Straight Win', tips_links('dblchance')=>'Double Chance', tips_links('bts')=>'GG/NGG', tips_links('ovun')=>'Over/Under'];
             $platodds = [tips_links('2odds')=>'Sure 2odds', tips_links('3odds')=>'3odds Banker', tips_links('single')=>'Super Single', tips_links('p2s')=>'Players to Score', tips_links('draw')=>'Draws', tips_links('bigodds')=>'High Odds', tips_links('cscore')=>'Correct Score', tips_links('weekend')=>'Weekend Acca'];
             $freesec = ['./'=>'FREE TIPS', TELEGRAM_CHANNEL_LINK=>'Telegram', ''=>'Weekend Soccer Predictions'];
-            // $diamodds = ['5 ODDS', '10 ODDS', 'Straight Win', 'Double Chance', 'GG/NGG', 'Over/Under'];
-            // $platodds = ['Sure 2odds', '3odds Banker', 'Super Single', 'Players to Score', 'Draws', 'High Odds', 'Correct Score', 'Weekend Acca'];
-            // $diamlinks = ['5odds', '10odds', 'straight', 'dblchance', 'bts', 'ovun'];
-            // $platlinks = ['2odds', '3odds', 'single', 'p2s', 'draw', 'bigodds', 'cscore', 'weekend'];
-            //$diamsec = $this->format_plan_links($diamodds, $diamlinks);
-            //$platsec = $this->format_plan_links($platodds, $platlinks);
-            //$prices = $this->format_plan_sec();
-            //$supp_price = $this->supp_pricing();
-            //$pricing = (isset($_SESSION['country'])) ? $this->pay_links($this->cur_details['extralink']) : $supp_price['link'];
             $data['plansec'] = [
                 'header'=>'PLANS',
                 'subheaders'=>[
@@ -169,13 +160,8 @@ Class Home extends Controller
                     'diam'=>$diamodds,
                     'plat'=>$platodds,
                 ]
-                //'freesec'=>$freesec,
-                //'diamsec'=>$diamsec,
-                //'platsec'=>$platsec,
             ];
             $curdetails = currencies(USER_COUNTRY);
-            // show(single_price('diamond', 1, $curdetails['currency']));
-            // single_price($key, 1, currencies(USER_COUNTRY, $data['pricingsec']['currency']))
             $data['pricingsec'] = [
                 'header'=>'BETAGamers Plans',
                 'plans'=>plans(['diamond', 'platinum', 'ultimate']),
@@ -183,6 +169,113 @@ Class Home extends Controller
                 'cursign'=>$curdetails['cur_sign'],
                 'duration'=>'Month',
                 'view'=>'View Plan'
+                //'prices'=>$prices,
+            ];
+            ksort($data['pricingsec']['plans']);
+        } elseif(LANG=='fr') {
+            $data['page_title'] = "Site de Pronostic Football Fiable";
+            $this->description = 'Meilleur site de foot au monde. Un site de pronostic foot gagnant et meilleure source fiable de cotes sûres 2, 3 cotes et prévisions précises de football.';
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, prévisions de football gratuites, meilleur site de football au monde';
+            $this->og['title'] = 'Site de Pronostic Football Fiable';
+            $this->og['description'] = 'Site de pronostic football fiable et la meilleure source de 2 cotes sûres, 3 cotes, 5 cotes et 10 cotes';
+            $this->og['imagetype'] = 'image/jpg';
+            $data['slide_images'] = [
+                'epl' => [
+                    'alt'=>'Prévisions de Premier League',
+                    'text'=>'Pronostics et Résultats de Championnat Angleterre'
+                ],
+                'laliga' => [
+                    'alt'=>'Prévisions de LaLiga',
+                    'text'=>'Pronostics et Résultats de Championnat Espagnol'
+                ],
+                'seriea' => [
+                    'alt'=>'Logo de Serie A',
+                    'text'=>'Pronostics et Résultats de Championnat Italie'
+                ],
+                'bundesliga' => [
+                    'alt'=>'Prévisions de Bundesliga',
+                    'text'=>'Pronostics et Résultats de Championnat Allemand'
+                ],
+                'ligue1' => [
+                    'alt'=>'Ligue 1 de Français',
+                    'text'=>'Pronostics et Résultats de Championnat France'
+                ],
+                'ucl' => [
+                    'alt'=>'UEFA Ligue des Champions',
+                    'text'=>'Pronostics et Résultats de la Ligue des Champions de l\'UEFA'
+                ],
+                'europa' => [
+                    'alt'=>'Ligue Europa',
+                    'text'=>'Pronostics et Résultats de Ligue Europa'
+                ],
+                'bgslide' => [
+                    'alt'=>'La Photo de Betagamers',
+                    'text'=>'Meilleur Site de Pronostics Football au Monde'
+                ],
+            ];
+            $data['herolinks'] = [
+                'reg'=>['link'=>account_links('register'), 'text'=>'S\'inscrire'],
+                'login'=>['link'=>account_links('login'), 'text'=>'Se Connecter'],
+                'profile'=>['link'=>account_links('profile'), 'text'=>'Mon Profil'],
+                'pricing'=>['link'=>support_links('prices'), 'text'=>'Plans tarifaires'],
+                'modus'=>['link'=>support_links('howitworks'), 'text'=>'Comment ça fonctionne'],
+                'scores'=>['link'=>HOME.'/livescores.php', 'text'=>'Scores en direct']
+            ];
+            $data['freegames'] = [
+                'header'=>'PRONOSTICS FOOT GRATUIT',
+                'tabs'=>tab_names(['yes', '']),
+                'free_games_page'=>free_games_link(),
+                'viewmore'=>'Plus de pronos gratuits'
+            ];
+            $data['accurate'] = [
+                'header'=>'PRÉDICTIONS RÉCENTES PRÉCISES',
+                'theaders'=>set_table_header(),
+            ];
+            $data['alphasec'] = [
+                'header'=>'CHOIX ALPHA',
+                'oddstxt'=>'Meilleur Pronostic Football du Jour',
+                'oddsdesc'=>'Meilleure cote quotidienne entre 1,65 et 2,50',
+                'totalodds'=>$totalodds,
+                'get'=>'Avoir accès',
+                'marks'=>$marks,
+                'accuracytxt'=>"Précision au cours des 20 derniers jours: ".($percent ?? '...'),
+                'moreresults'=>'Afficher plus de résultats',
+            ];
+            $data['popular'] = [
+                'header'=>'MEILLEURS PARIS POPULAIRES',
+                'populartxt'=>'Découvrez sur quoi de nombreuses personnes parient aujourd\'hui',
+                'theaders'=>set_table_header('popular')
+            ];
+            $data['upcoming'] = [
+                'header'=>'PRÉDICTIONS À VENIR',
+                'theaders'=>set_table_header('upcoming'),
+            ];
+            $bookiesheader = 'Dernières offres et offres de paris';
+            $bookiesprompt = 'Inscrivez-vous';
+            $diamodds = [tips_links('5odds')=>'5 COTES', tips_links('10odds')=>'10 COTES', tips_links('straight')=>'Victoire directe', tips_links('dblchance')=>'Chance Double', tips_links('bts')=>'les Deux Équipes Marquent', tips_links('ovun')=>'Total de Buts (Plus / Moins buts)'];
+            $platodds = [tips_links('2odds')=>'2 Cotes Sûres', tips_links('3odds')=>'3 Cotes Sûres', tips_links('single')=>'Super Simple', tips_links('p2s')=>'Buteurs', tips_links('draw')=>'Match nul', tips_links('bigodds')=>'Grand Cotes', tips_links('cscore')=>'Score Exact', tips_links('weekend')=>'Prono fin de Semaine'];
+            $freesec = ['./'=>'FREE TIPS', TELEGRAM_CHANNEL_LINK=>'Telegram', ''=>'Prédictions de football du week-end'];
+            $data['plansec'] = [
+                'header'=>'DES PLANS',
+                'subheaders'=>[
+                    'free'=>'PLAN GRATUIT',
+                    'diam'=>'PLAN DIAMANT',
+                    'plat'=>'PLAN PLATINE',
+                ],
+                'sections'=>[
+                    'free'=>$freesec,
+                    'diam'=>$diamodds,
+                    'plat'=>$platodds,
+                ]
+            ];
+            $curdetails = currencies(USER_COUNTRY);
+            $data['pricingsec'] = [
+                'header'=>'Plans de BETAGamers',
+                'plans'=>plans(['diamond', 'platinum', 'ultimate']),
+                'currency'=>$curdetails['currency'],
+                'cursign'=>$curdetails['cur_sign'],
+                'duration'=>'Mois',
+                'view'=>'Voir le Plan'
                 //'prices'=>$prices,
             ];
             ksort($data['pricingsec']['plans']);
@@ -195,37 +288,9 @@ Class Home extends Controller
             'colors' => [
                 '1xbet'=>'background-color:#054146; color:white;'
             ],
-            'link'=>$bookieslink,
+            'link'=>bookies_link().'?bookie=',
             'prompt'=>$bookiesprompt
         ];
-
-
-
-
-/*
-		$generalclass = new General;
-		$ordersclass = new Orders;
-		$getsubjects = $generalclass->get_by_active('subjects', ['subject'], [1], 'order by subject');
-		$getreviews = $ordersclass->custom_query(
-			"select id, subject, type, pages, review, rating, date, deadline from (
-			select id, subject, type, pages, review, rating, DATE_FORMAT(expdate, '%D %M, %Y') as date, @days := HOUR(TIMEDIFF(expdate, regdate)) DIV 24, (
-			CASE
-			when @days<1 THEN CONCAT(@days, ' hours')
-			WHEN @days=1 THEN CONCAT(@days, ' day') ELSE 
-			CONCAT(@days, ' days') END) as deadline FROM `orders`  where rating >= 3 and review != '' order by expdate desc limit 9) as subset;");
-		$data['subjects'] = is_array($getsubjects) ? array_chunk(array_column($getsubjects, 'subject'), ceil(count($getsubjects)/4)) : ['subject'=>''];
-		$allreviews = is_array($getreviews) ? $getreviews : [];
-		$data['reviews'] = array_chunk($allreviews, 3);
-        */
 		$this->view("home",$data);
 	}
 }
-/*
-ceil(count($getsubjects)/4) is
-an attempt at making sure list items have the same number of rows on all screen sizes without 
-having to echo the list items multiple times for differnt screen sizes. There's 
-already CSS grid auto auto dividing the list items in two and two foreach making sure batch A starts at A 
-and batch B starts somewhere in the middle.
-For a later increased number of list items(20 list items currently gives me 5555 on big screens and 1010 on small screens), you can adjust the number 4, to any other numer till it suits what you want.
-The mobile view meanwhile will always have two columns of equal / almost equal length.
-*/

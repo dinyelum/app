@@ -55,7 +55,16 @@ Class Account extends Controller
             $prompts = ['Not yet a member? Register', 'Forgot Password?'];
             $phoneins = "Select your country's code. Then, type your normal number eg: 07062345988";
         } elseif(LANG=='fr') {
-            // echo 'yeap';
+            $this->keywords = "Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, prévisions de football gratuites, meilleur site de football au monde";
+            $this->description = "Connectez-vous avec Betagamers aujourd'hui et explorez les opportunités à venir.";
+            $data['page_title'] = 'Connexion des Betagamers';
+            $data['h1'] = $data['input']['submit']['fieldname'] = "Se Connecter";
+            $data['tab'] = ['Avec e-mail', 'Avec téléphone'];
+            $fieldnames['email'] = ['E-mail', 'Mot de passe', 'Montrer le Mot de Passe', '', ''];
+            $fieldnames['fullphone'] = ['Numéro de téléphone (nombre normal)', 'Mot de passe', 'Montrer le Mot de Passe', '', ''];
+            $login = 'Se Connecter';
+            $prompts = ["Pas encore membre? S'inscrire", 'Mot de Passe Oublié?'];
+            $phoneins = "Sélectionnez le code de votre pays. Tapez ensuite votre nombre normal, par exemple: 07062345988";
         }
         $fieldnames['fullphone'][0] = 
         "<span class='w3-tooltip'><span style='position:absolute;left:0;bottom:18px' class='w3-text w3-tag w3-round-xlarge'>$phoneins
@@ -139,6 +148,16 @@ Class Account extends Controller
             $phoneins = "Select your country's code. Then, type your normal number eg: 07062345988";
             $prompts = ['submit'=>'Register', 'login'=>'Already a Member? SignIn'];
             $terms = "By creating an account you agree to our #Terms of Use# and #Privacy Policy#";
+        } elseif(LANG=='fr') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, prévisions de football gratuites, meilleur site de football au mon';
+            $this->description = "Formulaire d'inscription Betagamers: Rejoignez-nous aujourd'hui et gagnez avec nous.";
+            $data['page_title'] = "Formulaire d'inscription";
+            $data['h1'] = "Créer un compte";
+            $fieldnames = ['Nom complet', 'E-mail', "Je n'ai pas d'email", 'Numéro de téléphone (nombre normal)', 'Choisissez le pays', 'Mot de passe', 'Montrer le Mot de Passe', ''];
+            $placeholders = ['fullname'=>'Nom complet', 'email'=>'E-mail', 'password'=>'Mot de passe'];
+            $phoneins = "Sélectionnez le code de votre pays. Tapez ensuite votre nombre normal, par exemple: 07062345988";
+            $prompts = ['submit'=>'Soumettre', 'login'=>'Déjà membre? se connecter'];
+            $terms = "En créant un compte, vous acceptez nos #conditions d'utilisation# et notre #politique de confidentialité#";
         }
         $fieldnames[3] = 
         "<span class='w3-tooltip'><span style='position:absolute;left:0;bottom:18px' class='w3-text w3-tag w3-round-xlarge'>$phoneins
@@ -226,6 +245,20 @@ Class Account extends Controller
             $data['script']['resend'] = "Resend";
             $data['script']['emailsent'] = "Email sent! Check your email, check your spam folder. Resend available in";
             $unknownerror = 'unknown error';
+        } elseif(LANG=='fr') {
+            $data['page_title'] = "Accès refusé";
+            $data['email']['message'] = "Nous avons envoyé un lien vers votre e-mail, *".($_SESSION['users']['email'] ?? '')."*. Veuillez cliquer sur le lien dans votre e-mail pour activer votre compte. Vérifiez à la fois la boîte de réception et les dossiers de spam.";
+            $data['email']['prompt1'] = ["Vous n'avez pas reçu d'e-mail", "Renvoyer"];
+            $data['email']['prompt2'] = "#Cliquez ici# pour nous signaler si vous n'avez reçu aucun e-mail / si l'adresse e-mail que vous avez fournie est erronée / si vous n'avez pas du tout d'e-mail. Merci.";
+            $data['phone']['message'] = "Un code à 6 chiffres a été envoyé au ".($_SESSION['users']["phone"] ?? '').". Veuillez saisir le code pour vérifier votre compte. OTP expire après 10 minutes.";
+            $data['phone']['prompt'] = "Utilisez une autre méthode de vérification";
+            $data['phone']['verifybtn'] = "Vérifiez OTP";
+            $data['phone']['resendbtn'] = "Vous n'avez pas reçu d'OTP? Renvoyer";
+            $data['phone']['confirmreg'] = "Veuillez envoyer *CONFIRMER REG ".($_SESSION['users']['phone'] ?? '')."* au +2348157437268 par SMS, WhatsApp ou télégramme pour activer votre compte.<br><br>Veuillez vous assurer d'envoyer le message à partir du même numéro que vous avez enregistré ici. Merci.";
+            $data['autherr'] = "Le mode d'authentification n'a pas été défini, veuillez contacter l'administrateur à ce sujet.";
+            $data['script']['resend'] = "Renvoyer";
+            $data['script']['emailsent'] = "Email envoyé! Vérifiez votre courrier électronique, vérifiez votre dossier spam. Renvoi disponible dans";
+            $unknownerror = 'erreur inconnue';
         }
         $data['email']['message'] = tag_format($data['email']['message']);
         $data['email']['prompt2'] = tag_format($data['email']['prompt2'], [['href'=>support_links('mailus'), 'style'=>'font-weight:bold; color:green']]);
@@ -259,9 +292,11 @@ Class Account extends Controller
     }
 
     function verify() {
-        $this->page = 'Account Verification';
+        $this->page = 'verify';
         if(LANG=='en') {
             $data['page_title'] = "New Account Verification";
+        } elseif(LANG=='fr') {
+            $data['page_title'] = "Vérification du nouveau compte";
         }
         if(isset($_GET['email']) && isset($_GET['hash'])) {
             $genclass = new General;
@@ -274,13 +309,7 @@ Class Account extends Controller
                     header("location: ".account_links('profile'));
                     exit();
                 } else {
-                    $data['err'] = match(LANG) {
-                        'en' => "Something went wrong. Please try again later.",
-                        'fr' => "Quelque chose s'est mal passé. Veuillez réessayer plus tard.",
-                        'es' => "Algo salió mal. Por favor, inténtelo de nuevo más tarde.",
-                        'pt' => "Algo deu errado. Por favor, tente novamente mais tarde.",
-                        'de' => "Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut.",
-                    };
+                    $data['err'] = $genclass->sth_went_wrong().' '.$genclass->resp_try_again();
                 }
             }
         }
@@ -311,6 +340,17 @@ Class Account extends Controller
             $fieldnames['fullphone'] = ['Enter your Phone Number', '', ''];
             $phoneins = "Select your country's code. Then, type your normal number eg: 07062345988";
             $submit = 'Submit';
+        } elseif(LANG=='fr') {
+            $data['page_title'] = "Mot de passe oublié";
+            $this->keywords = "Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis";
+            $this->description = 'Vous pouvez utiliser cette page pour réinitialiser votre compte sur BetaGamers';
+            $data['h1'] = 'Entrez votre adresse e-mail';
+            $data['h2'] = 'Entrez votre numéro de téléphone';
+            $data['tab'] = ['Avec e-mail', 'Avec téléphone'];
+            $fieldnames['email'] = ['E-mail', '', ''];
+            $fieldnames['fullphone'] = ['Numéro de téléphone (nombre normal)', '', ''];
+            $phoneins = "Sélectionnez le code de votre pays. Tapez ensuite votre nombre normal, par exemple: 07062345988";
+            $submit = 'Soumettre';
         }
         $fieldnames['fullphone'][0] = 
         "<span class='w3-tooltip'><span style='position:absolute;left:0;bottom:18px' class='w3-text w3-tag w3-round-xlarge'>$phoneins
@@ -424,6 +464,14 @@ Class Account extends Controller
             $fieldnames = ['New Password', 'Show Password', '', ''];
             $reset = 'RESET';
 
+        } elseif(LANG=='fr') {
+            $data['page_title'] = "Réinitialiser le mot de passe";
+            $this->keywords = 'Betagamers.net, betagamers, fr.betagamers.net, site Web du betagamers website';
+            $this->description = 'Réinitialisation du mot de passe Betagamers';
+            $data['h1'] = 'Réinitialisation du mot de passe';
+            $fieldnames = ['Nouveau mot de passe', 'Montrer le Mot de Passe', '', ''];
+            $reset = 'RÉINITIALISER';
+
         }
         $genclass = new General;
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !empty($_POST)) {
@@ -512,7 +560,6 @@ Class Account extends Controller
         if(LANG=='en') {
             $this->description = 'Betagamers Profile';
             $data['page_title'] = "Profile";
-            $data['btntxt'] = 'MENU';
             $data['table']['h1'] = 'Account Information';
             $data['table']['user'] = ['fullname'=>'Name', 'email'=>'Email', 'phone'=>'Phone', 'country'=>'Country'];
             $data['table']['substatus'] = 'Subscription Status'; //diamond, platinum etc
@@ -524,6 +571,20 @@ Class Account extends Controller
             $data['table']['h2'] = 'Subscription Plans';
             $data['plan']['features'] = 'FEATURES';
             $data['plan']['choose'] = 'CHOOSE PLAN';
+        } elseif(LANG=='fr') {
+            $this->description = 'Profil de BetaGamers';
+            $data['page_title'] = "Profil";
+            $data['table']['h1'] = 'Information sur le compte';
+            $data['table']['user'] = ['fullname'=>'Nom', 'email'=>'E-mail', 'phone'=>'Numéro de téléphone', 'country'=>'Pays'];
+            $data['table']['substatus'] = "État de l'abonnement"; //diamond, platinum etc
+            $substatus = "Actif. Expire dans: dd jours, hh heures";
+            $data['substatus']['ultimate'] = isset($active) && array_key_exists('ultimate', $active) ? str_replace(['dd', 'hh'], [$active['ultimate']['days'], $active['ultimate']['hours']], $substatus) : (isset($expired) && in_array('ultimate', $expired) ? 'Expiré' : 'Pas actif');
+            $data['substatus']['platinum'] = isset($active) && array_key_exists('platinum', $active) ? str_replace(['dd', 'hh'], [$active['platinum']['days'], $active['platinum']['hours']], $substatus) : (isset($expired) && in_array('platinum', $expired) ? 'Expiré' : 'Pas actif');
+            $data['substatus']['diamond'] = isset($active) && array_key_exists('diamond', $active) ? str_replace(['dd', 'hh'], [$active['diamond']['days'], $active['diamond']['hours']], $substatus) : (isset($expired) && in_array('diamond', $expired) ? 'Expiré' : 'Pas actif');
+            $data['substatus']['tennis vip'] = isset($active) && array_key_exists('tennis vip', $active) ? str_replace(['dd', 'hh'], [$active['tennis vip']['days'], $active['tennis vip']['hours']], $substatus) : (isset($expired) && in_array('tennis vip', $expired) ? 'Expiré' : 'Pas actif');
+            $data['table']['h2'] = "Plans d\'abonnement";
+            $data['plan']['features'] = 'CARACTÉRISTIQUES';
+            $data['plan']['choose'] = 'CHOISIR';
         }
         $pdetails = currencies(USER_COUNTRY);
         $data['plan']['currency'] = $pdetails['currency'];
