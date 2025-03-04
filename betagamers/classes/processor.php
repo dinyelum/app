@@ -4,6 +4,7 @@ class Processor {
         return match($plan) {
             'Platinum'=>['platinum','diamond'],
             'Combo'=>['alpha','platinum','diamond'],
+            'Ultimate'=>['alpha'],
             default=>[strtolower($plan)],
         };
     }

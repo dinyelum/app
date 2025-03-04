@@ -27,7 +27,7 @@ Class Controller
 		//include header
 		if(file_exists(ROOT."/app/betagamers/views/". $view .".php"))
  		{
- 		    header('Content-Type: text/html; charset=ISO-8859-1');
+ 		    //header('Content-Type: text/html; charset=ISO-8859-1');
  		    //echo 'maintenance mode';
 			$data['header'] = $this->header();
 			$data['footer'] = $this->footer();

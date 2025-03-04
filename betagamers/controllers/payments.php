@@ -68,7 +68,7 @@ class Payments extends Controller {
                         'Vous pouvez payer à '.LINKS,
                         "Envoyez votre (1) Nom complet (2) adresse email (3) Le montant payé (4) Plan d'abonnement",
                         'Par example: Charles Louis. louislucas@exemple.com. '.$this->plat3mths.'. 3 mois Platine.<br><br>',
-                        "à '.PHONE.' (sur whatsapp / telegram) OU envoyez-nous un e-mail via #ici#. L'activation peut prendre de 5 à 10 minutes."
+                        "à ".PHONE." (sur whatsapp / telegram) OU envoyez-nous un e-mail via #ici#. L'activation peut prendre de 5 à 10 minutes."
                     ];
                 break;
             }
@@ -76,7 +76,7 @@ class Payments extends Controller {
             return $ins = '<p>'.implode('</p><p>', $p)."</p><ul><li>".tag_format(implode('</li><li>', $li), $links)."</li></ul>";
         } else {
             if(LANG=='en') {
-                $tip = 'You can also pay to:',
+                $tip = 'You can also pay to:';
                 $nb = [
                     'After payment, send your (1) Your Full Name (2) Your Email Address (3) Amount Paid (4) Subscription Plan',
                     'Example: Samuel Justin. samjoe@example.com. '.$this->plat3mths.'. 3monthsPlatinum.',
@@ -84,7 +84,7 @@ class Payments extends Controller {
                     '*PLEASE NOTE*: The MPESA / Mobile Money number is for payments only, not calls. For all questions, ask '.PHONE.' on Whatsapp or Telegram.'
                 ];
             } elseif(LANG=='fr') {
-                $tip = 'Vous pouvez également payer à:',
+                $tip = 'Vous pouvez également payer à:';
                 $nb = [
                     "Après paiement, envoyez votre (1) Nom complet (2) adresse email (3) Le montant payé (4) Plan d'abonnement",
                     'Par example: Charles Louis. louislucas@exemple.com. '.$this->plat3mths.'. 3 mois Platine.',
@@ -153,7 +153,7 @@ class Payments extends Controller {
         $data['plan']['cur_sign'] = $pdetails['cur_sign'];
         $data['plan']['cur_lower'] = $pdetails['currency'];
         $data['plan']['cur_upper'] = $this->cur = strtoupper($pdetails['currency']);
-        $plat = single_price('platinum', '3 Months', $data['plan']['cur_lower']);
+        $plat = single_price('platinum', '3 Months', $data['plan']['cur_lower'], 'en');
         $this->plat3mths = $plat['price'].' '.$data['plan']['cur_upper'];
         $data['plan']['pre'] = $pre;
         if(LANG=='en') {
@@ -303,7 +303,7 @@ class Payments extends Controller {
             if(str_starts_with($planlink, 'combo')) {
                 $duration = ucwords(str_replace('_', ' ', $planlink));
             }
-            $plan = single_price($plansec, ucwords(str_replace('_', ' ', $duration)), $currency);
+            $plan = single_price($plansec, ucwords(str_replace('_', ' ', $duration)), $currency, 'en');
             $amount = DISCOUNT ? $plan['plaindiscount'] : $plan['plainprice'];
             $gateways = ['flw', 'pal', 'str', 'ccb', 'psk'];
             if(in_array($method, $gateways)) {

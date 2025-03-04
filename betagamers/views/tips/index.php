@@ -24,7 +24,7 @@
         <h3 style="color:white; background-color: #003300; padding: 16px; border-radius: 10px;"><?=$data['bigodds']['header']?></h3>
         <div class="w3-card">
             <div class="w3-center">
-                <p style="font-size: 20px;"><?=$data['bigodds']['text']?>: </p><p class="w3-xlarge"><i class="fa fa w3-spin" style="background: green; color: white; padding: 10px"><b><?=$data['bigodds']['odds']?></b></i></p><br>
+                <p style="font-size: 20px;"><?=$data['bigodds']['text']?>: </p><p class="w3-large"><i class="fa fa w3-spin" style="background: green; color: white; padding: 10px"><b><?=$data['bigodds']['odds']?></b></i></p><br>
                 <p><a href="<?=tips_links('bigodds')?>" class="w3-btn w3-green w3-round-xlarge"><?=$data['bigodds']['prompt']?> <i class="fa fa-eye" style="color:white; margin-left: 5px;"></i></a></p><br><br>
             </div>
         </div>
@@ -67,7 +67,7 @@ if (implode($data['bestmarks'])) {?>
         foreach($data['tracker']['percent'] as $key=>$val) {?>
             <tr>
                 <td><?=ucwords(strtolower($data['games'][$key]))?></td>
-                <td><?="$val%"?></td>
+                <td><?=$val?></td>
             </tr><?php
             }?>
     </table>

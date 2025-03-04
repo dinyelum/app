@@ -1,6 +1,6 @@
 <?php
 //5 attempts, 10 minutes
-require_once require ROOT.'/vendor/autoload.php';
+require_once '/home/betaahfg/vendor/autoload.php';
 use Twilio\Rest\Client;
 class Twilio {
     private $sid = "ACfc2ca77813982121264132d416a661e1";
@@ -17,8 +17,14 @@ class Twilio {
     }
     
     public function send_otp($number) {
-        $verification = $this->twilio->verify->v2->services("VA207e89bf83d24acf97fd34e74899e639")->verifications->create($number, "sms");
-        return $verification->status;
+        try {
+            $verification = $this->twilio->verify->v2->services("VA207e89bf83d24acf97fd34e74899e639")->verifications->create($number, "sms");
+            return $verification->status;
+        } catch (\Twilio\Exceptions\TwilioException $e) {
+            error_log("OTP could not be sent. Twillio Error: \nCode: {$e->getCode()}.\nMessage: {$e->getMessage()}.\n", 3, ENV['TWILLIO_ERR_URL']);
+            return false;
+            //echo "Something went wrong.\nCode: {$e->getCode()}.\nMessage: {$e->getMessage()}.\n";
+        }
     }
     
     public function verify_otp($number, $otp) {
@@ -26,6 +32,22 @@ class Twilio {
         return($verification_check->status);
     }
 }
+
+/*
+try {
+    $twilio
+        ->messages
+        ->create(
+            $to,
+            [
+                'body' => "Here is my message to you!",
+                'from' => $SMS_FROM,
+            ]
+        );
+} catch (\Twilio\Exceptions\TwilioException $e) {
+    echo "Something went wrong.\nCode: {$e->getCode()}.\nMessage: {$e->getMessage()}.\n";
+}
+*/
 
 
 /*

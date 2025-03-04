@@ -78,7 +78,7 @@ class Games {
 
         if(isset($fields['tip'])) {
             if(isset($fields['games']) && $fields['games']=='cscore') {
-                $data['tip'] = str_ends_with($data['tip'], 'Correct Score') ? $data['tip'] : $data['tip'].' Correct Score';
+                $data['tip'] = str_ends_with($fields['tip'], 'Correct Score') ? $fields['tip'] : $fields['tip'].' Correct Score';
             }
             $data['tip'] = $this->validate_text($fields['tip'], fieldname:'tip');
         }

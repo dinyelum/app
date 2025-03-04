@@ -20,6 +20,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DB_USER', ENV['DB_USER']);
 	define('DB_PASS', ENV['DB_PASS']);
 	define('DB_HOST', ENV['DB_HOST']);
+	define('DB_RECS_NAME', ENV['DB_RECS_NAME']);
 	define('ROOT', ENV['ROOT']);
 	define('HOME', 'https://'.$_SERVER['SERVER_NAME']);
 	define('DEBUG', false);
@@ -29,7 +30,8 @@ define('FORM_SIGNATURE_KEY', ENV['FORM_SIGNATURE_KEY']);
 define('DB_TYPE','mysql');
 define('UPLOAD_ROOT', ROOT.'/app/betagamers/uploads');
 define('INCS', ROOT.'/app/betagamers/incs');
-define('CF_COUNTRY', $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'GB');
+$exception = ['XX', 'T1'];
+define('CF_COUNTRY', isset($_SERVER['HTTP_CF_IPCOUNTRY']) && !in_array($_SERVER['HTTP_CF_IPCOUNTRY'], $exception) ? $_SERVER['HTTP_CF_IPCOUNTRY'] : 'GB');
 define('USER_COUNTRY', $_SESSION['users']['country'] ?? CF_COUNTRY);
 define('USER_LOGGED_IN', $_SESSION['users']["logged_in"] ?? null);
 define('LANG', (strlen($lang)==2) ? $lang : 'en');

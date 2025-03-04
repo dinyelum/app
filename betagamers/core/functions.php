@@ -105,7 +105,7 @@ function get_odds_details($id) {
     foreach($tipslist as $key=>$val) {
         foreach($val as $subkey=>$subval) {
             if(isset($subval['id']) && $id==$subval['id']) {
-            return ['header'=>$subkey, 'plan'=>$key, /*'planlang'=>LANG=='en' ? strtolower($key) : array_search(strtolower($key), $plans)*/];
+            return ['header'=>$subkey, 'plan'=>LANG=='en' ? strtolower($key) : array_search(strtolower($key), $plans), 'plan_locale'=>$key];
             }
         }
     }
@@ -286,7 +286,7 @@ function plan_features($sports) {
                 ],
                 'tennis'=>[
                     'VIP TENNIS'=>['id'=>'tennis', 'features'=>['Plan 1 mois','Access à simple','Accès à 2 cotes','Accès à 3 cotes','Accès à 5 cotes','Accès à 10 cotes','Accès à 1-2','Accès à la prédiction de sét (Scores Exacts)','Accès aux plus / moins']],
-                    'COMBO SPORTIF'=>['id'=>'combospo', 'features'=>['Accès à 1 mois de tennis VIP','Accès au forfait Platine Football d\'un mois']],
+                    'COMBO SPORTIF'=>['id'=>'football tennis', 'features'=>['Accès à 1 mois de tennis VIP','Accès au forfait Platine Football d\'un mois']],
                 ]
             ];
             break;
@@ -312,8 +312,8 @@ function plan_features($sports) {
     return $features[$sports];
 }
 
-function single_price($plan, string|int $duration, $currency=null) {
-    $pricing = plan_pricing($plan, $currency);
+function single_price($plan, string|int $duration, $currency=null, $lang=null) {
+    $pricing = plan_pricing($plan, $currency, $lang ?? LANG);
     if(is_int($duration)) {
         $prices = array_values($pricing);
         return $prices[$duration] ?? $prices[0];
@@ -792,7 +792,7 @@ function related_posts(array $posts) {
             'text'=>'Beginner\'s Guide to Tennis Markets'
             ]
         ];
-    } elseif($this->lang == 'fr') {
+    } elseif(LANG == 'fr') {
         $allposts = [
         'epl'=>[
             'alt'=>'Logo EPL',
@@ -861,7 +861,7 @@ function related_posts(array $posts) {
             'text'=>''
             ]
         ];
-    } elseif($this->lang == 'es') {
+    } elseif(LANG == 'es') {
         $allposts = [
         'epl'=>[
             'alt'=>'Logo de EPL',
@@ -925,7 +925,7 @@ function related_posts(array $posts) {
             'text'=>''
             ],
         ];
-    } elseif($this->lang == 'pt') {
+    } elseif(LANG == 'pt') {
         $allposts = [
         'epl'=>[
             'alt'=>'Logo do EPL',
@@ -989,7 +989,7 @@ function related_posts(array $posts) {
             'text'=>''
             ],
         ];
-    } elseif($this->lang == 'de') {
+    } elseif(LANG == 'de') {
         $allposts = [
         'epl'=>[
             'alt'=>'EPL-Logo',

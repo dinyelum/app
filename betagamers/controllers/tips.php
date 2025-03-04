@@ -18,10 +18,10 @@ class Tips extends Controller {
                     "SELECT date, games, mark, percent, best FROM marks where games='ap' and date=(select max(date) from marks)
                     union all
                     SELECT date, games, mark, percent, best FROM (
-                        SELECT date, games, mark, percent, best, ROW_NUMBER() OVER(PARTITION BY games ORDER BY date desc ) AS RN FROM marks where games in ('single', '2odds', '3odds') ORDER BY FIND_IN_SET(games, 'single,2odds,3odds')
+                        SELECT date, games, mark, percent, best, ROW_NUMBER() OVER(PARTITION BY games ORDER BY date desc ) AS RN FROM marks where games in ('single', '2odds', '3odds') ORDER BY FIND_IN_SET(games, 'single,2odds,3odds'), date desc
                     ) sub WHERE RN <= 4"
                 ],
-                '1custom_query'=>["select date, mark, games from marks where games=(SELECT games FROM marks where  best!='' order by date desc limit 1) and date LIKE concat((SELECT best FROM marks where  best!=''  order by date desc limit 1), '%')"]
+                '1custom_query'=>["select date, mark, games from marks where games=(SELECT games FROM marks where  best!='' order by date desc limit 1) and date LIKE concat((SELECT best FROM marks where  best!=''  order by date desc limit 1), '%') order by date"]
             ],
             'odds'=>[
                 'custom_query'=>["select totalodds from odds where games='bigodds' and date=curdate();"]
@@ -42,7 +42,8 @@ class Tips extends Controller {
             foreach($sections as $key=>$val) {
                 foreach($val as $ind=>$subval) {
                     if($ind==0) {
-                        $percent[$key] = $subval['percent'];
+                        $percent[$key] = ($subval['percent'] > 50 ? format_number($subval['percent']) : format_number(50)).'%';
+                        //$percent[$key] = $subval['percent'];
                     }
                 }
                 if($key=='ap') continue;
@@ -73,7 +74,7 @@ class Tips extends Controller {
             // var_dump($bestmonth);
         }
 
-        $bigodds = isset($db['odds']['1custom_query'][0]['totalodds']) ? (format_number($db['odds']['1custom_query'][0]['totalodds']) ?: '...') : '...';
+        $bigodds = isset($db['odds']['custom_query'][0]['totalodds']) ? (format_number($db['odds']['custom_query'][0]['totalodds']) ?: '...') : '...';
         
         $screenshots = is_array($db['screenshots']['custom_query']) ? $db['screenshots']['custom_query'] : [];
 

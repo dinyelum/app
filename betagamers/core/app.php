@@ -36,7 +36,7 @@ Class App
 		//if url[0]==tennis, get controller and method and attach to it.
 		// if(isset($url))
 
- 		if(file_exists(ROOT."/app/betagamers/controllers/". strtolower($url[0]) .".php") && LANG=='en')
+ 		if((file_exists(ROOT."/app/betagamers/controllers/". strtolower($url[0]) .".php")) && (LANG=='en' || $url[0]=='home'))
  		{
 			//LANG=='en'
  			$controllername = strtolower($url[0]);

@@ -4,5 +4,7 @@ uploads/
 images/
 temp/
 tmp/
+free_predicts/
+table/
 cgi-bin/
 .well-known/

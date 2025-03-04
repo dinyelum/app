@@ -44,7 +44,7 @@ if(LANG != 'en') {
         ['en'=>'Mobile Money (Zambia)', 'fr'=>'Mobile Money (Zambie)'],
         ['en'=>'Mobile Money (DR Congo)', 'fr'=>'Mobile Money (RD Congo)'],
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (MWK)'),
-        array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (ZAR)'),
+        // array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (ZAR)'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (ZMW)'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Chipper Cash'),

@@ -181,16 +181,19 @@ class Webhooks extends Processor {
     
     function webhookpsk() {
         // only a post with paystack signature header gets our attention
-        if ((strtoupper($_SERVER['REQUEST_METHOD']) != 'POST' ) || !array_key_exists('HTTP_X_PAYSTACK_SIGNATURE', $_SERVER) ) 
-        exit();
+        if ((strtoupper($_SERVER['REQUEST_METHOD']) != 'POST' ) || !array_key_exists('HTTP_X_PAYSTACK_SIGNATURE', $_SERVER) ) {
+            error_log('No Psk Signature');
+            exit();
+        } 
 
         // Retrieve the request's body
         $input = @file_get_contents("php://input");
 
         // validate event do all at once to avoid timing attack
-        if($_SERVER['HTTP_X_PAYSTACK_SIGNATURE'] !== hash_hmac('sha512', $input, ENV['PSK_SECRET_KEY']))
-        error_log('Keys ddnt match');
-        exit();
+        if($_SERVER['HTTP_X_PAYSTACK_SIGNATURE'] !== hash_hmac('sha512', $input, ENV['PSK_SECRET_KEY'])) {
+            error_log('Keys ddnt match');
+            exit();
+        }
 
         http_response_code(200);
 
@@ -202,7 +205,7 @@ class Webhooks extends Processor {
         $phone = $event->data->customer->phone ?? '070';
         $currency = $event->data->currency;
         $amount = $event->data->amount / 100;
-        $metaplan = $event->data->metadata->planid;
+        $metaplan = $event->data->metadata->custom_fields->planid;
         $id = $event->data->id;
         $txn_ref = $event->data->reference;
         file_put_contents(time().'_psk', json_encode($event, JSON_PRETTY_PRINT));

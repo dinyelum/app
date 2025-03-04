@@ -78,7 +78,7 @@ class Gateways {
         $fields = [
         'email' => $_SESSION['users']["email"],
         'amount' => $amount*100,
-        'callback_url' => "https://betagamers.net/payments/statuspstk",
+        'callback_url' => "https://betagamers.net/payments/statuspsk",
         'metadata' => [
             'cart_id'=>$txref,
             "cancel_action" => "https://betagamers.net/payments/paystack",

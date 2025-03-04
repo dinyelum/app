@@ -195,7 +195,7 @@ include ROOT.'/app/betagamers/incs/footer.php';?>
                     toggle('error', 'prompt');
                 }
             }
-            xhttp.open('GET', '<?=HOME?>/requests/phoneotp.php?mode='+mode+'&code='+otpval);
+            xhttp.open('GET', '<?=HOME?>/requests/phoneotp?mode='+mode+'&code='+otpval);
             xhttp.send();
         }<?php
     } elseif($this->authmode=='email') {?>

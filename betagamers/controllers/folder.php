@@ -2,13 +2,14 @@
 class Folder extends Controller {
     public $formfields;
     
-    public function __construct() {
+    public function __construct($mode='') {
         $this->metabots = 'NOINDEX';
-        //$this->mode = 'admin';
-        $this->adminlevel = check_admin();
-        if($this->adminlevel=='writer' && basename(URI)=='adminfiles?action=update') {return true;}
-        if($this->adminlevel!='admin') {
-            exit('You do not have access to this page');
+        if($mode != 'cron') {
+            $this->adminlevel = check_admin();
+            if($this->adminlevel=='writer' && basename(URI)=='adminfiles?action=update') {return true;}
+            if($this->adminlevel!='admin') {
+                exit('You do not have access to this page');
+            }
         }
         //$this->set_form_selection();
         //$this->usersclass = new Users;
@@ -989,13 +990,15 @@ class Folder extends Controller {
                         $day = $day=='tod' ? '' : $day;
                         $link = $file->getPath()."/$day$fullfilename";
                         // show($output);
-                        file_put_contents($link, $output);
+                        $output_en = iconv("CP1257","UTF-8", implode($output));
+                        file_put_contents($link, $output_en);
                         //if tom, popular rename to upcoming
                         //convert
-                        // foreach(['fr'=>$fr, 'es'=>$es, 'pt'=>$pt, 'de'=>$de] as $pref=>$lang) {
-                        //     $str = str_ireplace($en, $lang, file_get_contents($link));
-                        //     file_put_contents(ROOT."/$pref.betagamers.net/$dir/$fullfilename", $str);
-                        // }
+                        //, 'es'=>$es, 'pt'=>$pt, 'de'=>$de
+                        foreach(['fr'=>$fr] as $pref=>$lang) {
+                            $str = iconv("CP1257","UTF-8", implode(str_ireplace($en, $lang, $output)));
+                            file_put_contents(str_replace('/en/', "/$pref/", $link), $str);
+                        }
                         // copy($link, ROOT."/fr.betagamers.net/$dir/$fullfilename");
                         // copy($link, ROOT."/es.betagamers.net/$dir/$fullfilename");
                         // copy($link, ROOT."/pt.betagamers.net/$dir/$fullfilename");
@@ -1005,7 +1008,7 @@ class Folder extends Controller {
             }
         }
         echo 'copied successfully'; //doesn't exactly mean all files were copied to. Uncomment echo $filename.$day.'<br>'; to tell which files were copied and which ones weren't.
-        // $this->convert;
+         //$this->convert;
         // show($games);
         // show($files);
     }
@@ -1060,6 +1063,32 @@ class Folder extends Controller {
         $data['formerrors']['gen'] = $formdata[1]['gen'] ?? $generr ?? '';
         $data['formsuccess'] = $success ?? '';
         $this->view("folder/nogames",$data);
+    }
+    
+    function dbclean() {
+        $viptables = ['diamond', 'platinum', 'alpha', 'othersports'];
+        foreach($viptables as $ind=>$val) {
+            $recstable = DB_RECS_NAME.".$val".'rec';
+            $tabquery[$recstable] = [
+                $ind.'custom_query'=>["INSERT INTO $recstable (planid, fullName, email, phone, currency, amount, reg_date, expdate) SELECT id, fullName, email, phone, currency, amount, reg_date, expdate FROM $val  WHERE expdate <= NOW()"],
+                $ind.'delete'=>[],
+                $ind.'where'=>["expdate <= NOW()"],
+            ];
+        }
+        $tabquery['users'] = [
+            'delete'=>[],
+            'where'=>["active=0 AND reg_date <= NOW() - INTERVAL 3 MONTH"],
+        ];
+        foreach(['games', 'freegames', 'odds'] as $ind=>$val) {
+            $tabquery[$val] = [
+                $ind.'delete'=>[],
+                $ind.'where'=>["date <= NOW() - INTERVAL 3 MONTH"],
+            ];
+        }
+        $gamesclass = new Games;
+        $dbclean = $gamesclass->transaction($tabquery);
+        // show($dbclean);
+        echo 'dbclean finished';
     }
 
     function bookies() {

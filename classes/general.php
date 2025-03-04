@@ -162,7 +162,7 @@ class General {
     }
 
     public function verify_otp($function, array $parameters) {
-        require_once '/home/betaahfg/core/twilio.php';
+        require_once ROOT.'/app/twilio.php';
         $twilioclass = new Twilio;
         return(call_user_func_array([$twilioclass, $function], $parameters));
     }

@@ -332,7 +332,7 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Ligue 1 Table';
             $data['heroimg']['alt'] = 'French Ligue 1 Logo';
             $h3 = 'Related Posts';
-        } ellseif(LANG=='fr') {
+        } elseif(LANG=='fr') {
             $data['page_title'] = $data['h1'] = "Pronostics et Résultats de Championnat France";
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, Ligue 1 française, Pronostics et Résultats de Championnat France';
             $this->description = 'Pronostics gratuits et conseils de paris pour la Ligue 1 française, voir les pronostics et résultats de la Ligue 1 française pour aujourd\'hui et le week-end.';

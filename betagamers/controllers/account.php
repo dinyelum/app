@@ -171,7 +171,7 @@ Class Account extends Controller
             $genclass->insertunique = ['email'];
             $genclass->required = ['email', 'phone'];
             $_POST['language'] = strtoupper(LANG);
-            $dialcode = isset($_POST['country']) ? $country_list[$_POST['country']]['phone'] : (CF_COUNTRY ? $country_list[CF_COUNTRY]['phone'] : null);
+            $dialcode = isset($_POST['country']) && $_POST['country']!='' ? $country_list[$_POST['country']]['phone'] : (CF_COUNTRY ? $country_list[CF_COUNTRY]['phone'] : null);
             $countryname = isset($_POST['country']) ? $country_list[$_POST['country']]['name'] : null;
             $_POST['hash'] = sha1(rand(0,1000));
             if(!isset($_POST['fullphone']) || trim($_POST['fullphone'])=='') {
@@ -361,7 +361,7 @@ Class Account extends Controller
             unset($_POST['signature']);
             $get_by = 'get_by_'.implode('', array_keys($_POST));
             $genclass = new General;
-            $userdata = $genclass->$get_by('users', ['fullname', 'email', 'hash'], array_values($_POST));
+            $userdata = $genclass->$get_by('users', ['fullname', 'email', 'fullphone', 'hash'], array_values($_POST));
             // show($userdata);
             if(is_array($userdata[0]) && count($userdata[0]) && $userdata[1] === false) {
                 $userdata = $userdata[0];
