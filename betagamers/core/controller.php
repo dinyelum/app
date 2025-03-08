@@ -58,6 +58,30 @@ Class Controller
 			$sports = 'Sports';
 			$football = 'Football';
 			$tennis = 'Tennis';
+		} elseif(LANG=='es') {
+			$home = 'Inicio';
+			$vip = 'VIP';
+			$login = 'Login';
+			$logout = 'Cerrar Sesión';
+			$sports = 'Deportes';
+			$football = 'Fútbol';
+			$tennis = 'Tenis';
+		}  elseif(LANG=='pt') {
+			$home = 'Inicial';
+			$vip = 'VIP';
+			$login = 'Entrar';
+			$logout = 'Sair';
+			$sports = 'Esportes';
+			$football = 'Futebol';
+			$tennis = 'Tênis';
+		}  elseif(LANG=='de') {
+			$home = 'Startseite';
+			$vip = 'VIP-Tipps';
+			$login = 'Einloggen';
+			$logout = 'Ausloggen';
+			$sports = 'Sport';
+			$football = 'Fußball';
+			$tennis = 'Tennis';
 		}
 		$langarr = LANGUAGES;
 		if ($offset = array_search(LANG, array_keys(LANGUAGES))) {
@@ -124,6 +148,7 @@ Class Controller
 					'https://www.begambleaware.org/'=>'Be Gamble Aware',
 					'https://www.responsiblegambling.org'=>'Gamble Responsibly'
 				],
+				'above18'=>'Above 18',
 				'bggroup'=>'The BetaGamers Group',
 				'rights'=>'All rights reserved'
 			];
@@ -165,10 +190,138 @@ Class Controller
 				'account'=>[
 					'https://frcasinospot.com/jeu-responsable/'=>'Conseils pour un Jeu Responsable'
 				],
+				'above18'=>'au-dessus de 18',
 				'bggroup'=>'Le Groupe BetaGamers',
 				'rights'=>'Tous Droits Réservés'
 			];
+		} elseif(LANG=='es') {
+			$accountlinks = USER_LOGGED_IN===true ? ['profile'=>'Mi perfil', 'logout'=>'Cerrar sesión'] : ['register'=>'Registrarse', 'login'=>'Login'];
+			$general = [
+				'General',
+				...$accountlinks,
+				'bookmakers'=>'Casas de Apuestas',
+				'blog'=>'Blog de noticias deportivas (en inglés)',
+				'freetips'=>'Fin de semana',
+				'tennis'=>'Tenis'
+			];
+
+			$freebets = [
+				'Apuestas Gratis',
+				'epl'=>'Consejos EPL',
+				'ligue1'=>'Consejos Ligue 1',
+				'seriea'=>'Consejos Serie A',
+				'laliga'=>'Consejos La Liga',
+				'bundesliga'=>'Bundesliga',
+				'ucl'=>'Consejos UCL',
+				'europa'=>'Consejos Europea'
+			];
+
+			$support = [
+				'Apoyo',
+				'contactus'=>'Contacto',
+				'prices'=>'Precios',
+				'terms'=>'Condiciones',
+				'faqs'=>'Preguntas',
+				'aboutus'=>'Sobre nosotros',
+				'jobs'=>'Empleos'
+			];
+
+			$socialmedia = ['Social'];
+
+			$footerbottom = [
+				'account'=>[
+					'https://www.gob.pe/institucion/mincetur/noticias/18620-apuestas-deportivas-consejos-para-un-juego-responsable'=>'Apuesta responsablemente'
+				],
+				'above18'=>'mayores de 18',
+				'bggroup'=>'Grupo BetaGamers',
+				'rights'=>'Todos los derechos reservados'
+			];
+		} elseif(LANG=='pt') {
+			$accountlinks = USER_LOGGED_IN===true ? ['profile'=>'Meu perfil', 'logout'=>'Sair'] : ['register'=>'Registro', 'login'=>'Entrar'];
+			$general = [
+				'Geral',
+				...$accountlinks,
+				'bookmakers'=>'Casas de apostas',
+				'blog'=>'Blog de notícias esportivas (inglês)',
+				'freetips'=>'Futebol Europeu',
+				'tennis'=>'Tênis'
+			];
+
+			$freebets = [
+				'Apostas Grátis',
+				'epl'=>'Dicas EPL',
+				'ligue1'=>'Dicas Ligue 1',
+				'seriea'=>'Dicas Liga Itália',
+				'laliga'=>'Dicas La Liga',
+				'bundesliga'=>'Dicas Bundesliga',
+				'ucl'=>'Dicas UCL',
+				'europa'=>'Dicas Europas'
+			];
+
+			$support = [
+				'Apoio',
+				'contactus'=>'Contato conosco',
+				'prices'=>'Preços',
+				'terms'=>'Termos',
+				'faqs'=>'Perguntas',
+				'aboutus'=>'Sobre nós',
+				'jobs'=>'Empregos'
+			];
+
+			$socialmedia = ['Mídia social'];
+
+			$footerbottom = [
+				'account'=>[
+					'https://jogoresponsavel.pt/'=>'Jogue com responsabilidade'
+				],
+				'above18'=>'au-dessus de 18',
+				'bggroup'=>'O Grupo BetaGamers',
+				'rights'=>'Todos os direitos reservados'
+			];
+		} elseif(LANG=='de') {
+			$accountlinks = USER_LOGGED_IN===true ? ['profile'=>'Mein Profil', 'logout'=>'Ausloggen'] : ['register'=>'Registrieren', 'login'=>'Einloggen'];
+			$general = [
+				'Allgemein',
+				...$accountlinks,
+				'bookmakers'=>'Buchmacher',
+				'blog'=>'Sportnachrichten-Blog (Englisch)',
+				'freetips'=>'Wochenende-Tipps',
+				'tennis'=>'Tennis'
+			];
+
+			$freebets = [
+				'Kostenlose Wetten',
+				'epl'=>'EPL Tipps',
+				'ligue1'=>'Ligue 1 Tipps',
+				'seriea'=>'Serie A Tipps',
+				'laliga'=>'La Liga Tipps',
+				'bundesliga'=>'Bundesliga Tipps',
+				'ucl'=>'UCL Tipps',
+				'europa'=>'Europa Tipps'
+			];
+
+			$support = [
+				'Hilfecenter',
+				'contactus'=>'Kontaktiere uns',
+				'prices'=>'Preise',
+				'terms'=>'Bedingungen',
+				'faqs'=>'Fragen',
+				'aboutus'=>'Über uns',
+				'jobs'=>'Arbeitsplätze'
+			];
+
+			$socialmedia = ['Sozialen Medien'];
+
+			$footerbottom = [
+				'account'=>[
+					'https://www.gambling.com/de/verantwortung/verantwortungsbewusstes-spielen'=>'Spielen Sie verantwortungsvoll'
+				],
+				'above18'=>'Über 18',
+				'bggroup'=>'Die BetaGamers-Gruppe',
+				'rights'=>'Alle Rechte vorbehalten'
+			];
 		}
+
 		$footer['sec1'] = [
 			[
 				$general[0]=>[

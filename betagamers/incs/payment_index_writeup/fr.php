@@ -12,7 +12,7 @@ BIC / SWIFT: <?=SWIFTCODE?><br><br>
 <h3 style='color:green'>APRÈS AVOIR EFFECTUÉ LE PAIEMENT, ENVOYEZ-NOUS:</h3>
 (1) TON NOM COMPLET (2) VOTRE ADRESSE EMAIL (3) Le montant payé (4) Plan d'abonnement<br><br>
 Exemple: Charles Louis. louislucas@exemple.com. N12000. 3 mois Platine.<br><br>
-AU +2348157437268 (via sms ou Whatsapp) ou <a href="<?=support_links('mailus')?>" style='color:green'>Envoyez-nous un e-mail</a>.<br><br>
+AU <?=PHONE?> (via sms ou Whatsapp) ou <a href="<?=support_links('mailus')?>" style='color:green'>Envoyez-nous un e-mail</a>.<br><br>
 <h3 style='color:green'>Méthodes de paiement disponibles</h3>
 Parcourez la liste ci-dessous pour voir les différentes options de paiement disponibles:
 <ul><li><?=implode('</li><li>', all_payment_methods())?></li></ul>

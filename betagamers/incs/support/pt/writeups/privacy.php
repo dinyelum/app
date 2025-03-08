@@ -1,0 +1,37 @@
+<p>Esta política de privacidade descreve como o nosso <a href="<?=HOME?>" style="color:green">website confiável de previsao de futebol</a> recolhe, protege e utiliza as Informações Pessoais que você fornece no nosso website, porque a privacidade dos nossos visitantes é também a nossa principal prioridade ao tentarmos o nosso melhor para garantir que o nosso website continue a ser  <a href="<?=HOME?>" style="color:green">o melhor website de prognóstico de futebol do mundo</a>. Também descreve as escolhas disponíveis para você em relação à nossa utilização das suas Informações Pessoais e como você pode acessar e atualizar essas informações. Esta Política não se aplica às práticas de empresas que não possuímos ou controlamos, ou a indivíduos que não empregamos ou gerimos.</p>
+
+<h2>ARQUIVOS DE REGISTRO E COLETA AUTOMÁTICA DE INFORMAÇÃO</h2>
+<p>O BetaGamers segue um procedimento padrão de utilização de ficheiros de registo. Quando visita o nosso Website, os nossos servidores registam automaticamente as informações que o seu navegador envia. Estes dados podem incluir informações como o endereço IP do seu dispositivo, tipo e versão do browser, tipo e versão do sistema operacional, preferências linguísticas, páginas do nosso Website que você visita, o tempo gasto nessas páginas, informações que procura no nosso Website, horas e datas de acesso e mesmo a página web que visitava antes de vir ao nosso Website e estas são principalmente para fins analíticos e estatísticos.</p>
+
+<p>Coleta, Uso e Processamento de Informação Pessoal</p>
+<p>Para utilizar algumas das funcionalidades do Website, será pedido você que forneça certas Informações Pessoais que podem incluir principalmente o seu nome, email, número de telefone, endereço (país), ou outras Informações Pessoais.</p> 
+<p>Recebemos e armazenamos qualquer informação que nos forneça conscientemente quando cria uma conta, publica conteúdo ou comentários, ou preenche qualquer formulário online no nosso Website.</p>
+<p>Qualquer informação que recolhemos de você pode ser utilizada para personalizar a sua experiência; melhorar o nosso Website; melhorar o serviço ao cliente e responder a consultas e emails dos nossos clientes; enviar notícias; enviar emails de notificação, tais como lembretes de senha, atualizações, etc; gerir e operar o nosso Website e Serviços. A informação recolhida automaticamente é utilizada apenas para identificar potenciais casos de abuso e estabelecer informações estatísticas relativas à utilização do Website. Esta informação estatística não é agregada de outra forma, de modo a identificar qualquer utilizador em particular do sistema.</p>
+
+<h2>ADMINITRAÇÃO DE INFORMAÇÕES PESSOAIS</h2>
+<p>Assim que uma conta for criada, você pode visitar o seu perfil para ver quais informações estão disponíveis para visualização. Você tem o direito de fazer ajustamentos aos seus dados pessoais, mas não pode fazê-lo diretamente no website, terá de nos enviar um e-mail com os dados que precisa de alterar para que possamos atualizar os seus dados em conformidade.</p>
+
+<h2>POLÍTICA DE PRIVACIDADE DE TERCEIROS</h2>
+<p>A Política de Privacidade da BetaGamers não se aplica a outros anunciantes ou websites. Assim, lhe aconselhamos consultar as respectivas Políticas de Privacidade destes servidores de anúncios de terceiros para informações mais detalhadas, uma vez que pode incluir as suas práticas e instruções sobre como optar por não participar de certas opções.</p>
+
+<h2>PRIVACIDADE DE CRIANÇAS</h2>
+<p>Outra parte da nossa prioridade é acrescentar proteção para as crianças enquanto utilizam a Internet. Encorajamos os pais e tutores a observar, participar, e/ou monitorizar e orientar a sua atividade online.</p>
+<p>A BetaGamers não recolhe intencionalmente qualquer Informação Pessoal Identificável de crianças menores de 13 anos. Se pensa que o seu filho forneceu este tipo de informação no nosso website, encorajamo-lo vivamente a contatar-nos imediatamente e faremos o nosso melhor para remover prontamente tal informação dos nossos registos.</p>
+
+<h2>SEGURANÇA DE INFORMAÇÕES</h2>
+<p>Protegemos a informação que você fornece em servidores num ambiente controlado e seguro, protegido de acesso, utilização, ou divulgação não autorizada. Mantemos salvaguardas administrativas, técnicas e físicas razoáveis num esforço para proteger contra acesso, utilização, modificação e divulgação não autorizada de Informações Pessoais no seu controlo e custódia. No entanto, nenhuma transmissão de dados através da Internet ou rede sem fios pode ser garantida. Portanto, embora nos esforcemos por proteger as suas Informações Pessoais, o utilizador reconhece que (i) existem limitações de segurança e privacidade da Internet que estão fora do nosso controlo; (ii) a segurança, integridade e privacidade de toda e qualquer informação e dados trocados entre o utilizador e o nosso Website não podem ser garantidos; e (iii) tais informações e dados podem ser vistos ou adulterados em trânsito por um terceiro, apesar dos melhores esforços.</p>
+
+<h2>VIOLAÇÃO DE DADOS</h2>
+<p>Caso tenhamos conhecimento de que a segurança do Website foi comprometida ou de que as Informações Pessoas de utilizadores foram reveladas para terceiros não relacionados em resultado de atividades externas, incluindo, mas não se limitando a, ataques à segurança ou fraude, reservamo-nos o direito de tomar medidas razoavelmente adequadas, incluindo, mas não se limitando a, investigação e relatórios, bem como notificação e cooperação com as autoridades de aplicação da lei. Em caso de violação de dados, faremos esforços razoáveis para notificar as pessoas afetadas se acreditarmos que existe um risco razoável de dano para o utilizador como resultado da violação ou se a notificação for exigida por lei. Quando o fizermos, publicaremos um aviso no Website, enviando-lhe um email.</p>
+
+<h2>MUDANÇAS E EMENDAS</h2>
+<p>Podemos atualizar esta Política de Privacidade de tempos a tempos, a nosso critério, e notificaremos o utilizador de quaisquer alterações a este documento através da alteração da data atualizada no final desta página. Qualquer versão atualizada da presente Política de Privacidade entrará em vigor imediatamente após a publicação da Política de Privacidade revista, salvo quando especificado o contrário. O uso continuado do Website ou Serviços após a data de entrada em vigor da Política de Privacidade revista (ou outro ato especificado naquele momento) constituirá o seu consentimento para essas alterações.</p>
+<p>Contudo, sem o seu consentimento, não utilizaremos os seus Dados Pessoais de uma forma diferente da que foi declarada no momento em que os seus Dados Pessoais foram recolhidos.</p>
+
+<h2>POLÍTICA DE PRIVACIDADE APENAS ONLINE</h2>
+<p>Esta Política de Privacidade aplica-se apenas às nossas atividades online e é válida para os visitantes do nosso website no que respeita às informações que partilharam e/ou recolheram em BetaGamers. Esta política não é aplicável a qualquer informação recolhida offline ou através de outros canais que não este website.</p>
+
+<h2>CONSENTIMENTO</h2>
+<p>Ao utilizar o nosso website, você consente com a nossa Política de Privacidade e concorda com os seus Termos e Condições.</p>
+
+<p>Este documento foi atualizado pela última vez em 11 de Outubro de 2019</p>

@@ -5,14 +5,14 @@
 <p>They also have the responsibility of setting the odds which is capable of yielding profit if set correctly but can also lead to great loss to the bookmakers if not properly set.</p>
 
 <h2>The Complete Guide to Football Betting</h2>
-<p>It is very necessary to get conversant with betting in order to learn <a href="predict" style="color:green">how to predict football matches correctly</a></p>
+<p>It is very necessary to get conversant with betting in order to learn <a href="<?=free_games_link('predict')?>" style="color:green">how to predict football matches correctly</a></p>
 <p>It is our duty to help you in understanding the football betting terms / abbreviations that are commonly used in the <a href="<?=HOME?>" style="color:green">free tips section of this sure prediction site</a> or any other soccer prediction site</p>
 
 <h3>The Three Way Option (1X2)</h3>
 <p>This is usually the easiest betting option / market and also the most popular in use. It can be found on all betting sites. It has just three options: 1 X and 2</p>
 <h4>1</h4>
 <p>This simply means HOME WIN. It can also be represented with H.<p>
-<p>So for a match like Chelsea vs Man Utd in the <a href="epl" style="color:green">English Premier League</a>, if you select and bet on 1, it means you are betting on a Chelsea Win, thus for outcomes like Chelsea 2:1 ManUtd, Chelsea 1:0 ManUtd, or Chelsea 5:2 ManUtd, it is successful and the bet is won. For outcomes like Chelsea 1:1 ManUtd, Chelsea 1:2 ManUtd or anything that is not a Home WIN (Chelsea win in this case) is a failed or lost bet.</p>
+<p>So for a match like Chelsea vs Man Utd in the <a href="<?=free_games_link('epl')?>" style="color:green">English Premier League</a>, if you select and bet on 1, it means you are betting on a Chelsea Win, thus for outcomes like Chelsea 2:1 ManUtd, Chelsea 1:0 ManUtd, or Chelsea 5:2 ManUtd, it is successful and the bet is won. For outcomes like Chelsea 1:1 ManUtd, Chelsea 1:2 ManUtd or anything that is not a Home WIN (Chelsea win in this case) is a failed or lost bet.</p>
 
 <h4>X</h4>
 <p>This is Draw. If you select this option, it means that both teams must score the same number of goals or score no goal at all for the bet to be successful. Using the sample match above, anything that does not look like 0-0, 1-1, 2-2, 3-3, 4-4, 5-5 etc is a lost bet.</p>
@@ -24,7 +24,7 @@
 <h3>Goals</h3>
 <h4>Over/Under Goals</h4>
 <p>Over simply means more than specified while Under means less than or equal to specified.</p>
-<p>That said, let us start with Over 0.5; Over 0.5 Goal means there must be a total of 1 or more goals scored in the match for the bet to be successful. Also, over 1.5 as frequently used in our <a href="bundesliga" style="color:green">German Bundesliga Predictions</a>means 2 goals and above. Over 3.5 means 4 Goals and above, etc.</p>
+<p>That said, let us start with Over 0.5; Over 0.5 Goal means there must be a total of 1 or more goals scored in the match for the bet to be successful. Also, over 1.5 as frequently used in our <a href="<?=free_games_link('bundesliga')?>" style="color:green">German Bundesliga Predictions</a>means 2 goals and above. Over 3.5 means 4 Goals and above, etc.</p>
 <p>For Unders, Under 1.5 Goals means 1 goal or less, anything above 1 Goal in the match is a lost bet. Again, Un 2.5 Goals means the total goals in the match should be exactly 2 Goals or less. See Table below:</p>
 <table class="w3-center">
 <tr>
@@ -99,7 +99,7 @@ Betting on this option means there must be a win. Either the Home Team or the Aw
 <p><b>N.B:</b> Check the Overs/Unders section if you do not understand the terms Ov 1.5, Un 0.5 etc very well.</p>
 
 <h3>No Bet</h3>
-<p>Sometimes, we see <a href="./" style="color:green">Football betting tips</a> like HNB, DNB or ANB in <a href="<?=HOME?>" style="color:green">top prediction sites</a> and we keep wondering, what do these things even mean? Well:</p>
+<p>Sometimes, we see <a href="<?=HOME?>" style="color:green">Football betting tips</a> like HNB, DNB or ANB in <a href="<?=HOME?>" style="color:green">top prediction sites</a> and we keep wondering, what do these things even mean? Well:</p>
 <ol>
 <li>HNB means Home No Bet</li>
 <li>DNB means Draw No Bet</li>

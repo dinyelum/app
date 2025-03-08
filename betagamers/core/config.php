@@ -41,14 +41,27 @@ define('HR', 'hr@betagamers.net');
 define('LINKS', 'links@betagamers.net');
 define('PAYMENTS', 'payments@betagamers.net');
 define('PHONE', '+2348157437268');
+define('PHONE_LOCALE', '08157437268');
 if(LANG=='en') {
 	define('FB', 'betagamerpage');
 	define('X', 'betagamersnet');
 	define('TELEGRAM_CHANNEL', 'betagamers_en');
 } elseif(LANG=='fr') {
-	define('FB', 'betagamers_fr');
+	define('FB', 'betagamersfr');
 	define('X', 'betagamers_fr');
 	define('TELEGRAM_CHANNEL', 'betagamers_fr');
+} elseif(LANG=='es') {
+	define('FB', 'betagamerses');
+	define('X', 'betagamers_es');
+	define('TELEGRAM_CHANNEL', 'betagamers_esp');
+} elseif(LANG=='pt') {
+	define('FB', 'betagamerspt');
+	define('X', 'betagamers_pt');
+	define('TELEGRAM_CHANNEL', 'betagamers_pt');
+} elseif(LANG=='de') {
+	define('FB', 'betagamersde');
+	define('X', 'betagamers_de');
+	define('TELEGRAM_CHANNEL', 'betagamers_de');
 }
 define('IG', 'betagamersnet');
 define('PINTEREST', 'betagamersnet');

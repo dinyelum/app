@@ -24,7 +24,7 @@ $this->display_iframes()?>
 <p>We always release our Ligue 1 predictions as fast as possible, usually 2-3 days before the game schedule. The aim is to help you get access to early value bets before they start dropping. If you are looking for ligue 1 predictions for today or tomorrow, midweek or for the weekend, this is the page you should always check.</p>
 
 <h2>Where to bet on the French League?</h2>
-<p>You can check <a style='color:green; text-decoration: underline' href='../bookies/'>this page</a> to see latest bookmakers and their offers so you can register easily and start betting on Ligue 1 matches.</p>
+<p>You can check <a style='color:green; text-decoration: underline' href='<?=bookies_link()?>'>this page</a> to see latest bookmakers and their offers so you can register easily and start betting on Ligue 1 matches.</p>
 
 <h2><?=$data['h2b']?></h2>
 <?=$this->list_league_teams()?>

@@ -12,6 +12,18 @@ if(isset($_GET['id']) && in_array(strtolower($_GET['id']), $curbanks)) {
             $forbankdep = 'Pour les virements bancaires';
             $atmdep = 'Pour les dépôts aux guichets automatiques';
             $tillpoints = 'Pour les dépôts aux points de caisse(Checkers, Shoprite, etc)';
+        } elseif(LANG=='es') {
+            $forbankdep = 'Para transferencias bancarias';
+            $atmdep = 'Para depósitos en cajeros automáticos';
+            $tillpoints = 'Para Depósitos en Puntos de Efectivo(Checkers, Shoprite, etc)';
+        } elseif(LANG=='pt') {
+            $forbankdep = 'Para transferências bancárias';
+            $atmdep = 'Para depósitos em multibanco';
+            $tillpoints = 'Para Depósitos em Pontos de Caixa(Checkers, Shoprite, etc)';
+        } elseif(LANG=='de') {
+            $forbankdep = 'Für Banküberweisungen';
+            $atmdep = 'Für Einzahlungen am Geldautomaten';
+            $tillpoints = 'Für Einzahlungen an Kassen(Checkers, Shoprite, etc)';
         }
         $allbanks = [
             $forbankdep=>[

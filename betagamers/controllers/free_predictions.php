@@ -71,9 +71,10 @@ class Free_Predictions extends Controller {
         $this->view("free_predictions/index",$data);
     }
 
-    function iframe_teams($width, $height, $stage=null) {
-        $frame = $this->iframe?>
-        <iframe width="<?=$width?>" height="<?=$height?>" src="https://www.fctables.com/<?=$frame['league']?>/iframe/?type=table&lang_id=<?=$frame['langid']?>&country=<?=$frame['country'].(isset($stage) ? "&stage=".$stage : '')?>&template=<?=$frame['template']?>&timezone=Africa/Lagos&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=1&ga=1&gd=1&pts=1&ng=1&form=1&width=<?=$width?>&height=<?=$height?>&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=0&tlink=0&scfs=22&scfc=333333&scb=1&sclg=1&teamls=80&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=008000&hfc=FFFFFF"></iframe><?php
+    function iframe_teams($width, $height, $tabletype='big', $stage=null) {
+        $frame = $this->iframe;
+        $sections = $tabletype=='big' ? 'po=1&ma=1&wi=1&dr=1&los=1&gf=1&ga=1&gd=1&pts=1&ng=1&form=1' : 'po=1&ma=1&wi=1&dr=1&los=1&gf=0&ga=0&gd=1&pts=1&ng=0&form=0'?>
+        <iframe width="<?=$width?>" height="<?=$height?>" src="https://www.fctables.com/<?=$frame['league']?>/iframe/?type=table&lang_id=<?=$frame['langid']?>&country=<?=$frame['country'].(isset($stage) ? "&stage=".$stage : '')?>&template=<?=$frame['template']?>&timezone=Africa/Lagos&time=24&<?=$sections?>&width=<?=$width?>&height=<?=$height?>&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=0&tlink=0&scfs=22&scfc=333333&scb=1&sclg=1&teamls=80&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=008000&hfc=FFFFFF"></iframe><?php
     }
 
     function iframe_scorers($width, $height) {
@@ -212,6 +213,51 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classement de la Premier League Anglaise';
             $data['heroimg']['alt'] = 'Logo de la Premier League anglaise';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronósticos y resultados de la Premier League de Inglaterra";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos epl, predicciones epl, pronósticos y resultados de la Premier League de Inglaterra';
+            $this->description = 'Pronósticos gratis para la Premier League inglesa. Obtenga hoy los mejores consejos de apuestas de EPL de nuestros expertos para los juegos de mitad de semana y de fin de semana.';
+            $this->og['title'] = $data['page_title'];
+            $this->og['description'] = 'Predicción de fútbol precisa y fuente más real de predicciones de expertos';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Predicciones y consejos de fútbol gratuitos para la Premier League de Inglaterra';
+            $h2b = '¿Qué equipos están actualmente en la Premier League?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación de la Premier League inglesa';
+            $data['heroimg']['alt'] = 'Logo de la Premier League inglesa';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Inglaterra Premier League";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da premier league, site de previsão precisa do EPL, melhor site de prognosticos da premier league, liga inglesa, prognósticos da premier league inglesa, dicas e resultados da liga Inglaterra, palpites Inglaterra premier league';
+            $this->description = 'Palpites gratuitos da premier league. Receba as melhores dicas de apostas do Campeonato Inglês para hoje, amanhã, meio da semana e fim de semana.';
+            $this->og['title'] = $data['page_title'];
+            $this->og['description'] = 'Obtenha boas dicas gratuitas e vip todos os dias';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Palpites Inglaterra Premier League';
+            $h2b = 'Quais times estão atualmente na Premier League?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela da Premier League inglesa';
+            $data['heroimg']['alt'] = 'Logo do EPL';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Vorhersagen und Ergebnisse der englischen Premier League";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, epl tipps, beste EPL-Vorhersage-Website, Die englische Premier League, Vorhersagen für die englische Premier League, Vorhersagen und Ergebnisse der englischen Premier League';
+            $this->description = 'Prognosen für die englische Liga. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für die englische Premier League für heute, morgen und das Wochenende an.';
+            $this->og['title'] = $data['page_title'];
+            $this->og['description'] = 'Holen Sie sich die besten fußball tipps vorhersage für heute';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Englische Liga (EPL) Wett Tipps von Experten';
+            $h2b = 'Welche Teams spielen derzeit in der Premier League?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabelle der englischen Premier League';
+            $data['heroimg']['alt'] = 'EPL-Logo';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
@@ -257,7 +303,52 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classement de la Liga espagnole';
             $data['heroimg']['alt'] = 'Logo de la Liga espagnole';
             $h3 = 'Articles Similaires';
-        }
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronósticos y resultados de la Liga Española";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos la Liga, predicciones la Liga, predicciones y resultados de la Liga Española';
+            $this->description = 'Los mejores pronósticos gratuitos de LaLiga para hoy, mañana y el fin de semana.';
+            $this->og['title'] = 'Predicciones LaLiga Gratis';
+            $this->og['description'] = 'Consulta los pronósticos de LaLiga para hoy, mañana y el fin de semana';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Predicciones y consejos de fútbol de expertos gratuitos para la Liga española';
+            $h2b = '¿Qué equipos están actualmente en la liga español?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación de LaLiga española';
+            $data['heroimg']['alt'] = 'Logo de La Liga española';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Espanha La Liga";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da la liga, site de previsão precisa da la liga, melhor site de prognosticos da la liga, la liga espanhola, prognósticos da espanha primeira liga, dicas e resultados da liga espanhola, palpites espanha la liga';
+            $this->description = 'Palpites gratuitos da liga espanhola. Receba as melhores dicas de apostas do campeonatos espanhol para hoje, amanhã, meio da semana e fim de semana.';
+            $this->og['title'] = 'Dicas gratuitas da la liga';
+            $this->og['description'] = 'Veja os prognosticos da espanha primeira liga para hoje e para o fim de semana';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Prognósticos e resultados gratuitos da liga espanhola';
+            $h2b = 'Quais equipes estão atualmente na Liga Espanhola?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela da Liga Espanhola';
+            $data['heroimg']['alt'] = 'Logo da Laliga Espanhola';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Spanische La Liga Vorhersagen und Ergebnisse";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, la liga tipps, best la liga prediction website, spanische La Liga, Vorhersagen für die spanische Liga, Primera Division Prognosen, Spanische La Liga Vorhersagen und Ergebnisse';
+            $this->description = 'Prognosen für die spanische Liga. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für die spanische La Liga für heute, morgen und das Wochenende an.';
+            $this->og['title'] = 'Kostenlose Prognosen für La Liga';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für die spanische La Liga für die Wochenmitte und das Wochenende an';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Spanische Liga Wett Tipps von Experten';
+            $h2b = 'Welche Teams spielen derzeit in der Spanische Liga?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabelle der spanischen La Liga';
+            $data['heroimg']['alt'] = 'Logo der spanischen LaLiga';
+            $h3 = 'Zusammenhängende Posts';
+        } 
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $data['h2a'] = $h2a;
@@ -302,7 +393,52 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classement Bundesliga Allemande';
             $data['heroimg']['alt'] = 'Logo de la Bundesliga';
             $h3 = 'Articles Similaires';
-        }
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronósticos y resultados de la Bundesliga alemana";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos bundesliga, predicciones bundesliga, predicciones y resultados de la Bundesliga alemana';
+            $this->description = 'Vea pronósticos gratuitos de la Bundesliga alemana, consejos de apuestas de expertos y resultados para hoy, mañana y el fin de semana.';
+            $this->og['title'] = 'Pronosticos Bundesliga Gratis';
+            $this->og['description'] = 'Vea los mejores Pronosticos Bundesliga alemanes gratis para la mitad de la semana y el fin de semana.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Predicciones gratuitas expertos de la liga alemana';
+            $h2b = '¿Qué equipos están actualmente en la Bundesliga alemana?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación de la Bundesliga alemana';
+            $data['heroimg']['alt'] = 'Logo de la Bundesliga alemana';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Alemanha Bundesliga";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da Bundesliga, site de previsão precisa da Bundesliga, melhor site de prognosticos da Bundesliga, Bundesliga Alemã, prognósticos da Bundesliga Alemã, palpites alemanha bundesliga, dicas e resultados da liga alemã';
+            $this->description = 'Palpites gratuitos da Bundesliga. Receba as melhores dicas de apostas do Campeonato Alemão para hoje, amanhã, meio da semana e fim de semana.';
+            $this->og['title'] = 'Dicas gratuitas da Bundesliga';
+            $this->og['description'] = 'Veja os prognosticos da Bundesliga alemã para hoje e para o fim de semana.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Prognósticos e resultados gratuitos da liga alemã';
+            $h2b = 'Quais equipes estão atualmente na Bundesliga alemã?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela / classificações da Bundesliga alemã';
+            $data['heroimg']['alt'] = 'Logo da Bundesliga';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Vorhersagen und Ergebnisse der deutschen Bundesliga";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, bundesliga Wetttipps, beste bundesliga-vorhersageseite, deutsche bundesliga, deutsche bundesliga prognosen, deutsche bundesliga prognosen und ergebnisse';
+            $this->description = 'Prognosen für die deutsche Liga. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für die deutsche Bundesliga für heute, morgen und das Wochenende an.';
+            $this->og['title'] = 'Kostenlose Bundesliga Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für die deutsche Bundesliga für die Wochenmitte und das Wochenende an.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Deutsche Liga Wett Tipps von Experten';
+            $h2b = 'Welche Mannschaften spielen aktuell in der deutschen Bundesliga?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Deutsche Bundesliga Tabelle / Stand';
+            $data['heroimg']['alt'] = 'Bundesliga-Logo';
+            $h3 = 'Zusammenhängende Posts';
+        } 
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $data['h2a'] = $h2a;
@@ -347,6 +483,51 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classements de Ligue 1';
             $data['heroimg']['alt'] = 'Logo de Ligue 1 française';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronósticos y resultados de la Ligue 1 francesa";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos ligue 1, predicciones ligue 1, pronósticos y resultados de la ligue 1 francesa';
+            $this->description = 'Predicciones gratuitas de expertos para la Ligue 1 francesa, consulta los pronósticos de la Ligue 1 para hoy, mañana y el fin de semana.';
+            $this->og['title'] = 'Pronosticos y resultados de la Ligue 1 gratis';
+            $this->og['description'] = 'Consulta los predicciones de la Ligue 1 para hoy.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Predicciones Ligue 1 Gratis';
+            $h2b = '¿Qué equipos están actualmente en la Ligue 1 francesa?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación Ligue 1';
+            $data['heroimg']['alt'] = 'Logo de la Ligue 1 francesa';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Palpites França Liga 1";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da liga 1, site de previsão precisa da ligue 1, melhor site de prognosticos da ligue 1, primeira liga frança, prognósticos da frança ligue 1, palpites frança liga 1, dicas e resultados da 1 liga francesa';
+            $this->description = 'Palpites gratuitos da Ligue 1. Receba as melhores dicas de apostas da liga 1 frança para hoje, amanhã, meio da semana e fim de semana.';
+            $this->og['title'] = 'Dicas gratuitas da Ligue 1';
+            $this->og['description'] = 'Veja os prognosticos da liga 1 frança para hoje e para o fim de semana.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Prognósticos e resultados gratuitos da liga francesa';
+            $h2b = 'Quais equipes estão atualmente na França Ligue 1?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela da Liga 1';
+            $data['heroimg']['alt'] = 'Logo da Ligue 1 Francesa';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Französische Ligue 1 Vorhersagen und Ergebnisse";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, Frankreich ligue 1 tipps, Beste Vorhersageseite für die Liga 1, Französische Liga 1, Vorhersagen für die französische Ligue 1, Französische Ligue 1 Vorhersagen und Ergebnisse';
+            $this->description = 'Prognosen für die französische Liga. Sehen Sie sich Vorhersagen, Wetttipps und Ergebnisse für die französische Ligue 1 für heute, morgen und das Wochenende an.';
+            $this->og['title'] = 'Kostenlose Ligue 1 Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für die französische Ligue 1 für die Wochenmitte und das Wochenende an.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Französische Liga Wett-Tipps von Experten';
+            $h2b = 'Welche Mannschaften spielen aktuell in der französischen Ligue 1?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Liga 1 Tabelle';
+            $data['heroimg']['alt'] = 'Logo der französischen Ligue 1';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
@@ -392,6 +573,51 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classement Serie A italienne';
             $data['heroimg']['alt'] = 'Logo Serie A italienne';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronósticos y resultados de la Serie A italiana";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos gratis de la Serie A, predicciones Serie A, pronósticos y resultados de la Serie A italiana';
+            $this->description = 'Vea nuestras pronosticos gratuitas de la Serie A hoy para mañana, a mitad de semana y el fin de semana.';
+            $this->og['title'] = 'Predicciones Gratis para la Serie A Italiana';
+            $this->og['description'] = 'Vea nuestras pronosticos de la Serie A hoy para mañana, a mitad de semana y el fin de semana';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Pronosticos Gratis Serie A';
+            $h2b = '¿Qué equipos están actualmente en la Serie A?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación de la Serie A Italiana';
+            $data['heroimg']['alt'] = 'Logo de la Serie A italiana';
+            $h3 = 'Artículos Relacionados';
+        }  elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Itália Série A";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da série a, site de previsão precisa da primeira liga italia, melhor site de prognosticos da série a, série a italiana, prognósticos da série a italiana, palpites itália série a, dicas e resultados da liga italiana';
+            $this->description = 'Palpites gratuitos da série a. Receba as melhores dicas de apostas do Campeonato Italiano para hoje, amanhã, meio da semana e fim de semana.';
+            $this->og['title'] = 'Dicas gratuitas da série a';
+            $this->og['description'] = 'Veja os prognosticos da liga itália para hoje e para o fim de semana';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Prognósticos e resultados gratuitos da liga italiana';
+            $h2b = 'Quais equipes estão atualmente na Série A?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela / classificações da Série A Italia';
+            $data['heroimg']['alt'] = 'Logo da Série A italiana';
+            $h3 = 'Postagens relacionadas';
+        }  elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Italienische Serie A Vorhersagen und Ergebnisse";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, serie a tipps, beste Serie A Vorhersageseite, Italienische Serie A, Prognosen der italienischen Liga, Italienische Serie A Vorhersagen und Ergebnisse';
+            $this->description = 'Prognosen für die italienische Liga. Sehen Sie sich Vorhersagen, Wetttipps und Ergebnisse für die italienische Serie A für heute, morgen und das Wochenende an.';
+            $this->og['title'] = 'Kostenlose Serie A Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für die Italienische Serie A für die Wochenmitte und das Wochenende an.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Italienische Liga Wett Tipps von Experten';
+            $h2b = 'Welche Teams spielen derzeit in der Serie A?';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabelle der italienischen Serie A';
+            $data['heroimg']['alt'] = 'Logo der italienischen Serie A';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
@@ -437,6 +663,51 @@ class Free_Predictions extends Controller {
             // $this->iframe['teamsh'] = 'English Premier League Table';
             $data['heroimg']['alt'] = 'Logo de la Ligue des champions de l\'UEFA';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronosticos y resultados de la Liga de Campeones de la UEFA";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos ucl, predicciones ucl, pronosticos Champions League, pronosticos y resultados de la Liga de Campeones de la UEFA';
+            $this->description = 'Obtenga acceso a las mejores predicciones de la Liga de Campeones ahora.';
+            $this->og['title'] ='Predicciones gratis de UCL';
+            $this->og['description'] = 'Vea los pronosticos gratis de la Liga de Campeones de la UEFA';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = '';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            // $this->default_iframe_values();
+            // $this->iframe['teamsh'] = 'English Premier League Table';
+            $data['heroimg']['alt'] = 'Logo de la Liga de Campeones de la UEFA';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Champions League";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da champions league, site de previsão precisa da UCL, melhor site de prognosticos da UCL, Liga dos Campeões UEFA, prognósticos da Liga dos Campeões UEFA, palpites champions league, dicas e resultados da champions league UEFA';
+            $this->description = 'Palpites gratuitos da champions league. Receba as melhores dicas de apostas da Liga dos Campeões para hoje e para amanhã.';
+            $this->og['title'] ='Dicas gratuitas da Champions League';
+            $this->og['description'] = 'Veja os prognosticos da liga dos campeões para hoje e para amanhã';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = '';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            // $this->default_iframe_values();
+            // $this->iframe['teamsh'] = 'English Premier League Table';
+            $data['heroimg']['alt'] = 'Logo da Série A italiana';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Vorhersagen und Ergebnisse der UEFA Champions League";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, sports tips, UEFA Champions League, Prognosen zur UCL, Vorhersagen und Ergebnisse der UEFA Champions League';
+            $this->description = 'Prognosen für UCL. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für der UEFA Champions League für heute, morgen und das Wochenende an.';
+            $this->og['title'] ='Kostenlose UCL Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für der UEFA Champions League für die Wochenmitte und das Wochenende an.';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = '';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            // $this->default_iframe_values();
+            // $this->iframe['teamsh'] = 'English Premier League Table';
+            $data['heroimg']['alt'] = 'Logo do UCL';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
@@ -482,6 +753,51 @@ class Free_Predictions extends Controller {
             // $this->iframe['teamsh'] = 'English Premier League Table';
             $data['heroimg']['alt'] = 'Classement des groupes de l\'UEFA Europa League';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronosticos y resultados de la Liga Europea";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos europa league, predicciones europa league, Pronosticos y resultados de la Liga Europea';
+            $this->description = 'Obtenga acceso a las mejores predicciones gratis de la Liga Europea.';
+            $this->og['title'] ='Pronósticos de la Europa League';
+            $this->og['description'] = 'Vea los pronosticos gratis de la Liga Europea ahora';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Pronosticos Gratis de la Liga Europea';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            // $this->default_iframe_values();
+            // $this->iframe['teamsh'] = 'English Premier League Table';
+            $data['heroimg']['alt'] = 'Logo de la liga europea';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Liga Europa";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da europa league, site de previsão precisa da liga europa, melhor site de prognosticos da liga europa, liga europa, prognósticos da europa league, palpites liga europa, dicas e resultados da europa league';
+            $this->description = 'Palpites gratuitos da europa league. Receba as melhores dicas de apostas da liga europa para hoje, quinta-feira.';
+            $this->og['title'] ='Dicas gratuitas da Europa League';
+            $this->og['description'] = 'Veja os prognosticos da liga europa para quinta-feira';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Prognósticos e resultados gratuitos da Europa League';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            // $this->default_iframe_values();
+            // $this->iframe['teamsh'] = 'English Premier League Table';
+            $data['heroimg']['alt'] = 'Logo da Liga Europa';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Vorhersagen und Ergebnisse der Europa League";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, Europa Liga, Prognosen zur Europa League, Vorhersagen und Ergebnisse der Europa League';
+            $this->description = 'Prognosen für die Europa Liga. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für der UEFA Europa League für heute, morgen und das Wochenende an.';
+            $this->og['title'] ='Kostenlose Europa League Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für der UEFA Europa League für die Wochenmitte und das Wochenende an';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'UEFA Europa Liga Wett Tipps von Experten';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            // $this->default_iframe_values();
+            // $this->iframe['teamsh'] = 'English Premier League Table';
+            $data['heroimg']['alt'] = 'Logo der Europa League';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
@@ -527,7 +843,52 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classement des groupes du Championnat d\'Europe de l\'UEFA (EURO 2024)';
             $data['heroimg']['alt'] = 'Logo de l\'UEFA Euro';
             $h3 = 'Articles Similaires';
-        }
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronosticos del EURO 2024";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos euro, predicciones euro, pronósticos y resultados del Campeonato de Europa';
+            $this->description = 'Obtenga acceso a las predicciones y los resultados del Campeonato de Europa de la UEFA de forma gratuita.';
+            $this->og['title'] = 'Pronosticos EURO';
+            $this->og['description'] = 'Vea las predicciones para la EURO 2024';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Pronosticos gratis del Campeonato de Europa (EURO 2024)';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación / Tabla del EURO 2024';
+            $data['heroimg']['alt'] = 'Logo del Campeonato de Europa de la UEFA';
+            $h3 = 'Artículos Relacionados';
+        } if(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites UEFA Euro 2024";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da UEFA Euro, site de previsão precisa da UEFA Euro, melhor site de prognosticos da UEFA Euro, Campeonato Europeu, prognósticos da Campeonato Europeu, palpites UEFA Euro, dicas e resultados do Campeonato Europeu';
+            $this->description = 'Palpites gratuitos da UEFA Euro 2024. Obtenha as melhores dicas de apostas do Campeonato Europeu para hoje, amanhã e para esta semana.';
+            $this->og['title'] = 'Dicas gratuitas da EURO 2024';
+            $this->og['description'] = 'Dê uma olhada nos prognosticos do Campeonato Europeu para hoje e para amanhã';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'Prognósticos e resultados gratuitos da UEFA Euro 2024';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela / Classificação do Grupo do Campeonato da Europa da UEFA (EURO 2024)';
+            $data['heroimg']['alt'] = 'Logo da UEFA Euro';
+            $h3 = 'Postagens relacionadas';
+        } if(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Vorhersagen und Ergebnisse der UEFA Euro 2024";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, Tipps zur UEFA Europameisterschaft, Euro Prognosen, UEFA-Euro-Prognose, Vorhersagen und Ergebnisse des Euro-Turniers';
+            $this->description = 'Prognosen für die deutsche Liga. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für die deutsche Bundesliga für heute, morgen und das Wochenende an.';
+            $this->og['title'] = 'Kostenlose Euro Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für die UEFA-Europameisterschaft für die Wochenmitte und das Wochenende an';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = 'EURO 2024 Wett Tipps von Experten';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Gruppentabelle der Europameisterschaft (EURO 2024)';
+            $data['heroimg']['alt'] = 'Logo der UEFA-Europameisterschaft';
+            $h3 = 'Zusammenhängende Posts';
+        } 
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $data['h2a'] = $h2a;
@@ -574,6 +935,51 @@ class Free_Predictions extends Controller {
             $this->iframe['teamsh'] = 'Classement des groupes de la Coupe d\'Afrique des nations';
             $data['heroimg']['alt'] = 'Logo de la Coupe d\'Afrique des Nations';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Pronosticos y resultados de la Copa Africana de Naciones";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, consejos afcon, predicciones afcon, pronosticos y resultados de la Copa Africana de Naciones';
+            $this->description = 'Consulta los pronósticos gratis y los resultados del Torneo de AFCON.';
+            $this->og['title'] = 'Consejos de apuestas para la Copa Africana de Naciones';
+            $this->og['description'] = 'Vea los pronosticos y resultados de la Copa Africana de Naciones';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = '';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Clasificación / Tabla de AFCON';
+            $data['heroimg']['alt'] = 'Logo de AFCON';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Palpites Copa Africana de Nações";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, dicas de apostas da Copa Africana de Nações, site de previsão precisa da AFCON, melhor site de prognosticos da AFCON, Copa das Nações Africanas, prognósticos da Copa Africana de Nações, palpites Copa Africana de Nações, dicas e resultados da Copa Africana de Nações';
+            $this->description = 'Palpites gratuitos da AFCON. Obtenha as melhores dicas de apostas do Copa Africana de Nações para hoje, amanhã e para esta semana.';
+            $this->og['title'] = 'Dicas gratuitas da AFCON';
+            $this->og['description'] = 'Dê uma olhada nos prognosticos da Copa Africana de Nações para hoje e para amanhã';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = '';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Tabela / Classificação do Grupo da Copa das Nações Africanas';
+            $data['heroimg']['alt'] = 'Logo da Copa das Nações Africanas';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Vorhersagen und Ergebnisse des Afrikanischen Nationen-Pokals";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, afcon, Prognosen zum Afrikanischen Nationenpokal, Vorhersagen und Ergebnisse des African Nations Cup-Turniers';
+            $this->description = 'Prognosen für die AFCON. Sehen Sie sich Vorhersagen, Wett tipps und Ergebnisse für die Afrikanischer Nationen-Pokal für heute, morgen und das Wochenende an.';
+            $this->og['title'] = 'Kostenlose AFCON Vorhersagen';
+            $this->og['description'] = 'Sehen Sie sich die Prognosen für die Afrikanischer Nationen-Pokal für die Wochenmitte und das Wochenende an';
+            //$hero_image = ['name'=>$this->page, 'alt'=>'EPL Logo'];
+            $h2a = '';
+            $h2b = '';
+            //$data['nogames'] = ['No games here for the selected period', 'No games here yet. Please check back later.'];
+            //$filename = ROOT.'/free_predicts/epl.php';
+            $this->default_iframe_values();
+            $this->iframe['teamsh'] = 'Gruppentabelle des Afrikanischer Nationen-Pokal';
+            $data['heroimg']['alt'] = 'Logo des Afrikanischen Nationen-Pokals';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
@@ -643,6 +1049,27 @@ class Free_Predictions extends Controller {
             $this->og['description'] = 'Apprenez à prédire avec précision les matchs de football';
             $data['heroimg']['alt'] = 'Prédire correctement les matchs de football';
             $h3 = 'Articles Similaires';
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Cómo predecir correctamente los partidos de fútbol";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, sitio preciso de predicción de deportes, mejor sitio web de predicción de fútbol, Cómo predecir correctamente los partidos de fútbol, como predecir partidos de futbol';
+            $this->description = 'Aprende los consejos sobre cómo predecir correctamente los partidos de fútbol';
+            $this->og['description'] = 'Aprende cómo predecir correctamente los partidos de fútbol';
+            $data['heroimg']['alt'] = 'imagen de una pelota';
+            $h3 = 'Artículos Relacionados';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = $data['h1'] = "Como prever partidas de futebol corretamente";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, como prever partidas de futebol, como prever partidas de futebol corretamente, melhores maneiras de prever partidas de futebol';
+            $this->description = 'Aprenda a prever partidas de futebol corretamente como um profissional e ganhe sempre.';
+            $this->og['description'] = 'Aprenda a prever partidas de futebol corretamente como um profissional.';
+            $data['heroimg']['alt'] = 'Prevendo partidas de futebol corretamente';
+            $h3 = 'Postagens relacionadas';
+        } elseif(LANG=='de') {
+            $data['page_title'] = $data['h1'] = "Wie man Fußballspiele richtig vorhersagt";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, wie man Fußballspiele vorhersagt, Wie man Fußballspiele richtig vorhersagt';
+            $this->description = 'Erfahren Sie noch heute, wie Sie Fußballspiele richtig vorhersagen';
+            $this->og['description'] = 'Erfahren Sie noch heute, wie Sie Fußballspiele richtig vorhersagen';
+            $data['heroimg']['alt'] = 'Fußballspiele richtig vorhersagen';
+            $h3 = 'Zusammenhängende Posts';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';

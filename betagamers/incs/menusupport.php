@@ -13,14 +13,14 @@ $support_list = $en_support_list = [
 
 if(LANG != 'en') {
     $ol_support_list = [
-        ['en'=>'CONTACT US', 'fr'=>'NOUS CONTACTER'],
-        ['en'=>'FAQs', 'fr'=>'FAQs'],
-        ['en'=>'PRICING PLANS', 'fr'=>'COMMENT ÇA FONCTIONNE'],
-        ['en'=>'HOW IT WORKS', 'fr'=>'PLANS TARIFAIRES'],
-        ['en'=>'JOBS', 'fr'=>'EMPLOI'],
-        ['en'=>'T & Cs', 'fr'=>'TERMES'],
-        ['en'=>'PRIVACY POLICY', 'fr'=>'POLITIQUE DE CONFIDENTIALITÉ'],
-        ['en'=>'ABOUT US', 'fr'=>'À PROPOS DE NOUS'],
+        ['en'=>'CONTACT US', 'fr'=>'NOUS CONTACTER', 'es'=>'CONTÁCTENOS', 'pt'=>'CONTATE-NOS', 'de'=>'KONTAKTIERE UNS'],
+        ['en'=>'FAQs', 'fr'=>'FAQs', 'es'=>'PREGUNTAS FRECUENTES', 'pt'=>'PERGUNTAS FREQUENTES', 'de'=>'HÄUFIG GESTELLTE FRAGEN'],
+        ['en'=>'PRICING PLANS', 'fr'=>'PLANS TARIFAIRES', 'es'=>'PRECIOS', 'pt'=>'PREÇOS', 'de'=>'PREISPLÄNE'],
+        ['en'=>'HOW IT WORKS', 'fr'=>'COMMENT ÇA FONCTIONNE', 'es'=>'CÓMO FUNCIONA', 'pt'=>'COMO FUNCIONA', 'de'=>'WIE ES FUNKTIONIERT'],
+        ['en'=>'JOBS', 'fr'=>'EMPLOI', 'es'=>'EMPLEOS', 'pt'=>'EMPREGOS', 'de'=>'ARBEITSPLÄTZE'],
+        ['en'=>'T & Cs', 'fr'=>'TERMES', 'es'=>'TÉRMINOS Y CONDICIONES', 'pt'=>'TERMOS E CONDIÇÕES', 'de'=>'GESCHÄFTSBEDINGUNGEN'],
+        ['en'=>'PRIVACY POLICY', 'fr'=>'POLITIQUE DE CONFIDENTIALITÉ', 'es'=>'PRIVACIDAD', 'pt'=>'POLÍTICA DE PRIVACIDADE', 'de'=>'DATENSCHUTZ-BESTIMMUNGEN'],
+        ['en'=>'ABOUT US', 'fr'=>'À PROPOS DE NOUS', 'es'=>'SOBRE NOSOTROS', 'pt'=>'SOBRE NÓS', 'de'=>'ÜBER UNS'],
         ];
     
     $support_list = array_combine(array_column($ol_support_list, LANG), array_values($en_support_list));

@@ -78,10 +78,10 @@ class Gateways {
         $fields = [
         'email' => $_SESSION['users']["email"],
         'amount' => $amount*100,
-        'callback_url' => "https://betagamers.net/payments/statuspsk",
+        'callback_url' => pay_links('statuspsk'),
         'metadata' => [
             'cart_id'=>$txref,
-            "cancel_action" => "https://betagamers.net/payments/paystack",
+            "cancel_action" => pay_links('paystack'),
             "custom_fields"=> [
                 "planid"=>$metaval
                 ]

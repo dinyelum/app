@@ -65,6 +65,29 @@ class Support extends Controller {
             $data['socials']['tchannel']['text'] = 'Canal de telegram';
             $data['socials']['fbgroup']['text'] = 'Groupe FaceBook';
             $data['socials']['fbgroup']['name'] = 'Sure Games Daily';
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, soporte de betagamers';
+            $this->description = 'Contáctenos hoy para cualquier cosa relacionada con cualquiera de nuestros productos o servicios, nos encantaría ayudar.';
+            $data['page_title'] = "Centro de Apoyo";
+            $data['h1'] = 'Centro de contacto de BetaGamers';
+            $data['call']['header'] = 'Nosotros somos existentes';
+            $data['call']['prompt'] = 'Llama o envía un mensaje de texto';
+            $data['email']['prompt'] = 'Envíenos un correo electrónico';
+            $data['email']['text'] = "#Haga clic aquí# para enviarnos un correo y le responderemos en 24 horas. También puede enviarnos un correo electrónico a través de ".EMAIL;
+            $data['chat']['prompt'] = 'Charla con nosotros';
+            $data['chat']['text'] = '#Haz clic aquí# para charlar con nosotros.';
+            $data['work']['header'] = '¿Quieres trabajar para nosotros?';
+            $data['work']['text'] = '#Haga clic aquí# para ver los trabajos disponibles.';
+            $data['social']['header'] = 'Nosotros tambien somos sociales';
+            $data['socials']['fb']['text'] = 'On FaceBook';
+            $data['socials']['x']['text'] = 'En X';
+            $data['socials']['ig']['text'] = 'En Instagram';
+            $data['socials']['pinterest']['text'] = 'En Pinterest';
+            $data['socials']['whatsapp']['text'] = 'En Whatsapp';
+            $data['socials']['telegram']['text'] = 'En Telegram';
+            $data['socials']['tchannel']['text'] = 'Telegram Channel';
+            $data['socials']['fbgroup']['text'] = 'Grupo de Facebook';
+            $data['socials']['fbgroup']['name'] = 'Sure Games Daily';
         }
         $data['sidelist'] = $this->sidelist();
         $data['email']['text'] = tag_format($data['email']['text'], [['href'=>support_links('mailus'), 'style'=>'color:green']]);
@@ -112,6 +135,11 @@ class Support extends Controller {
             $this->description = 'Bon site de prédiction qui fournit des prévisions réelles et fiables sur un large éventail d\'activités sportives telles que le football, le tennis, le volley-ball, etc. quotidiennement.';
             $data['page_title'] = "À propos de nous";
             $data['h1'] = "Véritable site de Pronostics";
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, sobre Betagamers';
+            $this->description = 'Haz clic aquí para saber más sobre Betagamers.';
+            $data['page_title'] = "Sobre nosotros";
+            $data['h1'] = "SOBRE NOSOTROS";
         }
         $this->writeupclass = 'tips-prof';
         $data['sidelist'] = $this->sidelist();
@@ -134,6 +162,11 @@ class Support extends Controller {
             $this->description = 'Foire aux questions sur Betagamers: Consultez les réponses aux questions fréquemment posées par les utilisateurs. Les réponses aux vôtres pourraient être ici';
             $data['page_title'] = "FAQs";
             $data['h1'] = 'BetaGamers: FAQs';
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, betagamers faqs';
+            $this->description = 'Vea respuestas a preguntas frecuentes de los usuarios. Las respuestas a las tuyas podrían estar aquí';
+            $data['page_title'] = "Preguntas frecuentes";
+            $data['h1'] = 'BetaGamers: Preguntas frecuentes';
         }
         $data['sidelist'] = $this->sidelist();
         $this->view("support/writeups",$data);
@@ -153,6 +186,11 @@ class Support extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, site web de betagamers, www.betagamers.net, Comment fonctionne betagamers';
             $this->description = 'Betagamers Centre de soutien: Guide rapide du fonctionnement de betagamers.';
             $data['page_title'] = $data['h1'] = 'Comment ça fonctionne';
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, cómo funciona betagamers';
+            $this->description = 'Guía rápida de cómo funcionan las cosas en Betagamers.';
+            $data['page_title'] = "Cómo funciona";
+            $data['h1'] = 'Cómo funciona';
         }
         $data['sidelist'] = $this->sidelist();
         $this->view("support/writeups",$data);
@@ -223,6 +261,37 @@ class Support extends Controller {
                 "Cependant, si vous pensez pouvoir faire quelque chose pour nous, envoyez un message à: ".HR.". Nous vous informerons dès que ce poste sera disponible."
             ];
             $additional = "Pour l'un des rôles qui vous intéresse, veuillez nous envoyer un message sur Whatsapp / Telegram via ".PHONE;
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, oportunidades de trabajo de betagamers';
+            $this->description = 'Consulta la oferta de trabajo de Betagamers y qué oportunidades se adaptan mejor a ti';
+            $data['page_title'] = "Oportunidades de trabajo";
+            $data['h1'] = 'BetaGamers: Oportunidades de trabajo';
+            include ROOT.'/app/betagamers/incs/countrylist/'.LANG.'.php';
+            $data['h2'] = 'Oportunidades disponibles en '.$country_list[USER_COUNTRY]['name'];
+            $data['imgcaption'] = 'Imagen creada por MohamedHassan - www.freerangestock.com';
+            $opportunities = [
+                'NG'=>[
+                    [
+                        'title'=>'Experto en predicciones de tenis y baloncesto',
+                        'description'=>''
+                    ],
+                    [
+                        'title'=>'Agentes de Mobile Money',
+                        'description'=>"We're looking to..."
+                    ]
+                ],
+                'ABC'=>[
+                    [
+                        'title'=>'Experto en predicciones de tenis y baloncesto',
+                        'description'=>''
+                    ]
+                ]
+            ];
+            $nojobs = [
+                "Actualmente no hay ofertas de trabajo en este momento.",
+                "Sin embargo, si tiene algo que cree que puede hacer por nosotros, envíe un mensaje a: ".HR.". Se avisaremos cuando ese puesto esté disponible."
+            ];
+            $additional = "Para cualquiera de los roles que le interesen, envíenos un mensaje por Whatsapp / Telegram al ".PHONE;
         }
         if(array_key_exists(USER_COUNTRY, $opportunities)) {
             $data['jobs'] = $opportunities[USER_COUNTRY];
@@ -262,7 +331,7 @@ class Support extends Controller {
             $data['h1'] = "Envoyez-nous un email";
             $select = 'Sélectionnez le sujet';
             $subjects = [
-                "Enregistrement / Activation"=>["Erreur d'enregistrement", "Aucun e-mail reçu"],
+                "Enregistrement / Activation"=>["Erreur d\'enregistrement", "Aucun e-mail reçu"],
                 'Abonnement / Activation'=>['Prix et modes de paiement', 'Paiement terminé', 'Erreur de paiement'],
                 'Paramètres du compte'=>['Editer le profil', 'Mot de passe oublié'],
                 "Admin / Éditorial"=>["Suggérer des modifications", "Signaler une page manquante", "Liens / articles d'invités", "La publicité", "L'emploi"],
@@ -272,6 +341,23 @@ class Support extends Controller {
             $placeholders = ['Nom', 'Votre email', 'Message'];
             $fieldnames = ['Nom', 'E-mail', 'Sujet', 'Message', ''];
             $sendmail = 'Envoyer';
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, formulario de contacto de Betagamers';
+            $this->description = "Envianos un email, le responderemos dentro de las 24 horas.";
+            $data['page_title'] = "Contacta con nosotros";
+            $data['h1'] = "Envíenos un correo electrónico";
+            $select = 'Seleccione Asunto';
+            $subjects = [
+                'Inscripción / Activación'=>['Error de registro', 'Ningún correo electrónico recibido'],
+                'Suscripción / Activación'=>['Precios y Formas de Pago', 'Pago completado', 'Error en el pago'],
+                'Configuraciones de la cuenta'=>['Editar perfil', 'Has olvidado tu contraseña'],
+                'Admón / Editorial'=>['Sugerir ediciones', 'Informar de una página que falta', 'Vincular y Publicación de invitados', 'Publicidad', 'Empleos'],
+                ''=>['Otros']
+            ];
+            $successtxt= " Mensaje enviado. Le responderemos dentro de las 24 horas";
+            $placeholders = ['Nombre', 'Tu correo electrónico', 'Mensaje'];
+            $fieldnames = ['Nombre', 'Correo-e', 'El Asunto', 'Mensaje', ''];
+            $sendmail = 'Envía correo';
         }
         
         if ($_SERVER["REQUEST_METHOD"] == "POST" && (isset($_POST['submit']) & !empty($_POST))) {
@@ -337,8 +423,6 @@ class Support extends Controller {
             $data['h1'] = 'BetaGamers Pricing';
             $data['h2'] = 'Which Plan Best Represents You?';
             $data['p'] = "Select from the following and we'll provide the solutions that are ideal to your specific needs:";
-            // $sub_text = 'SUBSCRIBE NOW';
-            // $sub_text_1 = 'SUBSCRIBE';
             $prompt = ['SUBSCRIBE NOW', 'REGISTER', 'SUBSCRIBE'];
         } elseif(LANG=='fr') {
             $data['page_title'] = "Plans de tarification Betagamers";
@@ -347,9 +431,28 @@ class Support extends Controller {
             $data['h1'] = 'Plans de tarification Betagamers';
             $data['h2'] = 'Quel plan vous représente le mieux?';
             $data['p'] = "Choisissez parmi les éléments suivants et nous vous fournirons les solutions idéales pour vos besoins spécifiques:";
-            // $sub_text = 'SUBSCRIBE NOW';
-            // $sub_text_1 = 'SUBSCRIBE';
             $prompt = ['ABONNEZ-VOUS MAINTENANT', 'S\'INSCRIRE', 'SOUSCRIRE'];
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, planes de BetaGamers, rango de precio de mejor predicción de fútbol';
+            $this->description = 'Echa un vistazo a los precios de varios planes que están disponibles en BetaGamers.';
+            $data['page_title'] = $data['h1'] = 'Planes de BetaGamers';
+            $data['h2'] = '¿Qué plan te representa mejor?';
+            $data['p'] = "Selecciona una de las siguientes opciones y te brindaremos las soluciones ideales para tus necesidades específicas:";
+            $prompt = ['SUSCRÍBATE AHORA', 'REGISTRARTE', 'SUSCRÍBATE'];
+        } elseif(LANG=='pt') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, preços de dicas de esportes, preços de previsão de esportes precisos, melhor faixa de preço de previsão de futebol';
+            $this->description = 'Dê uma olhada nos preços de vários planos que estão disponíveis no BetaGamers.';
+            $data['page_title'] = $data['h1'] = 'Planos de preços';
+            $data['h2'] = 'Qual plano melhor representa você?';
+            $data['p'] = "Selecione entre os seguintes e forneceremos as soluções que são ideais para suas necessidades específicas:";
+            $prompt = ['INSCREVA-SE AGORA', 'REGISTRAR', 'INSCREVA-SE'];
+        } elseif(LANG=='de') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, betagamers-preispläne, sports tips prices, Preise für genaue Sportvorhersagen-Website, beste Preisklasse für Fußballvorhersagen';
+            $this->description = 'Werfen Sie einen Blick auf die Preise verschiedener Pläne, die bei BetaGamers verfügbar sind.';
+            $data['page_title'] = $data['h1'] = 'Preispläne';
+            $data['h2'] = 'Welcher Plan passt am besten zu Ihnen?';
+            $data['p'] = "Wählen Sie aus den folgenden Optionen und wir bieten Ihnen die Lösungen, die Ihren spezifischen Anforderungen am besten entsprechen:";
+            $prompt = ['ABONNIEREN JETZT', 'REGISTRIEREN', 'ABONNIEREN'];
         }
         $data['sidelist'] = $this->sidelist();
         $data['tabs'] = sports();
@@ -375,6 +478,11 @@ class Support extends Controller {
             $this->description = 'Passez par la déclaration de politique de confidentialité des services fournis par BetaGamers';
             $data['page_title'] = "Politique de confidentialité de Betagamers";
             $data['h1'] = 'POLITIQUE DE PROTECTION DE LA VIE PRIVÉE DE BETAGAMERS';
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, política de privacidad de Betagamers';
+            $this->description = 'Ir a través de la declaración de política de privacidad de los servicios proporcionados por BetaGamers';
+            $data['page_title'] = "Política de Privacidad";
+            $data['h1'] = 'Política de privacidad de BETAGAMERS';
         }
         $data['sidelist'] = $this->sidelist();
         $this->view("support/writeups",$data);
@@ -393,6 +501,11 @@ class Support extends Controller {
             $this->description = 'Consulter les conditions générales d\'utilisation des services par BetaGamers';
             $data['page_title'] = "Conditions de Betagamers";
             $data['h1'] = 'CONDITIONS DE BETAGAMERS';
+        } elseif(LANG=='es') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, términos y condiciones de betagamers';
+            $this->description = 'Consulta los términos y condiciones de uso de los servicios de BetaGamers';
+            $data['page_title'] = "Condiciones de Betagamers";
+            $data['h1'] = 'BETAGAMERS TÉRMINOS Y CONDICIONES';
         }
         $data['sidelist'] = $this->sidelist();
         $this->view("support/writeups",$data);

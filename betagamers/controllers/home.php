@@ -64,12 +64,12 @@ Class Home extends Controller
             'image'=>$this->urls[LANG].'/assets/images/bgslide1x.jpg'
         ];
         if(LANG=='en') {
+            $data['page_title'] = "Best Football Prediction Site Worldwide";
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, sports tips, accurate sports prediction website, accurate sports prediction site, accurate football prediction website, sure wins, betting tips, free soccer forecast, best football prdiction website in the world';
             $this->description = 'An accurate football prediction website. Get the best soccer betting tips for today, tomorrow and the weekend from our reliable expert forecast site.';
             $this->og['title'] = 'Best football prediction website';
             $this->og['description'] = 'Accurate football prediction and realest source of sure 2 Odds, 3 Odds, 5 Odds and 10 Odds';
             $this->og['imagetype'] = 'image/jpg';
-            $data['page_title'] = "Best Football Prediction Site Worldwide";
             $data['slide_images'] = [
                 'epl' => [
                     'alt'=>'English Premier League Logo',
@@ -145,9 +145,9 @@ Class Home extends Controller
             $bookiesheader = 'Latest Betting Deals and Offers';
             // $bookieslink = HOME.'/bookies?bookie=';
             $bookiesprompt = 'Claim Offer';
-            $diamodds = [tips_links('5odds')=>'5 ODDS', tips_links('10odds')=>'10 ODDS', tips_links('straight')=>'Straight Win', tips_links('dblchance')=>'Double Chance', tips_links('bts')=>'GG/NGG', tips_links('ovun')=>'Over/Under'];
-            $platodds = [tips_links('2odds')=>'Sure 2odds', tips_links('3odds')=>'3odds Banker', tips_links('single')=>'Super Single', tips_links('p2s')=>'Players to Score', tips_links('draw')=>'Draws', tips_links('bigodds')=>'High Odds', tips_links('cscore')=>'Correct Score', tips_links('weekend')=>'Weekend Acca'];
-            $freesec = ['./'=>'FREE TIPS', TELEGRAM_CHANNEL_LINK=>'Telegram', ''=>'Weekend Soccer Predictions'];
+            $diamval = [tips_links('5odds')=>'5 ODDS', tips_links('10odds')=>'10 ODDS', tips_links('straight')=>'Straight Win', tips_links('dblchance')=>'Double Chance', tips_links('bts')=>'GG/NGG', tips_links('ovun')=>'Over/Under'];
+            $platval = [tips_links('2odds')=>'Sure 2odds', tips_links('3odds')=>'3odds Banker', tips_links('single')=>'Super Single', tips_links('p2s')=>'Players to Score', tips_links('draw')=>'Draws', tips_links('bigodds')=>'High Odds', tips_links('cscore')=>'Correct Score', tips_links('weekend')=>'Weekend Acca'];
+            $freeval = ['FREE TIPS', 'Telegram', 'Weekend Soccer Predictions'];
             $data['plansec'] = [
                 'header'=>'PLANS',
                 'subheaders'=>[
@@ -155,23 +155,14 @@ Class Home extends Controller
                     'diam'=>'DIAMOND PLANS',
                     'plat'=>'PLATINUM PLANS',
                 ],
-                'sections'=>[
-                    'free'=>$freesec,
-                    'diam'=>$diamodds,
-                    'plat'=>$platodds,
-                ]
             ];
             $curdetails = currencies(USER_COUNTRY);
             $data['pricingsec'] = [
                 'header'=>'BETAGamers Plans',
-                'plans'=>plans(['diamond', 'platinum', 'ultimate']),
-                'currency'=>$curdetails['currency'],
-                'cursign'=>$curdetails['cur_sign'],
                 'duration'=>'Month',
                 'view'=>'View Plan'
                 //'prices'=>$prices,
             ];
-            ksort($data['pricingsec']['plans']);
         } elseif(LANG=='fr') {
             $data['page_title'] = "Site de Pronostic Football Fiable";
             $this->description = 'Meilleur site de foot au monde. Un site de pronostic foot gagnant et meilleure source fiable de cotes sûres 2, 3 cotes et prévisions précises de football.';
@@ -252,9 +243,9 @@ Class Home extends Controller
             ];
             $bookiesheader = 'Dernières offres et offres de paris';
             $bookiesprompt = 'Inscrivez-vous';
-            $diamodds = [tips_links('5odds')=>'5 COTES', tips_links('10odds')=>'10 COTES', tips_links('straight')=>'Victoire directe', tips_links('dblchance')=>'Chance Double', tips_links('bts')=>'les Deux Équipes Marquent', tips_links('ovun')=>'Total de Buts (Plus / Moins buts)'];
-            $platodds = [tips_links('2odds')=>'2 Cotes Sûres', tips_links('3odds')=>'3 Cotes Sûres', tips_links('single')=>'Super Simple', tips_links('p2s')=>'Buteurs', tips_links('draw')=>'Match nul', tips_links('bigodds')=>'Grand Cotes', tips_links('cscore')=>'Score Exact', tips_links('weekend')=>'Prono fin de Semaine'];
-            $freesec = ['./'=>'FREE TIPS', TELEGRAM_CHANNEL_LINK=>'Telegram', ''=>'Prédictions de football du week-end'];
+            $diamval = ['5 COTES', '10 COTES', 'Victoire directe', 'Chance Double', 'les Deux Équipes Marquent', 'Total de Buts (Plus / Moins buts)'];
+            $platval = ['2 Cotes Sûres', '3 Cotes Sûres', 'Super Simple', 'Prono fin de Semaine', 'Buteurs', 'Match nul', 'Grand Cotes', 'Score Exact'];
+            $freeval = ['Conseil Gratuit Paris Sportif', 'Telegram', 'Prédictions de football du week-end'];
             $data['plansec'] = [
                 'header'=>'DES PLANS',
                 'subheaders'=>[
@@ -262,23 +253,114 @@ Class Home extends Controller
                     'diam'=>'PLAN DIAMANT',
                     'plat'=>'PLAN PLATINE',
                 ],
-                'sections'=>[
-                    'free'=>$freesec,
-                    'diam'=>$diamodds,
-                    'plat'=>$platodds,
-                ]
             ];
             $curdetails = currencies(USER_COUNTRY);
             $data['pricingsec'] = [
                 'header'=>'Plans de BETAGamers',
-                'plans'=>plans(['diamond', 'platinum', 'ultimate']),
-                'currency'=>$curdetails['currency'],
-                'cursign'=>$curdetails['cur_sign'],
                 'duration'=>'Mois',
                 'view'=>'Voir le Plan'
                 //'prices'=>$prices,
             ];
-            ksort($data['pricingsec']['plans']);
+        } elseif(LANG=='es') {
+            $data['page_title'] = "Sitio Web Fiable Para Predicción De Fútbol Precisa";
+            $this->keywords = 'El mejor sitio de pronósticos de fútbol. Obtenga los mejores predicciones de fútbol para hoy, mañana y el fin de semana de nuestro sitio confiable de pronóstico experto.';
+            $this->description = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, consejos de apuestas deportivas, sitio web de predicción deportiva precisa, sitio web de predicción precisa de fútbol, pronostico de futbol gratis, mejor sitio web de predicción de fútbol del mundo';
+            $this->og['title'] = 'El mejor sitio de pronósticos de fútbol';
+            $this->og['description'] = 'Predicción de fútbol precisa y fuente más real de predicciones de expertos';
+            $this->og['imagetype'] = 'image/jpg';
+            $data['slide_images'] = [
+                'epl' => [
+                    'alt'=>'Logo de la Premier League inglesa',
+                    'text'=>'Predicciones y resultados de la Premier League'
+                ],
+                'laliga' => [
+                    'alt'=>'Logo de La Liga española',
+                    'text'=>'Predicciones y resultados de La Liga'
+                ],
+                'seriea' => [
+                    'alt'=>'Logo de la Serie A italiana',
+                    'text'=>'Predicciones y resultados de la Serie A'
+                ],
+                'bundesliga' => [
+                    'alt'=>'Logo de la Bundesliga alemana',
+                    'text'=>'Predicciones y resultados de la Bundesliga Alemana'
+                ],
+                'ligue1' => [
+                    'alt'=>'Logo de la Ligue 1 francesa',
+                    'text'=>'Predicciones y resultados de la Ligue 1 Francesa'
+                ],
+                'ucl' => [
+                    'alt'=>'Logo de la Liga de Campeones de la UEFA',
+                    'text'=>'Predicciones y resultados de la Liga de Campeones de la UEFA'
+                ],
+                'europa' => [
+                    'alt'=>'Logo de la liga europea',
+                    'text'=>'Predicciones y resultados de la Liga Europea'
+                ],
+                'bgslide' => [
+                    'alt'=>'Logo de Betagamers',
+                    'text'=>'El Mejor Sitio de Pronósticos de Fútbol del Mundo'
+                ],
+            ];
+            $data['herolinks'] = [
+                'reg'=>['link'=>account_links('register'), 'text'=>'REGISTRARSE'],
+                'login'=>['link'=>account_links('login'), 'text'=>'LOGIN'],
+                'profile'=>['link'=>account_links('profile'), 'text'=>'Mi Perfil'],
+                'pricing'=>['link'=>support_links('prices'), 'text'=>'Precios'],
+                'modus'=>['link'=>support_links('howitworks'), 'text'=>'Cómo funciona'],
+                'blog'=>['link'=>HOME.'/blog', 'text'=>'Sports News'],
+                'scores'=>['link'=>HOME.'/livescores.php', 'text'=>'Resultado en vivo']
+            ];
+            $data['freegames'] = [
+                'header'=>'PREDICCIONES DE FÚTBOL GRATIS',
+                'tabs'=>tab_names(['yes', '']),
+                'free_games_page'=>free_games_link(),
+                'viewmore'=>'Más predicciones gratuitos',
+            ];
+            $data['accurate'] = [
+                'header'=>'CONSEJOS PRECISOS RECIENTES',
+                'theaders'=>set_table_header(),
+            ];
+            $data['alphasec'] = [
+                'header'=>'SELECCIONES ALFA',
+                'oddstxt'=>'La mejor pronosticos futbol para hoy',
+                'oddsdesc'=>'Las mejores apuestas combinadas diarias entre 1,65 - 2,50',
+                'totalodds'=>$totalodds,
+                'get'=>'Tener Accesso',
+                'marks'=>$marks,
+                'accuracytxt'=>"Precisión de los últimos 20 días: ".($percent ?? '...'),
+                'moreresults'=>'Ver más resultados',
+            ];
+            $data['popular'] = [
+                'header'=>'LAS MEJORES APUESTAS POPULARES',
+                'populartxt'=>'Estos son los pronósticos de fútbol por los que mucha gente apuesta hoy',
+                'theaders'=>set_table_header('popular')
+            ];
+            $data['upcoming'] = [
+                'header'=>'PRÓXIMAS PRONOSTICOS CALIENTES',
+                'theaders'=>set_table_header('upcoming'),
+            ];
+            $bookiesheader = 'Últimas ofertas de apuestas';
+            // $bookieslink = HOME.'/bookies?bookie=';
+            $bookiesprompt = 'Obtenga Oferta';
+            $diamval = ['5 CUOTAS', '10 CUOTAS', 'Victoria Directa', 'Doble oportunidad', 'Ambos equipos anotarán', 'Más / Menos de Goles'];
+            $platval = ['Segura 2 Cuotas', 'Segura 3 Cuotas', 'Apuesta Simple', 'Jugadores a marcar', 'Empates', 'Grandes Cuotas', 'Marcador Correcto', 'Combinadas para fin de semana'];
+            $freeval = ['CONSEJOS GRATIS', 'Telegram', 'Pronosticos de fútbol para el fin de semana'];
+            $data['plansec'] = [
+                'header'=>'PLANES',
+                'subheaders'=>[
+                    'free'=>'PLAN GRATIS',
+                    'diam'=>'PLAN DIAMANTE',
+                    'plat'=>'PLAN PLATINO',
+                ],
+            ];
+            $curdetails = currencies(USER_COUNTRY);
+            $data['pricingsec'] = [
+                'header'=>'Planes BETAGamers',
+                'duration'=>'Mes',
+                'view'=>'Ver el Plan'
+                //'prices'=>$prices,
+            ];
         }
         $data['slide_images_count'] = count($data['slide_images']);
 		$this->style = '';
@@ -291,6 +373,18 @@ Class Home extends Controller
             'link'=>bookies_link().'?bookie=',
             'prompt'=>$bookiesprompt
         ];
+        $freekey = ['./', TELEGRAM_CHANNEL_LINK, ''];
+        $diamkey = [tips_links('5odds'), tips_links('10odds'), tips_links('straight'), tips_links('dblchance'), tips_links('bts'), tips_links('ovun')];
+        $platkey = [tips_links('2odds'), tips_links('3odds'), tips_links('single'), tips_links('p2s'), tips_links('draw'), tips_links('bigodds'), tips_links('cscore'), tips_links('weekend')];
+        $data['plansec']['sections']=>[
+            'free'=>array_combine($freekey, $freeval),
+            'diam'=>array_combine($diamkey, $diamval),
+            'plat'=>array_combine($platkey, $platval),
+        ];
+        $data['pricingsec']['plans'] = plans(['diamond', 'platinum', 'ultimate']),
+        $data['pricingsec']['currency'] = $curdetails['currency'],
+        $data['pricingsec']['cursign'] = $curdetails['cur_sign'],
+        ksort($data['pricingsec']['plans']);
 		$this->view("home",$data);
 	}
 }

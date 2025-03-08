@@ -21,7 +21,7 @@ Whether all you need is predictions for today's soccer matches, or football matc
 
 
 <h3>Go for options you are conversant with</h3>
-<p>Imagine going for an option like 2H (0:2) in a match like Chelsea vs Ebbsfleet and you do not even know what 2H (0:2) means. That's bad. You can take a look at this <a href="guide" style="color: green">betting guide that cover various betting signs, symbols and abbreviations</a></p>
+<p>Imagine going for an option like 2H (0:2) in a match like Chelsea vs Ebbsfleet and you do not even know what 2H (0:2) means. That's bad. You can take a look at this <a href="<?=free_games_link('guide')?>" style="color: green">betting guide that cover various betting signs, symbols and abbreviations</a></p>
 
 
 <h3>Do not get in bed with the bookies</h3>
@@ -46,7 +46,7 @@ Whether all you need is predictions for today's soccer matches, or football matc
 </p>
 
 <h3>Watch out for teams in crisis and bet against them</h3>
-<p>Always notice when a team is not happy, run away from them or otherwise wager against them. This sometimes happens, there could be on/off pitch issues between players, there could be issues between players and coaches, such teams hardly perform well. Take for instance in the German League, prior to the exit of Ancelotti and the return of Jop Hyenckens, Bayern players were just not at peace with Ancelotti, thus the very poor run of form, Jop Hyeckens came back, Thomas Mueller got resurrected, Lewandowski started soaring high again, there was live again at Bayern Munich and the <a href="bundesliga" style="color: green">German League</a> started looking like it again. There are so many other instances, imagine been a player and your wife or girlfriend cheats on you with a teammate, the whole team is going to get affected and there is no way the team can perform well. <!--There are few sites that can give you a little bite of what is going on in a team before the fixture date. You can onlyget access to such sites on <a href="https://www.bestbetting-directory.com/" title="BestBetting Directory - The Best Betting DIrectory on the Net." target="_blank" style="color: green">BestBetting Directory - The Best Betting DIrectory on the Net.</a>-->
+<p>Always notice when a team is not happy, run away from them or otherwise wager against them. This sometimes happens, there could be on/off pitch issues between players, there could be issues between players and coaches, such teams hardly perform well. Take for instance in the German League, prior to the exit of Ancelotti and the return of Jop Hyenckens, Bayern players were just not at peace with Ancelotti, thus the very poor run of form, Jop Hyeckens came back, Thomas Mueller got resurrected, Lewandowski started soaring high again, there was live again at Bayern Munich and the <a href="<?=free_games_link('bundesliga')?>" style="color: green">German League</a> started looking like it again. There are so many other instances, imagine been a player and your wife or girlfriend cheats on you with a teammate, the whole team is going to get affected and there is no way the team can perform well. <!--There are few sites that can give you a little bite of what is going on in a team before the fixture date. You can onlyget access to such sites on <a href="https://www.bestbetting-directory.com/" title="BestBetting Directory - The Best Betting DIrectory on the Net." target="_blank" style="color: green">BestBetting Directory - The Best Betting DIrectory on the Net.</a>-->
 </p>
 
 <h3>Cases with Coaches</h3>
@@ -54,12 +54,12 @@ Whether all you need is predictions for today's soccer matches, or football matc
 </p>
 
 <h3>Consider the current form of teams</h3>
-<p><a href="teams" style="color:green">Teams</a> with really long winning streaks, say 8 or 9 or 10 are likely to end it soon.</p>
+<p><a href="<?=free_games_link('teams')?>" style="color:green">Teams</a> with really long winning streaks, say 8 or 9 or 10 are likely to end it soon.</p>
 <p>Additionally, stay away from in form teams that lost their last match, especially if you do not know the reason for that. Chances are they'll disappoint again before picking up again. Except in cases where the team tried to rest players.</p>
 
 <h3>Flee from derbies</h3>
-<p>Finally, flee from derbies especially when the outcome is not obvious, these could include the el-classico in the <a href="laliga" style="color:green">Spanish League</a>, the london derbies in the <a href="epl" style="color:green">English Premier League</a>, the Milan derby in the <a href="seriea" style="color:green">Italian league</a>, the Le Classique in the <a href="ligue1.php" style="color:green">French League</a> and so on.
+<p>Finally, flee from derbies especially when the outcome is not obvious, these could include the el-classico in the <a href="<?=free_games_link('laliga')?>" style="color:green">Spanish League</a>, the london derbies in the <a href="<?=free_games_link('epl')?>" style="color:green">English Premier League</a>, the Milan derby in the <a href="<?=free_games_link('seriea')?>" style="color:green">Italian league</a>, the Le Classique in the <a href="<?=free_games_link('ligue1')?>" style="color:green">French League</a> and so on.
 </p>
 
-<p>You can also follow the <a href="./" style="color:green">football betting tips</a> or subscribe to get access to the sure prediction tips provided by <a href="../" style="color:green">the best prediction site in the world</a>
+<p>You can also follow the <a href="<?=free_games_link()?>" style="color:green">football betting tips</a> or subscribe to get access to the sure prediction tips provided by <a href="<?=HOME?>" style="color:green">the best prediction site in the world</a>
 </p>

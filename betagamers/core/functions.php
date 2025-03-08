@@ -38,7 +38,10 @@ function check_admin() {
 
 function btntext() {
     return match(LANG) {
-        'fr'=>'MENU',
+        'fr'=>'MENÚ',
+        'es'=>'MENÚ',
+        'pt'=>'MENÚ',
+        'de'=>'MENÜ',
         default=>'MENU'
     };
 }
@@ -47,6 +50,15 @@ function side_list_top() {
     switch (LANG) {
         case 'fr':
             $list = ['DÉCONNEXION', 'MON PROFIL | PAIEMENTS', 'S\'INSCRIRE', 'SE CONNECTER'];
+            break;
+        case 'es':
+            $list = ['CERRAR SESIÓN', 'MI PERFIL | PAGOS', 'REGISTRARSE', 'LOGIN'];
+            break;
+        case 'pt':
+            $list = ['SAIR', 'MEU PERFIL | PAGAMENTOS', 'REGISTRO', 'ENTRAR'];
+            break;
+        case 'de':
+            $list = ['AUSLOGGEN', 'MEIN PROFIL | ZAHLUNGEN', 'REGISTRIEREN', 'EINLOGGEN'];
             break;
         default:
             $list = ['LOGOUT', 'MY PROFILE / PAYMENTS', 'REGISTER', 'LOGIN'];
@@ -60,29 +72,6 @@ function side_list_top() {
             ['link'=>account_links('login'), 'id'=>'off', 'country'=>null]
         ]
     );
-}
-
-function old_side_list_top() {
-    switch (LANG) {
-        case 'fr':
-            $list = [
-                'DÉCONNEXION'=>['link'=>'/compte/deconnecter', 'id'=>'on', 'country'=>null],
-                'MON PROFIL | PAIEMENTS'=>['link'=>'/prono/profil', 'id'=>'on', 'country'=>'profile'],
-                'S\'INSCRIRE'=>['link'=>'/compte/inscrire', 'id'=>'off', 'country'=>null],
-                'SE CONNECTER'=>['link'=>'/compte/connecter', 'id'=>'off', 'country'=>null],
-            ];
-            break;
-        
-        default:
-            $list = [
-                'LOGOUT'=>['link'=>HOME.'/account/logout', 'id'=>'on', 'country'=>null],
-                'MY PROFILE / PAYMENTS'=>['link'=>HOME.'/account/profile', 'id'=>'on', 'country'=>'profile'],
-                'REGISTER'=>['link'=>HOME.'/account/register', 'id'=>'off', 'country'=>null],
-                'LOGIN'=>['link'=>HOME.'/account/login', 'id'=>'off', 'country'=>null],
-            ];
-        break;
-    }
-    return $list;
 }
 
 function tips_sections() {
@@ -178,36 +167,36 @@ function tips_list($lang=null) {
     
     if($lang != 'en') {
         $diamondsec = [
-            ['en'=>'5 ODDS', 'fr'=>'5 COTES', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'10 ODDS', 'fr'=>'10 COTES', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'DOUBLE CHANCE', 'fr'=>'CHANCE DOUBLE', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'OVER/UNDER', 'fr'=>'PLUS / MOINS', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'BTS', 'fr'=>'BUT POUR LES 2 ÉQUIPES', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'STRAIGHT WIN', 'fr'=>'VICTOIRE DIRECTE', 'es'=>'', 'pt'=>'', 'de'=>'']
+            ['en'=>'5 ODDS', 'fr'=>'5 COTES', 'es'=>'5 CUOTAS', 'pt'=>'5 ODDS', 'de'=>'5 QUOTEN'],
+            ['en'=>'10 ODDS', 'fr'=>'10 COTES', 'es'=>'10 CUOTAS', 'pt'=>'10 ODDS', 'de'=>'10 QUOTEN'],
+            ['en'=>'DOUBLE CHANCE', 'fr'=>'CHANCE DOUBLE', 'es'=>'DOBLE OPORTUNIDAD', 'pt'=>'CHANCE DUPLA', 'de'=>'DOPPELTE CHANCE'],
+            ['en'=>'OVER/UNDER', 'fr'=>'PLUS / MOINS', 'es'=>'MÁS / MENOS DE GOLES', 'pt'=>'MAIS DE / MENOS DE GOLS', 'de'=>'ÜBER / UNTER TORE'],
+            ['en'=>'BTS', 'fr'=>'BUT POUR LES 2 ÉQUIPES', 'es'=>'AMBOS EQUIPOS ANOTARÁN', 'pt'=>'AMBAS MARCAM', 'de'=>'BEIDE TEAMS TREFFEN'],
+            ['en'=>'STRAIGHT WIN', 'fr'=>'VICTOIRE DIRECTE', 'es'=>'VICTORIA DIRECTA', 'pt'=>'VITÓRIA DIRETA', 'de'=>'SICHERER SIEG']
         ];
         $platinumsec = [
-            ['en'=>'SUPER SINGLE', 'fr'=>'SUPER SIMPLE', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'SURE 2 ODDS', 'fr'=>'SURE 2 COTES', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'3 ODDS BANKER', 'fr'=>'3 COTES SÛRES', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'DRAWS', 'fr'=>'MATCH NUL', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'CORRECT SCORES', 'fr'=>'SCORES EXACTS', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'PLAYERS TO SCORE', 'fr'=>'BUTEURS', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'BIG ODDS', 'fr'=>'COTES GRANDES', 'es'=>'', 'pt'=>'', 'de'=>''],
-            ['en'=>'MEGA WEEKEND', 'fr'=>'PRÉVISION DE WEEK-END', 'es'=>'', 'pt'=>'', 'de'=>'']
+            ['en'=>'SUPER SINGLE', 'fr'=>'SUPER SIMPLE', 'es'=>'APUESTA SIMPLE', 'pt'=>'SUPER SIMPLE', 'de'=>'SUPER SINGLE'],
+            ['en'=>'SURE 2 ODDS', 'fr'=>'SURE 2 COTES', 'es'=>'SEGURA 2 CUOTAS', 'pt'=>'2 ODDS SEGUROS', 'de'=>'SICHERE 2 QUOTEN'],
+            ['en'=>'3 ODDS BANKER', 'fr'=>'3 COTES SÛRES', 'es'=>'SEGURA 3 CUOTAS', 'pt'=>'3 ODDS SEGUROS', 'de'=>'SICHERE 3 QUOTEN'],
+            ['en'=>'DRAWS', 'fr'=>'MATCH NUL', 'es'=>'EMPATES', 'pt'=>'EMPATE', 'de'=>'UNENTSCHIEDEN'],
+            ['en'=>'CORRECT SCORES', 'fr'=>'SCORES EXACTS', 'es'=>'MARCADOR CORRECTO', 'pt'=>'RESULTADO CORRETO', 'de'=>'GENAUES ERGEBNIS'],
+            ['en'=>'PLAYERS TO SCORE', 'fr'=>'BUTEURS', 'es'=>'JUGADORES A MARCAR', 'pt'=>'JOGADORES QUE MARCAM', 'de'=>'SPIELERN, UM ZU TREFFEN'],
+            ['en'=>'BIG ODDS', 'fr'=>'COTES GRANDES', 'es'=>'GRANDES CUOTAS', 'pt'=>'GRANDES ODDS', 'de'=>'GROßEN QUOTEN'],
+            ['en'=>'MEGA WEEKEND', 'fr'=>'PRÉVISION DE WEEK-END', 'es'=>'COMBINADAS PARA FIN DE SEMANA', 'pt'=>'FINAL DE SEMANA', 'de'=>'WOCHENENDVORHERSAGEN']
         ];
         $ultimatesec = [
-            ['en'=>'ALPHA PICKS', 'fr'=>'CHOIX ALPHA', 'es'=>'', 'pt'=>'', 'de'=>'']
+            ['en'=>'ALPHA PICKS', 'fr'=>'CHOIX ALPHA', 'es'=>'SELECCIONES ALFA', 'pt'=>'ESCOLHAS ALFA', 'de'=>'ALPHA-TIPPS']
         ];
     
         $ultimate = array_combine(array_column($ultimatesec, $lang), array_values($tips_list['ULTIMATE']));
         $diamond = array_combine(array_column($diamondsec, $lang), array_values($tips_list['DIAMOND']));
         $platinum = array_combine(array_column($platinumsec, $lang), array_values($tips_list['PLATINUM']));
         $sections = [
-            ['fr'=>'APERÇU', 'sub'=>$tips_list['OVERVIEW']],
-            ['fr'=>'CONSEILS GRATUITS', 'sub'=>$tips_list['FREE TIPS']],
-            ['fr'=>'ULTIME', 'sub'=>$ultimate],
-            ['fr'=>'DIAMANT', 'sub'=>$diamond],
-            ['fr'=>'PLATINE', 'sub'=>$platinum]
+            ['fr'=>'APERÇU', 'es'=>'VISIÓN DE CONJUNTO', 'pt'=>'VISÃO GERAL', 'de'=>'EINLOGGEN', 'sub'=>$tips_list['OVERVIEW']],
+            ['fr'=>'CONSEILS GRATUITS', 'es'=>'PRONOSTICOS GRATIS', 'pt'=>'DICAS GRATUITAS', 'de'=>'KOSTENLOSE TIPPS', 'sub'=>$tips_list['FREE TIPS']],
+            ['fr'=>'ULTIME', 'es'=>'DIAMANTE', 'pt'=>'DIAMANTE', 'de'=>'DIAMANT', 'sub'=>$ultimate],
+            ['fr'=>'DIAMANT', 'es'=>'PLATINO', 'pt'=>'PLATINA', 'de'=>'PLATIN', 'sub'=>$diamond],
+            ['fr'=>'PLATINE', 'es'=>'ULTIMATE', 'pt'=>'ULTIMATE', 'de'=>'ULTIMATE', 'sub'=>$platinum]
         ];
     
         $tips_list = array_column($sections, 'sub', $lang);
@@ -256,6 +245,9 @@ function admin_side_list() {
 function sports() {
     $sports = match (LANG) {
         'fr' => ['football'=>'Football', 'tennis'=>'Tennis'],
+        'es' => ['football'=>'Fútbol', 'tennis'=>'Tenis'],
+        'pt' => ['football'=>'Futebol', 'tennis'=>'Tênis'],
+        'de' => ['football'=>'Fußball', 'tennis'=>'Tennis'],
         default => ['football'=>'Football', 'tennis'=>'Tennis'],
     };
     return $sports;
@@ -264,7 +256,10 @@ function sports() {
 function plans(array $specific=[]) {
     $allplans = [
         'en'=>['ultimate', 'platinum', 'diamond', 'tennis vip'],
-        'fr'=>['ultime', 'platine', 'diamant', 'vip tennis']
+        'fr'=>['ultime', 'platine', 'diamant', 'vip tennis'],
+        'es'=>['ultimate', 'platino', 'diamante', 'tenis vip'],
+        'pt'=>['ultimate', 'platina', 'diamante', 'plano vip de tênis'],
+        'de'=>['ultimate', 'platin', 'diamant', 'tennis-vip']
     ];
     $plans = array_combine($allplans['en'], $allplans[LANG]);
     if(count($specific)) return array_intersect_key($plans, array_flip($specific));
@@ -289,24 +284,74 @@ function plan_features($sports) {
                     'COMBO SPORTIF'=>['id'=>'football tennis', 'features'=>['Accès à 1 mois de tennis VIP','Accès au forfait Platine Football d\'un mois']],
                 ]
             ];
-            break;
-
+        break;
+        case 'es':
+            $features = [
+                'football'=>[
+                    'PLAN GRATIS'=>['id'=>'free', 'features'=>['Duración de: 1 semana, 1 mes, 3 meses, 6 meses, 1 año','No incluye gestión de riesgos','Acceso a los pronosticos diarios gratuitos']],
+                    'PLAN DIAMANTE'=>['id'=>'diamond', 'features'=>['Duración de: 1 semana, 1 mes, 3 meses, 6 meses, 1 año','Acceso a 5 Cuotas','Acceso a 10 Cuotas','Acceso a victoria directa','Acceso a doble oportunidad','Acceso a más / menos goles','Acceso a ambos equipos anotarán']],
+                    'PLAN PLATINO'=>['id'=>'platinum', 'features'=>['Duración de: 1 semana, 1 mes, 3 meses, 6 meses, 1 año','Acceso a todos los beneficios del Plan Diamante','Acceso a Apuesta Simple','Acceso a 2 Cuotas Seguras','Acceso a 3 Cuotas Seguras','Acceso a apuestas a empate','Acceso a marcador correcto','Acceso a jugador en marcar','Acceso a predicciones de fin de semana','Acceso a grandes cuotas']],
+                    'PLAN ULTIMATE'=>['id'=>'ultimate', 'features'=>['Planes de 3 días, 7 días y 12 días','Acceso a tips diarios más probables (Selecciones Alfa)']],
+                    'COMBO PLATA'=>['id'=>'combosil', 'features'=>['Acceso a 3 días del Plan Ultimate (Selecciones Alfa)','Acceso a 1 semana del Plan Platino']],
+                    'COMBO ORO'=>['id'=>'combogol', 'features'=>['Acceso a 7 días del Plan Ultimate (Selecciones Alfa)','Acceso a 1 mes del Plan Platino']],
+                    'COMBO PRO'=>['id'=>'combopro', 'features'=>['Acceso a 1 mes del Plan Ultimate (Selecciones Alfa)','Acceso a 1 mes del Plan Platino']]
+                ],
+                'tennis'=>[
+                    'PLAN TENIS VIP'=>['id'=>'tennis', 'features'=>['Duración de 1 Mes','Acceso a Simple','Acceso a 2 cuotas','Acceso a 3 cuotas','Acceso a 5 cuotas','Acceso a 10 cuotas','Acceso a apuestas de 1-2','Acceso a apuestas de sets (marcador correcto)','Acceso a más / menos sets']],
+                    'COMBO DEPORTES'=>['id'=>'football tennis', 'features'=>['Acceso a 1 mes del Plan Tenis VIP','Acceso a 1 mes del Plan Platino de Fútbol']]
+                ]
+            ];
+        break;
+        case 'pt':
+            $features = [
+                'football'=>[
+                    'PLANO GRÁTIS'=>['id'=>'free', 'features'=>['Grátis por 1 semana, 1 mês, 3 meses, 6 meses, 1 ano','Sem gestão de riscos','Acesso às dicas diárias grátis']],
+                    'PLANO DIAMANTE'=>['id'=>'diamond', 'features'=>['Planos de 1 semana, 1 mês, 3 meses, 6 meses, 1 ano','Acesso ao Combo 5 Odds','Acesso ao Combo 10 Odds','Acesso ao Vitória','Acesso ao Chance dupla','Acesso ao Mais de / Menos de gols','Acesso ao Ambas Marcam']],
+                    'PLANO PLATINA'=>['id'=>'platinum', 'features'=>['Planos de 1 semana, 1 mês, 3 meses, 6 meses, 1 ano','Acesso ao Super Simple','Acesso ao 2 Odds Seguros','Acesso ao 3 Odds Seguros','Acesso à Empate','Access to Placar Exato (Resultado correto)','Acesso aos Jogadores que Marcam','Acesso às Previsões de Final de Semana','Acesso às Grandes Odds','Acesso à todo o Plano Diamante']],
+                    'PLANO ULTIMATE'=>['id'=>'ultimate', 'features'=>['Planos de 3 Dias, 7 Dias, 12 Dias','Acesso às Previsões Diárias Certas (Escolhas Alfa)']],
+                    'COMBO PRATA'=>['id'=>'combosil', 'features'=>['Acesso à 3 Dias de Plano Ultimate (Escolhas Alfa)','Acesso à 1 Semana de Plano Platina']],
+                    'COMBO OURO'=>['id'=>'combogol', 'features'=>['Acesso à 7 Dias de Plano Ultimate (Escolhas Alfa)','Acesso à 1 Mês de Plano Platina']],
+                    'COMBO PRO'=>['id'=>'combopro', 'features'=>['Acesso à 1 Mês de Plano Ultimate (Escolhas Alfa)','Acesso à 1 Mês de Plano Platina']]
+                ],
+                'tennis'=>[
+                    'PLANO VIP DE TÊNIS'=>['id'=>'tennis', 'features'=>['Plano de 1 mês','Acesso ao Simple','Acesso ao 2 Odds','Acesso ao 3 Odds','Acesso ao 5 Odds','Acesso ao 10 Odds','Acesso ao 1-2','Acesso ao apostas de sets (Placar / Resultado correto)','Acesso ao Mais de / Menos de sets']],
+                    'COMBO DE ESPORTES'=>['id'=>'football tennis', 'features'=>['Acesso à 1 mês de tênis VIP','Acesso à 1 mês de plano platina de futebol']]
+                ]
+            ];
+        break;
+        case 'de':
+            $features = [
+                'football'=>[
+                    'KOSTENLOSER TARIF'=>['id'=>'free', 'features'=>['Kostenlos für 1 Woche, 1 Monat, 3 Monate, 6 Monate, 1 Jahr','Kein Risikomanagement','Zugang zu den täglichen kostenlosen Tipps']],
+                    'DIAMANT TARIF'=>['id'=>'diamond', 'features'=>['1 Woche, 1 Monat, 3 Monate, 6 Monate, 1 Jahr Tarife','Zugang zu 5 Quoten','Zugang zu 10 Quoten','Zugang zu Sicherer Sieg','Zugang zu Doppelte Chance','Zugang zu Über / Unter Tore','Zugang zu Beide Teams treffen']],
+                    'PLATIN TARIF'=>['id'=>'platinum', 'features'=>['1 Woche, 1 Monat, 3 Monate, 6 Monate, 1 Jahr Tarife','Zugang zu Super Single','Zugang zu Sichere 2 Quoten','Zugang zu Sichere 3 Quoten','Zugang zu Unentschieden','Zugang zu Genaues Ergebnis','Zugang zu Spielern, um zu treffen','Zugriff auf Wochenendvorhersagen','Zugang zu großen Quoten','Zugang zu ALLEN Diamant Tarifen']],
+                    'ULTIMATE TARIF'=>['id'=>'ultimate', 'features'=>['Pläne für 3 Tage, 7 Tage und 12 Tage','Zugang zu den sichersten täglichen Tipps (Alpha-Tipps)']],
+                    'COMBO SILBER'=>['id'=>'combosil', 'features'=>['Zugang zum 3-Tage Ultimate Tarif (Alpha-Tipps)','Zugang zum 1-wöchigen Platin Tarif']],
+                    'COMBO GOLD'=>['id'=>'combogol', 'features'=>['Zugang zum 7-Tage Ultimate Tarif (Alpha-Tipps)','Zugang zum 1-monatigen Platin Tarif']],
+                    'COMBO PRO'=>['id'=>'combopro', 'features'=>['Zugang zum 1-monatigen Ultimate Tarif (Alpha-Tipps)','Zugang zum 1-monatigen Platin Tarif']]
+                ],
+                'tennis'=>[
+                    'TENNIS-VIP PLAN'=>['id'=>'tennis', 'features'=>['1 Monat Tarif','Zugang zu Single','Zugang zu Sichere 2 Quoten','Zugang zu Sichere 3 Quoten','Zugang zu 5 Quoten','Zugang zu 10 Quoten','Zugang zu 1-2','Zugang zum Satzwetten (Genaues Ergebnis)','Zugang zu Über / Unter Sätze']],
+                    'SPORT COMBO'=>['id'=>'football tennis', 'features'=>['Zugang zu 1 Monat Tennis-VIP','Zugang zum 1-Monat-Fußball-Platin-Tarif']]
+                ],
+            ];
+        break;
         default:
-        $features = [
-            'football'=>[
-                'FREE PLAN'=>['id'=>'free', 'features'=>['Free for 1 week, 1 month, 3 months, 6 months, 1 year','No Risk Management','Access to the Daily Free Tips']],
-                'DIAMOND PLAN'=>['id'=>'diamond', 'features'=>['1 week, 1 month, 3 months, 6 months, 1 year plans','Access to 5 Odds Combo','Access to 10 Odds Combo','Access to Straight Win','Access to Double Chance','Access to Over/Under','Access to Both Teams to Score']],
-                'PLATINUM PLAN'=>['id'=>'platinum', 'features'=>['1 week, 1 month, 3 months, 6 months, 1 year plans','Access to Diamond Plan','Access to Super Single','Access to 2 Odds Banker','Access to 3 Odds Banker','Access to Draw','Access to Correct Score','Access to Players to Score','Access to Mega Weekends','Access to Big Odds']],
-                'ULTIMATE PLAN'=>['id'=>'ultimate', 'features'=>['3 Days, 7 Days and 12 Days Plans','Access to Daily Surest Picks(Alpha Picks)']],
-                'COMBO SILVER'=>['id'=>'combosil', 'features'=>['Access to 3 Days Ultimate Plan (Alpha Picks)','Access to 1 Week Platinum Plan']],
-                'COMBO GOLD'=>['id'=>'combogol', 'features'=>['Access to 7 Days Ultimate Plan (Alpha Picks)','Access to 1 Month Platinum Plan']],
-                'COMBO PRO'=>['id'=>'combopro', 'features'=>['Access to 1 Month Ultimate Plan (Alpha Picks)','Access to 1 Month Platinum Plan']]
-            ],
-            'tennis'=>[
-                'TENNIS VIP'=>['id'=>'tennis', 'features'=>['1 month plan','Access to Single','Access to 2 Odds','Access to 3 Odds','Access to 5 Odds','Access to 10 Odds','Access to 1-2','Access to Set Bets (Correct Scores)','Access to Over/Under Sets']],
-                'SPORTS COMBO'=>['id'=>'football tennis', 'features'=>['Access to 1 Month Tennis VIP','Access to 1 Month Football Platinum Plan']]
-            ],
-        ];
+            $features = [
+                'football'=>[
+                    'FREE PLAN'=>['id'=>'free', 'features'=>['Free for 1 week, 1 month, 3 months, 6 months, 1 year','No Risk Management','Access to the Daily Free Tips']],
+                    'DIAMOND PLAN'=>['id'=>'diamond', 'features'=>['1 week, 1 month, 3 months, 6 months, 1 year plans','Access to 5 Odds Combo','Access to 10 Odds Combo','Access to Straight Win','Access to Double Chance','Access to Over/Under','Access to Both Teams to Score']],
+                    'PLATINUM PLAN'=>['id'=>'platinum', 'features'=>['1 week, 1 month, 3 months, 6 months, 1 year plans','Access to Diamond Plan','Access to Super Single','Access to 2 Odds Banker','Access to 3 Odds Banker','Access to Draw','Access to Correct Score','Access to Players to Score','Access to Mega Weekends','Access to Big Odds']],
+                    'ULTIMATE PLAN'=>['id'=>'ultimate', 'features'=>['3 Days, 7 Days and 12 Days Plans','Access to Daily Surest Picks(Alpha Picks)']],
+                    'COMBO SILVER'=>['id'=>'combosil', 'features'=>['Access to 3 Days Ultimate Plan (Alpha Picks)','Access to 1 Week Platinum Plan']],
+                    'COMBO GOLD'=>['id'=>'combogol', 'features'=>['Access to 7 Days Ultimate Plan (Alpha Picks)','Access to 1 Month Platinum Plan']],
+                    'COMBO PRO'=>['id'=>'combopro', 'features'=>['Access to 1 Month Ultimate Plan (Alpha Picks)','Access to 1 Month Platinum Plan']]
+                ],
+                'tennis'=>[
+                    'TENNIS VIP'=>['id'=>'tennis', 'features'=>['1 month plan','Access to Single','Access to 2 Odds','Access to 3 Odds','Access to 5 Odds','Access to 10 Odds','Access to 1-2','Access to Set Bets (Correct Scores)','Access to Over/Under Sets']],
+                    'SPORTS COMBO'=>['id'=>'football tennis', 'features'=>['Access to 1 Month Tennis VIP','Access to 1 Month Football Platinum Plan']]
+                ],
+            ];
             break;
     }
     return $features[$sports];
@@ -547,14 +592,13 @@ function all_versions() {
     
 function controller_translations($controller) { //folders
     $list = [
-		'account'=>['en'=>'account', 'fr'=>'compte', 'es'=>'', 'pt'=>'', 'de'=>''],
-		'bookmakers'=>['en'=>'bookmakers', 'fr'=>'bookmakers', 'es'=>'', 'pt'=>'', 'de'=>''],
-        'free_predictions'=>['en'=>'free_predictions', 'fr'=>'pronostics_gratuits', 'es'=>'', 'pt'=>'', 'de'=>''],
-        'payments'=>['en'=>'payments', 'fr'=>'paiements', 'es'=>'', 'pt'=>'', 'de'=>''],
-        //requests, because of mailer and otp
-        'requests'=>['en'=>'requests', 'fr'=>'demandes', 'es'=>'', 'pt'=>'', 'de'=>''],
-		'support'=>['en'=>'support', 'fr'=>'soutien', 'es'=>'apoyo', 'pt'=>'', 'de'=>''],
-		'tips'=>['en'=>'tips', 'fr'=>'prono', 'es'=>'vip', 'pt'=>'', 'de'=>''],
+		'account'=>['en'=>'account', 'fr'=>'compte', 'es'=>'cuenta', 'pt'=>'conta', 'de'=>'konto'],
+		'bookmakers'=>['en'=>'bookmakers', 'fr'=>'bookmakers', 'es'=>'corredores_de_apuestas', 'pt'=>'apostador_profissional', 'de'=>'buchmacher'],
+        'free_predictions'=>['en'=>'free_predictions', 'fr'=>'pronostics_gratuits', 'es'=>'pronosticosgratis', 'pt'=>'apostas', 'de'=>'kostenlos_prognose'],
+        'payments'=>['en'=>'payments', 'fr'=>'paiements', 'es'=>'pagos', 'pt'=>'pagamentos', 'de'=>'zahlungen'],
+        'requests'=>['en'=>'requests', 'fr'=>'demandes', 'es'=>'solicitudes', 'pt'=>'demanda', 'de'=>'anfragen'],
+		'support'=>['en'=>'support', 'fr'=>'soutien', 'es'=>'apoyo', 'pt'=>'apoio', 'de'=>'hilfe'],
+		'tips'=>['en'=>'tips', 'fr'=>'prono', 'es'=>'vip', 'pt'=>'apostas', 'de'=>'tipps'],
 	];
     return $controller=='all' ? $list : $list[$controller];
 }
@@ -563,12 +607,12 @@ function directory_listing($controller) {
     $list = [
         'account'=>[
             'auth'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'auth'),
-            'forgot'=>['en'=>'forgot', 'fr'=>'oublie'],
-            'login'=>['en'=>'login', 'fr'=>'connecter'],
-            'logout'=>['en'=>'logout', 'fr'=>'deconnecter'],
-            'profile'=>['en'=>'profile', 'fr'=>'profil'],
-            'register'=>['en'=>'register', 'fr'=>'inscrire'],
-            'reset'=>['en'=>'reset', 'fr'=>'reinitialiser'],
+            'forgot'=>['en'=>'forgot', 'fr'=>'oublie', 'es'=>'olvido', 'pt'=>'esqueceu', 'de'=>'vergessen'],
+            'login'=>['en'=>'login', 'fr'=>'connecter', 'es'=>'login', 'pt'=>'entrar', 'de'=>'einloggen'],
+            'logout'=>['en'=>'logout', 'fr'=>'deconnecter', 'es'=>'cerrar', 'pt'=>'sair', 'de'=>'ausloggen'],
+            'profile'=>['en'=>'profile', 'fr'=>'profil', 'es'=>'perfil', 'pt'=>'perfil', 'de'=>'profil'],
+            'register'=>['en'=>'register', 'fr'=>'inscrire', 'es'=>'registrarse', 'pt'=>'registro', 'de'=>'registrieren'],
+            'reset'=>['en'=>'reset', 'fr'=>'reinitialiser', 'es'=>'reiniciar', 'pt'=>'redefinicao', 'de'=>'rucksetzen'],
             'verify'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'verify'),
         ],
         'free_predictions'=>[
@@ -581,9 +625,9 @@ function directory_listing($controller) {
             'europa'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'europa'),
             'euro'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'euro'),
             'afcon'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'afcon'),
-            'teams'=>['en'=>'teams', 'fr'=>'equipes', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'howtopredict'=>['en'=>'howtopredict', 'fr'=>'comment_predire', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'guide'=>['en'=>'guide', 'fr'=>'guider', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'teams'=>['en'=>'teams', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'howtopredict'=>['en'=>'howtopredict', 'fr'=>'comment_predire', 'es'=>'como_predecir', 'pt'=>'como_prever', 'de'=>'vorhersagen'],
+            'guide'=>['en'=>'guide', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
         ],
         'payments'=>[
             'rave'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'rave'),
@@ -599,35 +643,43 @@ function directory_listing($controller) {
             'sticpay'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'sticpay'),
             'astropay'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'astropay'),
             'chippercash'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'chippercash'),
-            'failed'=>['en'=>'failed', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'pending'=>['en'=>'pending', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'success'=>['en'=>'success', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'topup'=>['en'=>'topup', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'view_prices'=>['en'=>'view_prices', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'failed'=>['en'=>'failed', 'fr'=>'echec', 'es'=>'fallido', 'pt'=>'falhou', 'de'=>'fehlgeschlagen'],
+            'pending'=>['en'=>'pending', 'fr'=>'en_attente', 'es'=>'pendiente', 'pt'=>'pendente', 'de'=>'ausstehend'],
+            'success'=>['en'=>'success', 'fr'=>'succes', 'es'=>'exito', 'pt'=>'sucesso', 'de'=>'erfolg'],
+            'topup'=>['en'=>'topup', 'fr'=>'ajouter', 'es'=>'anadir', 'pt'=>'acrescentar', 'de'=>'addieren'],
+            'view_prices'=>['en'=>'view_prices', 'fr'=>'voir_les_prix', 'es'=>'ver_precios', 'pt'=>'ver_precos', 'de'=>'preise_ansehen'],
         ],
         'support'=>[
-            'aboutus'=>['en'=>'aboutus', 'fr'=>'proposnous', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'faqs'=>['en'=>'faqs', 'fr'=>'faqs', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'howitworks'=>['en'=>'howitworks', 'fr'=>'fonctionne', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'jobs'=>['en'=>'jobs', 'fr'=>'emploi', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'aboutus'=>['en'=>'aboutus', 'fr'=>'proposnous', 'es'=>'sobrenosotros', 'pt'=>'sobrenos', 'de'=>'uns'],
+            'faqs'=>['en'=>'faqs', 'fr'=>'faqs', 'es'=>'faqs', 'pt'=>'faqs', 'de'=>'fragen'],
+            'howitworks'=>['en'=>'howitworks', 'fr'=>'fonctionne', 'es'=>'funciona', 'pt'=>'funciona', 'de'=>'funktioniert'],
+            'jobs'=>['en'=>'jobs', 'fr'=>'emploi', 'es'=>'empleos', 'pt'=>'empregos', 'de'=>'arbeit'],
             'mailus'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'mailus'),
-            'prices'=>['en'=>'prices', 'fr'=>'prix', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'privacy'=>['en'=>'privacy', 'fr'=>'confidentialite', 'es'=>'', 'pt'=>'', 'de'=>''],
-            'terms'=>['en'=>'terms', 'fr'=>'fonctionne', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'prices'=>['en'=>'prices', 'fr'=>'prix', 'es'=>'precios', 'pt'=>'precos', 'de'=>'preise'],
+            'privacy'=>['en'=>'privacy', 'fr'=>'confidentialite', 'es'=>'privacidad', 'pt'=>'privacidade', 'de'=>'datenschutz'],
+            'terms'=>['en'=>'terms', 'fr'=>'fonctionne', 'es'=>'condiciones', 'pt'=>'termos', 'de'=>'bedingungen'],
         ],
         'tips'=>[
-            'wins'=>['en'=>'wins', 'fr'=>'tickets_gagnant', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'wins'=>['en'=>'wins', 'fr'=>'tickets_gagnant', 'es'=>'apuestas_ganadas', 'pt'=>'apostas_ganhas', 'de'=>'wetten_gewonnen'],
             'vip'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'vip'),
         ],
     ];
     return $list[$controller];
 }
 
-function pay_links($suffix=''){
+function pay_links($page=''){
+    $pages = directory_listing('payments');
+    if(array_key_exists($page, $pages) || $page=='') {
+        $suffix = $pages[$page][LANG] ?? '';
+        return HOME.'/'.controller_translations('payments')[LANG].($suffix ? "/$suffix" : '');
+    }
+}
+
+function old_pay_links($suffix=''){
     return HOME.'/'.controller_translations('payments')[LANG].($suffix ? "/$suffix" : '');
 }
     
-function old_pay_links($suffix=''){
+function old_old_pay_links($suffix=''){
     $link = match(LANG){
     'en'=>'/payments/'.$suffix,
     'fr'=>'/paiements/'.$suffix,
@@ -1055,6 +1107,7 @@ function related_posts(array $posts) {
         ];
     } else {}
     foreach($posts as $val) {
+        // if $val not exists skip
         $relatedposts[$val] = $allposts[$val];
     }
     return $relatedposts;

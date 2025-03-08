@@ -3,8 +3,8 @@
 require_once '/home/betaahfg/vendor/autoload.php';
 use Twilio\Rest\Client;
 class Twilio {
-    private $sid = "ACfc2ca77813982121264132d416a661e1";
-    private $token = "eee5ae8d8a83a93202ac24e250df6345";
+    private $sid = ENV['TWILLIO_SID'];
+    private $token = ENV['TWILLIO_TOKEN'];
     private $twilio;
     
     public function __construct() {
@@ -18,7 +18,7 @@ class Twilio {
     
     public function send_otp($number) {
         try {
-            $verification = $this->twilio->verify->v2->services("VA207e89bf83d24acf97fd34e74899e639")->verifications->create($number, "sms");
+            $verification = $this->twilio->verify->v2->services(ENV['TWILLIO_ACCTID'])->verifications->create($number, "sms");
             return $verification->status;
         } catch (\Twilio\Exceptions\TwilioException $e) {
             error_log("OTP could not be sent. Twillio Error: \nCode: {$e->getCode()}.\nMessage: {$e->getMessage()}.\n", 3, ENV['TWILLIO_ERR_URL']);
@@ -28,7 +28,7 @@ class Twilio {
     }
     
     public function verify_otp($number, $otp) {
-        $verification_check = $this->twilio->verify->v2->services("VA207e89bf83d24acf97fd34e74899e639")->verificationChecks->create(["to" => $number, "code" => $otp]);
+        $verification_check = $this->twilio->verify->v2->services(ENV['TWILLIO_ACCTID'])->verificationChecks->create(["to" => $number, "code" => $otp]);
         return($verification_check->status);
     }
 }
@@ -59,8 +59,8 @@ use Twilio\Rest\Client;
 
 // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
-$sid = "ACfc2ca77813982121264132d416a661e1";
-$token = "eee5ae8d8a83a93202ac24e250df6345";
+$sid = ENV['TWILLIO_SID'];
+$token = ENV['TWILLIO_TOKEN'];
 $twilio = new Client($sid, $token);
 
 $service = $twilio->verify->v2->services
@@ -77,11 +77,11 @@ use Twilio\Rest\Client;
 
 // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
-$sid = "ACfc2ca77813982121264132d416a661e1";
-$token = "eee5ae8d8a83a93202ac24e250df6345";
+$sid = ENV['TWILLIO_SID'];
+$token = ENV['TWILLIO_TOKEN'];
 $twilio = new Client($sid, $token);
 
-$verification = $twilio->verify->v2->services("VA207e89bf83d24acf97fd34e74899e639")
+$verification = $twilio->verify->v2->services(ENV['TWILLIO_ACCTID'])
                                    ->verifications
                                    ->create("+2349112726323", "sms");
 
@@ -94,10 +94,10 @@ use Twilio\Rest\Client;
 
 // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
-$sid = "ACfc2ca77813982121264132d416a661e1";
-$token = "eee5ae8d8a83a93202ac24e250df6345";
+$sid = ENV['TWILLIO_SID'];
+$token = ENV['TWILLIO_TOKEN'];
 $twilio = new Client($sid, $token);
-$verification_check = $twilio->verify->v2->services("VA207e89bf83d24acf97fd34e74899e639")
+$verification_check = $twilio->verify->v2->services(ENV['TWILLIO_ACCTID'])
                                          ->verificationChecks
                                          ->create([
                                                       "to" => "+2349112726323",

@@ -31,18 +31,18 @@ $pay_list = $en_pay_list = [
 
 if(LANG != 'en') {
     $ol_pay_list = [
-        ['en'=>'Bank/Mobile/ATM Transfers', 'fr'=>'Transferts directs'],
+        ['en'=>'Bank/Mobile/ATM Transfers', 'fr'=>'Transferts directs', 'es'=>'Transferencias bancarias', 'pt'=>'Transferências bancárias / móveis', 'de'=>'Bank / Handy / ATM-Überweisungen'],
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mobile Money (CFA)'),
-        ['en'=>'Mobile Money (Ghana)', 'fr'=>'Mobile Money (Ghana)'],
-        ['en'=>'MPESA (Kenya)', 'fr'=>'MPESA (Kenya)'],
+        ['en'=>'Mobile Money (Ghana)', 'fr'=>'Mobile Money (Ghana)', 'es'=>'Mobile Money (Ghana)', 'pt'=>'Mobile Money (Gana)', 'de'=>'Mobile Money (Gana)'],
+        ['en'=>'MPESA (Kenya)', 'fr'=>'MPESA (Kenya)', 'es'=>'MPESA (Kenia)', 'pt'=>'MPESA (Quênia)', 'de'=>'MPESA (Quênia)'],
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Flutterwave'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'PayStack'),
-        ['en'=>'Mobile Money (Uganda)', 'fr'=>'Mobile Money (Ouganda)'],
-        ['en'=>'Mobile Money (Rwanda)', 'fr'=>'Mobile Money (Rwanda)'],
-        ['en'=>'Mobile Money (Malawi)', 'fr'=>'Mobile Money (Malawi)'],
-        ['en'=>'Mobile Money (Tanzania)', 'fr'=>'Mobile Money (Tanzanie)'],
-        ['en'=>'Mobile Money (Zambia)', 'fr'=>'Mobile Money (Zambie)'],
-        ['en'=>'Mobile Money (DR Congo)', 'fr'=>'Mobile Money (RD Congo)'],
+        ['en'=>'Mobile Money (Uganda)', 'fr'=>'Mobile Money (Ouganda)', 'es'=>'Mobile Money (Uganda)', 'pt'=>'Mobile Money (Uganda)', 'de'=>'Mobile Money (Uganda)'],
+        ['en'=>'Mobile Money (Rwanda)', 'fr'=>'Mobile Money (Rwanda)', 'es'=>'Mobile Money (Ruanda)', 'pt'=>'Mobile Money (Ruanda)', 'de'=>'Mobile Money (Ruanda)'],
+        ['en'=>'Mobile Money (Malawi)', 'fr'=>'Mobile Money (Malawi)', 'es'=>'Mobile Money (Malaui)', 'pt'=>'Mobile Money (Malauí)', 'de'=>'Mobile Money (Malauí)'],
+        ['en'=>'Mobile Money (Tanzania)', 'fr'=>'Mobile Money (Tanzanie)', 'es'=>'Mobile Money (Tanzania)', 'pt'=>'Mobile Money (Tanzânia)', 'de'=>'Mobile Money (Tanzânia)'],
+        ['en'=>'Mobile Money (Zambia)', 'fr'=>'Mobile Money (Zambie)', 'es'=>'Mobile Money (Zambia)', 'pt'=>'Mobile Money (Zâmbia)', 'de'=>'Mobile Money (Zâmbia)'],
+        ['en'=>'Mobile Money (DR Congo)', 'fr'=>'Mobile Money (RD Congo)', 'es'=>'Mobile Money (RD Congo)', 'pt'=>'Mobile Money (RD Congo)', 'de'=>'Mobile Money (RD Congo)'],
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (MWK)'),
         // array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (ZAR)'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Mukuru (ZMW)'),
@@ -56,7 +56,7 @@ if(LANG != 'en') {
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'Skrill / Neteller'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'SticPay'),
         array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'AstroPay'),
-        ['en'=>'Crypto', 'fr'=>'Crypto'],
+        ['en'=>'Crypto', 'fr'=>'Crypto', 'es'=>'Cripto', 'pt'=>'Criptografia', 'de'=>'Krypto'],
         ];
     
     $pay_list = array_combine(array_column($ol_pay_list, LANG), array_values($en_pay_list));

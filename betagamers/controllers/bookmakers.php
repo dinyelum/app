@@ -36,7 +36,16 @@ class Bookmakers extends Controller {
             $redirect = 'Nous vous emmenons à ... en';
             $precount = 'Chargement';
             $alt = 'OR #cliquez ici# pour vous y rendre immédiatement';
-        }
+        } elseif(LANG=='es') {
+            $data['page_title'] = $data['h1'] = "Los corredores de apuestas";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio de betagamers, es.betagamers.net, las ofertas de casas de apuestas';
+            $this->description = 'Las ofertas de casas de apuestas.';
+            $tableheader = ['Corredor de apuestas', 'Acción', 'Código promocional'];
+            $prompt = 'Crear una cuenta en ...';
+            $redirect = 'Llevándote a ... en';
+            $precount = 'Cargando';
+            $alt = 'O #Haz clic aquí# para ir inmediatamente';
+        } 
         $data['prompt'] = $prompt;
         $data['redirect'] = str_replace('...', $singlebookie[0]['bookie'] ?? '...', $redirect);
         $data['precount'] = "$precount...";

@@ -12,7 +12,7 @@ BIC / SWIFT Code: <?=SWIFTCODE?><br><br>
 <h3 style='color:green'>AFTER MAKING PAYMENT, KINDLY SEND US:</h3>
 (1) Your Full Name (2) Your Email Address (3) Amount Paid (4) Subscription Plan <br><br>
 Example: Samuel Alison. samjoe@example.com. N12000. 3months Platinum.<br><br>
-TO +2348157437268 (08157437268) or <a href="<?=support_links('mailus')?>" style='color:green'>send us an email</a>.<br><br>
+TO <?=PHONE?> (<?=PHONE_LOCALE?>) or <a href="<?=support_links('mailus')?>" style='color:green'>send us an email</a>.<br><br>
 <h3 style='color:green'>Available Payment Methods</h3>
 Go through the list below to see the differnt available payment options:
 <ul><li><?=implode('</li><li>', all_payment_methods())?></li></ul>

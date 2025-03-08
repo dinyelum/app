@@ -21,7 +21,7 @@ $this->display_iframes()?>
 <p>The Italian League free picks by our tipsters are made available 2-3 days before the games. This is to help you with enough time to bet on the games before the match day kickoff.</p>
 
 <h2>Where to bet on the Italian League?</h2>
-<p>You can check <a style='color:green; text-decoration: underline' href='../bookies/'>this page</a> to see latest bookmaker offers so that you can register easily and start betting on Serie A matches.</p>
+<p>You can check <a style='color:green; text-decoration: underline' href='<?=bookies_link()?>'>this page</a> to see latest bookmaker offers so that you can register easily and start betting on Serie A matches.</p>
 
 <h2><?=$data['h2b']?></h2>
 <?=$this->list_league_teams()?>

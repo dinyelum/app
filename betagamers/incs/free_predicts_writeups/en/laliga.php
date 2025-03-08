@@ -20,7 +20,7 @@ $this->display_iframes()?>
 <p>For midweek fixtures (Tuesday, Wednesday and Thursday), the La Liga free picks by our tipsters are made available on Monday. For the weekend matches (Friday, Saturday, Sunday and Monday), the forecasts are available as from Wednesday. Therefore, whether you are looking for the latest la liga predictions today, tomorrow or for this weekend, betagamers is the best la liga prediction site.</p>
 
 <h2>Where to bet on the Spanish League?</h2>
-<p>You can check <a style='color:green; text-decoration: underline' href='../bookies/'>this page</a> to see latest bookmakers and their offers so you can register easily and start betting on La Liga matches. You can also check for more livescores updates <a href="../livescores.php" style='color:green'>here</a>.</p>
+<p>You can check <a style='color:green; text-decoration: underline' href='<?=bookies_link()?>'>this page</a> to see latest bookmakers and their offers so you can register easily and start betting on La Liga matches. You can also check for more livescores updates <a href="https://betagamers.net/livescores.php" style='color:green'>here</a>.</p>
 
 <h2><?=$data['h2b']?></h2>
 <?=$this->list_league_teams()?>

@@ -11,7 +11,7 @@
 <p><b>NB</b>: Vous devez être enregistré avant de pouvoir consulter les prix dans des devises autres que le naira.</p>
 <p class='w3-xlarge w3-margin-top'>Après le paiement:</p>
 <ul>
-<li>Si vous avez effectué un transfert direct, envoyez un message au +2348157437268 sur Whatsapp ou Telegram pour activer votre compte. Vous pouvez également <a href='<?=support_links('mailus')?>'>nous envoyer un e-mail</a>.</li>
+<li>Si vous avez effectué un transfert direct, envoyez un message au <?=PHONE?> sur Whatsapp ou Telegram pour activer votre compte. Vous pouvez également <a href='<?=support_links('mailus')?>'>nous envoyer un e-mail</a>.</li>
 <li>Si vous avez payé en ligne, votre compte est automatiquement activé.</li>
 </ul>
 <p class='w3-xlarge w3-margin-top'>Lorsque votre compte est activé, juste</p>
@@ -29,17 +29,7 @@ BANQUE: <?=BANK?><br><br>
 Code BIC / SWIFT: <?=SWIFTCODE?></p>
 
 <p>Les autres options de paiement disponibles sont:</p>
-<ul class='w3-ul w3-border-bottom'>
-<li>Cartes</li>
-<li>MPESA</li>
-<li>Mobile Money (pour différents pays)</li>
-<li>PayPal</li>
-<li>Skrill</li>
-<li>Neteller</li>
-<li>Perfect Money</li>
-<li>Crypto-monnaie</li>
-<li>Pour WorldRemit, Transferwise, Western Union, Monegram, Ria etc, vous devez nous contacter.</li>
-</ul>
+<ul class='w3-ul w3-border-bottom'><li><?=implode('</li><li>', array_diff_key(all_payment_methods(), [0=>'remove']))?></li></ul>
 
 <h2>Pour le soutien</h2>
 <p>Pour nous contacter pour quelque raison que ce soit, demandes de renseignements, annonces, emplois, etc., vous pouvez <a href='<?=support_links('mailus')?>'>nous envoyer un e-mail</a> OU vous pouvez <a href='<?=support_links()?>'>cliquer ici</a> pour voir les autres moyens de nous contacter.</p>

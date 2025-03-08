@@ -1,3 +1,0 @@
-<p>As one of the <a href="../" style="color: green;">top soccer prediction sites in the world</a>, we take a look at the top ten most in form good teams which you should consider betting on this weekend. These teams are considered as the best teams to wager on because they were selected mainly based on their current form, hence, they are the best football bets for this weekend which you can play as either straight win or double chance. According to their performances in their last 5-6 matches, we predict the likely teams that will win this weekend in their various fixtures whether as a home team or as an away team.</p>
-
-<?php include '/home/betaahfg/public_html/free_predicts/writeups/incs/teams_en.php'?>

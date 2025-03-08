@@ -11,7 +11,7 @@
 <p><b>NB</b>: You must be registered before you can view prices in other currencies.</p>
 <p class='w3-xlarge w3-margin-top'>After Payment:</p>
 <ul>
-<li>If you made direct transfer, send a message to +2348157437268 on Whatsapp / Telegram to activate your account. You can also <a href='<?=support_links('mailus')?>'>email us</a> too.</li>
+<li>If you made direct transfer, send a message to <?=PHONE?> on Whatsapp / Telegram to activate your account. You can also <a href='<?=support_links('mailus')?>'>email us</a> too.</li>
 <li>If you paid online, your account is automatically activated.</li>
 </ul>
 <p class='w3-xlarge w3-margin-top'>Once your account has been activated, Just</p>

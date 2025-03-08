@@ -10,7 +10,7 @@
                   <source srcset="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>.webp" type="image/webp" width='28' height='28'>
                   <img src="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>.png" alt="<?=$data['header']['langs'][LANG]['text']?>" width='28' height='28'>
                </picture>
-               <?=$data['header']['langs'][LANG]['text']?><i class="fa fa-caret-down" style="font-size:20px; padding-left: 5px"></i>
+               <?=$data['header']['langs'][LANG]['locale']?><i class="fa fa-caret-down" style="font-size:20px; padding-left: 5px"></i>
             </button>
             <div class="w3-dropdown-content w3-bar-block w3-border" style="left:0;"><?php
                foreach($data['header']['langs'] as $key=>$val) {

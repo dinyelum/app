@@ -1,0 +1,37 @@
+<p>Esta política de privacidad describe como nuestro <a href="<?=HOME?>" style="color:green">confiable sitio de predicciones</a> recolecta, protege y usa la información personal provista por los usuarios en nuestro sitio web manteniendo la privacidad de nuestros visitantes, además de hacer lo mejor posible para asegurarnos de que nuestro sitio web se mantenga como <a href="<?=HOME?>" style="color:green">el mejor sitio web para predicciones de futbol en el mundo</a>. A su vez describe las opciones referentes al uso de su información personal, y como puede acceder y actualizar dicha información. Esta política de privacidad no aplica a las prácticas de las compañías que no nos pertenecen o controlamos, o a los individuos que no están bajo nuestro cargo.</p>
+
+<h2>Registros y recolección automática de información</h2>
+<p>BetaGamers sigue un procedimiento estándar usando registros. Cuando visita nuestro sitio web, nuestros servidores graban automáticamente la información que su navegador envía. Estos datos pueden incluir información como pueden ser las direcciones IP de sus dispositivos, tipo de navegador y versión, tipo de sistema operativo y versión, preferencias de idioma, páginas de nuestro sitio web que usted visite, el tiempo navegando dichas páginas, información que busque en nuestro sitio web, veces y horas de acceso, e incluso la página que visito antes de acceder a nuestro sitio web. Todas empleadas con un propósito analítico y estadístico.</p>
+
+<p>Recolección, uso y procesamiento de información personal</p>
+<p>Para usar algunas de las características de nuestro sitio web, se le pedirá que provea cierta información personal, la cual puede incluir su nombre, correo electrónico, número de teléfono, dirección (país), o cualquier otra información personal.</p> 
+<p>Recibimos y almacenamos cualquier información que usted nos provea intencionalmente cuando crea una cuenta, publica contenido, comenta o llena alguna de las formas dentro de nuestro sitio web.</p>
+<p>Cualquier información que recolectemos de usted puede ser usada para personalizar su experiencia, mejorar nuestro sitio web, mejorar nuestro servicio al cliente, responder consultas y correos de nuestros clientes, enviar boletines informativos, enviar notificaciones por correo electrónico (recordatorios de contraseñas, actualizaciones, etc.), y operar nuestros servicios y sitio web. La información recolectada automáticamente es usada únicamente para identificar casos potenciales de abuso y establecer análisis estadísticos referentes al uso del sitio web. Esta información estadística no es de ninguna manera compilada de forma que pueda ser usada para identificar un usuario específico en el sistema.</p>
+
+<h2>Manejo de información personal</h2>
+<p>Una vez que haya creado una cuenta, puede visitar su perfil para ver qué información se puede visualizar. Tiene derecho a hacer ajustes a sus detalles personales, pero no puede editarlo directamente desde el sitio web, tendrá que contactarnos a través de correo electrónico con los detalles que desea cambiar para que podamos actualizarlos debidamente.</p>
+
+<h2>Política de privacidad de terceros</h2>
+<p>La política de privacidad no aplica para otras personas o sitios web ajenos. Le recomendamos consultar las políticas de privacidad de dichos terceros para obtener información más detallada, ya que puede incluir información sobre sus prácticas y condiciones sobre ciertas cláusulas.</p>
+
+<h2>Privacidad de niños</h2>
+<p>Otra de nuestras prioridades es proteger a los niños que usan el internet. Recomendamos a los padres o tutores que sean partícipes o monitoreen la actividad en línea de sus niños.</p>
+<p>BetaGamers no recolecta información o identidad personal adrede de niños menores de 13 años. Si cree que su hijo/a provee este tipo de información a nuestro sitio web, le alentamos a que nos contacte inmediatamente. Haremos nuestro mejor esfuerzo para eliminar rápidamente dicha información de nuestros registros.</p>
+
+<h2>Seguridad de la información</h2>
+<p>Aseguramos la información almacenada en servidores computacionales en un ambiente controlado y seguro, protegido de acceso, uso o eliminación no autorizados. Empleamos una cantidad considerable de protecciones físicas, técnicas y administrativas para evitar el acceso, uso o eliminación no autorizados a la información personal en nuestro control y custodia. Sin embargo, no se puede garantizar el bloqueo de la transmisión de datos a través del Internet o de las redes inalámbricas. Por lo tanto, aunque tratemos firmemente de proteger su información, usted reconoce que (i) hay limitaciones de la seguridad y de la privacidad en el Internet, mas allá de nuestro control; (ii) la seguridad, integridad y privacidad de cualquier y toda información enviada entre usted y nuestro sitio web no puede ser garantizada; y (iii) a pesar de nuestros mejores esfuerzos, cualquier información o datos puede ser vista o alterada por terceros durante la transmisión de datos.</p>
+
+<h2>Brecha de datos</h2>
+<p>En dicho evento en el que estemos al corriente de que la seguridad de nuestro sitio web ha sido comprometida, o la información personal de los usuarios ha sido compartida a sitios de terceros ajenos a nosotros como resultado de una actividad externa (incluyendo, pero no limitado a: ataques de seguridad o fraude), nos reservamos el derecho de tomar medidas razonablemente apropiadas (incluyendo, pero no limitado a: investigar, reportar y cooperar con las fuerzas de la ley). En el evento de una brecha en nuestra seguridad, haremos esfuerzos razonables para notificar a los individuos afectados si consideramos que hay riesgo de daño para el usuario como resultado de la brecha, o si es requerido por la ley. Cuando lo hagamos, subiremos un anuncio al sitio web, y le enviaremos un correo electrónico.</p>
+
+<h2>Cambios y enmiendas</h2>
+<p>Es posible que actualicemos nuestra política de privacidad cada cierto tiempo a nuestra discreción, le notificaremos de cualquier cambio a este documento a través de la última fecha de actualización al final de esta página. Cualquier actualización de esta política de privacidad entrara en vigor inmediatamente tras ser revisada y subida, a no ser que se especifique lo contrario. El uso continuado del sitio web o de los servicios después de la actualización de la política de privacidad (o cualquier otra especificada en ese momento) será constituido en su consentimiento para estos cambios.</p>
+<p>Sin embargo, no usaremos sus datos personales sin su consentimiento, ni de una manera diferente a como se haya establecido en el momento en el que esta fue recolectada.</p>
+
+<h2>Política de privacidad en línea</h2>
+<p>Esta política de privacidad aplica solo para nuestras actividades en línea, y es válida para todos los visitantes en nuestro sitio web, haciendo referencia a la información que estos comparten y/o es recolectada en BetaGamers. Esta política no es aplicable a cualquier información recolectada fuera del internet o a través de canales externos a este sitio web.</p>
+
+<h2>Consentimiento</h2>
+<p>Al usar nuestro sitio web, acepta nuestra política de privacidad y acepta nuestros términos y condiciones.</p>
+
+<p>Este documento fue actualizado por última vez el 11 de Marzo, 2022.</p>

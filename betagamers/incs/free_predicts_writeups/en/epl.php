@@ -22,7 +22,7 @@ $this->display_iframes()?>
 <p>Most times, 2-3 days before the match day. Our EPL predictions experts work on the games and make them available as early as possible so that you can take advantage of the early odds before they start to drop. Therefore, whether you are looking for epl predictions today, tomorrow or for this weekend, this page is where you should check.</p>
 
 <h2>Where to bet on the Premier League?</h2>
-<p>You can check our <a style='color:green; text-decoration: underline' href='../bookies/'>bookmakers' page</a> to see available bookmakers where you can register and start betting on EPL matches.</p>
+<p>You can check our <a style='color:green; text-decoration: underline' href='<?=bookies_link()?>'>bookmakers' page</a> to see available bookmakers where you can register and start betting on EPL matches.</p>
 
 <h2><?=$data['h2b']?></h2>
 <?=$this->list_league_teams()?>

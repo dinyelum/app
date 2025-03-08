@@ -29,7 +29,7 @@ $this->display_iframes()?>
 <p>The Germany League free picks by our tipsters are made available 2-3 days before the game kickoff.</p>
 
 <h2>Where to bet on the Germany Bundesliga?</h2>
-<p>You can check our <a style='color:green; text-decoration: underline' href='../bookies/'>bookmakers' page</a> to see latest bookmaker offers so that you can register easily and start betting on the matches.</p>
+<p>You can check our <a style='color:green; text-decoration: underline' href='<?=bookies_link()?>'>bookmakers' page</a> to see latest bookmaker offers so that you can register easily and start betting on the matches.</p>
 
 <h2><?=$data['h2b']?></h2>
 <?=$this->list_league_teams()?>
