@@ -849,9 +849,9 @@ class Payments extends Controller {
         $data['p'] = match(LANG) {
             'fr'=>['#Cliquez ici# pour nous envoyer un e-mail ou nous envoyer un message via '.PHONE.' sur Whatsapp ou Telegram et nous vous répondrons avec les détails du paiement.'],
             'es'=>['#Haga clic aquí# para enviarnos un correo electrónico o envíenos un mensaje a través del '.PHONE.' en Whatsapp o Telegram y le responderemos con los detalles del pago.'],
-            'pt'=>['#Clique aqui# para nos enviar um e-mail ou mensagem via '.PHONE.' no Whatsapp ou Telegram e responderemos com os detalhes de pagamento.']
-            'de'=>['#Klicken Sie hier#, um uns eine E-Mail zu senden, oder schreiben Sie uns unter '.PHONE.' eine Nachricht über WhatsApp oder Telegram. Wir antworten Ihnen dann mit den Zahlungsdetails.']
-            default=>['#Click here# to send us a mail or message us via '.PHONE.' on Whatsapp or Telegram and we\'ll reply you with the payment details.']
+            'pt'=>['#Clique aqui# para nos enviar um e-mail ou mensagem via '.PHONE.' no Whatsapp ou Telegram e responderemos com os detalhes de pagamento.'],
+            'de'=>['#Klicken Sie hier#, um uns eine E-Mail zu senden, oder schreiben Sie uns unter '.PHONE.' eine Nachricht über WhatsApp oder Telegram. Wir antworten Ihnen dann mit den Zahlungsdetails.'],
+            default=>['#Click here# to send us a mail or message us via '.PHONE.' on Whatsapp or Telegram and we\'ll reply you with the payment details.'],
         };
         $this->page = 'astropay';
         //$this->color = '#f15922';
@@ -869,7 +869,7 @@ class Payments extends Controller {
         ];
         $data['extra'] = match(LANG) {
             'fr'=>['Pas encore de compte Chipper Cash ? Vous pouvez #cliquer ici pour vous inscrire#'],
-            'es'=>['¿Todavía no tienes una cuenta de Chipper Cash? Puede #hacer clic aquí para registrarse#']
+            'es'=>['¿Todavía no tienes una cuenta de Chipper Cash? Puede #hacer clic aquí para registrarse#'],
             default=>["Pas encore de compte Chipper Cash ? Vous pouvez #cliquer ici pour vous inscrire#."]
         };
         $this->page = 'chippercash';

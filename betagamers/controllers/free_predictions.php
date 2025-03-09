@@ -61,6 +61,24 @@ class Free_Predictions extends Controller {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, nouvelles des betagamers, blog des betagamers, pronostics ligue anglaise, pronostics liga espagnole, pronostics série italienne a, pronostics ligue 1 française, pronostics Bundesliga allemande, Conseils de Paris sur le Football';
             $this->description = 'Meilleurs conseils de paris gratuits sur le football, consultez les dernières prévisions de football gratuites sur notre site maintenant.';
             $this->og['description'] = 'site de prédiction de football gagnant. Consultez nos prévisions gratuites aujourd\'hui et chaque week-end.';
+        } elseif(LANG=='es') {
+            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
+            $data['page_title'] = $data['h1'] = "Consejos gratuitos de liga y copa";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, Consejos de apuestas de fútbol para el fin de semana, El mejor pronóstico para los favorito para hoy en la grandes Ligas';
+            $this->description = 'Vea los últimos pronósticos de apuestas de fútbol para hoy y el fin de semana de diferentes ligas.';
+            $this->og['description'] = 'Vea los últimos pronósticos de apuestas de fútbol para el fin de semana.';
+        } elseif(LANG=='pt') {
+            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
+            $data['page_title'] = $data['h1'] = "Dicas grátis da Liga / Copa";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, prognósticos gratuitos das principais ligas europeias';
+            $this->description = 'Obtenha as melhores previsões gratuitas para as principais ligas europeias e outros grandes torneios.';
+            $this->og['description'] = 'Obtenha as melhores previsões gratuitas para as principais ligas europeias e outros grandes torneios.';
+        } elseif(LANG=='de') {
+            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
+            $data['page_title'] = $data['h1'] = "Kostenlose Liga / Pokal Tipps";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, kostenlose Wochenendvorhersagen';
+            $this->description = 'Die besten kostenlosen europäischen Fußballvorhersagen für heute und für das Wochenende.';
+            $this->og['description'] = 'Die besten kostenlosen europäischen Fußballvorhersagen für heute und für das Wochenende.';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/soccerfield.jpg';

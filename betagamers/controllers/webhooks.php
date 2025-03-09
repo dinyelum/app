@@ -200,18 +200,23 @@ class Webhooks extends Processor {
         // parse event (which is json string) as object
         // Do something - that will not take long - with $event
         $event = json_decode($input);
+        file_put_contents(time().'_psk', json_encode($event, JSON_PRETTY_PRINT));
         $fullName = 'paystack_customer';
         $email = $event->data->customer->email;
         $phone = $event->data->customer->phone ?? '070';
-        $currency = $event->data->currency;
-        $amount = $event->data->amount / 100;
-        $metaplan = $event->data->metadata->custom_fields->planid;
-        $id = $event->data->id;
-        $txn_ref = $event->data->reference;
-        file_put_contents(time().'_psk', json_encode($event, JSON_PRETTY_PRINT));
         if($event->event == 'charge.success') {
+            $currency = $event->data->currency;
+            $amount = $event->data->amount / 100;
+            $metaplan = $event->data->metadata->custom_fields->planid;
+            $id = $event->data->id;
+            $txn_ref = $event->data->reference;
             $this->process_payments('PayStack', $fullName, $email, $phone, $currency, $amount, $metaplan, $id, $txn_ref);
-        } elseif($event->event == 'refund.processed') {
+        } elseif($event->event == 'refund.processed' ) {
+            $currency = $event->data->transaction->currency;
+            $amount = $event->data->transaction->amount / 100;
+            $metaplan = $event->data->transaction->metadata->custom_fields->planid;
+            $id = $event->data->transaction->id;
+            $txn_ref = $event->data->transaction->reference;
             $this->deactivate_sub('PayStack', $email, $currency, $amount, $metaplan, 'refund');
         } else {}
         exit();

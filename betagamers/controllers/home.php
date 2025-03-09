@@ -376,14 +376,14 @@ Class Home extends Controller
         $freekey = ['./', TELEGRAM_CHANNEL_LINK, ''];
         $diamkey = [tips_links('5odds'), tips_links('10odds'), tips_links('straight'), tips_links('dblchance'), tips_links('bts'), tips_links('ovun')];
         $platkey = [tips_links('2odds'), tips_links('3odds'), tips_links('single'), tips_links('p2s'), tips_links('draw'), tips_links('bigodds'), tips_links('cscore'), tips_links('weekend')];
-        $data['plansec']['sections']=>[
+        $data['plansec']['sections'] = [
             'free'=>array_combine($freekey, $freeval),
             'diam'=>array_combine($diamkey, $diamval),
             'plat'=>array_combine($platkey, $platval),
         ];
-        $data['pricingsec']['plans'] = plans(['diamond', 'platinum', 'ultimate']),
-        $data['pricingsec']['currency'] = $curdetails['currency'],
-        $data['pricingsec']['cursign'] = $curdetails['cur_sign'],
+        $data['pricingsec']['plans'] = plans(['diamond', 'platinum', 'ultimate']);
+        $data['pricingsec']['currency'] = $curdetails['currency'];
+        $data['pricingsec']['cursign'] = $curdetails['cur_sign'];
         ksort($data['pricingsec']['plans']);
 		$this->view("home",$data);
 	}

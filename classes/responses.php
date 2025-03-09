@@ -48,7 +48,7 @@ trait Responses {
     function resp_invalid_polite($fieldname, $lang='en') {
         $lang = $this->lang ?? $lang;
         if($fieldname=='fullphone') {
-            $newfieldname = match ($lang) {
+            $fieldname = match ($lang) {
                 'fr' => "Ce numéro",
                 'es' => "Este número de teléfono",
                 'pt' => "Este número de telefone",
@@ -145,7 +145,7 @@ trait Responses {
     function resp_already_exists($fieldname, $lang='en') {
         $lang = LANG ?? $lang;
         if($fieldname=='fullphone') {
-            $newfieldname = match ($lang) {
+            $fieldname = match ($lang) {
                 'fr' => "Ce numéro",
                 'es' => "Este número de teléfono",
                 'pt' => "Este número de telefone",

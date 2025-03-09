@@ -20,7 +20,7 @@ class Folder extends Controller {
     }
 
     function sidelist() {
-        include ROOT."/app/betagamers/incs/menuadmin.php";
+        include INCS."/menuadmin.php";
         return $sidelist;
     }
     /*
@@ -109,7 +109,7 @@ class Folder extends Controller {
                 ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>'Submit', 'error'=>'']
             ];
         } elseif($this->activepage=='view_agent') {
-            if(!isset($country_list)) include ROOT."/app/betagamers/incs/countrylist/".LANG.".php";
+            if(!isset($country_list)) include INCS."/countrylist/".LANG.".php";
             $allcountries = array_combine(array_keys($country_list), array_column($country_list, 'name'));
             $formfields = [
                 ['tag'=>'select', 'name'=>"countries", 'options'=>['default_opt_'.($formdata[0]['countries'] ?? '')=>$allcountries[$formdata[0]['countries'] ?? 'def'] ?? null, ...$allcountries], 'error'=>$formdata[1]['countries'] ?? ''],
@@ -266,7 +266,7 @@ class Folder extends Controller {
                 }
             }
 
-            if(!isset($country_list)) include ROOT."/app/betagamers/incs/countrylist/".LANG.".php";
+            if(!isset($country_list)) include INCS."/countrylist/".LANG.".php";
             $allcountries = array_combine(array_keys($country_list), array_column($country_list, 'name'));
 
             $formfields = [
@@ -792,21 +792,21 @@ class Folder extends Controller {
                         // show($details);
                         if($details['extension']=='zip') {
                             $zippedfile = [
-                                'ziplocation'=>ROOT.'/app/betagamers/incs/free_predicts_writeups/en/teams/'.$details['basename'], 
+                                'ziplocation'=>UPLOAD_TEAMS_ROOT.'/'.$details['basename'], 
                                 'archivepathtofile'=>'teams', 
                                 'filename'=>'teams', 
-                                'savepath'=>ROOT.'/app/betagamers/incs/free_predicts_writeups/en/teams/',
+                                'savepath'=>UPLOAD_TEAMS_ROOT.'/',
                             ];
                             $extract = unzip($zippedfile, ['html', 'htm']);
                             if($extract) {
                                 $formdata[0]['fileToUpload'][0] = $extract;
                             } else {
                                 $genErr = 'Error with unzipping file';
-                                error_log('An file unzipping error has occured on the upload teams section (/app/betagamers/incs/free_predicts/en/teams/)', 0);
+                                error_log('A file unzipping error has occured on the upload teams section ('.UPLOAD_TEAMS_ROOT.')', 0);
                             }
                         }
 
-                        if(!file_exists($file=ROOT.'/app/betagamers/incs/free_predicts/en/teams/'.$formdata[0]['fileToUpload'][0]) || (date('Y-m-d', filemtime($file))!=date('Y-m-d', strtotime('today')))) {
+                        if(!file_exists($file=UPLOAD_TEAMS_ROOT.'/'.$formdata[0]['fileToUpload'][0]) || (date('Y-m-d', filemtime($file))!=date('Y-m-d', strtotime('today')))) {
                             $genErr = 'A very interesting error. Please Contact admin immediately';
                         }
 
@@ -897,16 +897,16 @@ class Folder extends Controller {
         date_default_timezone_set('Africa/Lagos');
         $datetod = date('Y-m-d', strtotime('today'));
         $dateyes = date('Y-m-d', strtotime('yesterday'));
-        include ROOT."/app/betagamers/incs/glossary.php";
+        include INCS."/glossary.php";
 
         if(isset($_GET['type']) && $_GET['type']=='free') {
             $table = 'freegames';
-            $dir = 'free_predicts';
+            $dir = 'free_predicts/en';
             $gamesclass = new Freegames;
             $blueprint = $gamesclass->leagues;
         } else {
             $table = 'games';
-            $dir = 'table';
+            $dir = 'table/en';
             $gamesclass = new Games;
             $blueprint = $gamesclass->gamesmain;
         }
@@ -931,7 +931,7 @@ class Folder extends Controller {
             }
         }
         $files = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator(ROOT."/app/betagamers/incs/$dir"),
+            new RecursiveDirectoryIterator(INCS."/$dir"),
             RecursiveIteratorIterator::LEAVES_ONLY
         );
         
@@ -989,14 +989,14 @@ class Folder extends Controller {
                         // echo $filename.$day.'<br>';
                         $day = $day=='tod' ? '' : $day;
                         $link = $file->getPath()."/$day$fullfilename";
+                        // echo $link.'<br>';
                         // show($output);
-                        $output_en = iconv("CP1257","UTF-8", implode($output));
+                        // $output_en = iconv("CP1257","UTF-8", implode($output));
+                        $output_en = implode($output);
                         file_put_contents($link, $output_en);
-                        //if tom, popular rename to upcoming
                         //convert
-                        //, 'es'=>$es, 'pt'=>$pt, 'de'=>$de
-                        foreach(['fr'=>$fr] as $pref=>$lang) {
-                            $str = iconv("CP1257","UTF-8", implode(str_ireplace($en, $lang, $output)));
+                        foreach(['fr'=>$fr, 'es'=>$es, 'pt'=>$pt, 'de'=>$de] as $pref=>$lang) {
+                            $str = implode(str_ireplace($en, $lang, $output));
                             file_put_contents(str_replace('/en/', "/$pref/", $link), $str);
                         }
                         // copy($link, ROOT."/fr.betagamers.net/$dir/$fullfilename");

@@ -194,9 +194,9 @@ function tips_list($lang=null) {
         $sections = [
             ['fr'=>'APERÇU', 'es'=>'VISIÓN DE CONJUNTO', 'pt'=>'VISÃO GERAL', 'de'=>'EINLOGGEN', 'sub'=>$tips_list['OVERVIEW']],
             ['fr'=>'CONSEILS GRATUITS', 'es'=>'PRONOSTICOS GRATIS', 'pt'=>'DICAS GRATUITAS', 'de'=>'KOSTENLOSE TIPPS', 'sub'=>$tips_list['FREE TIPS']],
-            ['fr'=>'ULTIME', 'es'=>'DIAMANTE', 'pt'=>'DIAMANTE', 'de'=>'DIAMANT', 'sub'=>$ultimate],
-            ['fr'=>'DIAMANT', 'es'=>'PLATINO', 'pt'=>'PLATINA', 'de'=>'PLATIN', 'sub'=>$diamond],
-            ['fr'=>'PLATINE', 'es'=>'ULTIMATE', 'pt'=>'ULTIMATE', 'de'=>'ULTIMATE', 'sub'=>$platinum]
+            ['fr'=>'ULTIME', 'es'=>'ULTIMATE', 'pt'=>'ULTIMATE', 'de'=>'ULTIMATE', 'sub'=>$ultimate],
+            ['fr'=>'DIAMANT', 'es'=>'DIAMANTE', 'pt'=>'DIAMANTE', 'de'=>'DIAMANT', 'sub'=>$diamond],
+            ['fr'=>'PLATINE', 'es'=>'PLATINO', 'pt'=>'PLATINA', 'de'=>'PLATIN', 'sub'=>$platinum]
         ];
     
         $tips_list = array_column($sections, 'sub', $lang);

@@ -331,3 +331,11 @@ function old_format_word_htm($str) {
     $text = str_replace(['<p><span><o>&nbsp;</o:p></span></p>', '<p><o>&nbsp;</o:p></p>'], '', $text);
     return $text;
 }
+
+function locale_sort(&$arrayToSort, $locale) {
+    uasort($arrayToSort, function ($a, $b) use ($locale) {
+        // return strcasecmp($a['name'], $b['name']);
+        $coll = collator_create( $locale );
+        return collator_compare( $coll, $a['name'], $b['name'] );
+    });
+}

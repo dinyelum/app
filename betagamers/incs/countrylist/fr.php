@@ -266,14 +266,14 @@ foreach ($country_list as $index => $item) {
 setlocale(LC_COLLATE, 'fr');
 asort($flat, SORT_LOCALE_STRING);
 */
-function cmp($a, $b) {
+/*function cmp($a, $b) {
     // return strcasecmp($a['name'], $b['name']);
     $coll = collator_create( 'fr' );
     return collator_compare( $coll, $a['name'], $b['name'] );
 }
 //$coll = collator_create( 'en_US' );
 //$res  = collator_compare( $coll, $s1, $s2 );
-uasort($country_list, 'cmp');
+uasort($country_list, 'cmp');*/
 //array_multisort(array_column($country_list, 'name'), SORT_ASC, SORT_LOCALE_STRING, $country_list);
 //show($country_list);
 ?>

@@ -145,6 +145,7 @@ Class Account extends Controller
         $signature = bin2hex(random_bytes(4)).'_'.$hash;
 
         include ROOT."/app/betagamers/incs/countrylist/".LANG.".php";
+        if(LANG!='en') locale_sort($country_list, LANG);
         $country_form_list = array_combine(array_keys($country_list), array_column($country_list, 'name'));
         $this->page = 'register';
         $this->style = ".form {width: 70%;} @media screen and (max-width: 600px){.form {width: 100%;}}";
@@ -191,8 +192,9 @@ Class Account extends Controller
             $genclass->insertunique = ['email'];
             $genclass->required = ['email', 'phone'];
             $_POST['language'] = strtoupper(LANG);
-            $dialcode = isset($_POST['country']) && $_POST['country']!='' ? $country_list[$_POST['country']]['phone'] : (CF_COUNTRY ? $country_list[CF_COUNTRY]['phone'] : null);
-            $countryname = isset($_POST['country']) ? $country_list[$_POST['country']]['name'] : null;
+            $validcountry = array_key_exists($_POST['country'], $country_form_list);
+            $dialcode = $validcountry ? $country_list[$_POST['country']]['phone'] : (CF_COUNTRY ? $country_list[CF_COUNTRY]['phone'] : null);
+            $countryname = $validcountry ? $country_list[$_POST['country']]['name'] : null;
             $_POST['hash'] = sha1(rand(0,1000));
             if(!isset($_POST['fullphone']) || trim($_POST['fullphone'])=='') {
                 $_POST['fullphone'] = str_starts_with($_POST['phone'], '+') ? $_POST['phone'] : (str_starts_with($_POST['phone'], $dialcode) ? '+'.$_POST['phone'] : "+$dialcode".$_POST['phone']);
@@ -219,13 +221,14 @@ Class Account extends Controller
             }
             // var_dump($_POST);
         }
-
+        $countrysymb = array_search($countryname, $country_form_list);
         $formfields = [
             ['tag'=>'input', 'id'=>"fullname", 'type'=>'text', 'placeholder'=>$placeholders['fullname'], 'name'=>"fullname", 'value'=>$formdata[0]['fullname'] ?? '', 'error'=>$formdata[1]['fullname'] ?? '', 'required'],
             ['tag'=>'input', 'id'=>"email", 'type'=>'email', 'placeholder'=>$placeholders['email'], 'name'=>"email", 'value'=>$formdata[0]['email'] ?? '', 'error'=>$formdata[1]['email'] ?? '', 'required'],
             ['tag'=>'input', 'id'=>"noemail", 'type'=>'checkbox', 'name'=>"noemail", 'value'=>true, 'error'=>'', isset($_POST['noemail']) && $_POST['noemail']==true ? 'checked' : ''],
             ['tag'=>'input', 'id'=>"phone", 'type'=>'tel', 'placeholder'=>'7062345988', 'name'=>"phone", 'value'=>$formdata[0]['fullphone'] ?? '', 'error'=>$formdata[1]['fullphone'] ?? '', 'required'],
-            ['tag'=>'select', 'name'=>"country", 'options'=>['default_opt_'.($formdata[0]['country'] ?? '')=>$country_form_list[$formdata[0]['country'] ?? ''] ?? null, ...$country_form_list], 'id'=>'country', 'error'=>$formdata[1]['country'] ?? '', 'required'],
+            //['tag'=>'select', 'name'=>"country", 'options'=>['default_opt_'.($formdata[0]['country'] ?? '')=>$country_form_list[$formdata[0]['country'] ?? ''] ?? null, ...$country_form_list], 'id'=>'country', 'error'=>$formdata[1]['country'] ?? '', 'required'],
+            ['tag'=>'select', 'name'=>"country", 'options'=>["default_opt_$countrysymb"=>$countryname, ...$country_form_list], 'id'=>'country', 'error'=>$formdata[1]['country'] ?? '', 'required'],
             ['tag'=>'input', 'type'=>'password', 'placeholder'=>$placeholders['password'], 'name'=>"password", 'value'=>'', 'class'=>'password', 'error'=>$formdata[1]['password'] ?? '', 'required'],
             ['tag'=>'input', 'type'=>'checkbox', 'name'=>'', 'class'=>'ptoggler', 'error'=>''],
             ['tag'=>'input', 'type'=>'hidden', 'name'=>"signature", 'value'=>$signature, 'error'=>''],
@@ -237,8 +240,6 @@ Class Account extends Controller
         $output = form_format($formfields);
         // show($output);
 
-        $data['page_title'] = $data['h1'] = 'Create An Account';
-        $data['countryname'] = $countryname;
         $data['formfields'] = array_chunk($output, 4, true);
         $data['fieldnames'] = array_combine(array_column($formfields, 'name'), $fieldnames);
         $data['formerrors'] = $errs ?? $formdata[1] ?? null;
@@ -699,7 +700,7 @@ Class Account extends Controller
         } elseif(LANG=='de') {
             $this->description = 'Betagamers Profil';
             $data['page_title'] = "Profil";
-            $data['table']['h1'] 'Kontoinformationen';
+            $data['table']['h1'] = 'Kontoinformationen';
             $data['table']['user'] = ['fullname'=>'Name', 'email'=>'Email', 'phone'=>'Telefon', 'country'=>'Land'];
             $data['table']['substatus'] = 'Abonnementstatus'; //diamond, platinum etc
             $substatus = "Aktiv. Läuft in: dd Tagen, hh Stunden";
