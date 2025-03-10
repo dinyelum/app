@@ -208,6 +208,16 @@ class Tips extends Controller {
             $this->description = 'Ver los boletos de apuestas ganados recientemente en Betagamers.';
             $title = "Entradas de Apuestas Ganadas";
             $alt = 'boletas de apuestas ganadoras';
+        } elseif(LANG=='pt') {
+            $this->keywords = 'bilhetes de aposta ganha, boletins de apostas Ganhas';
+            $this->description = 'VVeja os boletins de apostas recentemente ganhos em Betagamers';
+            $title = "Bilhetes de Apostas Ganhas";
+            $alt = 'bilhetes de apostas vencedores';
+        } elseif(LANG=='de') {
+            $this->keywords = 'gewonnene Wettscheine, Wettschein gewonnen';
+            $this->description = 'Sehen Sie sich die kürzlich gewonnenen Wettscheine auf Betagamers an';
+            $title = "Gewonnene Wettscheine";
+            $alt = 'gewonnene Wettscheine';
         }
         $data['page_title'] = $data['h1'] = $title;
         $data['screenshots'] = $screenshots;

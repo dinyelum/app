@@ -47,11 +47,11 @@ Class Account extends Controller
         if(LANG=='en') {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers Login page, best ftball prediction website';
             $this->description = 'Sign in to Betagamers today and explore the world of opportunities waiting for you.';
-            $data['page_title'] = $data['h1'] = $data['input']['submit']['fieldname'] = "Login";
+            $data['page_title'] = $data['h1'] = "Login";
             $data['tab'] = ['With Email', 'With Phone'];
             $fieldnames['email'] = ['E-mail', 'Password', 'Show Password', '', ''];
             $fieldnames['fullphone'] = ['Phone Number', 'Password', 'Show Password', '', ''];
-            $login = 'Login';
+            $data['input']['submit']['fieldname'] = "Login";
             $prompts = ['Not yet a member? Register', 'Forgot Password?'];
             $phoneins = "Select your country's code. Then, type your normal number eg: 07062345988";
         } elseif(LANG=='fr') {
@@ -62,20 +62,39 @@ Class Account extends Controller
             $data['tab'] = ['Avec e-mail', 'Avec téléphone'];
             $fieldnames['email'] = ['E-mail', 'Mot de passe', 'Montrer le Mot de Passe', '', ''];
             $fieldnames['fullphone'] = ['Numéro de téléphone (nombre normal)', 'Mot de passe', 'Montrer le Mot de Passe', '', ''];
-            $login = 'Se Connecter';
             $prompts = ["Pas encore membre? S'inscrire", 'Mot de Passe Oublié?'];
             $phoneins = "Sélectionnez le code de votre pays. Tapez ensuite votre nombre normal, par exemple: 07062345988";
         } elseif(LANG=='es') {
             $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, el login de betagamers';
             $this->description = 'Inicia sesión en Betagamers hoy.';
-            $data['page_title'] = $data['h1'] = $data['input']['submit']['fieldname'] = "Login";
+            $data['page_title'] = $data['h1'] = "Login";
             $data['tab'] = ['Con correo', 'Con teléfono'];
             $fieldnames['email'] = ['Correo electrónico', 'Contraseña', 'Mostrar contraseña', '', ''];
             $fieldnames['fullphone'] = ['Número de teléfono', 'Contraseña', 'Mostrar contraseña', '', ''];
-            $login = 'Login';
+            $data['input']['submit']['fieldname'] = "Login";
             $prompts = ['¿Todavía no eres miembro? Registrarse', '¿Has olvidado tu contraseña?'];
             $phoneins = "Selecciona el código de tu país, luego escriba su número normal p.eg: 07062345988";
-        } 
+        } elseif(LANG=='pt') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net';
+            $this->description = 'Faça login no Betagamers hoje.';
+            $data['page_title'] = $data['h1'] = "Entrar";
+            $data['tab'] = ['Com E-mail', 'Com número'];
+            $fieldnames['email'] = ['E-mail', 'Senha', 'Mostrar senha', '', ''];
+            $fieldnames['fullphone'] = ['Telefone', 'Senha', 'Mostrar senha', '', ''];
+            $data['input']['submit']['fieldname'] = 'Conecte-se';
+            $prompts = ['Ainda não é um membro? Registro', 'Esqueceu sua senha?'];
+            $phoneins = "Selecione o código do seu país. Em seguida, digite seu número normal, por exemplo: 07062345988";
+        } elseif(LANG=='de') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net';
+            $this->description = 'Melden Sie sich noch heute bei Betagamers an.';
+            $data['page_title'] = $data['h1'] = "Einloggen";
+            $data['tab'] = ['Mit E-Mail', 'Mit Telefon'];
+            $fieldnames['email'] = ['E-mail', 'Passwort', 'Passwort anzeigen', '', ''];
+            $fieldnames['fullphone'] = ['Telefon', 'Passwort', 'Passwort anzeigen', '', ''];
+            $data['input']['submit']['fieldname'] = 'Einloggen';
+            $prompts = ['Noch kein Mitglied? Registrieren', 'Passwort vergessen?'];
+            $phoneins = "Wählen Sie Ihre Landesvorwahl aus und geben Sie dann Ihre normale Nummer ein. zB: 07062345988";
+        }
         $fieldnames['fullphone'][0] = 
         "<span class='w3-tooltip'><span style='position:absolute;left:0;bottom:18px' class='w3-text w3-tag w3-round-xlarge'>$phoneins
         </span>".$fieldnames['fullphone'][0]." <i class='fa fa-question-circle' style='font-size:15px; color:green'></i></span>";
@@ -179,6 +198,26 @@ Class Account extends Controller
             $phoneins = "Selecciona el código de tu país, luego escriba su número normal p.eg: 07062345988";
             $prompts = ['submit'=>'Registrarse', 'login'=>'¿Ya eres usuario? Iniciar sesión'];
             $terms = "Al crear una cuenta, acepta nuestros #condiciones de uso# y #Política de privacidad#";
+        } elseif(LANG=='pt') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net';
+            $this->description = 'Formulário de registro de betagamers: Junte-se a nós hoje.';
+            $data['page_title'] = "Cadastro";
+            $data['h1'] = "Crie a sua conta";
+            $fieldnames = ['Nome completo:', 'E-mail', "Não tenho e-mail", 'Telefone (Número Normal)', 'Selecione o pais', 'Senha', 'Mostrar senha', ''];
+            $placeholders = ['fullname'=>'Nome completo:', 'email'=>'E-mail', 'password'=>'Senha'];
+            $phoneins = "Selecione o código do seu país. Em seguida, digite seu número normal, por exemplo: 07062345988";
+            $prompts = ['submit'=>'Enviar', 'login'=>'Já é um membro? Entrar'];
+            $terms = "Ao criar uma conta, você concorda com nossos #Termos de Uso# e #Política de Privacidade#.";
+        } elseif(LANG=='de') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net';
+            $this->description = 'Betagamers Anmeldeformular: Trete uns heute bei.';
+            $data['page_title'] = "Registrierung";
+            $data['h1'] = "Ein Konto erstellen";
+            $fieldnames = ['Vollständiger Name', 'E-mail', "Ich habe keine E-Mail", 'Telefon (normale Nummer)', 'Land auswählen', 'Passwort', 'Passwort anzeigen', ''];
+            $placeholders = ['fullname'=>'Vollständiger Name', 'email'=>'E-mail', 'password'=>'Passwort'];
+            $phoneins = "Wählen Sie Ihre Landesvorwahl aus und geben Sie dann Ihre normale Nummer ein. zB: 07062345988";
+            $prompts = ['submit'=>'Absenden', 'login'=>'Schon ein Mitglied? Einloggen'];
+            $terms = "Indem Sie ein Konto erstellen, stimmen Sie unseren #Nutzungsbedingungen# und #Datenschutzbestimmungen# zu.";
         }
         $fieldnames[3] = 
         "<span class='w3-tooltip'><span style='position:absolute;left:0;bottom:18px' class='w3-text w3-tag w3-round-xlarge'>$phoneins
@@ -362,6 +401,10 @@ Class Account extends Controller
             $data['page_title'] = "Vérification du nouveau compte";
         } elseif(LANG=='es') {
             $data['page_title'] = "Verificación de cuenta nueva";
+        } elseif(LANG=='pt') {
+            $data['page_title'] = "Verificação de nova conta";
+        } elseif(LANG=='de') {
+            $data['page_title'] = "Neue Kontobestätigung";
         }
         if(isset($_GET['email']) && isset($_GET['hash'])) {
             $genclass = new General;
@@ -427,6 +470,28 @@ Class Account extends Controller
             $fieldnames['fullphone'] = ['Número de teléfono', '', ''];
             $phoneins = "Selecciona el código de tu país, luego escriba su número normal p.eg: 07062345988";
             $submit = 'Enviar';
+        } elseif(LANG=='pt') {
+            $data['page_title'] = "Esqueceu sua senha";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net';
+            $this->description = 'Você pode usar esta página para redefinir sua conta no BetaGamers';
+            $data['h1'] = 'Insira o seu endereço de email';
+            $data['h2'] = 'Digite seu número de telefone';
+            $data['tab'] = ['Com E-mail', 'Com número'];
+            $fieldnames['email'] = ['E-mail', '', ''];
+            $fieldnames['fullphone'] = ['Telefone', '', ''];
+            $phoneins = "Selecione o código do seu país. Em seguida, digite seu número normal, por exemplo: 07062345988";
+            $submit = 'Enviar';
+        } elseif(LANG=='de') {
+            $data['page_title'] = "Passwort vergessen";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net';
+            $this->description = 'Sie können diese Seite verwenden, um Ihr Konto bei BetaGamers zurückzusetzen';
+            $data['h1'] = 'Geben sie ihre E-Mailadresse ein';
+            $data['h2'] = 'Gib deine Telefonnummer ein';
+            $data['tab'] = ['Mit E-Mail', 'Mit Telefon'];
+            $fieldnames['email'] = ['E-mail', '', ''];
+            $fieldnames['fullphone'] = ['Telefon', '', ''];
+            $phoneins = "Wählen Sie Ihre Landesvorwahl aus und geben Sie dann Ihre normale Nummer ein. zB: 07062345988";
+            $submit = 'Einreichen';
         }
         $fieldnames['fullphone'][0] = 
         "<span class='w3-tooltip'><span style='position:absolute;left:0;bottom:18px' class='w3-text w3-tag w3-round-xlarge'>$phoneins
@@ -556,7 +621,23 @@ Class Account extends Controller
             $fieldnames = ['Nueva contraseña', 'Mostrar contraseña', '', ''];
             $reset = 'REINICIAR';
 
-        } 
+        } elseif(LANG=='pt') {
+            $data['page_title'] = "Redefinir senha";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net';
+            $this->description = 'Redefinição de senha de betagamers';
+            $data['h1'] = 'Redefinição de senha';
+            $fieldnames = ['Nova Senha', 'Mostrar senha', '', ''];
+            $reset = 'REDEFINIR';
+
+        } elseif(LANG=='de') {
+            $data['page_title'] = "Passwort zurücksetzen";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net';
+            $this->description = 'Passwort zurücksetzen';
+            $data['h1'] = 'Passwort zurücksetzen';
+            $fieldnames = ['Neues Passwort', 'Passwort anzeigen', '', ''];
+            $reset = 'ZURÜCKSETZEN';
+
+        }
         $genclass = new General;
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !empty($_POST)) {
             check_signature('reset', $hash);

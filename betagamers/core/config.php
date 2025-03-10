@@ -70,6 +70,7 @@ define('PINTEREST', 'betagamersnet');
 define('TELEGRAM', 'betagamersnet');
 define('FBLINK', 'https://facebook.com/'.FB);
 define('FBGROUPLINK', 'https://web.facebook.com/groups/542368292921814/');
+define('FBGROUPNAME', 'Sure Games Daily');
 define('XLINK', 'https://twitter.com/'.X);
 define('IGLINK', 'https://instagram.com/'.IG);
 define('PINTERESTLINK', 'https://pinterest.com/betagamersnet');

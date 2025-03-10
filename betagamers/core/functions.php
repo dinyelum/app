@@ -673,6 +673,7 @@ function pay_links($page=''){
         $suffix = $pages[$page][LANG] ?? '';
         return HOME.'/'.controller_translations('payments')[LANG].($suffix ? "/$suffix" : '');
     }
+    return HOME.'/'.controller_translations('payments')[LANG]."/$page";
 }
 
 function old_pay_links($suffix=''){

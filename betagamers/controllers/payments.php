@@ -95,6 +95,30 @@ class Payments extends Controller {
                         'al '.PHONE.' (en whatsapp / telegram) O envíenos un correo electrónico a través de #aquí#. La activación puede tardar entre 5 y 10 minutos.'
                     ];
                 break;
+                case 'pt':
+                    $p = [
+                        'Você pode clicar em qualquer um dos planos para pagar online. A ativação é automática.',
+                        'Para pagar manualmente:'
+                    ];
+                    $li = [
+                        'Você pode pagar para '.LINKS,
+                        'Envie (1) Seu nome completo (2) Seu endereço de e-mail (3) Valor pago (4) Plano de assinatura',
+                        'Exemplo: João Afonso. joaoafonso@exemplo.com. '.$this->plat3mths.'. 3mesesPlatina.<br><br>',
+                        'para '.PHONE.' (no whatsapp / telegram) OU envie-nos um email por #aqui#. A ativação pode levar de 5 a 10 minutos.'
+                    ];
+                break;
+                case 'de':
+                    $p = [
+                        'Sie können auf einen der Pläne klicken, um online zu bezahlen. Die Aktivierung erfolgt automatisch.',
+                        'Um manuell zu bezahlen:'
+                    ];
+                    $li = [
+                        'Sie können an '.LINKS.' bezahlen',
+                        'Senden Sie Ihren (1) Ihren vollständigen Namen (2) Ihre E-Mail-Adresse (3) den bezahlten Betrag (4) den Abonnementplan',
+                        'Beispiel: Karl Friedrich. karlfriedrich@beispiel.com. '.$this->plat3mths.'. 3monatPlatin.<br><br>',
+                        'an '.PHONE.' (auf WhatsApp / Telegramm) ODER #Mailen Sie uns#. Die Aktivierung kann bis zu 5-10 Minuten dauern.'
+                    ];
+                break;
             }
             $links = [['href'=>support_links('mailus'),  'style'=>"color:green"]];
             return $ins = '<p>'.implode('</p><p>', $p)."</p><ul><li>".tag_format(implode('</li><li>', $li), $links)."</li></ul>";
@@ -123,15 +147,23 @@ class Payments extends Controller {
                     'al '.PHONE.' (en whatsapp / telegram) O envíenos un correo electrónico a través de #aquí#',
                     '*TENGA EN CUENTA*: El número de MPESA / Mobile Money / Mukuru es solo para pagos, no para llamadas. Para todas las preguntas, pregunte '.PHONE.' en Whatsapp o Telegram.'
                 ];
+            } elseif(LANG=='pt') {
+                $tip = 'Você também pode pagar para:';
+                $nb = [
+                    'Após o pagamento, envie (1) Seu nome completo (2) Seu endereço de e-mail (3) Valor pago (4) Plano de assinatura',
+                    'Exemplo: João Afonso. joaoafonso@exemplo.com. '.$this->plat3mths.'. 3mesesPlatina.',
+                    'para '.PHONE.' (no whatsapp / telegram) OU envie-nos um email por #aqui#',
+                    '*OBSERVE*: O número MPESA / Mobile Money / Mukuru é apenas para pagamentos, não para chamadas. Para todas as perguntas, pergunte '.PHONE.' no Whatsapp ou Telegram.'
+                ];
+            } elseif(LANG=='de') {
+                $tip = 'Sie können auch an bezahlen:';
+                $nb = [
+                    'Senden Sie nach der Zahlung Ihren (1) Ihren vollständigen Namen (2) Ihre E-Mail-Adresse (3) den bezahlten Betrag (4) den Abonnementplan',
+                    'Beispiel: Karl Friedrich. karlfriedrich@beispiel.com. '.$this->plat3mths.'. 3monatPlatin.',
+                    'an '.PHONE.' (auf WhatsApp / Telegramm) ODER #mailen Sie uns#',
+                    '*BITTE BEACHTEN SIE*: Die MPESA / Mobile Money / Mukuru-Nummer dient nur für Zahlungen, nicht für Anrufe. Bei Fragen kontaktieren Sie '.PHONE.' auf WhatsApp oder Telegram.'
+                ];
             }
-            // $tip = match(LANG) {
-            //     'en'=>'You can also pay to:',
-            //     'fr'=>'Vous pouvez également payer à:',
-            //     'es'=>'También puede pagar a:',
-            //     'pt'=>'Você também pode pagar para:',
-            //     'de'=>'Sie können auch an bezahlen:',
-            //     default=>''
-            // };
             $links = [['href'=>support_links('mailus'),  'style'=>"color:green"]];
             $nb = tag_format('<p>'.implode('</p><p>', $nb).'</p>', $links);
             
@@ -788,6 +820,22 @@ class Payments extends Controller {
                 'Todos los pagos de '.$data['method'].' a nosotros deben hacerse a *'.$data['recipient'].'*',
                 'Envíenos un comprobante de pago por whatsapp / telegram a través del '.PHONE.' O #Haga clic aquí# para enviarnos un correo electrónico.'
             ];
+        } elseif(LANG=='pt') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site betagamers, www.betagamers.net';
+            $this->description = 'Assine nossos serviços usando '. $data['method'];
+            $data['page_title'] = "Pague com ".$data['method'];
+            $data['p'] = $data['p'] ?? [
+                'Todos os Pagamentos '.$data['method'].' para nós devem ser feitos para *'.$data['recipient'].'*',
+                'Envie-nos um comprovativo de pagamento no whatsapp / telegram através do '.PHONE.' OU #Clique aqui# para nos enviar um e-mail.'
+            ];
+        } elseif(LANG=='de') {
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, Betagamers-Website, www.betagamers.net';
+            $this->description = 'Abonnieren Sie unsere Dienste mit '. $data['method'];
+            $data['page_title'] = "Zahlen Sie mit ".$data['method'];
+            $data['p'] = $data['p'] ?? [
+                'Alle '.$data['method'].' Zahlungen an uns sollten an *'.$data['recipient'].'*',
+                'Senden Sie uns einen Zahlungsnachweis per WhatsApp / Telegram über '.PHONE.' ODER #Klicken Sie hier# um uns eine E-Mail zu senden.'
+            ];
         }
         $this->style = "b {color:".$this->color."}";
         $links = [['href'=>support_links('mailus'),  'style'=>"color:green"]];
@@ -870,7 +918,9 @@ class Payments extends Controller {
         $data['extra'] = match(LANG) {
             'fr'=>['Pas encore de compte Chipper Cash ? Vous pouvez #cliquer ici pour vous inscrire#'],
             'es'=>['¿Todavía no tienes una cuenta de Chipper Cash? Puede #hacer clic aquí para registrarse#'],
-            default=>["Pas encore de compte Chipper Cash ? Vous pouvez #cliquer ici pour vous inscrire#."]
+            'pt'=>['Ainda não tem conta Chipper Cash? Você pode #clicar aqui para se cadastrar#'],
+            'de'=>['Noch kein Chipper Cash Konto? Sie können #hier klicken, um sich zu registrieren#'],
+            default=>["Pas encore de compte Chipper Cash? Vous pouvez #cliquer ici pour vous inscrire#."]
         };
         $this->page = 'chippercash';
         $this->send_manually($data);

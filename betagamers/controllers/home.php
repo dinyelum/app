@@ -361,6 +361,204 @@ Class Home extends Controller
                 'view'=>'Ver el Plan'
                 //'prices'=>$prices,
             ];
+        } elseif(LANG=='pt') {
+            $data['page_title'] = "Site preciso de prognosticos futebol";
+            $this->keywords = 'Melhor site de prognosticos de futebol do mundo. Receba os palpites certos e dicas de apostas para ganhar na Bet365 hoje.';
+            $this->description = 'Betagamers.net, betagamers, betagamer, site de betagamers , pt.betagamers.net, melhor site de prognosticos, palpites de futebol para hoje, palpite certo, palpites jogos de hoje 365, dicas de apostas, dicas bet365, previsão do futebol';
+            $this->og['title'] = 'Melhor site de prognosticos de futebol';
+            $this->og['description'] = 'Obtenha boas dicas gratuitas e vip todos os dias';
+            $this->og['imagetype'] = 'image/jpg';
+            $data['slide_images'] = [
+                'epl' => [
+                    'alt'=>'Logo do EPL',
+                    'text'=>'Palpites e Resultados da Premier League'
+                ],
+                'laliga' => [
+                    'alt'=>'Logo da LaLiga',
+                    'text'=>'Palpites e Resultados da La Liga Espanhola'
+                ],
+                'seriea' => [
+                    'alt'=>'Logo da Série A Italiana',
+                    'text'=>'Palpites e Resultados da Série A Italiana'
+                ],
+                'bundesliga' => [
+                    'alt'=>'Logo da Bundesliga',
+                    'text'=>'Palpites e Resultados da Bundesliga'
+                ],
+                'ligue1' => [
+                    'alt'=>'Logo da Ligue 1 Francesa',
+                    'text'=>'Palpites e Resultados da Ligue 1 Francesa'
+                ],
+                'ucl' => [
+                    'alt'=>'Logo do UCL',
+                    'text'=>'Palpites e resultados da Liga dos Campeões'
+                ],
+                'europa' => [
+                    'alt'=>'Logo da Europa League',
+                    'text'=>'Palpites e Resultados da Europa League'
+                ],
+                'bgslide' => [
+                    'alt'=>'Logo de Betagamers',
+                    'text'=>'Melhor site de prognosticos de futebol do mundo'
+                ],
+            ];
+            $data['herolinks'] = [
+                'reg'=>['link'=>account_links('register'), 'text'=>'REGISTRO'],
+                'login'=>['link'=>account_links('login'), 'text'=>'ENTRAR'],
+                'profile'=>['link'=>account_links('profile'), 'text'=>'Meu Perfil'],
+                'pricing'=>['link'=>support_links('prices'), 'text'=>'Planos de preços'],
+                'modus'=>['link'=>support_links('howitworks'), 'text'=>'Como funciona'],
+                'scores'=>['link'=>HOME.'/livescores.php', 'text'=>'Resultados ao vivo']
+            ];
+            $data['freegames'] = [
+                'header'=>'PROGNÓSTICOS DE FUTEBOL GRATUITOS',
+                'tabs'=>tab_names(['yes', '']),
+                'free_games_page'=>free_games_link(),
+                'viewmore'=>'Mais dicas gratuitas'
+            ];
+            $data['accurate'] = [
+                'header'=>'DICAS PRECISAS RECENTES',
+                'theaders'=>set_table_header(),
+            ];
+            $data['alphasec'] = [
+                'header'=>'ESCOLHAS ALFA',
+                'oddstxt'=>'Dicas de apostas mais seguras para hoje',
+                'oddsdesc'=>'Melhores odds diárias entre 1,65 - 2,50',
+                'totalodds'=>$totalodds,
+                'get'=>'Ganhe acesso',
+                'marks'=>$marks,
+                'accuracytxt'=>"Precisão nos últimos 20 dias: ".($percent ?? '...'),
+                'moreresults'=>'Veja mais resultados',
+            ];
+            $data['popular'] = [
+                'header'=>'MELHORES APOSTAS POPULARES',
+                'populartxt'=>'Aqui estão as últimas prognósticos de futebol em que muitas pessoas estão apostando hoje',
+                'theaders'=>set_table_header('popular')
+            ];
+            $data['upcoming'] = [
+                'header'=>'PRÓXIMAS PREVISÕES QUENTES',
+                'theaders'=>set_table_header('upcoming'),
+            ];
+            $bookiesheader = 'Últimas ofertas de apostas';
+            // $bookieslink = HOME.'/bookies?bookie=';
+            $bookiesprompt = 'Reivindique a oferta';
+            $diamval = [tips_links('5odds')=>'5 ODDS', tips_links('10odds')=>'10 ODDS', tips_links('straight')=>'Vitória Direta', tips_links('dblchance')=>'Chance dupla', tips_links('bts')=>'Ambas Marcam', tips_links('ovun')=>'Mais de / Menos de gols'];
+            $platval = [tips_links('2odds')=>'2 Odds Seguros', tips_links('3odds')=>'3 Odds Seguros', tips_links('single')=>'Super Simple', tips_links('p2s')=>'Jogadores que Marcam', tips_links('draw')=>'Empate', tips_links('bigodds')=>'Grandes Odds', tips_links('cscore')=>'Placar Exato (Resultado correto)', tips_links('weekend')=>'Previsões de Final de Semana'];
+            $freeval = ['DICAS GRATUITAS', 'Telegram', 'Dicas de futebol para fim de semana'];
+            $data['plansec'] = [
+                'header'=>'PLANOS',
+                'subheaders'=>[
+                    'free'=>'PLANOS GRATUITOS',
+                    'diam'=>'PLANO DIAMANTE',
+                    'plat'=>'PLANO PLATINA',
+                ],
+            ];
+            $curdetails = currencies(USER_COUNTRY);
+            $data['pricingsec'] = [
+                'header'=>'Planos de BETAGamers',
+                'duration'=>'Mes',
+                'view'=>'Veja Plano'
+                //'prices'=>$prices,
+            ];
+        } elseif(LANG=='de') {
+            $data['page_title'] = "Wett tipps von Profis heute";
+            $this->keywords = 'Genaue Fußball Vorhersage. Holen Sie sich die besten Fußball Prognosen und Wett Tipps für heute von unserer zuverlässigen Website.';
+            $this->description = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, Sport Tipps, genaue Website für Sportvorhersagen, Website für genaue Fußballvorhersage, wett tipps vorhersagen, Wett Tipps, kostenlose fußballprognose, die beste Fußballvorhersage-Website der Welt';
+            $this->og['title'] = 'Die beste Website für Fußballvorhersagen';
+            $this->og['description'] = 'Holen Sie sich die besten fußball tipps vorhersage für heute';
+            $this->og['imagetype'] = 'image/jpg';
+            $data['slide_images'] = [
+                'epl' => [
+                    'alt'=>'Logo der englischen Premier League',
+                    'text'=>'Vorhersagen und Ergebnisse der englischen Premier League'
+                ],
+                'laliga' => [
+                    'alt'=>'Logo der spanischen La Liga',
+                    'text'=>'La Liga Vorhersagen und Ergebnisse'
+                ],
+                'seriea' => [
+                    'alt'=>'Logo der italienischen Serie A',
+                    'text'=>'Vorhersagen und Ergebnisse der Serie A'
+                ],
+                'bundesliga' => [
+                    'alt'=>'Deutsches Bundesliga-Logo',
+                    'text'=>'Vorhersagen und Ergebnisse der deutschen Bundesliga'
+                ],
+                'ligue1' => [
+                    'alt'=>'Logo der französischen Ligue 1',
+                    'text'=>'Vorhersagen und Ergebnisse der französischen Ligue 1'
+                ],
+                'ucl' => [
+                    'alt'=>'Logo der UEFA Champions League',
+                    'text'=>'Vorhersagen und Ergebnisse der UEFA Champions League'
+                ],
+                'europa' => [
+                    'alt'=>'Europa-League-Logo',
+                    'text'=>'Vorhersagen und Ergebnisse der Europa League'
+                ],
+                'bgslide' => [
+                    'alt'=>'Betagamers-Logo',
+                    'text'=>'Die beste Seite mit Fußballtipps der Welt'
+                ],
+            ];
+            $data['herolinks'] = [
+                'reg'=>['link'=>account_links('register'), 'text'=>'REGISTRIEREN'],
+                'login'=>['link'=>account_links('login'), 'text'=>'EINLOGGEN'],
+                'profile'=>['link'=>account_links('profile'), 'text'=>'Mein Profil'],
+                'pricing'=>['link'=>support_links('prices'), 'text'=>'Preise'],
+                'modus'=>['link'=>support_links('howitworks'), 'text'=>'Wie es funktioniert'],
+                'scores'=>['link'=>HOME.'/livescores.php', 'text'=>'Live-Ergebnisse']
+            ];
+            $data['freegames'] = [
+                'header'=>'KOSTENLOS FUßBALL PROGNOSE',
+                'tabs'=>tab_names(['yes', '']),
+                'free_games_page'=>free_games_link(),
+                'viewmore'=>'Weitere kostenlose Tipps'
+            ];
+            $data['accurate'] = [
+                'header'=>'AKTUELLE GENAUE TIPPS',
+                'theaders'=>set_table_header(),
+            ];
+            $data['alphasec'] = [
+                'header'=>'ALPHA-TIPPS',
+                'oddstxt'=>'Die sichersten Quoten für heute',
+                'oddsdesc'=>'Täglich beste Quoten zwischen 1,65 - 2,50',
+                'totalodds'=>$totalodds,
+                'get'=>'Hol es dir jetzt',
+                'marks'=>$marks,
+                'accuracytxt'=>"Genauigkeit der letzten 20 Tage: ".($percent ?? '...'),
+                'moreresults'=>'Weitere Ergebnisse anzeigen',
+            ];
+            $data['popular'] = [
+                'header'=>'DIE BELIEBTESTEN WETTEN',
+                'populartxt'=>'Hier sind die neuesten Fußballprognosen, auf die heute viele Leute wetten',
+                'theaders'=>set_table_header('popular')
+            ];
+            $data['upcoming'] = [
+                'header'=>'KOMMENDE VORHERSAGEN',
+                'theaders'=>set_table_header('upcoming'),
+            ];
+            $bookiesheader = 'Aktuelle Wettangebote';
+            // $bookieslink = HOME.'/bookies?bookie=';
+            $bookiesprompt = 'Erhalten Sie';
+            $diamval = [tips_links('5odds')=>'5 QUOTEN', tips_links('10odds')=>'10 QUOTEN', tips_links('straight')=>'Sicherer Sieg', tips_links('dblchance')=>'Doppelte Chance', tips_links('bts')=>'Beide Teams treffen', tips_links('ovun')=>'Über / Unter Tore'];
+            $platval = [tips_links('2odds')=>'Sichere 2 Quoten', tips_links('3odds')=>'Sichere 3 Quoten', tips_links('single')=>'Super Single', tips_links('p2s')=>'Spielern, um zu treffen', tips_links('draw')=>'Unentschieden', tips_links('bigodds')=>'Großen Quoten', tips_links('cscore')=>'Genaues Ergebnis', tips_links('weekend')=>'Wochenend Vorhersagen'];
+            $freeval = ['KOSTENLOSE TIPPS', 'Telegram', 'Wochenend-Fußballvorhersagen'];
+            $data['plansec'] = [
+                'header'=>'TARIFE',
+                'subheaders'=>[
+                    'free'=>'KOSTENLOSER TARIF',
+                    'diam'=>'DIAMANT TARIF',
+                    'plat'=>'PLATIN TARIF',
+                ],
+            ];
+            $curdetails = currencies(USER_COUNTRY);
+            $data['pricingsec'] = [
+                'header'=>'BETAGamers Tarife',
+                'duration'=>'Monat',
+                'view'=>'Tarif anzeigen'
+                //'prices'=>$prices,
+            ];
         }
         $data['slide_images_count'] = count($data['slide_images']);
 		$this->style = '';
