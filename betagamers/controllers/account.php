@@ -51,14 +51,14 @@ Class Account extends Controller
             $data['tab'] = ['With Email', 'With Phone'];
             $fieldnames['email'] = ['E-mail', 'Password', 'Show Password', '', ''];
             $fieldnames['fullphone'] = ['Phone Number', 'Password', 'Show Password', '', ''];
-            $data['input']['submit']['fieldname'] = "Login";
+            $logintxt = $data['input']['submit']['fieldname'] = "Login";
             $prompts = ['Not yet a member? Register', 'Forgot Password?'];
             $phoneins = "Select your country's code. Then, type your normal number eg: 07062345988";
         } elseif(LANG=='fr') {
             $this->keywords = "Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, prévisions de football gratuites, meilleur site de football au monde";
             $this->description = "Connectez-vous avec Betagamers aujourd'hui et explorez les opportunités à venir.";
             $data['page_title'] = 'Connexion des Betagamers';
-            $data['h1'] = $data['input']['submit']['fieldname'] = "Se Connecter";
+            $data['h1'] = $logintxt = $data['input']['submit']['fieldname'] = "Se Connecter";
             $data['tab'] = ['Avec e-mail', 'Avec téléphone'];
             $fieldnames['email'] = ['E-mail', 'Mot de passe', 'Montrer le Mot de Passe', '', ''];
             $fieldnames['fullphone'] = ['Numéro de téléphone (nombre normal)', 'Mot de passe', 'Montrer le Mot de Passe', '', ''];
@@ -71,7 +71,7 @@ Class Account extends Controller
             $data['tab'] = ['Con correo', 'Con teléfono'];
             $fieldnames['email'] = ['Correo electrónico', 'Contraseña', 'Mostrar contraseña', '', ''];
             $fieldnames['fullphone'] = ['Número de teléfono', 'Contraseña', 'Mostrar contraseña', '', ''];
-            $data['input']['submit']['fieldname'] = "Login";
+            $logintxt = $data['input']['submit']['fieldname'] = "Login";
             $prompts = ['¿Todavía no eres miembro? Registrarse', '¿Has olvidado tu contraseña?'];
             $phoneins = "Selecciona el código de tu país, luego escriba su número normal p.eg: 07062345988";
         } elseif(LANG=='pt') {
@@ -81,7 +81,7 @@ Class Account extends Controller
             $data['tab'] = ['Com E-mail', 'Com número'];
             $fieldnames['email'] = ['E-mail', 'Senha', 'Mostrar senha', '', ''];
             $fieldnames['fullphone'] = ['Telefone', 'Senha', 'Mostrar senha', '', ''];
-            $data['input']['submit']['fieldname'] = 'Conecte-se';
+            $logintxt = $data['input']['submit']['fieldname'] = 'Conecte-se';
             $prompts = ['Ainda não é um membro? Registro', 'Esqueceu sua senha?'];
             $phoneins = "Selecione o código do seu país. Em seguida, digite seu número normal, por exemplo: 07062345988";
         } elseif(LANG=='de') {
@@ -91,7 +91,7 @@ Class Account extends Controller
             $data['tab'] = ['Mit E-Mail', 'Mit Telefon'];
             $fieldnames['email'] = ['E-mail', 'Passwort', 'Passwort anzeigen', '', ''];
             $fieldnames['fullphone'] = ['Telefon', 'Passwort', 'Passwort anzeigen', '', ''];
-            $data['input']['submit']['fieldname'] = 'Einloggen';
+            $logintxt = $data['input']['submit']['fieldname'] = 'Einloggen';
             $prompts = ['Noch kein Mitglied? Registrieren', 'Passwort vergessen?'];
             $phoneins = "Wählen Sie Ihre Landesvorwahl aus und geben Sie dann Ihre normale Nummer ein. zB: 07062345988";
         }
@@ -132,14 +132,14 @@ Class Account extends Controller
                 ['tag'=>'input', 'type'=>'password', 'name'=>"password", 'value'=>'', 'class'=>'password', 'error'=>'', 'required'],
                 ['tag'=>'input', 'type'=>'checkbox', 'name'=>'', 'class'=>'ptoggler'],
                 ['tag'=>'input', 'type'=>'hidden', 'name'=>"signature", 'value'=>$signature, 'error'=>''],
-                ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>$login, 'error'=>''],
+                ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>$logintxt, 'error'=>''],
             ],
             'fullphone'=>[
                 ['tag'=>'input', 'id'=>"fullphone", 'type'=>'tel', 'placeholder'=>'7062345988', 'name'=>"fullphone", 'value'=>$login[0]['fullphone'] ?? '', 'error'=>'', 'required'],
                 ['tag'=>'input', 'type'=>'password', 'name'=>"password", 'value'=>'', 'class'=>'password', 'error'=>'', 'required'],
                 ['tag'=>'input', 'type'=>'checkbox', 'name'=>'', 'class'=>'ptoggler'],
                 ['tag'=>'input', 'type'=>'hidden', 'name'=>"signature", 'value'=>$signature, 'error'=>''],
-                ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>$login, 'error'=>''],
+                ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>$logintxt, 'error'=>''],
             ]
         ];
 

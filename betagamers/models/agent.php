@@ -2,11 +2,16 @@
 class Agent {
     use Db, Validate;
     private static $table = 'agent';
-    private $columns = ['id', 'name', 'email', 'phone', 'network', 'intl', 'country', 'countries', 'currency', 'level'];
+    private $columns = ['id', 'userid', 'name', 'email', 'phone', 'network', 'intl', 'country', 'countries', 'currency', 'level'];
     public $levels = ['agent', 'misc', 'thief'];
 
     public function validate(array $fields) {
         $data = [];
+        if(isset($fields['userid'])) {
+            $required = in_array('userid', $this->required);
+            $data['userid'] = $this->validate_id($fields['userid'], 'userid', $required);
+        }
+        
         if(isset($fields['name'])) {
             $data['name'] = $this->validate_name($fields['name']);
         }
@@ -16,11 +21,12 @@ class Agent {
         }
         
         if(isset($fields['phone'])) {
+            $required = in_array('phone', $this->required);
             if(in_array('phone', $this->insertunique)) {
                 // echo 'yes';
-                $data['phone'] = $this->validate_unique_text('validate_phone', ['phone'=>$fields['phone'], 'intformat'=>false], 'phone');
+                $data['phone'] = $this->validate_unique_text('validate_phone', ['phone'=>$fields['phone'], 'required'=>$required, 'intformat'=>false], 'phone');
             } else {
-                $data['phone'] = $this->validate_phone($fields['phone'], true, false);
+                $data['phone'] = $this->validate_phone($fields['phone'], $required);
             }
         }
         

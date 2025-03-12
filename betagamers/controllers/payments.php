@@ -168,7 +168,7 @@ class Payments extends Controller {
             $nb = tag_format('<p>'.implode('</p><p>', $nb).'</p>', $links);
             
             
-            include INCS."//banks.php";
+            include INCS."/banks.php";
             $country = substr($this->cur, 0, 2);
             if($country == 'XO') {
                 $countries = ['BF', 'BJ', 'CI', 'CM', 'CG', 'GA', 'ML', 'NE', 'SN'];
@@ -417,6 +417,7 @@ class Payments extends Controller {
             list($method, $currency, $planlink) = explode('_', $_GET['planid'], 3);
             // https://betagamers.net/payments/system?planid=flw_ugx_diamond_1_week
             // https://betagamers.net/payments/system?planid=flw_ugx_combo_pro
+            // flw_usd_footballtennis_1_month
             list($plansec, $duration) = explode('_', $planlink, 2);
             if(str_starts_with($planlink, 'combo')) {
                 $duration = ucwords(str_replace('_', ' ', $planlink));

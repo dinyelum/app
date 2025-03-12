@@ -14,6 +14,15 @@ class Folder extends Controller {
         //$this->set_form_selection();
         //$this->usersclass = new Users;
     }
+    
+    public function test() {
+        $this->page = $this->activepage = 'test';
+        $data['page_title'] = $data['h1'] = 'Test Page';
+        $usersclass = new Users;
+        $data['userdata'] = $usersclass->select('fullname, country')->where('id in (60511, 61819, 66952, 66952, 81473, 53922, 39850, 70529, 83060, 92463, 93241, 42200, 45064, 45843, 50456, 56382, 60624, 77710, 82773, 20767, 21401, 25434, 124423, 124445)');
+        // show($data['userdata']);
+        // $this->view("folder/test",$data);
+    }
 
     function index() {
         $this->check();
@@ -81,7 +90,7 @@ class Folder extends Controller {
                 if(!is_array($formdata[1]) || !implode($formdata[1])) {
                     $columns = match ($section) {
                         'users' => 'fullname as NAME, email as EMAIL, phone as PHONE, fullphone as FULLPHONE, country as COUNTRY, active as STATUS',
-                        'agent' => "name as NAME, phone as PHONE, (if(LEFT(phone, 1)=0, concat(intl, substring(phone, 2, length(phone))), concat(intl, phone))) as `Intl Format`, NETWORK, CURRENCY, (replace(countries, ', ', '<br>'))as COUNTRIES",
+                        'agent' => "name as NAME, userid as USER, phone as PHONE, (if(LEFT(phone, 1)=0, concat(intl, substring(phone, 2, length(phone))), concat(intl, phone))) as `Intl Format`, NETWORK, CURRENCY, (replace(countries, ', ', '<br>'))as COUNTRIES",
                         'bookies'=>"bookie, description_en, description_fr, description_es, description_pt, description_de, reflink, promocode, dashboard as 'Affiliate Dashbord'",
                         default => 'fullName as NAME, email as EMAIL, phone as PHONE, currency as CURRENCY, amount as AMOUNT, DATE_FORMAT(reg_date, "%d/%m/%y") as REGDATE, DATE_FORMAT(expdate, "%d/%m/%y") as EXPDATE',
                     };
@@ -246,7 +255,7 @@ class Folder extends Controller {
     }
 
     function agents() {
-        //change agent_0 in agent db to another thing entirely that doesnt contain 'agent'
+        // change agent_0 in agent db to another thing entirely that doesnt contain 'agent'
         if($_GET['action']=='view') {
             $this->page = $this->activepage = 'view_agent';
             $data['page_title'] = $data['h1'] = 'View Agent';
@@ -262,7 +271,13 @@ class Folder extends Controller {
                 $formdata = $agentclass->validate($_POST);
 
                 if(!$agentclass->err) {
-                    if($agentclass->insert($formdata[0])===true) $success = 'Agent successfully added';
+                    $agentdata = $agentclass->custom_query('select id from users where email=:email', 'select', [':email'=>$formdata[0]['email']]);
+                    if(is_array($agentdata) && count($agentdata)) {
+                        $formdata[0]['userid'] = $agentdata[0]['id'];
+                        if($agentclass->insert($formdata[0])===true) $success = 'Agent successfully added';
+                    } else {
+                        $formdata[1]['gen'] = 'Agent record not found, instruct agent to create a user account first.';
+                    }
                 }
             }
 
@@ -416,7 +431,7 @@ class Folder extends Controller {
                     }
                 }
             }
-            $formdatanewval = $formdatanewval ?? purify($newvalue);
+            $formdatanewval = $formdatanewval ?? purify($_POST['newvalue']);
         }
 
         if($this->activepage=='update') {
@@ -430,7 +445,8 @@ class Folder extends Controller {
             ];
         } elseif($this->activepage=='update_agent') {
             $formfields = [
-                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Phone Number", 'name'=>"fullphone", 'value'=>$formdata[0]['fullphone'] ?? $formdata[0]['phone'] ?? '', 'id'=>'fullphone', 'error'=>$formdata[1]['fullphone'] ?? $formdata[1]['phone'] ?? '', 'required'],
+                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"User Id", 'name'=>"userid", 'value'=>$formdata[0]['userid'] ?? '', 'id'=>'userid', 'error'=>$formdata[1]['userid'] ?? ''],
+                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Phone Number", 'name'=>"fullphone", 'value'=>$formdata[0]['fullphone'] ?? $formdata[0]['phone'] ?? '', 'id'=>'fullphone', 'error'=>$formdata[1]['fullphone'] ?? $formdata[1]['phone'] ?? ''],
                 ['tag'=>'select', 'name'=>"section", 'options'=>['agent'=>'Agents'], 'id'=>'section', 'error'=>$cust_err['section'] ?? $formdata[1]['section'] ?? '', 'required'],
                 ['tag'=>'select', 'name'=>"parameter", 'options'=>['default'=>$formdataparam ?? null, ...array_keys($parameters)], 'id'=>'parameter', 'error'=>$cust_err['parameter'] ?? $formdata[1]['parameter'] ?? '', 'required'],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"New Value", 'name'=>"newvalue", 'value'=>$formdatanewval ?? '', 'id'=>'newvalue', 'error'=>$newvalerr ?? '', 'required'],
@@ -1122,6 +1138,8 @@ class Folder extends Controller {
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Promo Code", 'name'=>"promocode", 'value'=>$formdata[0]['promocode'] ?? '', 'error'=>$formdata[1]['promocode'] ?? '', 'required'],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Dashboard Link", 'name'=>"dashboard", 'value'=>$formdata[0]['dashboard'] ?? '', 'error'=>$formdata[1]['dashboard'] ?? '', 'required'],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Countries(NG, GH, KE)", 'name'=>"countries", 'value'=>$formdata[0]['countries'] ?? '', 'error'=>$formdata[1]['countries'] ?? '', 'required'],
+                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Text Color", 'name'=>"tcolor", 'value'=>$formdata[0]['tcolor'] ?? '', 'error'=>$formdata[1]['tcolor'] ?? ''],
+                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Background Color", 'name'=>"bcolor", 'value'=>$formdata[0]['bcolor'] ?? '', 'error'=>$formdata[1]['bcolor'] ?? ''],
                 ['tag'=>'select', 'name'=>"active", 'options'=>['default_opt_'.($formdata[0]['active'] ?? '')=>$formdata[0]['active'] ?? null, 1=>'Yes', 0=>'No'], 'id'=>'active', 'error'=>$formdata[1]['active'] ?? '', 'required'],
                 ['tag'=>'select', 'name'=>"homepage", 'options'=>['default_opt_'.($formdata[0]['homepage'] ?? '')=>$formdata[0]['homepage'] ?? null, 1=>'Yes', 0=>'No'], 'id'=>'homepage', 'error'=>$formdata[1]['homepage'] ?? '', 'required'],
                 ['tag'=>'input', 'type'=>'submit', 'name'=>"submit", 'value'=>'Submit', 'error'=>''],

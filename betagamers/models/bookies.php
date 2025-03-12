@@ -2,7 +2,7 @@
 class Bookies {
     use db, validate;
     protected static $table = 'bookies';
-    protected $columns = ['id', 'bookie', 'description_en', 'description_fr', 'description_es', 'description_pt', 'description_de', 'reflink', 'promocode', 'dashboard', 'active', 'homepage', 'countries'];
+    protected $columns = ['id', 'bookie', 'description_en', 'description_fr', 'description_es', 'description_pt', 'description_de', 'reflink', 'promocode', 'dashboard', 'active', 'homepage', 'bcolor', 'tcolor', 'countries'];
     //betwinneraffiliates.com https://melbetaffiliates.com
     /*
     create table bookies (
@@ -67,7 +67,7 @@ class Bookies {
         }
 
         if(isset($fields['promocode'])) {
-            $data['promocode'] = $this->validate_alphanumeric($fields['promocode'], fieldname:'promocode');
+            $data['promocode'] = $this->validate_alphanumeric($fields['promocode'], false, 'promocode');
         }
 
         if(isset($fields['dashboard'])) {
@@ -80,6 +80,14 @@ class Bookies {
 
         if(isset($fields['homepage'])) {
             $data['homepage'] = $this->validate_toggle($fields['homepage'], 'homepage');
+        }
+
+        if(isset($fields['bcolor'])) {
+            $data['bcolor'] = $this->validate_alphanumeric($fields['bcolor'], false, 'bcolor');
+        }
+
+        if(isset($fields['tcolor'])) {
+            $data['tcolor'] = $this->validate_alphanumeric($fields['tcolor'], false, 'tcolor');
         }
 
         if(isset($fields['countries'])) {

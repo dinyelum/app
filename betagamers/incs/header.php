@@ -28,15 +28,13 @@
 <!--<link rel="preload" href="./webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>-->
 <!--<link rel="preload" href="./webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>-->
 <link rel='preload' href='<?=HOME?>/assets/css/w3.css' as='style'>
-<link rel='preload' href='<?=HOME?>/assets/css/style.css' as='style'>
-<link rel='preload' href='<?=HOME?>/assets/css/all.min.css' as='style'><?php
+<link rel='preload' href='<?=HOME?>/assets/css/style.css' as='style'><?php
 if($this->adminmode === true || $this->activepage == 'login') {?>
 <link rel="preload" href="<?=HOME?>/assets/loginsystem/build/css/intlTelInput.min.css" as='style'>
 <link rel="stylesheet" href="<?=HOME?>/assets/loginsystem/build/css/intlTelInput.min.css">
 <?php } ?>
 <link rel='stylesheet' type='text/css' href='<?=HOME?>/assets/css/w3.css' >
 <link rel='stylesheet' type='text/css' href='<?=HOME?>/assets/css/style.css' >
-<link rel='stylesheet' type='text/css' href='<?=HOME?>/assets/css/all.min.css' >
 <script src="https://kit.fontawesome.com/906d05b5f6.js" crossorigin="anonymous"></script>
 <?php if($this->tags === true) {?>
 <!-- Google Tag Manager -->

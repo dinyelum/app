@@ -281,7 +281,7 @@ function plan_features($sports) {
                 ],
                 'tennis'=>[
                     'VIP TENNIS'=>['id'=>'tennis', 'features'=>['Plan 1 mois','Access à simple','Accès à 2 cotes','Accès à 3 cotes','Accès à 5 cotes','Accès à 10 cotes','Accès à 1-2','Accès à la prédiction de sét (Scores Exacts)','Accès aux plus / moins']],
-                    'COMBO SPORTIF'=>['id'=>'football tennis', 'features'=>['Accès à 1 mois de tennis VIP','Accès au forfait Platine Football d\'un mois']],
+                    'COMBO SPORTIF'=>['id'=>'footballtennis', 'features'=>['Accès à 1 mois de tennis VIP','Accès au forfait Platine Football d\'un mois']],
                 ]
             ];
         break;
@@ -298,7 +298,7 @@ function plan_features($sports) {
                 ],
                 'tennis'=>[
                     'PLAN TENIS VIP'=>['id'=>'tennis', 'features'=>['Duración de 1 Mes','Acceso a Simple','Acceso a 2 cuotas','Acceso a 3 cuotas','Acceso a 5 cuotas','Acceso a 10 cuotas','Acceso a apuestas de 1-2','Acceso a apuestas de sets (marcador correcto)','Acceso a más / menos sets']],
-                    'COMBO DEPORTES'=>['id'=>'football tennis', 'features'=>['Acceso a 1 mes del Plan Tenis VIP','Acceso a 1 mes del Plan Platino de Fútbol']]
+                    'COMBO DEPORTES'=>['id'=>'footballtennis', 'features'=>['Acceso a 1 mes del Plan Tenis VIP','Acceso a 1 mes del Plan Platino de Fútbol']]
                 ]
             ];
         break;
@@ -315,7 +315,7 @@ function plan_features($sports) {
                 ],
                 'tennis'=>[
                     'PLANO VIP DE TÊNIS'=>['id'=>'tennis', 'features'=>['Plano de 1 mês','Acesso ao Simple','Acesso ao 2 Odds','Acesso ao 3 Odds','Acesso ao 5 Odds','Acesso ao 10 Odds','Acesso ao 1-2','Acesso ao apostas de sets (Placar / Resultado correto)','Acesso ao Mais de / Menos de sets']],
-                    'COMBO DE ESPORTES'=>['id'=>'football tennis', 'features'=>['Acesso à 1 mês de tênis VIP','Acesso à 1 mês de plano platina de futebol']]
+                    'COMBO DE ESPORTES'=>['id'=>'footballtennis', 'features'=>['Acesso à 1 mês de tênis VIP','Acesso à 1 mês de plano platina de futebol']]
                 ]
             ];
         break;
@@ -332,7 +332,7 @@ function plan_features($sports) {
                 ],
                 'tennis'=>[
                     'TENNIS-VIP PLAN'=>['id'=>'tennis', 'features'=>['1 Monat Tarif','Zugang zu Single','Zugang zu Sichere 2 Quoten','Zugang zu Sichere 3 Quoten','Zugang zu 5 Quoten','Zugang zu 10 Quoten','Zugang zu 1-2','Zugang zum Satzwetten (Genaues Ergebnis)','Zugang zu Über / Unter Sätze']],
-                    'SPORT COMBO'=>['id'=>'football tennis', 'features'=>['Zugang zu 1 Monat Tennis-VIP','Zugang zum 1-Monat-Fußball-Platin-Tarif']]
+                    'SPORT COMBO'=>['id'=>'footballtennis', 'features'=>['Zugang zu 1 Monat Tennis-VIP','Zugang zum 1-Monat-Fußball-Platin-Tarif']]
                 ],
             ];
         break;
@@ -349,7 +349,7 @@ function plan_features($sports) {
                 ],
                 'tennis'=>[
                     'TENNIS VIP'=>['id'=>'tennis', 'features'=>['1 month plan','Access to Single','Access to 2 Odds','Access to 3 Odds','Access to 5 Odds','Access to 10 Odds','Access to 1-2','Access to Set Bets (Correct Scores)','Access to Over/Under Sets']],
-                    'SPORTS COMBO'=>['id'=>'football tennis', 'features'=>['Access to 1 Month Tennis VIP','Access to 1 Month Football Platinum Plan']]
+                    'SPORTS COMBO'=>['id'=>'footballtennis', 'features'=>['Access to 1 Month Tennis VIP','Access to 1 Month Football Platinum Plan']]
                 ],
             ];
             break;
@@ -406,7 +406,7 @@ function plan_pricing($plan, $currency=null, $lang=null) {
             ['en'=>'1 Month', 'fr'=>'1 mois', 'es'=>'1 Mes', 'pt'=>'1 Mês', 'de'=>'Ein Monat', 'price'=>3000, 'description'=>'Tennis 1 Month', 'link'=>'ten1Month']
             ],
         
-        'football tennis'=> [
+        'footballtennis'=> [
             ['en'=>'1 Month', 'fr'=>'1 mois', 'es'=>'1 Mes', 'pt'=>'1 Mês', 'de'=>'Ein Monat', 'price'=>7000, 'description'=>'Football Tennis 1 Month', 'link'=>'footten1Month']
             ]
         ];

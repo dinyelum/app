@@ -50,7 +50,7 @@
             <div class="w3-border-left w3-dropdown-hover w3-right">
                <button class="topbtn">
                   <picture>
-                     <source srcset="<?=HOME?>/assets/images/english1.webp" type="image/webp" width='28' height='28'>
+                     <source srcset="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>1.webp" type="image/webp" width='28' height='28'>
                      <img src="<?=HOME?>/assets/images/english1.png" alt="English" width='28' height='28'>
                   </picture>
                   <?=strtoupper(key($data['header']['langs']))?><i class="fa fa-caret-down" style="font-size:20px; padding-left: 5px"></i>

@@ -28,8 +28,8 @@ Class Home extends Controller
         //bookies, alphasectotalodds, marks, percent
         $tabquery = [
             'bookies'=>[
-                'select'=>['bookie, description_'.LANG.', reflink'],
-                'where'=>['active=1 and homepage=1']
+                'select'=>['bookie, description_'.LANG.', reflink, bcolor, tcolor'],
+                'where'=>["active=1 and homepage=1 and description_".LANG."!='' order by case when countries like concat('%',:countries,'%') then 0 else 1 end, countries", ['countries'=>USER_COUNTRY]]
             ],
             'odds'=>[
                 '1select'=>['totalodds'],
@@ -565,9 +565,9 @@ Class Home extends Controller
         $data['bookies'] = [
             'companies' => $bookies,
             'header' => $bookiesheader,
-            'colors' => [
+            /*'colors' => [
                 '1xbet'=>'background-color:#054146; color:white;'
-            ],
+            ],*/
             'link'=>bookies_link().'?bookie=',
             'prompt'=>$bookiesprompt
         ];

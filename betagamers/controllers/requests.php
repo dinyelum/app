@@ -258,7 +258,7 @@ class Requests {
             $data = filter_input_array(INPUT_GET, FILTER_VALIDATE_INT);
             $err['mode'] = $data['mode'] ? '' : 'Mode Error';
         }
-        if(!$_SESSION['users']['fullphone']) {
+        if(!isset($_SESSION['users']['fullphone'])) {
             $err['phone'] = 'Phone number not set.';
         }
         $invalid = implode($err);

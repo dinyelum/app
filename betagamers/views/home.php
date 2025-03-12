@@ -120,7 +120,7 @@ if(count($data['bookies'])) {?>
         list($subheader, $description) = explode('###', $val['description_'.LANG]);?>
         <div class='w3-row-padding'>
           <div class='w3-third'>
-            <p><span style='<?=$data['bookies']['colors'][strtolower($val['bookie'])]?>' class='w3-padding w3-xlarge'><?=$val['bookie']?></span></p>
+            <p><span style='background:#<?=$val['bcolor']?>; color:#<?=$val['tcolor']?>' class='w3-padding w3-xlarge'><?=$val['bookie']?></span></p>
           </div>
           <div class='w3-third'>
             <p class='w3-xlarge'><?=$subheader?></p>

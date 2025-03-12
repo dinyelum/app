@@ -145,6 +145,9 @@ trait Validate {
             $this->err[$fieldname] = $this->resp_empty($fieldname);
             return $phone;
         }
+        if($required === false && $phone == '') {
+            return $phone;
+        }
         $match = $intformat===true ? "/^\+[\d]*$/ui" : "/^[\d]*$/ui";
         if(!preg_match($match, $phone)) {
             $this->err[$fieldname] = $this->resp_invalid_polite($fieldname);
