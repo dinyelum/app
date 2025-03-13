@@ -184,6 +184,7 @@ function form_format($formfields) {
         }
         $line = '<'.$val['tag'].$line.'>'.($val['tag']=='select' ? "$selopt</select>" : '').($val['tag']=='textarea' ? ($val['value'] ?? '').'</textarea>' : '').($label ?? '');
         $output[$val['id'] ?? $val['name']] = $line;
+        $label = '';
     }
     return $output;
 }

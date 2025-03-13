@@ -47,7 +47,7 @@ class Agent {
             foreach($countryarr as $val) {
                 $countries[] = $this->validate_country($val, false, fieldname:'countries');
             }
-            if(isset($this->err['countries']) && count($countryarr)>1) $this->err['countries'] = $this->resp_invalid_selections('countries');
+            if(isset($this->err['countries']) && count($countryarr)) $this->err['countries'] = $this->resp_invalid_selections('countries');
             $data['countries'] = implode(', ', $countries);
         }
 

@@ -7,7 +7,6 @@
         <form method="post" action="<?=htmlspecialchars(URI)?>"><?php
             echo "<span class=success>".$data['formsuccess']."</span>";
             echo "<span class=error>".$data['formerrors']['gen']."</span>";
-            
             foreach($data['formfields'] as $key=>$val) {?>
                 <div class='w3-margin'><?php
                 if(is_array($val)) {

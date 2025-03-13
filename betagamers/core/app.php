@@ -18,7 +18,7 @@ Class App
 			exit;
 		}
 
-		if(str_ends_with(URI, '/') && URI!='/betagamers/public_html/' && URI!=='/')  {
+		if(str_ends_with(URI, '/') && URI!='/betagamers/public_html/' && URI!=='/' && $_SERVER['SERVER_NAME']!='localhost')  {
 			// echo 'wrong error: '.URI;
 			// show($_GET['url']);
 			// exit;

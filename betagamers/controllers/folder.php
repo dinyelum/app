@@ -1126,18 +1126,20 @@ class Folder extends Controller {
                     if($bookiesclass->insert($formdata[0])===true) $success = 'Bookie successfully added';
                 }
             }
-
+            
             $formfields = [
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Bookie", 'name'=>"bookie", 'value'=>$formdata[0]['bookie'] ?? '', 'error'=>$formdata[1]['bookie'] ?? '', 'required'],
-                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description EN", 'name'=>"description_en", 'value'=>$formdata[0]['description_en'] ?? '', 'error'=>$formdata[1]['description_en'] ?? '', 'required'],
-                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description FR", 'name'=>"description_fr", 'value'=>$formdata[0]['description_fr'] ?? '', 'error'=>$formdata[1]['description_fr'] ?? '', 'required'],
-                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description ES", 'name'=>"description_es", 'value'=>$formdata[0]['description_es'] ?? '', 'error'=>$formdata[1]['description_es'] ?? '', 'required'],
-                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description PT", 'name'=>"description_pt", 'value'=>$formdata[0]['description_pt'] ?? '', 'error'=>$formdata[1]['description_pt'] ?? '', 'required'],
-                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description DE", 'name'=>"description_de", 'value'=>$formdata[0]['description_de'] ?? '', 'error'=>$formdata[1]['description_de'] ?? '', 'required'],
+                // ['tag'=>'input', 'type'=>'checkbox', 'name'=>"country_NG", 'value'=>'NG' ?? '', 'id'=>'country_NG', isset($_POST['country_NG']) && $_POST['country_NG']=='NG' ? 'checked' : '', 'label'=>'Nigeria', 'error'=>''],
+                // ['tag'=>'input', 'type'=>'checkbox', 'name'=>"country_GH", 'value'=>'GH' ?? '', 'id'=>'country_GH', isset($_POST['country_GH']) && $_POST['country_GH']=='GH' ? 'checked' : '', 'label'=>'Ghana', 'error'=>''],
+                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description EN", 'name'=>"description_en", 'value'=>$formdata[0]['description_en'] ?? '', 'error'=>$formdata[1]['description_en'] ?? ''],
+                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description FR", 'name'=>"description_fr", 'value'=>$formdata[0]['description_fr'] ?? '', 'error'=>$formdata[1]['description_fr'] ?? ''],
+                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description ES", 'name'=>"description_es", 'value'=>$formdata[0]['description_es'] ?? '', 'error'=>$formdata[1]['description_es'] ?? ''],
+                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description PT", 'name'=>"description_pt", 'value'=>$formdata[0]['description_pt'] ?? '', 'error'=>$formdata[1]['description_pt'] ?? ''],
+                ['tag'=>'textarea', 'style'=>'width: 100%', 'rows'=>'3', 'placeholder'=>"Description DE", 'name'=>"description_de", 'value'=>$formdata[0]['description_de'] ?? '', 'error'=>$formdata[1]['description_de'] ?? ''],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Referral Link", 'name'=>"reflink", 'value'=>$formdata[0]['reflink'] ?? '', 'error'=>$formdata[1]['reflink'] ?? '', 'required'],
-                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Promo Code", 'name'=>"promocode", 'value'=>$formdata[0]['promocode'] ?? '', 'error'=>$formdata[1]['promocode'] ?? '', 'required'],
+                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Promo Code", 'name'=>"promocode", 'value'=>$formdata[0]['promocode'] ?? '', 'error'=>$formdata[1]['promocode'] ?? ''],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Dashboard Link", 'name'=>"dashboard", 'value'=>$formdata[0]['dashboard'] ?? '', 'error'=>$formdata[1]['dashboard'] ?? '', 'required'],
-                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Countries(NG, GH, KE)", 'name'=>"countries", 'value'=>$formdata[0]['countries'] ?? '', 'error'=>$formdata[1]['countries'] ?? '', 'required'],
+                ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Countries(NG, GH, KE)", 'name'=>"countries", 'value'=>$formdata[0]['countries'] ?? '', 'error'=>$formdata[1]['countries'] ?? ''],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Text Color", 'name'=>"tcolor", 'value'=>$formdata[0]['tcolor'] ?? '', 'error'=>$formdata[1]['tcolor'] ?? ''],
                 ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Background Color", 'name'=>"bcolor", 'value'=>$formdata[0]['bcolor'] ?? '', 'error'=>$formdata[1]['bcolor'] ?? ''],
                 ['tag'=>'select', 'name'=>"active", 'options'=>['default_opt_'.($formdata[0]['active'] ?? '')=>$formdata[0]['active'] ?? null, 1=>'Yes', 0=>'No'], 'id'=>'active', 'error'=>$formdata[1]['active'] ?? '', 'required'],
@@ -1147,6 +1149,7 @@ class Folder extends Controller {
     
             $errs = array_column($formfields, 'error', 'name');
             $output = form_format($formfields);
+            // show($output);
             $data['page_title'] = $data['h1'] = 'Add Bookie';
             $data['btntxt'] = 'MENU';
             $data['formfields'] = $output;
@@ -1204,5 +1207,23 @@ class Folder extends Controller {
             $filelocation = ROOT."/files/betagamers/work/$folder/$filename";
             download($filelocation);
         }
+    }
+
+    function countryiso() {
+        include INCS."/countrylist/".LANG.".php";
+        $allcountries = array_combine(array_keys($country_list), array_column($country_list, 'name'));
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !empty($_POST)) {
+            foreach($_POST as $key=>$val) {
+                if(array_key_exists($key, $allcountries)) {
+                    $selected[] = $key;
+                }
+            }
+        }
+        $this->page = $this->activepage = 'countryiso';
+        $data['page_title'] = $data['h1'] = 'Generate Country Iso';
+        $data['sidelist'] = $this->sidelist();
+        $data['selected'] = $selected ?? [];
+        $data['allcountries'] = array_chunk($allcountries, 84, true);
+        $this->view('folder/countryiso', $data);
     }
 }

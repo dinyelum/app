@@ -236,6 +236,7 @@ function admin_side_list() {
         ],
         'MISCELLANEOUS'=>[
             'No Games'=>['link'=>HOME.'/folder/nogames', 'id'=>'nogames'],
+            'Country ISOs'=>['link'=>HOME.'/folder/countryiso', 'id'=>'countryiso'],
             'Salaries'=>['link'=>HOME.'/folder/#', 'id'=>'copy'],
             'Affiliates'=>['link'=>HOME.'/folder/#', 'id'=>'copy']
         ]
