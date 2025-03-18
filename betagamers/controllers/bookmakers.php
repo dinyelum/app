@@ -12,7 +12,7 @@ class Bookmakers extends Controller {
                 $singlebookie = $bookiesclass->select('bookie, reflink')->where("bookie=:bookie and active=1", ['bookie'=>$validbookie[0]['bookie']]);
             }
         }
-        $bookiedata = $bookiesclass->select('bookie, reflink, promocode, countries')->where("active=1 and (countries='all' || countries like '%".USER_COUNTRY."%')");
+        $bookiedata = $bookiesclass->select('bookie, reflink, promocode, countries')->where("active=1 and (countries='' || countries like concat('%',:countries,'%')) order by case when countries like concat('%',:countries,'%') then 0 else 1 end, countries", ['countries'=>USER_COUNTRY]);
         if(is_array($bookiedata)) {
             foreach($bookiedata as $ind=>$val) {
                 $formatted_bookiedata[$val['bookie']] = $val;
@@ -62,7 +62,7 @@ class Bookmakers extends Controller {
             $prompt = 'Erstellen Sie ein ...-Konto';
             $redirect = 'Bringt Sie in';
             $precount = 'Wird geladen';
-            $alt = 'zu '.$singlebookie[0]['bookie'] ?? ''.' ODER #klicken Sie hier# um sofort loszulegen';
+            $alt = 'zu '.($singlebookie[0]['bookie'] ?? '').' ODER #Klicken Sie hier#, um sofort dorthin zu gelangen';
         }
         $data['prompt'] = $prompt;
         $data['redirect'] = str_replace('...', $singlebookie[0]['bookie'] ?? '...', $redirect);

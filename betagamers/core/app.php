@@ -11,13 +11,18 @@ Class App
 
 	public function __construct()
 	{
+		if(URI=='/home') {
+		    header('location: /');
+		    exit;
+		}
+
 		if(str_ends_with(URI, '/index') || str_ends_with(URI, '/index.php'))  {
 			// show($_GET['url']);
 			// exit;
 			header('location: '.htmlspecialchars(substr(URI, 0, strrpos(URI, '/index'))));
 			exit;
 		}
-
+		
 		if(str_ends_with(URI, '/') && URI!='/betagamers/public_html/' && URI!=='/' && $_SERVER['SERVER_NAME']!='localhost')  {
 			// echo 'wrong error: '.URI;
 			// show($_GET['url']);

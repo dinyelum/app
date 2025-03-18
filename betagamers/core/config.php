@@ -36,6 +36,7 @@ $exception = ['XX', 'T1'];
 define('CF_COUNTRY', isset($_SERVER['HTTP_CF_IPCOUNTRY']) && !in_array($_SERVER['HTTP_CF_IPCOUNTRY'], $exception) ? $_SERVER['HTTP_CF_IPCOUNTRY'] : 'GB');
 define('USER_COUNTRY', $_SESSION['users']['country'] ?? CF_COUNTRY);
 define('USER_LOGGED_IN', $_SESSION['users']["logged_in"] ?? null);
+define('SUPER_ADMIN', isset($_SESSION['users']["email"]) && $_SESSION['users']["email"]==ENV['SUPER_ADMIN']);
 define('LANG', (strlen($lang)==2) ? $lang : 'en');
 define('DISCOUNT', null);
 define('EMAIL', 'services@betagamers.net');

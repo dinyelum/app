@@ -48,6 +48,11 @@ class Adminfiles {
                 if(isset($data['filegroup'])) {
                     if($data['filegroup']=='screenshots') {
                         $dir = UPLOAD_SCREENSHOTS_ROOT.'/'.($data['lang']=='en' ? 'public_html' : $data['lang'].'.betagamers.net').'/recs/'.$data['date'].'/';
+                        /*if(isset($data['lang']) && !isset($this->err['lang'])) {
+                            $dir = UPLOAD_SCREENSHOTS_ROOT.'/'.($data['lang']=='en' ? 'public_html' : $data['lang'].'.betagamers.net').'/recs/'.$data['date'].'/';
+                        } else {
+                            $this->err['lang'] = $this->err['lang'] ?? 'Please select language';
+                        }*/
                     } elseif($data['filegroup']=='topteams') {
                         $dir = UPLOAD_TEAMS_ROOT.'/';
                         if($countfiles>1) $this->err['genErr'] = 'You can only upload 1 file at a time in this section';
@@ -55,7 +60,7 @@ class Adminfiles {
                     } elseif($data['filegroup']=='adminfiles') {
                         $dir = UPLOAD_ADMIN_ROOT.'/'.($data['folder']=='root' ? '' : $data['folder']).'/';
                     }
-                    if(!file_exists($dir)) mkdir("$dir");
+                    // if(!file_exists($dir)) mkdir("$dir");
                 }
                 $blueprint = match ($data['filegroup']) {
                     'screenshots' => ['size'=>2000000, 'filetype'=>'image'],
@@ -65,6 +70,7 @@ class Adminfiles {
                 };
                 
                 if(!$this->err) {
+                    if(!file_exists($dir)) mkdir("$dir");
                     for($i=0; $i<$countfiles; $i++) {
                         foreach($fields['fileToUpload'] as $key=>$val) {
                             $file[$key] = $val[$i];

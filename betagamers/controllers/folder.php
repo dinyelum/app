@@ -18,8 +18,74 @@ class Folder extends Controller {
     public function test() {
         $this->page = $this->activepage = 'test';
         $data['page_title'] = $data['h1'] = 'Test Page';
-        $usersclass = new Users;
-        $data['userdata'] = $usersclass->select('fullname, country')->where('id in (60511, 61819, 66952, 66952, 81473, 53922, 39850, 70529, 83060, 92463, 93241, 42200, 45064, 45843, 50456, 56382, 60624, 77710, 82773, 20767, 21401, 25434, 124423, 124445)');
+        // $usersclass = new Users;
+        // $data['userdata'] = $usersclass->select('fullname, country')->where('id in (60511, 61819, 66952, 66952, 81473, 53922, 39850, 70529, 83060, 92463, 93241, 42200, 45064, 45843, 50456, 56382, 60624, 77710, 82773, 20767, 21401, 25434, 124423, 124445)');
+        /*
+            0:"UEFA"
+            1:"CAF"
+            2:"OFC"
+            3:"CONMEBOL"
+            4:"CONCACAF"
+            5:"AFC"
+        */
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+        	CURLOPT_URL => "https://betminer.p.rapidapi.com/bm/predictions/list/2025-03-18/2025-03-18",
+        	CURLOPT_RETURNTRANSFER => true,
+        	CURLOPT_ENCODING => "",
+        	CURLOPT_MAXREDIRS => 10,
+        	CURLOPT_TIMEOUT => 30,
+        	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        	CURLOPT_CUSTOMREQUEST => "GET",
+        	CURLOPT_HTTPHEADER => [
+        		"x-rapidapi-host: betminer.p.rapidapi.com",
+        		"x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
+        	],
+        ]);
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+        	echo "cURL Error #:" . $err;
+        } else {
+        	$print = json_encode(json_decode($response), JSON_PRETTY_PRINT);
+            show($print);
+        }
+        exit;
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+        	CURLOPT_URL => "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=classic&iso_date=2025-03-17&federation=UEFA",
+        	CURLOPT_RETURNTRANSFER => true,
+        	CURLOPT_ENCODING => "",
+        	CURLOPT_MAXREDIRS => 10,
+        	CURLOPT_TIMEOUT => 30,
+        	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        	CURLOPT_CUSTOMREQUEST => "GET",
+        	CURLOPT_HTTPHEADER => [
+        		"x-rapidapi-host: football-prediction-api.p.rapidapi.com",
+        		"x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
+        	],
+        ]);
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+        	echo "cURL Error #:" . $err;
+        } else {
+            $print = json_encode(json_decode($response), JSON_PRETTY_PRINT);
+            show($print);
+        	// echo $response;
+        }
+    	// show($response);
         // show($data['userdata']);
         // $this->view("folder/test",$data);
     }
@@ -761,6 +827,13 @@ class Folder extends Controller {
             $this->page = $this->activepage = 'update_adminfiles';
             $data['h1'] = $data['page_title'] = 'Update Admin Files';
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
+                if($_POST['filegroup']=='screenshots') {
+                    $_POST['img_src'] = $_POST['img_src'] ?? '';
+                    $_POST['date'] = $_POST['date'] ?? '';
+                    $_POST['lang'] = $_POST['lang'] ?? '';
+                } elseif($_POST['filegroup']=='adminfiles') {
+                    $_POST['folder'] = $_POST['folder'] ?? '';
+                }
                 $formdata = $adminfilesclass->validate(array_merge($_POST, $_FILES));
                 if(isset($formdata[0]['fileToUpload']) && is_array($formdata[0]['fileToUpload'])) {
                     if($formdata[0]['filegroup']=='screenshots') {
@@ -1054,11 +1127,10 @@ class Folder extends Controller {
                     $success = 'Updated Successfully';
                 }
                 if($_GET['showmessage']==1) {
-                    array_push($gamesclass->gamesfocus, 'free.php');
+                    array_push($gamesclass->gamesfocus, 'free');
                     foreach($gamesclass->gamesfocus as $filename) {
-                        foreach(['public_html', 'fr.', 'es.', 'pt.', 'de.'] as $prefix) {
-                            $domain = $prefix=='public_html' ? $prefix : $prefix.'betagamers.net';
-                            file_put_contents(ROOT."/$domain/$dir/$filename.php", "");
+                        foreach(array_keys(LANGUAGES) as $prefix) {
+                            file_put_contents(INCS."/$dir/$prefix/$filename.php", "");
                         }
                     }
                 }
@@ -1087,6 +1159,8 @@ class Folder extends Controller {
             $recstable = DB_RECS_NAME.".$val".'rec';
             $tabquery[$recstable] = [
                 $ind.'custom_query'=>["INSERT INTO $recstable (planid, fullName, email, phone, currency, amount, reg_date, expdate) SELECT id, fullName, email, phone, currency, amount, reg_date, expdate FROM $val  WHERE expdate <= NOW()"],
+            ];
+            $tabquery[$val] = [
                 $ind.'delete'=>[],
                 $ind.'where'=>["expdate <= NOW()"],
             ];

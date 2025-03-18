@@ -28,7 +28,7 @@ class Tips extends Controller {
             ],
             'screenshots'=>[
                 'custom_query'=>[
-                    "SELECT date, img_src FROM screenshots where lang='".LANG."' order by date desc limit 10"
+                    "SELECT distinct date, img_src FROM screenshots where lang='".LANG."' order by date desc limit 10"
                 ]
             ]
         ];
@@ -180,7 +180,7 @@ class Tips extends Controller {
     function wins() {
         $screenshotsclass = new Adminfiles;
         $screenshotsclass::$table = 'screenshots';
-        $db = $screenshotsclass->select('date, img_src')->where("lang='".LANG."' and date >= (select min(date) from (
+        $db = $screenshotsclass->select('distinct date, img_src')->where("lang='".LANG."' and date >= (select min(date) from (
             select distinct date from screenshots order by date desc limit 5) min10) order by date desc");
         
         if(count($db)) {

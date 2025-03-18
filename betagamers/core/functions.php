@@ -408,7 +408,7 @@ function plan_pricing($plan, $currency=null, $lang=null) {
             ],
         
         'footballtennis'=> [
-            ['en'=>'1 Month', 'fr'=>'1 mois', 'es'=>'1 Mes', 'pt'=>'1 Mês', 'de'=>'Ein Monat', 'price'=>7000, 'description'=>'Football Tennis 1 Month', 'link'=>'footten1Month']
+            ['en'=>'1 Month', 'fr'=>'1 mois', 'es'=>'1 Mes', 'pt'=>'1 Mês', 'de'=>'Ein Monat', 'price'=>7000, 'description'=>'FootballTennis 1 Month', 'link'=>'footten1Month']
             ]
         ];
 
@@ -595,7 +595,7 @@ function controller_translations($controller) { //folders
     $list = [
 		'account'=>['en'=>'account', 'fr'=>'compte', 'es'=>'cuenta', 'pt'=>'conta', 'de'=>'konto'],
 		'bookmakers'=>['en'=>'bookmakers', 'fr'=>'bookmakers', 'es'=>'corredores_de_apuestas', 'pt'=>'apostador_profissional', 'de'=>'buchmacher'],
-        'free_predictions'=>['en'=>'free_predictions', 'fr'=>'pronostics_gratuits', 'es'=>'pronosticosgratis', 'pt'=>'apostas', 'de'=>'kostenlos_prognose'],
+        'free_predictions'=>['en'=>'free_predictions', 'fr'=>'pronostics_gratuits', 'es'=>'pronosticosgratis', 'pt'=>'dicas_gratis', 'de'=>'kostenlos_prognose'],
         'payments'=>['en'=>'payments', 'fr'=>'paiements', 'es'=>'pagos', 'pt'=>'pagamentos', 'de'=>'zahlungen'],
         'requests'=>['en'=>'requests', 'fr'=>'demandes', 'es'=>'solicitudes', 'pt'=>'demanda', 'de'=>'anfragen'],
 		'support'=>['en'=>'support', 'fr'=>'soutien', 'es'=>'apoyo', 'pt'=>'apoio', 'de'=>'hilfe'],

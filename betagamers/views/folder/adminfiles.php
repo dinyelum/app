@@ -43,6 +43,8 @@
     </div>
 </div>
 <?php include ROOT.'/app/betagamers/incs/footer.php';?>
+<script>var tawkTo = false;</script>
+<script src="<?=HOME?>/assets/js/gen.js"></script>
 <script><?php
     if($this->page=='update_adminfiles') {?>
         var f = document.getElementById('filegroup');
@@ -55,7 +57,7 @@
                 var dateErr = '<?=$data['formdata'][1]['date'] ?? ''?>';
                 var lang = '<?=$data['formdata'][0]['lang'] ?? ''?>';
                 var langs = <?=json_encode(LANGUAGES)?>;
-                var s = "<div class='w3-col m6'><input type=date name=date value="+date+"><span class=w3-error>"+dateErr+"</span></div>";
+                var s = "<div class='w3-col m6'><input type=date name=date value="+date+"><span class=error>"+dateErr+"</span></div>";
                 var sEl = sElObj('lang', lang, 'Select Language', langs);
                 i.innerHTML = s;
                 var divEl = document.createElement('div');
@@ -69,8 +71,8 @@
                 var divEl = document.createElement('div');
                 divEl.className += 'w3-col m4';
                 divEl.appendChild(sEl);
+                i.innerHTML = '';
                 i.appendChild(divEl);
-                // i.innerHTML = divEl;
             } else {
                 i.innerText = '';
             }
@@ -104,6 +106,4 @@
             notefieldid.style.display = 'none';
         }
     }
-    var tawkTo = false;
 </script>
-<script src="<?=HOME?>/assets/js/gen.js"></script>

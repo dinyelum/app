@@ -33,9 +33,11 @@ if(count($data['singlebookie'])) {?>
             <th><?=implode('</th><th>', $data['tableheader'])?></th>
         </tr><?php
         foreach($data['bookiedata'] as $key=>$val) {?>
-            <td><?=$key?></td>
-            <td><a href="<?=$val['reflink']?>" rel="noopener nofollow" target="_blank"><?=str_replace('...', $key, $data['prompt'])?></a></td>
-            <td><?=$val['promocode']?></td><?php
+            <tr>
+                <td><?=$key?></td>
+                <td><a href="<?=$val['reflink']?>" rel="noopener nofollow" target="_blank"><?=str_replace('...', $key, $data['prompt'])?></a></td>
+                <td><?=$val['promocode']?></td>
+            </tr><?php
         }?>
     </table><?php
 }?>

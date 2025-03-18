@@ -462,13 +462,13 @@ class Support extends Controller {
             $data['h1'] = "Envoyez-nous un email";
             $select = 'Sélectionnez le sujet';
             $subjects = [
-                "Enregistrement / Activation"=>["Erreur d\'enregistrement", "Aucun e-mail reçu"],
+                "Enregistrement / Activation"=>["Erreur d'enregistrement", "Aucun e-mail reçu"],
                 'Abonnement / Activation'=>['Prix et modes de paiement', 'Paiement terminé', 'Erreur de paiement'],
                 'Paramètres du compte'=>['Editer le profil', 'Mot de passe oublié'],
                 "Admin / Éditorial"=>["Suggérer des modifications", "Signaler une page manquante", "Liens / articles d'invités", "La publicité", "L'emploi"],
                 ''=>["Autres"]
             ];
-            $successtxt= " Message Sent. We'll be intouch within 24 hours";
+            $successtxt= " Message envoyé. Nous vous contacterons sous 24 heures.";
             $placeholders = ['Nom', 'Votre email', 'Message'];
             $fieldnames = ['Nom', 'E-mail', 'Sujet', 'Message', ''];
             $sendmail = 'Envoyer';
@@ -552,8 +552,10 @@ class Support extends Controller {
                 $to = EMAIL;
                 $headers = 'From: '.$email."\r\n".
                 'Reply-To: '.$email."\r\n" .
+                'Content-type: text/plain; charset=UTF-8'."\r\n" .
                 'X-Mailer: PHP/' . phpversion();
                 @mail($to, $subject, $message, $headers);
+                // or use phpmailer class
                 $success= $successtxt;
             }
         }
