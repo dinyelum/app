@@ -1015,6 +1015,68 @@ class Free_Predictions extends Controller {
 
     // function jackpots() {} //list all bookies / use accordions / use toggle tabs
 
+    function all() {
+        //classic, over_25
+        $dateperiods = new DatePeriod(
+            new DateTime('today'),
+            new DateInterval('P1D'),
+            new DateTime('tomorrow +2days')
+       );
+
+       foreach($dateperiods as $dateval) {
+        echo  $dateval->format('Y-m-d');
+       }exit;
+
+       foreach(['classic', 'over_25'] as $market) {
+           foreach(['UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'] as $federations) {
+               foreach($dateperiods as $dateval) {
+                $date = $dateval->format('Y-m-d');
+                   $curl = curl_init();
+                   curl_setopt_array($curl, [
+                       CURLOPT_URL => "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=$market&iso_date=$date&federation=$federations",
+                       CURLOPT_RETURNTRANSFER => true,
+                       CURLOPT_ENCODING => "",
+                       CURLOPT_MAXREDIRS => 10,
+                       CURLOPT_TIMEOUT => 30,
+                       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                       CURLOPT_CUSTOMREQUEST => "GET",
+                       CURLOPT_HTTPHEADER => [
+                           "x-rapidapi-host: football-prediction-api.p.rapidapi.com",
+                           "x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
+                       ],
+                   ]);
+                   $response = curl_exec($curl);
+                   $err = curl_error($curl);
+                   
+                   curl_close($curl);
+                   
+                   $alldata[$market][$federations][$date] = $err ?? json_decode($response);
+                   
+                //    if ($err) {
+                //        echo "cURL Error #:" . $err;
+                //    } else {
+                //        $print = json_encode(json_decode($response), JSON_PRETTY_PRINT);
+                //        show($print);
+                //        // echo $response;
+                //    }
+               }
+           }
+       }
+       show($alldata);exit;
+        $classics = json_decode($response);
+        $ovun = json_decode($response);
+        foreach($classics as $ind=>$val) {
+            if($val['prediction'] = 'X') {
+                /*if($ovun[$ind]['prediction'] == 'Over 2.5') {
+                    
+                }*/
+                $prediction = $ovun[$ind]['prediction'];
+                if($ovun[$ind]['odds'][$prediction] >= 1.70) $val['prediction'] = str_replace('2.5', '3.5', $prediction);
+            }
+            $leagues[$val['competition_cluster']][][substr($val['start_date'], 0, 10)] = $val;
+        }
+    }
+
     function teams() {
         $this->page = $this->activepage = 'teams';
         $this->writeuponly = true;

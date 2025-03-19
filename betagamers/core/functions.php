@@ -626,6 +626,7 @@ function directory_listing($controller) {
             'europa'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'europa'),
             'euro'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'euro'),
             'afcon'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'afcon'),
+            'all'=>['en'=>'all', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
             'teams'=>['en'=>'teams', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
             'howtopredict'=>['en'=>'howtopredict', 'fr'=>'comment_predire', 'es'=>'como_predecir', 'pt'=>'como_prever', 'de'=>'vorhersagen'],
             'guide'=>['en'=>'guide', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
