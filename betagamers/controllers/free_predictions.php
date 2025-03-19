@@ -45,7 +45,7 @@ class Free_Predictions extends Controller {
     public $iframe = [];
     public $writeuponly = null;
     public $filename;
-
+    
     function index() {
         $this->page = $this->activepage = 'freegames';
         $this->urls = free_games_link('', true);
@@ -197,6 +197,35 @@ class Free_Predictions extends Controller {
         }
         $data['relatedposts']['list'] = related_posts($this->relposts);
         $this->view("free_predictions/freegames",$data);
+    }
+    
+    function sidelist() {
+        include INCS."/menuadmin.php";
+        return $sidelist;
+    }
+
+    function all() {
+        show($_GET);
+        if(isset($_GET['league'])) {
+            $filename = INCS."/free_predicts_apis/football-prediction/".$_GET['league'].'.php';
+            if(!file_exists($filename)) error_page();
+            $getfilemtime = filemtime($filename);
+            if(LANG=='en') {
+                $h1 = '';
+            }
+        } else {
+            if(LANG=='en') {
+                $h1 = '';
+            }
+        }
+        $data['btntxt'] = 'MENU';
+        $data['sidelist'] = $this->sidelist();
+        $data['h1'] = $h1;
+        /*$this->page = $this->activepage = 'epl';
+        $this->urls = free_games_link($this->page, true);
+        $this->filename
+        $getfilemtime = filemtime($filename);
+        $data['lastmodified'] = filemodify($getfilemtime);*/
     }
 
     function epl() {

@@ -1101,6 +1101,95 @@ class Folder extends Controller {
         // show($games);
         // show($files);
     }
+    
+    function copyapi() {
+        include INCS."/glossary.php";
+        $dir = INCS."/free_predicts_apis/football-prediction";
+        $dateperiods = new DatePeriod(
+            new DateTime('yesterday -1day'),
+            new DateInterval('P1D'),
+            new DateTime('tomorrow +2days')
+       );
+
+        foreach(['classic', 'over_25'] as $market) {
+            //'UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'
+           foreach(['CONMEBOL'] as $federations) {
+               foreach($dateperiods as $dateval) {
+                $date = $dateval->format('Y-m-d');
+                   $curl = curl_init();
+                   curl_setopt_array($curl, [
+                       CURLOPT_URL => "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=$market&iso_date=$date&federation=$federations",
+                       CURLOPT_RETURNTRANSFER => true,
+                       CURLOPT_ENCODING => "",
+                       CURLOPT_MAXREDIRS => 10,
+                       CURLOPT_TIMEOUT => 30,
+                       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                       CURLOPT_CUSTOMREQUEST => "GET",
+                       CURLOPT_HTTPHEADER => [
+                           "x-rapidapi-host: football-prediction-api.p.rapidapi.com",
+                           "x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
+                       ],
+                   ]);
+                   $response = curl_exec($curl);
+                   $err = curl_error($curl);
+                   
+                   curl_close($curl);
+                   
+                   $alldata[$market][$federations][$date] = $err ?: json_decode($response)->data;
+               }
+           }
+        }
+        
+        $classics = $alldata['classic'];
+        $ovun = $alldata['over_25'];
+        /*[classic] => Array
+        (
+            [UEFA] => Array
+                (
+                    [2025-03-18] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [market] => classic
+                                    [competition_cluster] => England*/
+        foreach($classics as $fed=>$val) {
+            foreach($val as $date=>$subval) {
+                foreach($subval as $ind=>$obj) {
+                    if($obj->prediction == 'X') {
+                        $prediction = $ovun[$fed][$date][$ind]->prediction;
+                        $text = $prediction=='yes' ? 'Ov 2.5' : 'Un 2.5';
+                        if($ovun[$fed][$date][$ind]->odds->$prediction >= 1.70) $obj->prediction = str_replace('2.5', '3.5', $text);
+                    }
+                    $formatted[$obj->competition_cluster][$obj->competition_name][substr($obj->start_date, 0, 10)][] = $obj;
+                }
+            }
+        }
+        // show($formatted);exit;
+        foreach($formatted as $country=>$val) {
+            foreach($val as $league=>$subval) {
+                foreach($subval as $date=>$sub2val) {
+                    $output = [];
+                    $output[] = "\n<h3>For ".date('l, jS F, Y', strtotime($date))."</h3>\n";
+                    foreach($sub2val as $ind=>$gamesobj) {
+                        // $display = array_intersect_key($subgames, array_fill_keys($fields, 'keep'));
+                        $output[] = "
+                        <p class='w3-large'>".$gamesobj->home_team.' vs '.$gamesobj->away_team.'</p>
+                        <p>Tip: '.$gamesobj->prediction.'</p>
+                        <p>Result: '.$gamesobj->result."</p>\n";
+                    }
+                }
+                $output_en = implode($output);
+                $link = strtolower(str_replace(' ', '_', "$dir/en/$country-$league.php"));
+                file_put_contents($link, $output_en);
+                //convert
+                foreach(['fr'=>$fr, 'es'=>$es, 'pt'=>$pt, 'de'=>$de] as $pref=>$lang) {
+                    $str = implode(str_ireplace($en, $lang, $output));
+                    file_put_contents(str_replace('/en/', "/$pref/", $link), $str);
+                }
+            }
+        }
+        echo 'copied successfully';
+    }
 
     function nogames() {
         date_default_timezone_set('Africa/Lagos');
