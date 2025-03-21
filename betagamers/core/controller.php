@@ -116,7 +116,7 @@ Class Controller
 				...$accountlinks,
 				'bookmakers'=>'Bookmakers',
 				'blog'=>'Sports News Blog',
-				'freetips'=>'Football Bet Tips',
+				'freetips'=>'All Football Predictions',
 				'tennis'=>'Tennis'
 			];
 
@@ -159,7 +159,7 @@ Class Controller
 				...$accountlinks,
 				'bookmakers'=>'Bookmakers',
 				'blog'=>"Blog d'actualité sportive (Anglais)",
-				'freetips'=>'Conseils de Paris sur le Football',
+				'freetips'=>'Tous les pronostics football',
 				'tennis'=>'Tennis'
 			];
 
@@ -201,7 +201,7 @@ Class Controller
 				...$accountlinks,
 				'bookmakers'=>'Casas de Apuestas',
 				'blog'=>'Blog de noticias deportivas (en inglés)',
-				'freetips'=>'Fin de semana',
+				'freetips'=>'Todas las predicciones de fútbol',
 				'tennis'=>'Tenis'
 			];
 
@@ -243,7 +243,7 @@ Class Controller
 				...$accountlinks,
 				'bookmakers'=>'Casas de apostas',
 				'blog'=>'Blog de notícias esportivas (inglês)',
-				'freetips'=>'Futebol Europeu',
+				'freetips'=>'Todas as previsões de futebol',
 				'tennis'=>'Tênis'
 			];
 
@@ -285,7 +285,7 @@ Class Controller
 				...$accountlinks,
 				'bookmakers'=>'Buchmacher',
 				'blog'=>'Sportnachrichten-Blog (Englisch)',
-				'freetips'=>'Wochenende-Tipps',
+				'freetips'=>'Alle Fußball-Prognosen',
 				'tennis'=>'Tennis'
 			];
 

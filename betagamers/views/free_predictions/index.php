@@ -1,6 +1,6 @@
 <?php include ROOT."/app/betagamers/incs/header.php"?>
 <h1 class=w3-center><?=$data['h1']?></h1>
-<?=$data['socials'].'<br><br>'?>
+<?=$data['socials'].'<br>'.$data['p'].'<br><br>'?>
 <div class="w3-row-padding"><?php
 foreach($data['posts']['list'] as $val) {
   foreach($val as $subkey=>$subval) {?>

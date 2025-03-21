@@ -5,6 +5,7 @@ images/
 temp/
 tmp/
 free_predicts/
+free_predicts_apis/
 table/
 cgi-bin/
 .well-known/

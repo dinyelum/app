@@ -1113,7 +1113,7 @@ class Folder extends Controller {
 
         foreach(['classic', 'over_25'] as $market) {
             //'UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'
-           foreach(['CONMEBOL'] as $federations) {
+           foreach(['UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'] as $federations) {
                foreach($dateperiods as $dateval) {
                 $date = $dateval->format('Y-m-d');
                    $curl = curl_init();
@@ -1171,9 +1171,9 @@ class Folder extends Controller {
                     $output = [];
                     $output[] = "\n<h3>For ".date('l, jS F, Y', strtotime($date))."</h3>\n";
                     foreach($sub2val as $ind=>$gamesobj) {
-                        // $display = array_intersect_key($subgames, array_fill_keys($fields, 'keep'));
                         $output[] = "
                         <p class='w3-large'>".$gamesobj->home_team.' vs '.$gamesobj->away_team.'</p>
+                        <p>Kickoff: '.substr($gamesobj->start_date, 11).' GMT</p>
                         <p>Tip: '.$gamesobj->prediction.'</p>
                         <p>Result: '.$gamesobj->result."</p>\n";
                     }
@@ -1388,5 +1388,19 @@ class Folder extends Controller {
         $data['selected'] = $selected ?? [];
         $data['allcountries'] = array_chunk($allcountries, 84, true);
         $this->view('folder/countryiso', $data);
+    }
+
+    function folder_iterator() {
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator(INCS."/$dir"),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
+        
+        foreach($files as $file) {
+            if($file->getExtension() == 'php') {
+                $filename = $file->getBasename('.php');
+                $fullfilename = $file->getFilename();
+            }
+        }
     }
 }

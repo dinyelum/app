@@ -626,7 +626,7 @@ function directory_listing($controller) {
             'europa'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'europa'),
             'euro'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'euro'),
             'afcon'=>array_fill_keys(['en', 'fr', 'es', 'pt', 'de'], 'afcon'),
-            'all'=>['en'=>'all', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
+            'all'=>['en'=>'all', 'fr'=>'tous', 'es'=>'todos', 'pt'=>'todos', 'de'=>'alle'],
             'teams'=>['en'=>'teams', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
             'howtopredict'=>['en'=>'howtopredict', 'fr'=>'comment_predire', 'es'=>'como_predecir', 'pt'=>'como_prever', 'de'=>'vorhersagen'],
             'guide'=>['en'=>'guide', 'fr'=>'', 'es'=>'', 'pt'=>'', 'de'=>''],
@@ -746,6 +746,15 @@ function free_games_link($page='', $arrayformat=false) {
             }
             return $link;
         }
+    } else {
+        if($arrayformat===false) {
+            return HOME.'/'.controller_translations('free_predictions')[LANG].'/'.directory_listing('free_predictions')['all'][LANG]."?league=$page";
+        } else {
+            foreach(all_versions() as $key=>$val) {
+                $link[$key] = "$val/".controller_translations('free_predictions')[LANG].'/'.directory_listing('free_predictions')['all'][LANG]."?league=$page";
+            }
+            return $link;
+        }
     }
 }
 
@@ -836,6 +845,11 @@ function related_posts(array $posts) {
             'text'=>'African Nations Cup Predictions',
             'index'=>'African Nations Cup Predictions and Results'
             ],
+        'all'=>[
+            'alt'=>'Soccer action',
+            'text'=>'More Football Predictions',
+            'index'=>'More Football Predictions'
+            ],
         'guide'=>[
             'alt'=>'Common Terms used in FootBall Betting',
             'text'=>'Betting Symbols for Beginners',
@@ -904,6 +918,11 @@ function related_posts(array $posts) {
             'alt'=>'Logo afcon',
             'text'=>'Pronostics Coupe d\'Afrique des nations',
             'index'=>'Prédictions et résultats de la Coupe d\'Afrique des Nations'
+            ],
+        'all'=>[
+            'alt'=>'Football en action',
+            'text'=>'Plus de pronostics footballistiques',
+            'index'=>'Plus de pronostics footballistiques'
             ],
         'guide'=>[
             'filename'=>'guider',
@@ -974,6 +993,11 @@ function related_posts(array $posts) {
             'text'=>'Pronosticos de la Copa Africana de Naciones',
             'index'=>'Pronosticos y resultados de la Copa Africana de Naciones'
             ],
+        'all'=>[
+            'alt'=>'Acción futbolística',
+            'text'=>'Más predicciones de fútbol',
+            'index'=>'Más predicciones de fútbol'
+            ],
         'guide'=>[
             'filename'=>'',
             'alt'=>'',
@@ -1038,6 +1062,11 @@ function related_posts(array $posts) {
             'text'=>'Prognósticos da Copa das Nações Africanas',
             'index'=>'Prognósticos e resultados da AFCON'
             ],
+        'all'=>[
+            'alt'=>'Ação do futebol',
+            'text'=>'Mais previsões de futebol',
+            'index'=>'Mais previsões de futebol'
+            ],
         'guide'=>[
             'filename'=>'',
             'alt'=>'',
@@ -1101,6 +1130,11 @@ function related_posts(array $posts) {
             'alt'=>'Afcon-Logo',
             'text'=>'Prognosen zum Afrikanischen Nationenpokal',
             'index'=>'Prognosen zum Afrikanischen Nationenpokal and Results'
+            ],
+        'all'=>[
+            'alt'=>'Fußball-Action',
+            'text'=>'Mehr Fußball-Tipps',
+            'index'=>'Mehr Fußball-Tipps'
             ],
         'guide'=>[
             'filename'=>'',

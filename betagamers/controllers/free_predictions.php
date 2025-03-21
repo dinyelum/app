@@ -50,42 +50,49 @@ class Free_Predictions extends Controller {
         $this->page = $this->activepage = 'freegames';
         $this->urls = free_games_link('', true);
         if(LANG=='en') {
-            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
-            $data['page_title'] = $data['h1'] = "Free League / Cup Tips";
-            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, free sports tips, free european league tips';
-            $this->description = 'Best free football league predictions and tips site, view the latest bet tips for today and for the weekend for all the leagues.';
+            $data['page_title'] = $data['h1'] = "All Football Predictions";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, all football predictions';
+            $this->description = 'Football predictions and tips for every game in over 500 leagues for today, tomorrow and the weekeend.';
             $this->og['description'] = 'The leading free soccer predictions site. View our all league free predictions today, tomorrow and every weekend.';
+            $p = 'Here are all of our football betting tips for all the major leagues around the globe to help you build your accumulators.';
+            $more = 'More Football Predictions';
         } elseif(LANG=='fr') {
-            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
-            $data['page_title'] = $data['h1'] = "Conseils gratuits de ligue/coupe";
-            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, site de pronostics sportifs précis, site de pronostic football fiable, site pronostic foot professionnel, pronostic football du jour, pronostics football, site de pronostic foot gagnant, nouvelles des betagamers, blog des betagamers, pronostics ligue anglaise, pronostics liga espagnole, pronostics série italienne a, pronostics ligue 1 française, pronostics Bundesliga allemande, Conseils de Paris sur le Football';
+            $data['page_title'] = $data['h1'] = "Tous les pronostics football";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, conseils de paris sportifs, ous les pronostics football';
             $this->description = 'Meilleurs conseils de paris gratuits sur le football, consultez les dernières prévisions de football gratuites sur notre site maintenant.';
             $this->og['description'] = 'site de prédiction de football gagnant. Consultez nos prévisions gratuites aujourd\'hui et chaque week-end.';
+            $p = 'Voici tous nos conseils de paris footballistiques pour tous les championnats majeurs du monde afin de vous aider à constituer vos paris combinés.';
+            $more = 'Plus de pronostics footballistiques';
         } elseif(LANG=='es') {
-            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
-            $data['page_title'] = $data['h1'] = "Consejos gratuitos de liga y copa";
-            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, Consejos de apuestas de fútbol para el fin de semana, El mejor pronóstico para los favorito para hoy en la grandes Ligas';
+            $data['page_title'] = $data['h1'] = "Todas las predicciones de fútbol";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, sitio web de betagamers, es.betagamers.net, Consejos de apuestas de fútbol para el fin de semana, todas las predicciones de fútbol';
             $this->description = 'Vea los últimos pronósticos de apuestas de fútbol para hoy y el fin de semana de diferentes ligas.';
             $this->og['description'] = 'Vea los últimos pronósticos de apuestas de fútbol para el fin de semana.';
+            $p = 'Aquí tienes todos nuestros consejos de apuestas de fútbol para las principales ligas del mundo para ayudarte a crear tus apuestas combinadas.';
+            $more = 'Más predicciones de fútbol';
         } elseif(LANG=='pt') {
-            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
-            $data['page_title'] = $data['h1'] = "Dicas grátis da Liga / Copa";
-            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, prognósticos gratuitos das principais ligas europeias';
+            $data['page_title'] = $data['h1'] = "Todas as previsões de futebol";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, pt.betagamers.net, todas as previsões de futebol';
             $this->description = 'Obtenha as melhores previsões gratuitas para as principais ligas europeias e outros grandes torneios.';
             $this->og['description'] = 'Obtenha as melhores previsões gratuitas para as principais ligas europeias e outros grandes torneios.';
+            $p = 'Aqui estão todas as nossas dicas de apostas de futebol para todas as principais ligas ao redor do mundo para ajudar você a construir seus acumuladores.';
+            $more = 'Mais previsões de futebol';
         } elseif(LANG=='de') {
-            // $data['page_title'] = $data['h1'] = "All League, Competition Free Tips";
-            $data['page_title'] = $data['h1'] = "Kostenlose Liga / Pokal Tipps";
-            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, kostenlose Wochenendvorhersagen';
+            $data['page_title'] = $data['h1'] = "Alle Fußball-Prognosen";
+            $this->keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, kostenlose Wochenendvorhersagen, alle Fußball-Prognosen';
             $this->description = 'Die besten kostenlosen europäischen Fußballvorhersagen für heute und für das Wochenende.';
             $this->og['description'] = 'Die besten kostenlosen europäischen Fußballvorhersagen für heute und für das Wochenende.';
+            $p = 'Hier finden Sie alle unsere Fußball-Wetttipps für alle großen Ligen weltweit, die Ihnen beim Aufbau Ihrer Kombiwetten helfen.';
+            $more = 'Weitere Fußball-Prognosen';
         }
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/soccerfield.jpg';
         $this->og['title'] = $data['page_title'];
         $data['socials'] = file_get_contents ($this->socials);
-        $posts = ['epl', 'seriea', 'bundesliga', 'laliga', 'ligue1', 'ucl', 'europa', 'predict', 'afcon', 'euro', 'teams', 'guide'];
+        $data['p'] = $p;
+        $posts = ['epl', 'seriea', 'bundesliga', 'laliga', 'ligue1', 'ucl', 'europa', 'predict', 'afcon', 'euro', 'teams', 'guide', 'all'];
         $data['posts']['list'] = array_chunk(related_posts($posts), 3, true);
+        // $data['more'] = $more;
         $this->view("free_predictions/index",$data);
     }
 
@@ -200,32 +207,73 @@ class Free_Predictions extends Controller {
     }
     
     function sidelist() {
-        include INCS."/menuadmin.php";
+        include INCS."/menuapifp.php";
         return $sidelist;
     }
 
     function all() {
-        show($_GET);
+        // show($_GET);
+        $this->page = $_GET['league'] ?? 'all';
+        $this->urls = free_games_link($this->page, true);
+        $data['sidelist'] = $this->sidelist();
         if(isset($_GET['league'])) {
-            $filename = INCS."/free_predicts_apis/football-prediction/".$_GET['league'].'.php';
+            $filename = INCS."/free_predicts_apis/football-prediction/".LANG."/$this->page.php";
             if(!file_exists($filename)) error_page();
             $getfilemtime = filemtime($filename);
             if(LANG=='en') {
-                $h1 = '';
+                $h1 = '... Predictions and Results';
+                $keywords = 'Betagamers.net, betagamers, betagamer, betagamers website, www.betagamers.net, ... predictions';
+                $description = 'Get the best ... for free from our experts, for today and for this weekend.';
+            } elseif(LANG=='fr') {
+                $h1 = 'Pronostics et Résultats de ...';
+                $keywords = 'Betagamers.net, betagamers, betagamer, site de betagamers, fr.betagamers.net, pronos ...';
+                $description = "Obtenez le meilleur... gratuitement auprès de nos experts, pour aujourd'hui et pour ce week-end.";
+            } elseif(LANG=='es') {
+                $h1 = 'Pronósticos y resultados de la ...';
+                $keywords = 'Betagamers.net, betagamers, betagamer, Sitio web de Betagamers, es.betagamers.net, pronósticos ...';
+                $description = 'Obtén lo mejor... gratis de nuestros expertos, para hoy y para este fin de semana.';
+            } elseif(LANG=='pt') {
+                $h1 = 'Palpites ...';
+                $keywords = 'Betagamers.net, betagamers, betagamer, site betagamers, pt.betagamers.net, dicas ...';
+                $description = 'Obtenha o melhor... gratuitamente dos nossos especialistas, para hoje e para este fim de semana.';
+            } elseif(LANG=='de') {
+                $h1 = 'Vorhersagen und Ergebnisse der ...';
+                $keywords = 'Betagamers.net, betagamers, betagamer, betagamers-website, de.betagamers.net, ...-Vorhersagen';
+                $description = 'Holen Sie sich das Beste ... kostenlos von unseren Experten, für heute und für dieses Wochenende.';
             }
+            $h1 = str_replace('...', $this->country.' '.$this->league, $h1);
+            $keywords = str_replace('...', $this->country.' '.$this->league, $keywords);
+            $description = str_replace('...', $this->country.' '.$this->league, $description);
+
         } else {
+            $this->writeuponly = true;
             if(LANG=='en') {
-                $h1 = '';
+                $p1 = 'Select any league from the left side panel to view the available predictions.';
+                $p2 = 'Click on MENU and select any league to view the available predictions.';
+            } elseif(LANG=='fr') {
+                $p1 = 'Sélectionnez une ligue dans le panneau de gauche pour afficher les pronostics disponibles.';
+                $p2 = 'Cliquez sur MENU et sélectionnez une ligue pour afficher les pronostics disponibles.';
+            } elseif(LANG=='es') {
+                $p1 = 'Selecciona cualquier liga en el panel izquierdo para ver las predicciones disponibles.';
+                $p2 = 'Haz clic en MENÚ y selecciona cualquier liga para ver las predicciones disponibles.';
+            } elseif(LANG=='pt') {
+                $p1 = 'Selecione qualquer liga no painel lateral esquerdo para visualizar as dicas disponíveis.';
+                $p2 = 'Clique em MENU e selecione qualquer liga para visualizar as previsões disponíveis.';
+            } elseif(LANG=='de') {
+                $p1 = 'Wählen Sie im linken Bereich eine beliebige Liga aus, um die verfügbaren Vorhersagen anzuzeigen.';
+                $p2 = 'Klicken Sie auf MENÜ und wählen Sie eine beliebige Liga aus, um die verfügbaren Vorhersagen anzuzeigen.';
             }
+            $h1 = $keywords = $description = '';
+            $data['writeup'] = ['p1'=>$p1, 'p2'=>$p2];
         }
-        $data['btntxt'] = 'MENU';
-        $data['sidelist'] = $this->sidelist();
-        $data['h1'] = $h1;
-        /*$this->page = $this->activepage = 'epl';
-        $this->urls = free_games_link($this->page, true);
-        $this->filename
-        $getfilemtime = filemtime($filename);
-        $data['lastmodified'] = filemodify($getfilemtime);*/
+        $this->keywords = $keywords;
+        $this->description = $this->og['description'] = $description;
+        $data['page_title'] = $this->og['title'] = $data['h1'] = $h1;
+        $this->og['url'] = URI;
+        $this->og['image'] = HOME.'/assets/images/bgslide1x.jpg';
+        $data['socials'] = file_get_contents ($this->socials);
+        $data['lastmodified'] = isset($getfilemtime) ? filemodify($getfilemtime) : '';
+        $this->view("free_predictions/freegamesapi",$data);
     }
 
     function epl() {
@@ -314,7 +362,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '67';
         $this->iframe['template'] = '10';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -404,7 +452,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '201';
         $this->iframe['template'] = '43';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'teams', 'predict'];
+        $this->relposts = ['epl', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -494,7 +542,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '83';
         $this->iframe['template'] = '16';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'epl', 'seriea', 'ligue1', 'ucl', 'europa', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'epl', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -584,7 +632,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '77';
         $this->iframe['template'] = '15';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'epl', 'ucl', 'europa', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'epl', 'ucl', 'europa', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -674,7 +722,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '108';
         $this->iframe['template'] = '17';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'bundesliga', 'epl', 'ligue1', 'ucl', 'europa', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'bundesliga', 'epl', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -764,7 +812,7 @@ class Free_Predictions extends Controller {
         // $this->iframe['country']  = '67';
         // $this->iframe['template'] = '10';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'europa', 'teams', 'predict'];
+        $this->relposts = ['epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'europa', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -854,7 +902,7 @@ class Free_Predictions extends Controller {
         // $this->iframe['country']  = '67';
         // $this->iframe['template'] = '10';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['ucl', 'epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'teams', 'predict'];
+        $this->relposts = ['ucl', 'epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -946,7 +994,7 @@ class Free_Predictions extends Controller {
         $this->iframe['stage'] = [38814, 38812, 38815, 38817, 38813, 38816];
         $this->iframe['btheight'] = $this->iframe['stheight'] = '165';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['afcon', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'teams', 'predict'];
+        $this->relposts = ['afcon', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
@@ -1038,73 +1086,11 @@ class Free_Predictions extends Controller {
         $this->iframe['stage'] = [28216, 28221];
         $this->iframe['btheight'] = $this->iframe['stheight'] = '165';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['euro', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'teams', 'predict'];
+        $this->relposts = ['euro', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'all', 'teams', 'predict'];
         return $this->league($data);
     }
 
     // function jackpots() {} //list all bookies / use accordions / use toggle tabs
-
-    function all() {
-        //classic, over_25
-        $dateperiods = new DatePeriod(
-            new DateTime('today'),
-            new DateInterval('P1D'),
-            new DateTime('tomorrow +2days')
-       );
-
-       foreach($dateperiods as $dateval) {
-        echo  $dateval->format('Y-m-d');
-       }exit;
-
-       foreach(['classic', 'over_25'] as $market) {
-           foreach(['UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'] as $federations) {
-               foreach($dateperiods as $dateval) {
-                $date = $dateval->format('Y-m-d');
-                   $curl = curl_init();
-                   curl_setopt_array($curl, [
-                       CURLOPT_URL => "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=$market&iso_date=$date&federation=$federations",
-                       CURLOPT_RETURNTRANSFER => true,
-                       CURLOPT_ENCODING => "",
-                       CURLOPT_MAXREDIRS => 10,
-                       CURLOPT_TIMEOUT => 30,
-                       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                       CURLOPT_CUSTOMREQUEST => "GET",
-                       CURLOPT_HTTPHEADER => [
-                           "x-rapidapi-host: football-prediction-api.p.rapidapi.com",
-                           "x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
-                       ],
-                   ]);
-                   $response = curl_exec($curl);
-                   $err = curl_error($curl);
-                   
-                   curl_close($curl);
-                   
-                   $alldata[$market][$federations][$date] = $err ?? json_decode($response);
-                   
-                //    if ($err) {
-                //        echo "cURL Error #:" . $err;
-                //    } else {
-                //        $print = json_encode(json_decode($response), JSON_PRETTY_PRINT);
-                //        show($print);
-                //        // echo $response;
-                //    }
-               }
-           }
-       }
-       show($alldata);exit;
-        $classics = json_decode($response);
-        $ovun = json_decode($response);
-        foreach($classics as $ind=>$val) {
-            if($val['prediction'] = 'X') {
-                /*if($ovun[$ind]['prediction'] == 'Over 2.5') {
-                    
-                }*/
-                $prediction = $ovun[$ind]['prediction'];
-                if($ovun[$ind]['odds'][$prediction] >= 1.70) $val['prediction'] = str_replace('2.5', '3.5', $prediction);
-            }
-            $leagues[$val['competition_cluster']][][substr($val['start_date'], 0, 10)] = $val;
-        }
-    }
 
     function teams() {
         $this->page = $this->activepage = 'teams';
@@ -1137,7 +1123,7 @@ class Free_Predictions extends Controller {
         $this->og['title'] = 'Best Teams for the Weekend';
         $data['writeup'] = file_get_contents($this->filename);
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'guide', 'predict'];
+        $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'guide', 'predict'];
         return $this->league($data);
     }
 
@@ -1185,7 +1171,7 @@ class Free_Predictions extends Controller {
         $this->og['title'] = $data['page_title'];
         $data['writeup'] = file_get_contents(ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/howtopredict.php');
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'teams', 'guide'];
+        $this->relposts = ['guide', 'teams', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all'];
         return $this->league($data);
     }
 
@@ -1212,7 +1198,7 @@ class Free_Predictions extends Controller {
         $this->og['title'] = 'Best football prediction website';
         $data['writeup'] = file_get_contents(ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/guide.php');
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'teams', 'predict', 'tennisguide'];
+        $this->relposts = ['predict', 'tennisguide', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'teams'];
         return $this->league($data);
     }
 }
