@@ -90,7 +90,7 @@ class Free_Predictions extends Controller {
         $this->og['title'] = $data['page_title'];
         $data['socials'] = file_get_contents ($this->socials);
         $data['p'] = $p;
-        $posts = ['epl', 'seriea', 'bundesliga', 'laliga', 'ligue1', 'ucl', 'europa', 'predict', 'afcon', 'euro', 'teams', 'guide', 'all'];
+        $posts = ['epl', 'seriea', 'bundesliga', 'laliga', 'ligue1', 'ucl', 'europa', 'howtopredict', 'afcon', 'euro', 'teams', 'guide', 'all'];
         $data['posts']['list'] = array_chunk(related_posts($posts), 3, true);
         // $data['more'] = $more;
         $this->view("free_predictions/index",$data);
@@ -362,7 +362,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '67';
         $this->iframe['template'] = '10';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -452,7 +452,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '201';
         $this->iframe['template'] = '43';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
+        $this->relposts = ['epl', 'bundesliga', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -542,7 +542,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '83';
         $this->iframe['template'] = '16';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'epl', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'epl', 'seriea', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -632,7 +632,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '77';
         $this->iframe['template'] = '15';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'epl', 'ucl', 'europa', 'all', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'bundesliga', 'seriea', 'epl', 'ucl', 'europa', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -722,7 +722,7 @@ class Free_Predictions extends Controller {
         $this->iframe['country']  = '108';
         $this->iframe['template'] = '17';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['laliga', 'bundesliga', 'epl', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'predict'];
+        $this->relposts = ['laliga', 'bundesliga', 'epl', 'ligue1', 'ucl', 'europa', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -812,7 +812,7 @@ class Free_Predictions extends Controller {
         // $this->iframe['country']  = '67';
         // $this->iframe['template'] = '10';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'europa', 'all', 'teams', 'predict'];
+        $this->relposts = ['epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'europa', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -902,7 +902,7 @@ class Free_Predictions extends Controller {
         // $this->iframe['country']  = '67';
         // $this->iframe['template'] = '10';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['ucl', 'epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'all', 'teams', 'predict'];
+        $this->relposts = ['ucl', 'epl', 'laliga', 'bundesliga', 'seriea', 'ligue1', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -994,7 +994,7 @@ class Free_Predictions extends Controller {
         $this->iframe['stage'] = [38814, 38812, 38815, 38817, 38813, 38816];
         $this->iframe['btheight'] = $this->iframe['stheight'] = '165';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['afcon', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'all', 'teams', 'predict'];
+        $this->relposts = ['afcon', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -1086,7 +1086,7 @@ class Free_Predictions extends Controller {
         $this->iframe['stage'] = [28216, 28221];
         $this->iframe['btheight'] = $this->iframe['stheight'] = '165';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['euro', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'all', 'teams', 'predict'];
+        $this->relposts = ['euro', 'ucl', 'europa', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'all', 'teams', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -1121,9 +1121,9 @@ class Free_Predictions extends Controller {
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $this->og['title'] = 'Best Teams for the Weekend';
-        $data['writeup'] = file_get_contents($this->filename);
+        $data['writeup'] = $this->filename;
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'guide', 'predict'];
+        $this->relposts = ['epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'guide', 'howtopredict'];
         return $this->league($data);
     }
 
@@ -1169,7 +1169,7 @@ class Free_Predictions extends Controller {
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $this->og['title'] = $data['page_title'];
-        $data['writeup'] = file_get_contents(ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/howtopredict.php');
+        // $data['writeup'] = INCS.'/free_predicts_writeups/'.LANG.'/howtopredict.php';
         $data['relatedposts']['h3'] = $h3;
         $this->relposts = ['guide', 'teams', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all'];
         return $this->league($data);
@@ -1196,9 +1196,9 @@ class Free_Predictions extends Controller {
         $this->og['url'] = URI;
         $this->og['image'] = HOME.'/assets/images/'.$this->page.'1x.jpg';
         $this->og['title'] = 'Best football prediction website';
-        $data['writeup'] = file_get_contents(ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/guide.php');
+        // $data['writeup'] = INCS.'/free_predicts_writeups/'.LANG.'/guide.php';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['predict', 'tennisguide', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'teams'];
+        $this->relposts = ['howtopredict', 'tennisguide', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'teams'];
         return $this->league($data);
     }
 }

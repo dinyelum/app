@@ -24,9 +24,7 @@
 <meta property="og:image:type" content="image/png" >
 <meta property="og:image:width" content="200" >
 <meta property="og:image:height" content="200" ><?php } ?>
-<link rel='icon' href='favicon.ico'>
-<!--<link rel="preload" href="./webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>-->
-<!--<link rel="preload" href="./webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>-->
+<link rel='icon' href='<?=HOME?>/favicon.ico'>
 <link rel='preload' href='<?=HOME?>/assets/css/w3.css' as='style'>
 <link rel='preload' href='<?=HOME?>/assets/css/style.css' as='style'><?php
 if($this->adminmode === true || $this->activepage == 'login') {?>

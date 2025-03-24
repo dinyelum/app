@@ -81,63 +81,6 @@ class Webhooks extends Processor {
     }
     
     function webhookpal() {
-        function verifyTransaction($data) {
-            global $paypalUrl;
-        
-            $req = 'cmd=_notify-validate';
-            foreach ($data as $key => $value) {
-                $value = urlencode(stripslashes($value));
-                $value = preg_replace('/(.*[^%^0^D])(%0A)(.*)/i', '${1}%0D%0A${3}', $value); // IPN fix
-                $req .= "&$key=$value";
-            }
-        
-            $ch = curl_init($paypalUrl);
-            curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
-            curl_setopt($ch, CURLOPT_SSLVERSION, 6);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_FORBID_REUSE, 1);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Connection: Close'));
-            $res = curl_exec($ch);
-        
-            if (!$res) {
-                $errno = curl_errno($ch);
-                $errstr = curl_error($ch);
-                curl_close($ch);
-                throw new Exception("cURL error: [$errno] $errstr");
-            }
-        
-            $info = curl_getinfo($ch);
-        
-            // Check the http response
-            $httpCode = $info['http_code'];
-            if ($httpCode != 200) {
-                throw new Exception("PayPal responded with http code $httpCode");
-            }
-        
-            curl_close($ch);
-        
-            return $res === 'VERIFIED';
-        }
-        
-        function addPayment($data) {
-            //    global $db;
-            $fullName= $data['payer_name'];
-            $email= $data['custom'];
-            $phone= '';
-            $currency= $data['payment_currency'];
-            $amount= $data['payment_amount'];
-            $planid= $data['item_name'];
-            $txn_id= $data['txn_id'];
-            $txn_ref= $data['item_number'];
-            
-            return $this->process_payments('PayPal', $fullName, $email, $phone, $currency, $amount, $planid, $txn_id, $txn_ref);
-        }
-
         // For test payments we want to enable the sandbox mode. If you want to put live
         // payments through then this setting needs changing to `false`.
         $enableSandbox = false;
@@ -172,11 +115,68 @@ class Webhooks extends Processor {
         // We need to verify the transaction comes from PayPal and check we've not
         // already processed the transaction before adding the payment to our
         // database.
-        if (verifyTransaction($_POST)) {
-            if (addPayment($data) !== false) {
+        if ($this->verifyTransaction($_POST, $paypalUrl)) {
+            if ($this->addPayment($data) !== false) {
                 // Payment successfully added.
             }
         }
+    }
+    
+    private function verifyTransaction($data, $url) {
+            // global $paypalUrl;
+        
+            $req = 'cmd=_notify-validate';
+            foreach ($data as $key => $value) {
+                $value = urlencode(stripslashes($value));
+                $value = preg_replace('/(.*[^%^0^D])(%0A)(.*)/i', '${1}%0D%0A${3}', $value); // IPN fix
+                $req .= "&$key=$value";
+            }
+        
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+            curl_setopt($ch, CURLOPT_SSLVERSION, 6);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($ch, CURLOPT_FORBID_REUSE, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Connection: Close'));
+            $res = curl_exec($ch);
+        
+            if (!$res) {
+                $errno = curl_errno($ch);
+                $errstr = curl_error($ch);
+                curl_close($ch);
+                throw new Exception("cURL error: [$errno] $errstr");
+            }
+        
+            $info = curl_getinfo($ch);
+        
+            // Check the http response
+            $httpCode = $info['http_code'];
+            if ($httpCode != 200) {
+                throw new Exception("PayPal responded with http code $httpCode");
+            }
+        
+            curl_close($ch);
+        
+            return $res === 'VERIFIED';
+        }
+        
+    private function addPayment($data) {
+        //    global $db;
+        $fullName= $data['payer_name'];
+        $email= $data['custom'];
+        $phone= '';
+        $currency= $data['payment_currency'];
+        $amount= $data['payment_amount'];
+        $planid= $data['item_name'];
+        $txn_id= $data['txn_id'];
+        $txn_ref= $data['item_number'];
+        
+        return $this->process_payments('PayPal', $fullName, $email, $phone, $currency, $amount, $planid, $txn_id, $txn_ref);
     }
     
     function webhookpsk() {

@@ -31,11 +31,13 @@ $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator(INCS."/free_predicts_apis/football-prediction/".LANG),
     RecursiveIteratorIterator::LEAVES_ONLY
 );
+$exceptions = ['england-premier_league'];
 foreach($files as $file) {
     if($file->getExtension() == 'php') {
         $filename = $file->getBasename('.php');
         $fullfilename = $file->getFilename();
         $filemtime = $file->getMTime();
+        if(in_array($filename, $exceptions)) continue;
         list($country, $league) = explode('-', $filename);
         $country = str_ireplace($en, $lang, str_replace('_', ' ', $country));
         $league = ucwords(str_replace('_', ' ', $league));

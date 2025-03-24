@@ -829,7 +829,7 @@ function related_posts(array $posts) {
             'text'=>'Best Predictions for the Weekend',
             'index'=>'Top Ten Good Teams to Bet on this Weekend'
             ], 
-        'predict'=>[
+        'howtopredict'=>[
             'alt'=>'Predicting Football Matches Correctly',
             'text'=>'How to predict football matches accurately',
             'index'=>'How to Predict Football Matches Correctly',
@@ -903,7 +903,7 @@ function related_posts(array $posts) {
             'alt'=>'',
             'text'=>''
             ], 
-        'predict'=>[
+        'howtopredict'=>[
             'filename'=>'comment_predire',
             'alt'=>'Prédire correctement les matchs de football',
             'text'=>'Comment prédire les matchs de football avec précision',
@@ -977,7 +977,7 @@ function related_posts(array $posts) {
             'alt'=>'',
             'text'=>''
             ], 
-        'predict'=>[
+        'howtopredict'=>[
             'filename'=>'como_predecir',
             'alt'=>'Predecir partidos de fútbol correctamente',
             'text'=>'Cómo predecir partidos de fútbol con precisión',
@@ -1046,7 +1046,7 @@ function related_posts(array $posts) {
             'alt'=>'',
             'text'=>''
             ], 
-        'predict'=>[
+        'howtopredict'=>[
             'filename'=>'como_prever',
             'alt'=>'Prevendo partidas de futebol corretamente',
             'text'=>'Como prever partidas de futebol com precisão',
@@ -1115,7 +1115,7 @@ function related_posts(array $posts) {
             'alt'=>'',
             'text'=>''
             ], 
-        'predict'=>[
+        'howtopredict'=>[
             'filename'=>'vorhersagen',
             'alt'=>'Fußballspiele richtig vorhersagen',
             'text'=>'Wie man Fußballspiele genau vorhersagt',

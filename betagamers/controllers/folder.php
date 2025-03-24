@@ -20,72 +20,7 @@ class Folder extends Controller {
         $data['page_title'] = $data['h1'] = 'Test Page';
         // $usersclass = new Users;
         // $data['userdata'] = $usersclass->select('fullname, country')->where('id in (60511, 61819, 66952, 66952, 81473, 53922, 39850, 70529, 83060, 92463, 93241, 42200, 45064, 45843, 50456, 56382, 60624, 77710, 82773, 20767, 21401, 25434, 124423, 124445)');
-        /*
-            0:"UEFA"
-            1:"CAF"
-            2:"OFC"
-            3:"CONMEBOL"
-            4:"CONCACAF"
-            5:"AFC"
-        */
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, [
-        	CURLOPT_URL => "https://betminer.p.rapidapi.com/bm/predictions/list/2025-03-18/2025-03-18",
-        	CURLOPT_RETURNTRANSFER => true,
-        	CURLOPT_ENCODING => "",
-        	CURLOPT_MAXREDIRS => 10,
-        	CURLOPT_TIMEOUT => 30,
-        	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        	CURLOPT_CUSTOMREQUEST => "GET",
-        	CURLOPT_HTTPHEADER => [
-        		"x-rapidapi-host: betminer.p.rapidapi.com",
-        		"x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
-        	],
-        ]);
         
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        
-        curl_close($curl);
-        
-        if ($err) {
-        	echo "cURL Error #:" . $err;
-        } else {
-        	$print = json_encode(json_decode($response), JSON_PRETTY_PRINT);
-            show($print);
-        }
-        exit;
-        $curl = curl_init();
-
-        curl_setopt_array($curl, [
-        	CURLOPT_URL => "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=classic&iso_date=2025-03-17&federation=UEFA",
-        	CURLOPT_RETURNTRANSFER => true,
-        	CURLOPT_ENCODING => "",
-        	CURLOPT_MAXREDIRS => 10,
-        	CURLOPT_TIMEOUT => 30,
-        	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        	CURLOPT_CUSTOMREQUEST => "GET",
-        	CURLOPT_HTTPHEADER => [
-        		"x-rapidapi-host: football-prediction-api.p.rapidapi.com",
-        		"x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
-        	],
-        ]);
-        
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        
-        curl_close($curl);
-        
-        if ($err) {
-        	echo "cURL Error #:" . $err;
-        } else {
-            $print = json_encode(json_decode($response), JSON_PRETTY_PRINT);
-            show($print);
-        	// echo $response;
-        }
-    	// show($response);
         // show($data['userdata']);
         // $this->view("folder/test",$data);
     }
@@ -1127,7 +1062,7 @@ class Folder extends Controller {
                        CURLOPT_CUSTOMREQUEST => "GET",
                        CURLOPT_HTTPHEADER => [
                            "x-rapidapi-host: football-prediction-api.p.rapidapi.com",
-                           "x-rapidapi-key: 90ad353c96msh32fba7e1fd20e5dp1ce5c9jsn11db66ea4b79"
+                           "x-rapidapi-key: ".ENV['RAPIDAPI_KEY']
                        ],
                    ]);
                    $response = curl_exec($curl);
@@ -1391,16 +1326,23 @@ class Folder extends Controller {
     }
 
     function folder_iterator() {
+        $dir = ROOT.'/public_html/assets/images';
         $files = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator(INCS."/$dir"),
+            new RecursiveDirectoryIterator($dir),
             RecursiveIteratorIterator::LEAVES_ONLY
         );
         
         foreach($files as $file) {
-            if($file->getExtension() == 'php') {
+            $fullfilename = $file->getFilename();
+            if(str_starts_with($fullfilename, 'predict')) {
+                $newfilepath = str_replace('predict', 'howtopredict', $file->getPathname());
+                echo 'yes'.'<br>';
+                rename($file->getPathname(), $newfilepath);
+            }
+            /*if($file->getExtension() == 'php') {
                 $filename = $file->getBasename('.php');
                 $fullfilename = $file->getFilename();
-            }
+            }*/
         }
     }
 }

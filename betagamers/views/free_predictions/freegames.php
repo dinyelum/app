@@ -5,8 +5,8 @@
         <?=images($data['heroimg'], true)?>
         <i><?=$data['lastmodified']?></i><br><br><?php
         echo $data['socials'];
-        if($this->writeuponly===true) {
-            echo $data['writeup'];
+        if(isset($data['writeup'])) {
+            include $data['writeup'];
         } else {
             include ROOT.'/app/betagamers/incs/free_predicts_writeups/'.LANG.'/'.$this->page.'.php';
         }?>
