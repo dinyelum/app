@@ -1324,6 +1324,8 @@ class Folder extends Controller {
         $data['allcountries'] = array_chunk($allcountries, 84, true);
         $this->view('folder/countryiso', $data);
     }
+    
+    function setcountry() {}
 
     function folder_iterator() {
         $dir = ROOT.'/public_html/assets/images';

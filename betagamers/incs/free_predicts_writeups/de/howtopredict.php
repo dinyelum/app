@@ -1,65 +1,64 @@
-<p>As an <a href="<?=HOME?>" style="color: green">accurate football prediction website that predicts football matches correctly</a>, we take a look at how you can predict football matches accurately and increase your chances of winning with your predictions. Predicting football matches is really easy but predicting football matches accurately or correctly is a different game entirely.
-Whether all you need is predictions for today's soccer matches, or football matches predictions for tomorrow, or even good football bets for the weekend, you can predict soccer and win with these easy steps:
+<p>Als <a href="<?=HOME?>" style="color: green">genaue Fußballvorhersage-Website</a>, die Fußballspiele richtig vorhersagt, schauen wir uns an, wie Sie Fußballspiele genau vorhersagen und Ihre Gewinnchancen mit Ihren Vorhersagen erhöhen können. Fußballspiele vorherzusagen ist wirklich einfach, aber Fußballspiele genau oder richtig vorherzusagen ist ein ganz anderes Spiel. Egal, ob Sie nur eine Vorhersage für das heutige Fußballspiel, eine Vorhersage für das morgige Fußballspiel oder sogar eine gute Fußballwette für das Wochenende brauchen, mit diesen einfachen Schritten können Sie Fußball vorhersagen und gewinnen:
 </p>
 
 <ul>
-    <li>Do not be greedy</li>
-    <li>Go for options you are conversant with</li>
-    <li>Do not get in bed with the bookies</li>
-    <li>Do not always hope on the big teams</li>
-    <li>Always take note of injuries</li>
-    <li>Take note of players that are currently in form</li>
-    <li>Always remember the big boys in teams</li>
-    <li>Watch out for teams in crisis and bet against them</li>
-    <li>Cases with Coaches</li>
-    <li>Consider the current form of teams</li>
-    <li>Flee from derbies</li>
+    <li>Seien Sie nicht gierig</li>
+    <li>Wetten Sie auf Optionen, mit denen Sie vertraut sind</li>
+    <li>Sei nicht zu bequem mit den Buchmachern</li>
+    <li>Nicht immer auf die großen Teams hoffen</li>
+    <li>Achten Sie immer auf Verletzungen</li>
+    <li>Achten Sie auf die Spieler, die gerade in Form sind</li>
+    <li>Denken Sie immer an die großen Jungs in den Teams</li>
+    <li>Achten Sie auf Mannschaften in der Krise und wetten Sie gegen sie</li>
+    <li>Fälle mit Trainern</li>
+    <li>Berücksichtigen Sie die aktuelle Form der Mannschaften</li>
+    <li>Vermeiden Sie Derbys</li>
 </ul>
 
-<h3>Do not be greedy</h3>
-<p>Do not just be greedy, it kills</p>
+<h3>Seien Sie nicht gierig</h3>
+<p>Seien Sie nicht gierig, das ist tödlich</p>
 
 
-<h3>Go for options you are conversant with</h3>
-<p>Imagine going for an option like 2H (0:2) in a match like Chelsea vs Ebbsfleet and you do not even know what 2H (0:2) means. That's bad. You can take a look at this <a href="guide" style="color: green">betting guide that cover various betting signs, symbols and abbreviations</a></p>
+<h3>Wetten Sie auf Optionen, mit denen Sie vertraut sind</h3>
+<p>Stellen Sie sich vor, Sie entscheiden sich für eine Option wie 2H (0:2) in einem Spiel wie Chelsea gegen Ebbsfleet und wissen nicht einmal, was 2H (0:2) bedeutet. Das ist schlecht.<!-- Sie können einen Blick auf diesen Wettführer werfen, der verschiedene <a href="guide" style="color: green">Wettzeichen, Symbole und Abkürzungen abdeckt</a>.--></p>
 
 
-<h3>Do not get in bed with the bookies</h3>
-<p>The bookies are the enemies in disguise. They just want to destroy you. They have it all, the resources, everything it takes to make or mar you, so always bear in mind that the odds are always against you.</p>
+<h3>Sei nicht zu bequem mit den Buchmachern</h3>
+<p>Die Wettbüros sind die verkleideten Feinde. Sie wollen dich nur vernichten. Sie haben alles, die Ressourcen, alles, was nötig ist, um dich zu machen oder zu verletzen, also denke immer daran, dass die Chancen immer gegen dich stehen.</p>
 
 
-<h3>Do not always hope on the big teams</h3>
-<p>The big teams are not always the answer, big teams like every other team have their good days and their bad days, players in the big teams also get injured too like every other player, the big teams also have their on and off pitch disputes which is the best and precise destroyer of a team's form.
+<h3>Setzen Sie nicht immer auf die großen Teams</h3>
+<p>Die großen Mannschaften sind nicht immer die beste Wahl, große Mannschaften haben wie jede andere Mannschaft ihre guten und ihre schlechten Tage, auch Spieler in den großen Mannschaften verletzen sich wie jeder andere Spieler, auch die großen Mannschaften haben ihre Streitigkeiten auf und neben dem Spielfeld, die die Form einer Mannschaft am ehesten zerstören.
 </p>
 
 
-<h3>Always take note of injuries</h3>
-<p>Always take note of injuries. Injuries to key players are a disaster, if you do not consider this, you'll just make the greatest mistake of betting simply on just a team's name.</p>
-<p>Injuries to strikers and injuries to defenders cannot have the same effect in the performance of a football team. Key defenders or first team goal keepers getting injured simply means more goals! If both teams are involved, and there are no notable absentees in the striking force, then its just goals all the way. On the other hand, injuries to in form strikers, wingers or attacking midfielders means lesser goals. If both teams are affected, betting against the goal flow (NG or BTTS-NO or Under 2.5 Goals) would not be a bad prediction.</p>
+<h3>Immer auf Verletzungen achten</h3>
+<p>Achten Sie immer auf Verletzungen. Verletzungen von Schlüsselspielern sind eine Katastrophe. Wenn Sie dies nicht berücksichtigen, begehen Sie den größten Fehler, wenn Sie nur auf den Namen einer Mannschaft wetten.</p>
+<p>Verletzungen von Stürmern und Verteidigern können nicht dieselben Auswirkungen auf die Leistung einer Fußballmannschaft haben. Wenn sich wichtige Verteidiger oder Torhüter der ersten Mannschaft verletzen, bedeutet das einfach mehr Tore! Wenn beide Mannschaften betroffen sind und es keine nennenswerten Ausfälle bei den Stürmern gibt, dann gibt es einfach mehr Tore. Andererseits bedeuten Verletzungen von Stürmern, Flügelspielern oder offensiven Mittelfeldspielern in guter Form weniger Tore. Wenn beide Teams betroffen sind, wäre eine gute Wette gegen den Torfluss **(NG oder BTTS-NO oder unter 2.5 Tore).</p>
 
-<h3>Take note of players that are currently in form</h3>
-<p>Take note of who impressed in the last match, chances are, they'll impress again.</p>
-<p>Watch out for consistent scorers in at least the last 5 football matches, if there are two or more players that have been on a good run of form, say scoring 5 or 4 goals in last five or six matches, plus the team in question is also in form, chances are they'll win again so long as those players aren't absent for the match in question.</p>
+<h3>Beachten Sie die Spieler, die derzeit in Form sind</h3>
+<p>Achten Sie auf die Spieler, die im letzten Spiel beeindruckt haben, denn die Chancen stehen gut, dass sie es wieder tun werden.</p>
+<p>Achten Sie auf beständige Torschützen in mindestens den letzten 5 Fußballspielen. Wenn zwei oder mehr Spieler eine gute Form haben, z. B. 5 oder 4 Tore in den letzten fünf oder sechs Spielen erzielt haben, und die betreffende Mannschaft außerdem in Form ist, stehen die Chancen gut, dass sie wieder gewinnt, solange diese Spieler im betreffenden Spiel nicht fehlen.</p>
 
-<h3>Always remember the big boys in teams</h3>
-<p>Take note of the big boys in teams. They are not big boys for no reason. Their presence or absence in their teams can affect the teams' performance hugely. So always try to keep that in mind if you intend to predict football matches correctly. A typical example is with a team like Barcelona, whenever Messi is absent, Barca hardly impresses, Messi looses form, Barcelona looses form too! He plays, he scores, infact betting on Messi to score is of much greater value than betting on the whole Barca team. Another instance was with Real Madrid, Ronaldo left Real Madrid, it was tough for the team, though surprisingly. At Manchester City, De Bruyne was out injured for a long time, after City lifted the Premier League in Guardiola's first season in the English Premier League, Kevin did not play for long and it surely took pretty quite some time before Manchester City could adjust. There were times when Zaha's absence was a huge concern for Crystal Palace.
+<h3>Denken Sie immer an die großen Namen in den Mannschaften</h3>
+<p>Achten Sie auf die großen Jungs in den Teams. Sie sind nicht ohne Grund große Jungs. Ihre Anwesenheit oder Abwesenheit in ihren Teams kann die Leistung der Mannschaften enorm beeinflussen. Versuchen Sie also immer, das im Hinterkopf zu behalten, wenn Sie Fußballspiele richtig vorhersagen wollen. Ein typisches Beispiel ist eine Mannschaft wie Barcelona: als Messi da war: Wann immer Messi fehlte, beeindruckte Barca kaum, Messi verliert an Form, Barcelona verliert auch an Form! Er spielt, er trifft, eine Wette auf ein Tor von Messi ist viel wertvoller als eine Wette auf die gesamte Mannschaft von Barca. Ein anderes Beispiel ist Real Madrid: Ronaldo hat Real Madrid verlassen, was für die Mannschaft überraschend schwer war. Bei Manchester City fiel De Bruyne lange Zeit verletzt aus, und nachdem City in Guardiolas erster Saison in der englischen Premier League die Premier League gewonnen hatte, spielte Kevin nicht lange, und es dauerte sicher eine ganze Weile, bis sich Manchester City darauf einstellen konnte. Es gab Zeiten, in denen das Fehlen von Zaha eine große Sorge für Crystal Palace war.
 </p>
 
-<h3>Watch out for teams in crisis and bet against them</h3>
-<p>Always notice when a team is not happy, run away from them or otherwise wager against them. This sometimes happens, there could be on/off pitch issues between players, there could be issues between players and coaches, such teams hardly perform well. Take for instance in the German League, prior to the exit of Ancelotti and the return of Jop Hyenckens, Bayern players were just not at peace with Ancelotti, thus the very poor run of form, Jop Hyeckens came back, Thomas Mueller got resurrected, Lewandowski started soaring high again, there was live again at Bayern Munich and the <a href="bundesliga" style="color: green">German League</a> started looking like it again. There are so many other instances, imagine been a player and your wife or girlfriend cheats on you with a teammate, the whole team is going to get affected and there is no way the team can perform well. <!--There are few sites that can give you a little bite of what is going on in a team before the fixture date. You can onlyget access to such sites on <a href="https://www.bestbetting-directory.com/" title="BestBetting Directory - The Best Betting DIrectory on the Net." target="_blank" style="color: green">BestBetting Directory - The Best Betting DIrectory on the Net.</a>-->
+<h3>Achten Sie auf Mannschaften in der Krise und wetten Sie gegen sie</h3>
+<p>Merken Sie immer, wenn eine Mannschaft unzufrieden ist, laufen Sie ihr davon oder wetten Sie sonst gegen sie. Das passiert manchmal, es könnte Probleme zwischen Spielern auf dem Spielfeld und außerhalb geben, es könnte Probleme zwischen Spielern und Trainern geben, solche Mannschaften bringen kaum gute Leistungen. Nehmen wir zum Beispiel die Bundesliga: Vor dem Abgang von Ancelotti und der Rückkehr von Jupp Heynckes waren die Bayern-Spieler einfach nicht mit Ancelotti im Reinen, daher die schlechte Formkurve, dann kam Jupp Heynckes zurück, Thomas Müller wurde wiederbelebt, Lewandowski begann wieder aufzusteigen, es herrschte wieder Leben bei Bayern München und <a href="bundesliga" style="color: green">die Bundesliga</a> sah wieder gut aus. Stellen Sie sich vor, Sie sind ein Spieler und Ihre Frau oder Freundin betrügt Sie mit einem Mannschaftskameraden, das ganze Team ist davon betroffen, und es gibt keine Möglichkeit, eine gute Leistung zu bringen.
 </p>
 
-<h3>Cases with Coaches</h3>
-<p>consider coach ban, coach sack or change of coach. This is a horrible situation because a lot of people who predict football matches do not know about this and many who know about this do not put it into consideration when trying to predict football matches correctly today. The absence of the coach of a team especially through ban is consequently in most cases a blow on a team's confidence level.
+<h3>Fälle mit Trainern</h3>
+<p>Erwägen Sie das Verbot, die Entlassung oder den Wechsel von Trainern. Das ist eine schreckliche Situation, denn viele Leute, die Fußballspiele vorhersagen, wissen das nicht, und viele, die es wissen, berücksichtigen es nicht, wenn sie versuchen, Fußballspiele richtig vorherzusagen. Die Abwesenheit des Trainers einer Mannschaft, insbesondere durch eine Sperre, ist daher in den meisten Fällen ein Schlag für das Selbstvertrauen einer Mannschaft.
 </p>
 
-<h3>Consider the current form of teams</h3>
-<p><a href="teams" style="color:green">Teams</a> with really long winning streaks, say 8 or 9 or 10 are likely to end it soon.</p>
-<p>Additionally, stay away from in form teams that lost their last match, especially if you do not know the reason for that. Chances are they'll disappoint again before picking up again. Except in cases where the team tried to rest players.</p>
+<h3>Berücksichtigen Sie die aktuelle Form der Mannschaften</h3>
+<p>Mannschaften mit sehr langen Siegesserien, z. B. 8, 9 oder 10, werden diese wahrscheinlich bald verlieren.</p>
+<p>Außerdem sollten Sie sich von Mannschaften fernhalten, die in guter Form sind und ihr letztes Spiel verloren haben, vor allem, wenn Sie den Grund dafür nicht kennen. Die Chancen stehen gut, dass sie wieder enttäuschen werden, bevor sie sich wieder erholen. Außer in Fällen, in denen die Mannschaft versucht hat, Spieler auszuruhen.</p>
 
-<h3>Flee from derbies</h3>
-<p>Finally, flee from derbies especially when the outcome is not obvious, these could include the el-classico in the <a href="laliga" style="color:green">Spanish League</a>, the london derbies in the <a href="epl" style="color:green">English Premier League</a>, the Milan derby in the <a href="seriea" style="color:green">Italian league</a>, the Le Classique in the <a href="ligue1.php" style="color:green">French League</a> and so on.
+<h3>Flucht vor Derbys</h3>
+<p>Schließlich fliehen aus Derbys vor allem, wenn der Ausgang ist nicht offensichtlich, diese könnten die el-classico in der <a href="laliga" style="color:green">spanischen Liga</a>, die Londoner Derbys in der <a href="epl" style="color:green">englischen Premier League</a>, , das Mailänder Derby in der <a href="seriea" style="color:green">italienischen Liga</a>, die Le Classique in der <a href="ligue1" style="color:green">französischen Liga</a> und so weiter.
 </p>
 
-<p>You can also follow the <a href="./" style="color:green">football betting tips</a> or subscribe to get access to the sure prediction tips provided by <a href="../" style="color:green">the best prediction site in the world</a>
+<p>Sie können auch die <a href="<?=free_games_link()?>" style="color:green">Alle Fußball-Prognosen</a> verfolgen oder sich anmelden, um Zugang zu den sicheren Vorhersagetipps zu erhalten <a href="<?=HOME?>" style="color:green">die von der besten Vorhersageseite der Welt bereitgestellt werden</a>.
 </p>

@@ -848,7 +848,8 @@ function related_posts(array $posts) {
         'all'=>[
             'alt'=>'Soccer action',
             'text'=>'More Football Predictions',
-            'index'=>'More Football Predictions'
+            'index'=>'More Football Predictions',
+            'filename'=>'all'
             ],
         'guide'=>[
             'alt'=>'Common Terms used in FootBall Betting',
@@ -920,14 +921,15 @@ function related_posts(array $posts) {
             'index'=>'Prédictions et résultats de la Coupe d\'Afrique des Nations'
             ],
         'all'=>[
+            'filename'=>'tous',
             'alt'=>'Football en action',
             'text'=>'Plus de pronostics footballistiques',
             'index'=>'Plus de pronostics footballistiques'
             ],
         'guide'=>[
-            'filename'=>'guider',
-            'alt'=>'termes dans les paris sur le football',
-            'text'=>'Guide de paris pour les débutants'
+            'filename'=>'',
+            'alt'=>'',
+            'text'=>''
             ],
         'tennisguide'=>[
             'filename'=>'',
@@ -994,6 +996,7 @@ function related_posts(array $posts) {
             'index'=>'Pronosticos y resultados de la Copa Africana de Naciones'
             ],
         'all'=>[
+            'filename'=>'todos',
             'alt'=>'Acción futbolística',
             'text'=>'Más predicciones de fútbol',
             'index'=>'Más predicciones de fútbol'
@@ -1063,6 +1066,7 @@ function related_posts(array $posts) {
             'index'=>'Prognósticos e resultados da AFCON'
             ],
         'all'=>[
+            'filename'=>'todos',
             'alt'=>'Ação do futebol',
             'text'=>'Mais previsões de futebol',
             'index'=>'Mais previsões de futebol'
@@ -1132,6 +1136,7 @@ function related_posts(array $posts) {
             'index'=>'Prognosen zum Afrikanischen Nationenpokal and Results'
             ],
         'all'=>[
+            'filename'=>'alle',
             'alt'=>'Fußball-Action',
             'text'=>'Mehr Fußball-Tipps',
             'index'=>'Mehr Fußball-Tipps'

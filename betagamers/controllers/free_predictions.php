@@ -124,7 +124,7 @@ class Free_Predictions extends Controller {
             <div class="bigtable"><?php
                 if(isset($this->iframe['stage'])) {
                     foreach($this->iframe['stage'] as $val) {
-                        $this->iframe_teams($this->iframe['btwidth'], $this->iframe['btheight'], $val);
+                        $this->iframe_teams($this->iframe['btwidth'], $this->iframe['btheight'], 'big', $val);
                     }
                 } else {
                     $this->iframe_teams($this->iframe['btwidth'], $this->iframe['btheight']);
@@ -134,10 +134,10 @@ class Free_Predictions extends Controller {
                 if(isset($this->iframe['stage'])) {
                     foreach($this->iframe['stage'] as $val) {
                         echo $val;
-                        $this->iframe_teams($this->iframe['stwidth'], $this->iframe['stheight'], $val);
+                        $this->iframe_teams($this->iframe['stwidth'], $this->iframe['stheight'], 'small', $val);
                     }
                 } else {
-                    $this->iframe_teams($this->iframe['stwidth'], $this->iframe['stheight']);
+                    $this->iframe_teams($this->iframe['stwidth'], $this->iframe['stheight'], 'small');
                 }?>
             </div>
             <?=$this->iframe['courtesy']?>: <a href="https://www.fctables.com/<?=$this->iframe['league']?>/" target="_blank" rel="nofollow">FcTables.com</a>
@@ -1198,7 +1198,7 @@ class Free_Predictions extends Controller {
         $this->og['title'] = 'Best football prediction website';
         // $data['writeup'] = INCS.'/free_predicts_writeups/'.LANG.'/guide.php';
         $data['relatedposts']['h3'] = $h3;
-        $this->relposts = ['howtopredict', 'tennisguide', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'teams'];
+        $this->relposts = ['howtopredict', 'epl', 'laliga', 'bundesliga', 'ligue1', 'seriea', 'ucl', 'europa', 'all', 'teams']; //'tennisguide',
         return $this->league($data);
     }
 }

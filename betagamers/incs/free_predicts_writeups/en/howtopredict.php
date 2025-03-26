@@ -61,5 +61,5 @@ Whether all you need is predictions for today's soccer matches, or football matc
 <p>Finally, flee from derbies especially when the outcome is not obvious, these could include the el-classico in the <a href="<?=free_games_link('laliga')?>" style="color:green">Spanish League</a>, the london derbies in the <a href="<?=free_games_link('epl')?>" style="color:green">English Premier League</a>, the Milan derby in the <a href="<?=free_games_link('seriea')?>" style="color:green">Italian league</a>, the Le Classique in the <a href="<?=free_games_link('ligue1')?>" style="color:green">French League</a> and so on.
 </p>
 
-<p>You can also follow the <a href="<?=free_games_link()?>" style="color:green">football betting tips</a> or subscribe to get access to the sure prediction tips provided by <a href="<?=HOME?>" style="color:green">the best prediction site in the world</a>
+<p>You can also follow the <a href="<?=free_games_link()?>" style="color:green">all football prediction</a> page or subscribe to get access to the sure prediction tips provided by <a href="<?=HOME?>" style="color:green">the best prediction site in the world</a>
 </p>

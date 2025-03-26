@@ -5,7 +5,7 @@
 <p>They also have the responsibility of setting the odds which is capable of yielding profit if set correctly but can also lead to great loss to the bookmakers if not properly set.</p>
 
 <h2>The Complete Guide to Football Betting</h2>
-<p>It is very necessary to get conversant with betting in order to learn <a href="<?=free_games_link('predict')?>" style="color:green">how to predict football matches correctly</a></p>
+<p>It is very necessary to get conversant with betting in order to learn <a href="<?=free_games_link('howtopredict')?>" style="color:green">how to predict football matches correctly</a></p>
 <p>It is our duty to help you in understanding the football betting terms / abbreviations that are commonly used in the <a href="<?=HOME?>" style="color:green">free tips section of this sure prediction site</a> or any other soccer prediction site</p>
 
 <h3>The Three Way Option (1X2)</h3>

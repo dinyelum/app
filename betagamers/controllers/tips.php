@@ -162,7 +162,7 @@ class Tips extends Controller {
             $bestmthheader = isset($bestmonth) ? "DER BESTE VIP IM ".strtoupper($bestmonth) : '';
             $tracker = ['Genauigkeits-Tracker (Letzte 20 Tage)', ['TIPP', 'RICHTIGKEIT'], $percent ?? []];
         }
-        $this->style = ".content a {color: green;text-decoration: underline;}.content p {text-align: justify;}@font-face {font-family: 'Font Awesome';font-style: normal;src: url('/webfonts/fa-solid-900.woff2') format('woff2');font-display: swap;}@font-face {font-family: 'tawkwidget';font-style: normal;src: url('https://static-v.tawk.to/a-v3-47/fonts/tawk-widget.ttf?yh9epr')format('ttf');font-display: swap;}";
+        $this->style = ".content a {color: green;text-decoration: underline;}.content p {text-align: justify;}@font-face {font-family: 'tawkwidget';font-style: normal;src: url('https://static-v.tawk.to/a-v3-47/fonts/tawk-widget.ttf?yh9epr')format('ttf');font-display: swap;}";
         $this->og['url'] = $this->urls[LANG];
         $this->og['image'] = $this->urls[LANG].'/images/bgslide1x.jpg';
         $data['sidelist'] = $this->sidelist();
