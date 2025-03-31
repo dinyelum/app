@@ -751,7 +751,7 @@ function free_games_link($page='', $arrayformat=false) {
             return HOME.'/'.controller_translations('free_predictions')[LANG].'/'.directory_listing('free_predictions')['all'][LANG]."?league=$page";
         } else {
             foreach(all_versions() as $key=>$val) {
-                $link[$key] = "$val/".controller_translations('free_predictions')[LANG].'/'.directory_listing('free_predictions')['all'][LANG]."?league=$page";
+                $link[$key] = "$val/".controller_translations('free_predictions')[$key].'/'.directory_listing('free_predictions')['all'][$key]."?league=$page";
             }
             return $link;
         }

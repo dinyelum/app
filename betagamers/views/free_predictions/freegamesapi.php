@@ -1,4 +1,7 @@
-<?php include ROOT."/app/betagamers/incs/header.php"?>
+<?php
+include INCS."/header.php";
+include INCS."/adverts.php";
+?>
 <div class="w3-row-padding w3-stretch">
     <?php include ROOT."/app/betagamers/incs/sidenav.php"?>
     <div class="w3-col m9">

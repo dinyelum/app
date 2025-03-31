@@ -12,7 +12,7 @@ class Bookmakers extends Controller {
                 $singlebookie = $bookiesclass->select('bookie, reflink')->where("bookie=:bookie and active=1", ['bookie'=>$validbookie[0]['bookie']]);
             }
         }
-        $bookiedata = $bookiesclass->select('bookie, reflink, promocode, countries')->where("active=1 and (countries='' || countries like concat('%',:countries,'%')) order by case when countries like concat('%',:countries,'%') then 0 else 1 end, countries", ['countries'=>USER_COUNTRY]);
+        $bookiedata = $bookiesclass->select('bookie, reflink, promocode, countries')->where("active=1 and (countries='' || countries like concat('%',:countries,'%')) order by case when countries like concat('%',:countries,'%') then 0 else 1 end, ranking desc", ['countries'=>USER_COUNTRY]);
         if(is_array($bookiedata)) {
             foreach($bookiedata as $ind=>$val) {
                 $formatted_bookiedata[$val['bookie']] = $val;

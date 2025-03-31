@@ -506,30 +506,30 @@ class Folder extends Controller {
                     $wherearr[":$key"] = $val;
                 }
             }
+            if(!isset($usersclass->err)) {
+                $whquery = implode(' or ', $whqueryarr);
+                $whholders = implode(', ', $whholdersarr);
+                $tabquery['users'] = [
+                    'select'=>[
+                        'columns'=>'phone'
+                    ],
+                    'where'=>[
+                        'whquery'=>"($whquery) and active=0",
+                        'wharray'=>$wherearr
+                    ],
+                    'custom_query'=>[
+                        'query'=>"UPDATE users SET email = LOWER(CONCAT(country, phone, '@betagamers.net')), active = 1 WHERE phone in ($whholders)",
+                        'querytype'=>'select',
+                        'queryvalues'=>array_values($wherearr)
+                    ]
+                ];
+                $sectionclass = new Users;
+                $update_data = $sectionclass->transaction($tabquery, 'select');
+                // show($update_data);
+                $responses = array_map(fn($val)=>in_array($val, array_column($update_data['users']['where'], 'phone')) ? 'Updated Successfully': 'This phone number does not exist OR is already active', $phones);
+            }
         }
 
-        if(!isset($usersclass->err)) {
-            $whquery = implode(' or ', $whqueryarr);
-            $whholders = implode(', ', $whholdersarr);
-            $tabquery['users'] = [
-                'select'=>[
-                    'columns'=>'phone'
-                ],
-                'where'=>[
-                    'whquery'=>"($whquery) and active=0",
-                    'wharray'=>$wherearr
-                ],
-                'custom_query'=>[
-                    'query'=>"UPDATE users SET email = LOWER(CONCAT(country, phone, '@betagamers.net')), active = 1 WHERE phone in ($whholders)",
-                    'querytype'=>'select',
-                    'queryvalues'=>array_values($wherearr)
-                ]
-            ];
-            $sectionclass = new Users;
-            $update_data = $sectionclass->transaction($tabquery, 'select');
-            // show($update_data);
-            $responses = array_map(fn($val)=>in_array($val, array_column($update_data['users']['where'], 'phone')) ? 'Updated Successfully': 'This phone number does not exist OR is already active', $phones);
-        }
 
         $formfields = [
             ['tag'=>'input', 'type'=>'text', 'placeholder'=>"Phone 1 | 07000", 'name'=>"phone1", 'value'=>$formdata[0]['phone1'] ?? '', 'error'=>$formdata[1]['phone1'] ?? ''],
@@ -934,10 +934,11 @@ class Folder extends Controller {
             $gamesclass = new Games;
             $blueprint = $gamesclass->gamesmain;
         }
-
+        
+        $yesterday = date('Y-m-d', strtotime('yesterday'));
         $tabquery[strtolower($table)] = [
             'select'=>["*, DATE_FORMAT(date, '%d/%m') as date, date as dbdate"],
-            'where'=>["date >= DATE_SUB(curdate(), INTERVAL 1 DAY) || recent in ('prev', 'cur') order by date"],
+            'where'=>["date >= '$yesterday' || recent in ('prev', 'cur') order by date"],
             '1select'=>["*, DATE_FORMAT(date, '%d/%m') as date, date as dbdate"],
             '1where'=>["date <= curdate() AND recent = 1 order by id desc limit 16"]
         ];
@@ -1077,7 +1078,9 @@ class Folder extends Controller {
         
         $classics = $alldata['classic'];
         $ovun = $alldata['over_25'];
-        /*[classic] => Array
+        /*
+        default response
+        [classic] => Array
         (
             [UEFA] => Array
                 (
@@ -1102,8 +1105,8 @@ class Folder extends Controller {
         // show($formatted);exit;
         foreach($formatted as $country=>$val) {
             foreach($val as $league=>$subval) {
+                $output = $status = [];
                 foreach($subval as $date=>$sub2val) {
-                    $output = [];
                     $output[] = "\n<h3>For ".date('l, jS F, Y', strtotime($date))."</h3>\n";
                     foreach($sub2val as $ind=>$gamesobj) {
                         $output[] = "
@@ -1111,6 +1114,7 @@ class Folder extends Controller {
                         <p>Kickoff: '.substr($gamesobj->start_date, 11).' GMT</p>
                         <p>Tip: '.$gamesobj->prediction.'</p>
                         <p>Result: '.$gamesobj->result."</p>\n";
+                        $status[] = $gamesobj->status;
                     }
                 }
                 $output_en = implode($output);
@@ -1121,9 +1125,16 @@ class Folder extends Controller {
                     $str = implode(str_ireplace($en, $lang, $output));
                     file_put_contents(str_replace('/en/', "/$pref/", $link), $str);
                 }
+                if(count(array_filter($status, fn($v)=>($v=='pending' || $v=='lost')))<3) {
+                    $predstats['leagues'][] = strtolower("$country: $league");
+                }
             }
         }
         echo 'copied successfully';
+        $gamesclass = new Freegames;
+        $year = date('Y');
+        show($predstats);
+        $db = $gamesclass->insert_multi($predstats, true)->on_duplicate_key("UPDATE '$year' = '$year'+1");
     }
 
     function nogames() {

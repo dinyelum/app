@@ -1,4 +1,5 @@
 <?php
+// Structure
 // [
 //     'CUURENT'=>[
 //         'ALPHA PICKS'=>['link'=>tips_links('ap'), 'id'=>'ap'],
@@ -31,7 +32,7 @@ $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator(INCS."/free_predicts_apis/football-prediction/".LANG),
     RecursiveIteratorIterator::LEAVES_ONLY
 );
-$exceptions = ['england-premier_league'];
+$exceptions = ['england-premier_league', 'france-ligue_1', 'germany-bundesliga', 'italy-serie_a', 'spain-primera_division'];
 foreach($files as $file) {
     if($file->getExtension() == 'php') {
         $filename = $file->getBasename('.php');

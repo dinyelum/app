@@ -29,7 +29,7 @@ Class Home extends Controller
         $tabquery = [
             'bookies'=>[
                 'select'=>['bookie, description_'.LANG.', reflink, bcolor, tcolor'],
-                'where'=>["active=1 and homepage=1 and description_".LANG."!='' order by case when countries like concat('%',:countries,'%') then 0 else 1 end, countries", ['countries'=>USER_COUNTRY]]
+                'where'=>["active=1 and homepage=1 and description_".LANG."!='' and (countries like concat('%',:countries,'%') || countries='') order by case when countries like concat('%',:countries,'%') then 0 else 1 end, ranking desc", ['countries'=>USER_COUNTRY]]
             ],
             'odds'=>[
                 '1select'=>['totalodds'],

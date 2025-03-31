@@ -1,4 +1,7 @@
-<?php include ROOT."/app/betagamers/incs/header.php"?>
+<?php
+include INCS."/header.php";
+include INCS."/adverts.php";
+?>
 <h1 class=w3-center><?=$data['h1']?></h1>
 <?=$data['socials'].'<br>'.$data['p'].'<br><br>'?><?php
 foreach($data['posts']['list'] as $val) {?>

@@ -1,4 +1,7 @@
-<?php include ROOT."/app/betagamers/incs/header.php"?>
+<?php
+include INCS."/header.php";
+include INCS."/adverts.php";
+?>
 <div class="w3-row-padding w3-stretch">
     <div class= "w3-col m8 norm">
         <h1><?=$data['h1']?></h1>

@@ -233,6 +233,7 @@ function unzip($file, array $exts=[]) {
     // echo $file['ziplocation'];
     var_dump(file_exists($file['ziplocation']));
     if ($zip->open($file['ziplocation']) === true) {
+        echo 'opens';
         if(count($exts)) {
             for ($i = 0; $i < $zip->numFiles; $i++) {
                 $filename = $zip->getNameIndex($i);
