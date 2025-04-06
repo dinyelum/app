@@ -88,7 +88,7 @@ Class Controller
 			$langarr = array_merge(array_slice(LANGUAGES, $offset, null, true), array_slice(LANGUAGES, 0, $offset, true));
 		}
 		foreach($langarr as $key=>$val) {
-			$header['langs'][$key] = ['text'=>$val, 'locale'=>LANGUAGES_LOCALE[$key]];
+			$header['langs'][$key] = ['text'=>$val, 'locale'=>LANGUAGES_LOCALE[$key], 'alt'=>"$val flag"];
 		}
 		$header['navlinks'] = [
 			'sports'=>[

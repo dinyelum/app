@@ -1,6 +1,6 @@
 <?php
 include INCS."/header.php";
-include INCS."/adverts.php";
+include INCS."/advertstop.php";
 ?>
 <h1 class=w3-center><?=$data['h1']?></h1>
 <?=$data['socials'].'<br>'.$data['p'].'<br><br>'?><?php
@@ -18,3 +18,4 @@ foreach($data['posts']['list'] as $val) {?>
 }?>
 <?php include ROOT.'/app/betagamers/incs/footer.php';?>
 <script src="<?=HOME?>/assets/js/gen.js"></script>
+<?php include INCS."/advertsbottom.php"?>

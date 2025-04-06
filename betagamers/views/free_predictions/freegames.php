@@ -1,6 +1,6 @@
 <?php
 include INCS."/header.php";
-include INCS."/adverts.php";
+include INCS."/advertstop.php";
 ?>
 <div class="w3-row-padding w3-stretch">
     <div class= "w3-col m8 norm">
@@ -32,3 +32,4 @@ var activeclass = 'w3-green';
 var toggleTabDivs = [test1sec];
 </script>
 <script src="<?=HOME?>/assets/js/gen.js"></script>
+<?php include INCS."/advertsbottom.php"?>

@@ -1,6 +1,6 @@
 <?php
 include INCS."/header.php";
-include INCS."/adverts.php";
+include INCS."/advertstop.php";
 ?>
 <div class="w3-row-padding w3-stretch">
     <?php include ROOT."/app/betagamers/incs/sidenav.php"?>
@@ -18,3 +18,4 @@ include INCS."/adverts.php";
 </div>
 <?php include ROOT.'/app/betagamers/incs/footer.php';?>
 <script src="<?=HOME?>/assets/js/gen.js"></script>
+<?php include INCS."/advertsbottom.php"?>

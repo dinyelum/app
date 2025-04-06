@@ -8,7 +8,7 @@
             <button class="topbtn">
                <picture>
                   <source srcset="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>.webp" type="image/webp" width='28' height='28'>
-                  <img src="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>.png" alt="<?=$data['header']['langs'][LANG]['text']?>" width='28' height='28'>
+                  <img src="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>.png" alt="<?=$data['header']['langs'][LANG]['alt']?>" width='28' height='28'>
                </picture>
                <?=$data['header']['langs'][LANG]['locale']?><i class="fa fa-caret-down" style="font-size:20px; padding-left: 5px"></i>
             </button>
@@ -18,7 +18,7 @@
                   <a href="https://<?=$key!='en' ? "$key." : ''?>betagamers.net" class="w3-bar-item w3-button">
                      <picture>
                         <source srcset="<?=HOME?>/assets/images/<?=strtolower($val['text'])?>.webp" type="image/webp" width='28' height='28'>
-                        <img src="<?=HOME?>/assets/images/<?=strtolower($val['text'])?>.png" alt="<?=$val['text']?>" width='28' height='28'>
+                        <img src="<?=HOME?>/assets/images/<?=strtolower($val['text'])?>.png" alt="<?=$val['alt']?>" width='28' height='28'>
                      </picture>
                      <?=$val['locale']?>
                   </a><?php
@@ -51,7 +51,7 @@
                <button class="topbtn">
                   <picture>
                      <source srcset="<?=HOME?>/assets/images/<?=strtolower($data['header']['langs'][LANG]['text'])?>1.webp" type="image/webp" width='28' height='28'>
-                     <img src="<?=HOME?>/assets/images/english1.png" alt="English" width='28' height='28'>
+                     <img src="<?=HOME?>/assets/images/english1.png" alt="<?=$data['header']['langs'][LANG]['alt']?>" width='28' height='28'>
                   </picture>
                   <?=strtoupper(key($data['header']['langs']))?><i class="fa fa-caret-down" style="font-size:20px; padding-left: 5px"></i>
                </button>
@@ -61,7 +61,7 @@
                      <a href="https://<?=$key!='en' ? "$key." : ''?>betagamers.net" class="w3-bar-item w3-button">
                         <picture>
                            <source srcset="<?=HOME?>/assets/images/<?=strtolower($val['text'])?>.webp" type="image/webp" width='28' height='28'>
-                           <img src="<?=HOME?>/assets/images/<?=strtolower($val['text'])?>.png" alt="<?=$val['text']?>" width='28' height='28'>
+                           <img src="<?=HOME?>/assets/images/<?=strtolower($val['text'])?>.png" alt="<?=$val['alt']?>" width='28' height='28'>
                         </picture>
                         <?=$val['locale']?>
                      </a><?php

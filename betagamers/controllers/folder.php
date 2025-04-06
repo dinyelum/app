@@ -917,13 +917,14 @@ class Folder extends Controller {
         $this->view("folder/adminfiles",$data);
     }
 
-    function copy() {
+    function copy($type=null) {
         date_default_timezone_set('Africa/Lagos');
         $datetod = date('Y-m-d', strtotime('today'));
         $dateyes = date('Y-m-d', strtotime('yesterday'));
+        $type = $_GET['type'] ?? $type;
         include INCS."/glossary.php";
 
-        if(isset($_GET['type']) && $_GET['type']=='free') {
+        if($type=='free') {
             $table = 'freegames';
             $dir = 'free_predicts/en';
             $gamesclass = new Freegames;
@@ -945,7 +946,7 @@ class Folder extends Controller {
 
         $getgames = $gamesclass->transaction($tabquery);
         foreach($getgames[$table]['where'] as $ind=>$val) {
-            if(isset($_GET['type']) && $_GET['type']=='free') {
+            if($type=='free') {
                 $games[$val['league']][$val['recent']=='prev' ? 'yes' : ($val['recent']=='cur' ? 'tod' : 'tom')][$val['dbdate']][] = $val;
             } else {
                 $games[$val['games']][$val['recent']=='prev' || ($val['dbdate']<$datetod && $val['recent']!='cur') ? 'yes' : ($val['recent']=='cur' || $val['dbdate']==$datetod ? 'tod' : 'tom')][] = $val;
@@ -984,14 +985,14 @@ class Folder extends Controller {
                         } else {
                             $output = [];
                             foreach($games[$filename][$day] as $subind=>$subval) {
-                                if(isset($_GET['type']) && $_GET['type']=='free') {
-                                    $output[] = "\n<h3>For ".date('l, jS F, Y', strtotime($subind))."</h3>\n";
+                                if($type=='free') {
+                                    $output[] = PHP_EOL."<h3>For ".date('l, jS F, Y', strtotime($subind))."</h3>".PHP_EOL;
                                     foreach($subval as $subgames) {
                                         $display = array_intersect_key($subgames, array_fill_keys($fields, 'keep'));
-                                        $output[] = "
-                                        <p class='w3-large'>".$display['fixture'].'</p>
-                                        <p>Tip: '.$display['tip'].'</p>
-                                        <p>Result: '.$display['result']."</p>\n";
+                                        $output[] = 
+                                        "<p class='w3-large'>".$display['fixture'].'</p>'.PHP_EOL.
+                                        '<p>Tip: '.$display['tip'].'</p>'.PHP_EOL.
+                                        '<p>Result: '.$display['result']."</p>".PHP_EOL.PHP_EOL;
                                     }
                                 } else {
                                     $display = array_intersect_key($subval, array_fill_keys($fields, 'keep'));
@@ -1045,8 +1046,9 @@ class Folder extends Controller {
             new DateTime('yesterday -1day'),
             new DateInterval('P1D'),
             new DateTime('tomorrow +2days')
-       );
-
+        );
+        
+        $firstdate = date('Y-m-d', strtotime('yesterday -1day'));
         foreach(['classic', 'over_25'] as $market) {
             //'UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'
            foreach(['UEFA', 'CAF', 'OFC', 'CONMEBOL', 'CONCACAF', 'AFC'] as $federations) {
@@ -1077,7 +1079,7 @@ class Folder extends Controller {
         }
         
         $classics = $alldata['classic'];
-        $ovun = $alldata['over_25'];
+        // $ovun = $alldata['over_25'];
         /*
         default response
         [classic] => Array
@@ -1089,7 +1091,9 @@ class Folder extends Controller {
                             [0] => stdClass Object
                                 (
                                     [market] => classic
-                                    [competition_cluster] => England*/
+                                    [competition_cluster] => England
+                                    ...
+        */
         foreach($classics as $fed=>$val) {
             foreach($val as $date=>$subval) {
                 foreach($subval as $ind=>$obj) {
@@ -1103,18 +1107,44 @@ class Folder extends Controller {
             }
         }
         // show($formatted);exit;
+        $countries = [
+            'England'=>['abbr'=>'epl', 'league'=>'premier league'],
+            'Spain'=>['abbr'=>'laliga', 'league'=>'primera division'],
+            'Italy'=>['abbr'=>'seriea', 'league'=>'serie a'],
+            'France'=>['abbr'=>'ligue1', 'league'=>'ligue 1'],
+            'Germany'=>['abbr'=>'bundesliga', 'league'=>'bundesliga'],
+            ];
         foreach($formatted as $country=>$val) {
             foreach($val as $league=>$subval) {
+                // echo "$country: $league<br>";
+                if(array_key_exists($country, $countries) && $countries[$country]['league']==strtolower($league)) {
+                    $bgpredfile = file(INCS.'/free_predicts/en/'.$countries[$country]['abbr'].'.php');
+                }
                 $output = $status = [];
                 foreach($subval as $date=>$sub2val) {
-                    $output[] = "\n<h3>For ".date('l, jS F, Y', strtotime($date))."</h3>\n";
+                    $output[] = PHP_EOL."<h3>For ".date('l, jS F, Y', strtotime($date))."</h3>".PHP_EOL;
                     foreach($sub2val as $ind=>$gamesobj) {
-                        $output[] = "
-                        <p class='w3-large'>".$gamesobj->home_team.' vs '.$gamesobj->away_team.'</p>
-                        <p>Kickoff: '.substr($gamesobj->start_date, 11).' GMT</p>
-                        <p>Tip: '.$gamesobj->prediction.'</p>
-                        <p>Result: '.$gamesobj->result."</p>\n";
+                        $fixture = $gamesobj->home_team.' vs '.$gamesobj->away_team;
+                        $result = $gamesobj->result.($gamesobj->is_expired==false && $gamesobj->result ? '*' : '');
+                        // if($league=='Premier League') echo "$fixture $result<br>";
+                        $output[] = 
+                        "<p class='w3-large'>$fixture</p>".PHP_EOL.
+                        '<p>Kickoff: '.substr($gamesobj->start_date, 11).' GMT</p>'.PHP_EOL.
+                        '<p>Tip: '.$gamesobj->prediction.'</p>'.PHP_EOL.
+                        "<p>Result: $result</p>".PHP_EOL.PHP_EOL;
                         $status[] = $gamesobj->status;
+                        if(isset($bgpredfile)) {
+                            foreach($bgpredfile as $filelines) {
+                                if(str_starts_with($filelines, "<p class='w3-large'>")) {
+                                    $bgfixture = substr($filelines, 20, -5);
+                                    similar_text($bgfixture, $fixture, $percent);
+                                    if($percent>=70 && $result) {
+                                        // if($result=='2 - 0') echo $fixture;
+                                        $updateset[$bgfixture] = purify($result);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 $output_en = implode($output);
@@ -1126,15 +1156,34 @@ class Folder extends Controller {
                     file_put_contents(str_replace('/en/', "/$pref/", $link), $str);
                 }
                 if(count(array_filter($status, fn($v)=>($v=='pending' || $v=='lost')))<3) {
-                    $predstats['leagues'][] = strtolower("$country: $league");
+                    $predstats[]['leagues'] = purify(strtolower("$country: $league"));
                 }
             }
         }
         echo 'copied successfully';
-        $gamesclass = new Freegames;
+        $apiclass = new Footballpredapi;
         $year = date('Y');
-        show($predstats);
-        $db = $gamesclass->insert_multi($predstats, true)->on_duplicate_key("UPDATE '$year' = '$year'+1");
+        
+        if(isset($updateset)) {
+            $updatequery = 'update freegames set result= case';
+            foreach($updateset as $f=>$r) {
+                $updatequery .= " when fixture='$f' then ?";
+            }
+            $updatequery .= " else result end where fixture in ('".implode("', '", array_keys($updateset))."') and date >= '$firstdate'";
+            $tabquery['freegames'] = [
+                'custom_query'=>[$updatequery, 'update', array_values($updateset)]
+            ];
+        }
+        $tabquery['footballpredapi'] = [
+            'insert_multi'=>[$predstats, true],
+            'on_duplicate_key'=>["UPDATE `$year` = if(date < '$firstdate', `$year`+1, `$year`), date = if(date < '$firstdate', current_timestamp, date)"],
+            'go'=>[]
+        ];
+
+        $db = $apiclass->transaction($tabquery);
+        $this->copy('free');
+        
+        // $db = $apiclass->insert_multi($predstats, true)->on_duplicate_key("UPDATE `$year` = if(date < '$firstdate', `$year`+1, `$year`), date = if(date < '$firstdate', current_timestamp, date)")->go();
     }
 
     function nogames() {
